@@ -1,1 +1,5 @@
-{"patternengines":["\\PatternLab\\PatternEngine\\Twig\\PatternEngineRule"]}
+{
+    "patternengines": [
+        "\\PatternLab\\PatternEngine\\Twig\\PatternEngineRule"
+    ]
+}
