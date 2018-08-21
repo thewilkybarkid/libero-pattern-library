@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "block-closing-brace-newline-after": ["always", {"ignoreAtRules": ["if", "else"]}],
+    "block-no-empty": true,
+    "block-opening-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always",
+    "block-opening-brace-space-before": "always",
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "comment-empty-line-before": "always",
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-semicolon-space-before": "never",
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "function-calc-no-unspaced-operator": true,
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "no-eol-whitespace": true,
+    "no-missing-end-of-source-newline": true,
+    "number-leading-zero": "always",
+    "number-no-trailing-zeros": true,
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+    "selector-list-comma-newline-after": "always",
+    "selector-list-comma-space-before": "never",
+    "string-quotes": "double",
+    "value-list-comma-space-after": "always",
+    "value-list-comma-space-before": "never"
+  }
+}
