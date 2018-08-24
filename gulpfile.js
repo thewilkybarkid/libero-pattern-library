@@ -28,7 +28,7 @@ function buildConfig(invocationArgs, sourceRoot, exportRoot) {
 
   const config = {};
   config.environment = invocationOptions.environment;
-  config.sassLint = invocationOptions['sass-lint'] !== 'false';
+  config.sassLinting = invocationOptions['sass-lint'] !== 'false';
   config.sourceRoot = sourceRoot;
   config.exportRoot = exportRoot;
 
@@ -82,7 +82,7 @@ gulp.task('css:generate', ['sass:lint'], () => {
 });
 
 gulp.task('sass:lint', ['css:clean'], () => {
-  if (!config.sassLint) {
+  if (!config.sassLinting) {
     console.info("Skipping sass:lint");
     return;
   }
