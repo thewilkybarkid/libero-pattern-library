@@ -43,6 +43,7 @@ function buildConfig(invocationArgs, sourceRoot, exportRoot) {
   config.dir.src.templates = `${config.sourceRoot}_patterns/`;
 
   config.dir.out.css = `${config.exportRoot}css/`;
+  config.dir.out.sass = `${config.dir.out.css}sass/`;
   config.dir.out.images = `${config.exportRoot}images/`;
   config.dir.out.fonts = `${config.exportRoot}fonts/`;
   config.dir.out.templates = `${config.exportRoot}templates/`;
@@ -115,6 +116,9 @@ gulp.task('exportPatterns', ['build', 'patternsExport:clean'], () => {
 
   gulp.src(config.files.src.css)
       .pipe(gulp.dest(config.dir.out.css));
+
+  gulp.src(config.files.src.sass)
+      .pipe(gulp.dest(config.dir.out.sass));
 
   gulp.src(config.files.src.images)
       .pipe(gulp.dest(config.dir.out.images));
