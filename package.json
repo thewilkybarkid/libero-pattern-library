@@ -21,6 +21,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-flatten": "^0.4.0",
+    "gulp-mocha": "^6.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
@@ -29,6 +30,7 @@
     "minimist": "^1.2.0",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^2.0.0",
+    "sass-true": "^4.0.0",
     "stylelint": "^9.4.0"
   }
 }

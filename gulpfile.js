@@ -4,6 +4,7 @@ const del = require('del');
 const flatten = require('gulp-flatten');
 const gulp = require('gulp');
 const minimist = require('minimist');
+const mocha = require('gulp-mocha');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const reporter = require('postcss-reporter');
@@ -71,7 +72,7 @@ function buildConfig(invocationArgs, sourceRoot, exportRoot) {
 
 const config = buildConfig(process.argv, 'source/', 'export/');
 
-gulp.task('css:generate', ['sass:lint'], () => {
+gulp.task('css:generate', ['sass:test'], () => {
   const sassOptions = config.environment === 'production' ? {outputStyle: 'compressed'} : null;
   return gulp.src(config.files.src.sassEntryPoint)
              .pipe(sourcemaps.init())
@@ -100,6 +101,11 @@ gulp.task('sass:lint', ['css:clean'], () => {
 
   return gulp.src([config.files.src.sass])
              .pipe(postcss(processors, {syntax: syntaxScss}));
+});
+
+gulp.task('sass:test', ['sass:lint'], () => {
+  return gulp.src('./test/sass/test_sass.js')
+             .pipe(mocha({ reporter: 'spec' }));
 });
 
 gulp.task('css:clean', () => {

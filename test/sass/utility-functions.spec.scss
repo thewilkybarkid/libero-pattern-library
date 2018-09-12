@@ -1,0 +1,20 @@
+@import "../../node_modules/sass-true/sass/true";
+@import "../../source/css/sass/_utility-functions.scss";
+
+@include test-module("the function get-rem-from-px [Function]") {
+
+  @include test("returns 2 when supplied with 32") {
+    @include assert-equal(
+            get-rem-from-px(32),
+            2
+    );
+  }
+
+  @include test("returns 2.5 when supplied with 40") {
+    @include assert-equal(
+            get-rem-from-px(40),
+            2.5
+    );
+  }
+
+}

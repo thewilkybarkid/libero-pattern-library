@@ -4,3 +4,4 @@
 !/source/css/pattern-scaffolding.css
 /source/css/*.map
 /vendor/
+/.sass-cache/
