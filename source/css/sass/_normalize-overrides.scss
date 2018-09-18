@@ -136,7 +136,7 @@ ul,
 ol {
   @include blg-spacing("bottom", "small", "margin");
   margin-top: 0;
-  @include padding(48, "left");
+  @include padding(48, "inline-start");
 }
 
 dl {

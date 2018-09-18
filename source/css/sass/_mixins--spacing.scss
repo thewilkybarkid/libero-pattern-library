@@ -1,37 +1,62 @@
 @import "utility-functions";
-@import "variables--baseline-grid";
-@import "variables--breakpoints";
+@import "variables";
 
+// NOTE: mixins beginning with underscore "_" are internal to this file only: they MUST NOT be used externally.
+
+@mixin _padding-left($size-in-px) {
+  @if $size-in-px == 0 {
+    padding-left: 0;
+  } @else {
+    padding-left: #{$size_in_px}px;
+    padding-left: #{get-rem-from-px($size_in_px)}rem;
+  }
+}
+
+@mixin _padding-right($size-in-px) {
+  @if $size-in-px == 0 {
+    padding-right: 0;
+  } @else {
+    padding-right: #{$size_in_px}px;
+    padding-right: #{get-rem-from-px($size_in_px)}rem;
+  }
+}
+
+@mixin _when-left-to-right {
+  html[dir="ltr"] &:not([dir]),
+  &[dir="ltr"] {
+    @content;
+  }
+}
+
+@mixin _when-right-to-left {
+  html[dir="rtl"] &:not([dir]),
+  &[dir="rtl"] {
+    @content;
+  }
+}
+
+// Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
+//  - document level: always specified, via the HTML element
+//  - block level: specified on every element within a block describing a direction switch.
+//
+// For example:
+// <html lang="..." dir="ltr">
+// ...
+// <div>
+//   Doesn't need a dir attribute. Most cases will be like this.
+// </div>
+//
+//<div class="test" dir="rtl">
+//
+//  This block changes the text direction. Every descendant element must have its own dir attribute....
+//
+//  <div class="test" dir="rtl">... even if the direction doesn't change.</div>
+//
+//  <div class="test" dir="ltr">But obviously also when it does.</div>
+//
+//</div>
 @mixin padding($size_in_px, $dimension: "") {
-  @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    @if $size_in_px == 0 {
-      padding-#{$dimension}: 0;
-    } @else {
-      padding-#{$dimension}: #{$size_in_px}px;
-      padding-#{$dimension}: #{get-rem-from-px($size_in_px)}rem;
-    }
-  }
-  @else if $dimension == "" and type_of($size_in_px) == list {
-    $parts-px: ();
-    $parts-rem: ();
-    @each $size in $size_in_px {
-      @if $size == 0 {
-        $parts-px: append($parts-px, 0, "space");
-      } @else {
-        $parts-px: append($parts-px, #{$size}px, "space");
-      }
-    }
-    @each $size in $size_in_px {
-      @if $size == 0 {
-        $parts-rem: append($parts-rem, 0, "space");
-      } @else {
-        $parts-rem: append($parts-rem, #{get-rem-from-px($size)}rem, "space");
-      }
-    }
-    padding: $parts-px;
-    padding: $parts-rem;
-  }
-  @else {
+  @if $dimension == "" {
     @if $size_in_px == 0 {
       padding: 0;
     } @else {
@@ -39,6 +64,129 @@
       padding: #{get-rem-from-px($size_in_px)}rem;
     }
   }
+  @if $dimension == "inline" {
+    @if $size_in_px == 0 {
+      padding-left: 0;
+      padding-right: 0;
+      padding-inline: 0;
+    } @else if type_of($size_in_px) == list and length($size_in_px) >= 2 {
+
+      $firstValue: nth($size_in_px, 1);
+      $secondValue: nth($size_in_px, 2);
+
+      @if $firstValue == $secondValue {
+
+        @include _padding-left($firstValue);
+        @include _padding-right($secondValue);
+
+      } @else {
+
+        @include _when-left-to-right {
+          @include _padding-left($firstValue);
+          @include _padding-right($secondValue);
+        }
+
+        @include _when-right-to-left {
+          @include _padding-right($firstValue);
+          @include _padding-left($secondValue);
+        }
+
+      }
+
+      $derivedFirstValue: 0;
+      $derivedSecondValue: 0;
+      @if $firstValue != 0 {
+        $derivedFirstValue: #{get-rem-from-px($firstValue)}rem;
+      }
+      @if $secondValue != 0 {
+        $derivedSecondValue: #{get-rem-from-px($secondValue)}rem;
+      }
+      @if $firstValue == $secondValue {
+        padding-inline: $derivedFirstValue;
+      } @else {
+        html[dir] & {
+          padding-inline: $derivedFirstValue $derivedSecondValue;
+        }
+      }
+
+    } @else {
+      @include _padding-left($size_in_px);
+      @include _padding-right($size_in_px);
+      padding-inline: #{get-rem-from-px($size_in_px)}rem;
+    }
+  }
+
+  @if $dimension == "inline-start" {
+    @if $size_in_px == 0 {
+      @include _when-left-to-right {
+        padding-left: 0;
+      }
+      @include _when-right-to-left {
+        padding-right: 0;
+      }
+      html[dir] & {
+        padding-inline-start: 0;
+      }
+    } @else {
+      @include _when-left-to-right {
+        @include _padding-left(nth($size_in_px, 1));
+      }
+      @include _when-right-to-left {
+        @include _padding-right(nth($size_in_px, 1));
+      }
+      html[dir] & {
+        padding-inline-start: #{get-rem-from-px(nth($size_in_px, 1))}rem;
+      }
+    }
+  }
+
+  @if $dimension == "inline-end" {
+    @if $size_in_px == 0 {
+      @include _when-left-to-right {
+        padding-right: 0;
+      }
+      @include _when-right-to-left {
+        padding-left: 0;
+      }
+      html[dir] & {
+        padding-inline-end: 0;
+      }
+    } @else {
+      @include _when-left-to-right {
+        @include _padding-right(nth($size_in_px, 1));
+      }
+      @include _when-right-to-left {
+        @include _padding-left(nth($size_in_px, 1));
+      }
+      html[dir] & {
+        padding-inline-end: #{get-rem-from-px(nth($size_in_px, 1))}rem;
+      }
+    }
+  }
+
+  // Vertical writing modes not yet supported
+  @if $dimension == "block" {
+    @if $size_in_px == 0 {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-block: 0;
+
+    } @else if type_of($size_in_px) == list and length($size_in_px) >= 2 {
+      padding-top: #{nth($size_in_px, 1)}px;
+      padding-top: #{get-rem-from-px(nth($size_in_px, 1))}rem;
+      padding-bottom: #{nth($size_in_px, 2)}px;
+      padding-bottom: #{get-rem-from-px(nth($size_in_px, 2))}rem;
+      padding-block: #{get-rem-from-px(nth($size_in_px, 1))}rem #{get-rem-from-px(nth($size_in_px, 2))}rem;;
+
+    } @else {
+      padding-top: #{$size_in_px}px;
+      padding-top: #{get-rem-from-px($size_in_px)}rem;
+      padding-bottom: #{$size_in_px}px;
+      padding-bottom: #{get-rem-from-px($size_in_px)}rem;
+      padding-block: #{get-rem-from-px($size_in_px)}rem;
+    }
+  }
+
 }
 
 @mixin margin($size_in_px, $dimension: "") {
@@ -209,8 +357,8 @@
 
 @mixin h2-spacing() {
   margin: 0;
-  @include padding(21, "bottom");
-  @include padding(21, "top");
+  @include padding(21, "block-end");
+  @include padding(21, "block-start");
 }
 
 @mixin h3-spacing() {
@@ -233,8 +381,8 @@
 
 @mixin h6-spacing() {
   margin: 0;
-  @include padding(10, "top");
-  @include padding(14, "bottom");
+  @include padding(10, "block-start");
+  @include padding(14, "block-end");
 }
 
 @mixin body-spacing() {

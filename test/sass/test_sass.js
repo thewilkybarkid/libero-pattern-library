@@ -1,6 +1,16 @@
 const path = require('path');
 const sassTrue = require('sass-true');
 
-const sassFile = path.join(__dirname, 'utility-functions.spec.scss');
-sassTrue.runSass({file: sassFile}, describe, it);
+// TODO: derive from directory listing rather than explicitly describing
+[
+  'utility-functions.spec.scss',
+  'mixins--spacing.spec.scss'
+].forEach((filename) => {
+  sassTrue.runSass(
+    {
+      file: path.join(__dirname, filename)
+    },
+    describe,
+    it);
+});
 
