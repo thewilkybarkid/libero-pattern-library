@@ -126,7 +126,7 @@ gulp.task('patternsExport:clean', () => {
   del([`${config.exportRoot}**/*`]);
 });
 
-gulp.task('exportPatterns', ['build', 'patternsExport:clean'], () => {
+gulp.task('exportPatterns', ['patternsExport:clean'], () => {
 
   gulp.src(config.files.src.css)
       .pipe(gulp.dest(config.dir.out.css));
@@ -151,4 +151,4 @@ gulp.task('sass:watch', ['css:generate'], () => {
   gulp.watch([config.files.src.sass, config.files.test.sass], ['css:generate']);
 });
 
-gulp.task('default', ['exportPatterns']);
+gulp.task('default', ['build', 'exportPatterns']);
