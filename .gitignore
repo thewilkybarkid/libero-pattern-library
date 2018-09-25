@@ -5,3 +5,4 @@
 /source/css/*.map
 /vendor/
 /.sass-cache/
+/patterns-core-*.tar.gz

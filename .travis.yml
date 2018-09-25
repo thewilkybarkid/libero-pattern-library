@@ -12,6 +12,17 @@ after_success:
     - docker run --name patterns-core liberoadmin/patterns-core node_modules/.bin/gulp exportPatterns
     # TODO: empty out committed export/ folder
     - docker cp patterns-core:/patterns-core/export/. export/
+    - .travis/package.sh
+
+deploy:
+  provider: releases
+  api_key:
+    # Github token from user `liberoadmin` with `public_repo` scope
+    secure: WioMaGj+sjvtVdZgYOPyEm0d/mAbqO/xanNgz+ckXai1py55xWpr/gZl5Wkncbt8fQQnHLPUiYzakENBk7zJ0H3sH6m/v60kHmJ5bFmTNYS7kepeu98eWfPUXcmZ+qWhJ4BSFU/LEreOmIsIbgK8W48JVhiGIY7kIk2VgN7Bv3sgyJzm23edMth/jbiwJBMWww8vWIaRyiv1BTQPSwQXbmg+nbvE8NmIftkX4AXQsTfIfrmpfTgOebLVIgdYSN3GWiQDp0fU09laGvws4z1JlK+zf+AzkeFnXn6IsdkPbznpBFhjndTq0afgecwIh9KpJ03M0gQMBE/s1d5sIug8SmV3lgC/OpyqLyzfu941Ehda56jbnR5nh7oBhaWel7ae4E98rkZLMaLEH0aTFD/8vYYxq8A0sObIzoi7y5pc9+0xA/B2hzlPIrNJ4aUxO1v1jlIfa+yp553hrek7LlDqV9ngnwWRTnn8AC3WaZ9XNysp3gbf4koZiS9pzTeSku9ug2f1A22zeyygU8RIIc+uaj1t1w1v/cpGSQwbd//oqBFPvbzpf0gS7E1fqUkkHvg641FA7FCn1fYJPEdDFhSQS69G79vRe5X+mEeAPb5TZ7CGmuTKUoDmndgoFooUr0sd9VhKjlFxdtc7bMMY5oRibyqpYs5gT04Og9SxVs+GCfg=
+  file: "patterns-core-${TRAVIS_TAG}.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: true
 
 if: |
     branch = master OR \
