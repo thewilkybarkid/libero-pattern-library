@@ -1,8 +1,10 @@
+/.sass-cache/
+/export/
+/node_modules/
+/patterns-core-*.tar.gz
 /public/
-/source/styleguide/
 /source/css/*.css
 !/source/css/pattern-scaffolding.css
 /source/css/*.map
+/source/styleguide/
 /vendor/
-/.sass-cache/
-/patterns-core-*.tar.gz
