@@ -32,6 +32,147 @@
     }
   }
 
+  @include it("generates correct fallbacks with a pair of non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include padding(32 48);
+      }
+
+      @include expect {
+        padding: 32px 48px;
+        padding: 2rem 3rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with three non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include padding(32 48 64);
+      }
+
+      @include expect {
+        padding: 32px 48px 64px;
+        padding: 2rem 3rem 4rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with one zero and one non-zero value and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include padding(0 48);
+      }
+
+      @include expect {
+        padding: 0 48px;
+        padding: 0 3rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(48 0);
+      }
+
+      @include expect {
+        padding: 48px 0;
+        padding: 3rem 0;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks with in total three zero and/or non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include padding(0 48 128);
+      }
+
+      @include expect {
+        padding: 0 48px 128px;
+        padding: 0 3rem 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(48 0 128);
+      }
+
+      @include expect {
+        padding: 48px 0 128px;
+        padding: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(48 128 0);
+      }
+
+      @include expect {
+        padding: 48px 128px 0;
+        padding: 3rem 8rem 0;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(0 0 0);
+      }
+
+      @include expect {
+        padding: 0 0 0;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks with in total four zero and/or non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include padding(0 48 128 256);
+      }
+
+      @include expect {
+        padding: 0 48px 128px 256px;
+        padding: 0 3rem 8rem 16rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(0 0 0 0);
+      }
+
+      @include expect {
+        padding: 0 0 0 0;
+      }
+
+    }
+
+  }
+
   @include it("generates correct fallbacks with a single zero value for dimension 'inline'") {
     @include assert() {
 
@@ -176,95 +317,41 @@
         padding-left: 0;
         padding-right: 0;
         padding-inline: 0;
-        }
+      }
 
     }
   }
 
-  @include it("Ignores more than two values in the sizes list for the dimension 'inline'") {
-      @include assert() {
-
-        @include output {
-          @include padding(16 32 48, "inline");
-        }
-
-        @include expect {
-          html[dir="ltr"] &:not([dir]),
-          &[dir="ltr"] {
-            padding-left: 16px;
-            padding-left: 1rem;
-            padding-right: 32px;
-            padding-right: 2rem;
-          }
-          html[dir="rtl"] &:not([dir]),
-          &[dir="rtl"] {
-            padding-right: 16px;
-            padding-right: 1rem;
-            padding-left: 32px;
-            padding-left: 2rem;
-          }
-
-          html[dir] & {
-            padding-inline: 1rem 2rem;
-          }
-        }
-      }
-    }
 
   @include it("generates correct fallbacks with a single zero value for the dimension 'inline-start'") {
-   @include assert() {
-
-     @include output {
-       @include padding(0, "inline-start");
-     }
-
-     @include expect {
-       html[dir="ltr"] &:not([dir]),
-       &[dir="ltr"] {
-         padding-left: 0;
-       }
-       html[dir="rtl"] &:not([dir]),
-       &[dir="rtl"] {
-         padding-right: 0;
-       }
-       html[dir] & {
-        padding-inline-start: 0;
-       }
-
-   }
-  }
-}
-
-  @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-start'") {
-   @include assert() {
-
-     @include output {
-       @include padding(16, "inline-start");
-     }
-
-     @include expect {
-       html[dir="ltr"] &:not([dir]),
-       &[dir="ltr"] {
-         padding-left: 16px;
-         padding-left: 1rem;
-       }
-       html[dir="rtl"] &:not([dir]),
-       &[dir="rtl"] {
-         padding-right: 16px;
-         padding-right: 1rem;
-       }
-       html[dir] & {
-        padding-inline-start: 1rem;
-       }
-     }
-  }
-}
-
-  @include it("Ignores more than one value in the sizes list for the dimension 'inline-start'") {
     @include assert() {
 
       @include output {
-        @include padding(16 32, "inline-start");
+        @include padding(0, "inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 0;
+        }
+        html[dir] & {
+          padding-inline-start: 0;
+        }
+
+      }
+    }
+  }
+
+  @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-start'") {
+    @include assert() {
+
+      @include output {
+        @include padding(16, "inline-start");
       }
 
       @include expect {
@@ -282,7 +369,6 @@
           padding-inline-start: 1rem;
         }
       }
-
     }
   }
 
@@ -290,17 +376,17 @@
     @include assert() {
 
       @include output {
-       @include padding(0, "inline-end");
+        @include padding(0, "inline-end");
       }
 
       @include expect {
         html[dir="ltr"] &:not([dir]),
         &[dir="ltr"] {
-         padding-right: 0;
+          padding-right: 0;
         }
         html[dir="rtl"] &:not([dir]),
         &[dir="rtl"] {
-         padding-left: 0;
+          padding-left: 0;
         }
         html[dir] & {
           padding-inline-end: 0;
@@ -313,34 +399,8 @@
   @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-end'") {
     @include assert() {
 
-     @include output {
-       @include padding(16, "inline-end");
-     }
-
-     @include expect {
-       html[dir="ltr"] &:not([dir]),
-       &[dir="ltr"] {
-         padding-right: 16px;
-         padding-right: 1rem;
-       }
-       html[dir="rtl"] &:not([dir]),
-       &[dir="rtl"] {
-         padding-left: 16px;
-         padding-left: 1rem;
-       }
-       html[dir] & {
-        padding-inline-end: 1rem;
-       }
-     }
-   }
-}
-
-
-  @include it("Ignores more than one value in the sizes list for the dimension 'inline-end'") {
-    @include assert() {
-
       @include output {
-        @include padding(16 32, "inline-end");
+        @include padding(16, "inline-end");
       }
 
       @include expect {
@@ -358,7 +418,6 @@
           padding-inline-end: 1rem;
         }
       }
-
     }
   }
 
@@ -416,21 +475,744 @@
     }
   }
 
-  @include it("Ignores more than two values in the sizes list for the dimension 'block'") {
+  @include it("generates correct values for a single zero value and dimension 'block-start'") {
     @include assert() {
 
       @include output {
-        @include padding(16 32 48, "block");
+        @include padding(0, "block-start")
       }
 
       @include expect {
-          padding-top: 16px;
-          padding-top: 1rem;
-          padding-bottom: 32px;
-          padding-bottom: 2rem;
-          padding-block: 1rem 2rem;
+        padding-top: 0;
+        padding-block-start: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single non-zero value and dimension 'block-start'") {
+    @include assert() {
+
+      @include output {
+        @include padding(16, "block-start")
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-top: 1rem;
+
+        padding-block-start: 1rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single zero value and dimension 'block-end'") {
+    @include assert() {
+
+      @include output {
+        @include padding(0, "block-end")
+      }
+
+      @include expect {
+        padding-bottom: 0;
+        padding-block-end: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single non-zero value and dimension 'block-end'") {
+    @include assert() {
+
+      @include output {
+        @include padding(16, "block-end")
+      }
+
+      @include expect {
+        padding-bottom: 16px;
+        padding-bottom: 1rem;
+
+        padding-block-end: 1rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("margin [Mixin]") {
+
+  @include it("generates correct fallbacks with a single zero value and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(0);
+      }
+
+      @include expect {
+        margin: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a single non-zero value and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(16);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a pair of non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(32 48);
+      }
+
+      @include expect {
+        margin: 32px 48px;
+        margin: 2rem 3rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with one zero and one non-zero value and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(0 48);
+      }
+
+      @include expect {
+        margin: 0 48px;
+        margin: 0 3rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(48 0);
+      }
+
+      @include expect {
+        margin: 48px 0;
+        margin: 3rem 0;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks with three non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(32 48 64);
+      }
+
+      @include expect {
+        margin: 32px 48px 64px;
+        margin: 2rem 3rem 4rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with in total three zero and/or non-zero values and no dimension") {
+    @include assert() {
+
+      @include output {
+        @include margin(0 48 128);
+      }
+
+      @include expect {
+        margin: 0 48px 128px;
+        margin: 0 3rem 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(48 0 128);
+      }
+
+      @include expect {
+        margin: 48px 0 128px;
+        margin: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(48 128 0);
+      }
+
+      @include expect {
+        margin: 48px 128px 0;
+        margin: 3rem 8rem 0;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 0 0);
+      }
+
+      @include expect {
+        margin: 0 0 0;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks with a single zero value for dimension 'inline'") {
+    @include assert() {
+
+      @include output {
+        @include margin(0, "inline");
+      }
+
+      @include expect {
+        margin-left: 0;
+        margin-right: 0;
+        margin-inline: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a single non-zero value for dimension 'inline'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16, "inline");
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-left: 1rem;
+        margin-right: 16px;
+        margin-right: 1rem;
+        margin-inline: 1rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a pair of values for dimension 'inline'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16 32, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+          margin-right: 32px;
+          margin-right: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+          margin-left: 32px;
+          margin-left: 2rem;
+        }
+
+        html[dir] & {
+          margin-inline: 1rem 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(16 16, "inline");
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-left: 1rem;
+        margin-right: 16px;
+        margin-right: 1rem;
+        margin-inline: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 32, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 0;
+          margin-right: 32px;
+          margin-right: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 0;
+          margin-left: 32px;
+          margin-left: 2rem;
+        }
+
+        html[dir] & {
+          margin-inline: 0 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(16 0, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+          margin-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+          margin-left: 0;
+        }
+
+        html[dir] & {
+          margin-inline: 1rem 0;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 0, "inline");
+      }
+
+      @include expect {
+        margin-left: 0;
+        margin-right: 0;
+        margin-inline: 0;
+        }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a single zero value for the dimension 'inline-start'") {
+   @include assert() {
+
+     @include output {
+       @include margin(0, "inline-start");
+     }
+
+     @include expect {
+       html[dir="ltr"] &:not([dir]),
+       &[dir="ltr"] {
+         margin-left: 0;
+       }
+       html[dir="rtl"] &:not([dir]),
+       &[dir="rtl"] {
+         margin-right: 0;
+       }
+       html[dir] & {
+        margin-inline-start: 0;
+       }
+
+   }
+  }
+}
+
+  @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-start'") {
+   @include assert() {
+
+     @include output {
+       @include margin(16, "inline-start");
+     }
+
+     @include expect {
+       html[dir="ltr"] &:not([dir]),
+       &[dir="ltr"] {
+         margin-left: 16px;
+         margin-left: 1rem;
+       }
+       html[dir="rtl"] &:not([dir]),
+       &[dir="rtl"] {
+         margin-right: 16px;
+         margin-right: 1rem;
+       }
+       html[dir] & {
+        margin-inline-start: 1rem;
+       }
+     }
+  }
+}
+
+  @include it("generates correct fallbacks with a single zero value for the dimension 'inline-end'") {
+    @include assert() {
+
+      @include output {
+       @include margin(0, "inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+         margin-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+         margin-left: 0;
+        }
+        html[dir] & {
+          margin-inline-end: 0;
+        }
+
       }
     }
   }
 
+  @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-end'") {
+    @include assert() {
+
+     @include output {
+       @include margin(16, "inline-end");
+     }
+
+     @include expect {
+       html[dir="ltr"] &:not([dir]),
+       &[dir="ltr"] {
+         margin-right: 16px;
+         margin-right: 1rem;
+       }
+       html[dir="rtl"] &:not([dir]),
+       &[dir="rtl"] {
+         margin-left: 16px;
+         margin-left: 1rem;
+       }
+       html[dir] & {
+        margin-inline-end: 1rem;
+       }
+     }
+   }
+}
+
+
+  @include it("generates correct fallbacks with a single zero value for dimension 'block'") {
+    @include assert() {
+
+      @include output {
+        @include margin(0, "block")
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-block: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct fallbacks with a single non-zero value for dimension 'block'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16, "block")
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block: 1rem;
+      }
+
+    }
+  }
+
+  // Vertical writing modes not yet supported
+  @include it("generates correct fallbacks with a pair of non-zero values for dimension 'block'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16 32, "block")
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 32px;
+        margin-bottom: 2rem;
+
+        margin-block: 1rem 2rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single zero value and dimension 'block-start'") {
+    @include assert() {
+
+      @include output {
+        @include margin(0, "block-start")
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-block-start: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single non-zero value and dimension 'block-start'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16, "block-start")
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+
+        margin-block-start: 1rem;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single zero value and dimension 'block-end'") {
+    @include assert() {
+
+      @include output {
+        @include margin(0, "block-end")
+      }
+
+      @include expect {
+        margin-bottom: 0;
+        margin-block-end: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct values for a single non-zero value and dimension 'block-end'") {
+    @include assert() {
+
+      @include output {
+        @include margin(16, "block-end")
+      }
+
+      @include expect {
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+
+        margin-block-end: 1rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("nospace [Mixin]") {
+
+  @include it("generates correct zeroing for the dimension 'inline'") {
+    @include assert() {
+
+      @include output {
+        @include nospace("inline");
+      }
+
+      @include expect {
+        margin-left: 0;
+        margin-right: 0;
+        margin-inline: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-inline: 0;
+
+      }
+
+    }
+
+  }
+
+  @include it("generates correct zeroing for the dimension 'inline-start'") {
+    @include assert {
+
+      @include output {
+        @include nospace("inline-start");
+      }
+
+      @include expect {
+
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 0;
+        }
+        html[dir] & {
+          margin-inline-start: 0;
+        }
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 0;
+        }
+        html[dir] & {
+          padding-inline-start: 0;
+        }
+      }
+
+    }
+  }
+
+  @include it("generates correct zeroing for the dimension 'inline-end'") {
+    @include assert {
+
+      @include output {
+        @include nospace("inline-end");
+      }
+
+      @include expect {
+
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 0;
+        }
+        html[dir] & {
+          margin-inline-end: 0;
+        }
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-right: 0;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-left: 0;
+        }
+        html[dir] & {
+          padding-inline-end: 0;
+        }
+      }
+    }
+  }
+
+  @include it("generates correct zeroing for the dimension 'block'") {
+    @include assert() {
+
+      @include output {
+        @include nospace("block")
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-block: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-block: 0;
+      }
+
+    }
+  }
+
+  // vertical writing modes not supported, so block-start always maps to top at the moment.
+  @include it("generates correct zeroing for the dimension 'block-start'") {
+    @include assert() {
+
+      @include output {
+        @include nospace("block-start")
+      }
+
+      @include expect {
+        margin-top: 0;
+        margin-block-start: 0;
+        padding-top: 0;
+        padding-block-start: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct zeroing for the dimension 'block-end'") {
+    @include assert() {
+
+      @include output {
+        @include nospace("block-end")
+      }
+
+      @include expect {
+        margin-bottom: 0;
+        margin-block-end: 0;
+        padding-bottom: 0;
+        padding-block-end: 0;
+      }
+
+    }
+  }
+
+  @include it("generates correct zeroing for all dimensions when not supplied with any dimension") {
+    @include assert() {
+
+      @include output {
+        @include nospace()
+      }
+
+      @include expect {
+        margin: 0;
+        padding: 0;
+      }
+
+    }
+  }
 }
