@@ -3,11 +3,13 @@
 const del = require('del');
 const flatten = require('gulp-flatten');
 const gulp = require('gulp');
+const mergeStreams = require('merge-stream');
 const minimist = require('minimist');
 const mocha = require('gulp-mocha');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const reporter = require('postcss-reporter');
+const runSequence = require('run-sequence').use(gulp);
 const sass = require('gulp-sass');
 const sassGlob = require('gulp-sass-glob');
 const sourcemaps = require('gulp-sourcemaps');
@@ -117,38 +119,46 @@ gulp.task('sass:test', ['sass:lint'], () => {
 });
 
 gulp.task('css:clean', () => {
-  del(config.files.src.css);
+  return del(config.files.src.css);
 });
 
 gulp.task('build', ['css:generate']);
 
 gulp.task('patternsExport:clean', () => {
-  del([`${config.exportRoot}**/*`]);
+  return del([`${config.exportRoot}**/*`]);
 });
 
 gulp.task('exportPatterns', ['patternsExport:clean'], () => {
 
-  gulp.src(config.files.src.css)
-      .pipe(gulp.dest(config.dir.out.css));
+  return mergeStreams(
+    gulp.src(config.files.src.css)
+        .pipe(gulp.dest(config.dir.out.css)),
 
-  gulp.src(config.files.src.sass)
-      .pipe(gulp.dest(config.dir.out.sass));
+    gulp.src(config.files.src.sass)
+        .pipe(gulp.dest(config.dir.out.sass)),
 
-  gulp.src(config.files.src.images)
-      .pipe(gulp.dest(config.dir.out.images));
+    gulp.src(config.files.src.images)
+        .pipe(gulp.dest(config.dir.out.images)),
 
-  gulp.src(config.files.src.fonts)
-      .pipe(gulp.dest(config.dir.out.fonts));
+    gulp.src(config.files.src.fonts)
+        .pipe(gulp.dest(config.dir.out.fonts)),
 
-  // Template files don't need their authoring hierarchy for downstream use
-  gulp.src(config.files.src.templates)
-      .pipe(flatten({ includeParents: false }))
-      .pipe(gulp.dest(config.dir.out.templates));
+    // Template files don't need their authoring hierarchy for downstream use
+    gulp.src(config.files.src.templates)
+        .pipe(flatten({ includeParents: false }))
+        .pipe(gulp.dest(config.dir.out.templates)),
+  );
 
 });
 
-gulp.task('sass:watch', ['css:generate'], () => {
-  gulp.watch([config.files.src.sass, config.files.test.sass], ['css:generate']);
+gulp.task('sass:watch', () => {
+  return gulp.watch([config.files.src.sass, config.files.test.sass], ['css:generate']);
 });
 
-gulp.task('default', ['build', 'exportPatterns']);
+gulp.task('default', done => {
+  runSequence(
+    'build',
+    'exportPatterns',
+    done,
+  );
+});
