@@ -10,15 +10,15 @@
 */
 @function get-breakpoint($string) {
   @if $string == "x-small" {
-    @return #{get-rem-from-px($bkpt-site--x-small)}em
+    @return #{get-rem-from-px($breakpoint-site-x_small)}em
   } @else if $string == "small" {
-    @return #{get-rem-from-px($bkpt-site--small)}em
+    @return #{get-rem-from-px($breakpoint-site-small)}em
   } @else if $string == "medium" {
-    @return #{get-rem-from-px($bkpt-site--medium)}em
+    @return #{get-rem-from-px($breakpoint-site-medium)}em
   } @else if $string == "wide" {
-    @return #{get-rem-from-px($bkpt-site--wide)}em
+    @return #{get-rem-from-px($breakpoint-site-wide)}em
   } @else if $string == "x-wide" {
-    @return #{get-rem-from-px($bkpt-site--x-wide)}em
+    @return #{get-rem-from-px($breakpoint-site-x_wide)}em
   }
 }
 /* stylelint-enable */
@@ -101,7 +101,7 @@
   box-shadow: $libero-box-shadow;
 }
 
-@mixin arrow($direction: "up", $size: 7, $color: $libero-color-text-ui-background--reverse) {
+@mixin arrow($direction: "up", $size: 7, $color: $color-text-ui_background__reverse) {
   border: #{$size}px solid transparent;
 
   @if $direction == "right" {
@@ -150,7 +150,7 @@
 
 }
 
-@mixin loading-spinner($torus-width: 5, $size: 22, $highlight-color: $libero-color-primary,
+@mixin loading-spinner($torus-width: 5, $size: 22, $highlight-color: $color-primary-normal,
 $base-color: rgba(255, 255, 255, 0.2)) {
   animation: full-rotation 1.1s infinite linear;
   border: #{$torus-width}px solid $base-color;
@@ -202,15 +202,15 @@ $base-color: rgba(255, 255, 255, 0.2)) {
   }
 }
 
-@mixin discreet-link ($color: $libero-color-text, $has-hover-state: true) {
+@mixin discreet-link ($color: $color-text-normal, $has-hover-state: true) {
   border-bottom: 1px dotted $color;
   color: $color;
   text-decoration: none;
 
   @if $has-hover-state == true {
     &:hover {
-      border-bottom-color: $libero-color-primary;
-      color: $libero-color-primary;
+      border-bottom-color: $color-primary-normal;
+      color: $color-primary-normal;
     }
   } @else {
     &:hover {

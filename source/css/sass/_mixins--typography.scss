@@ -1,6 +1,6 @@
-@import "variables--colors";
-@import "variables--typography";
-@import "variables--baseline-grid";
+@import "variables/color";
+@import "variables/font";
+@import "variables/baselinegrid";
 @import "utility-functions";
 
 // General purpose
@@ -10,54 +10,54 @@
   font-size: get-rem-from-px($size_in_px) * 1rem;
 }
 
-@mixin set-font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: $libero-blg-space-small-in-px) {
+@mixin set-font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: $baselinegrid-space-small-in-px) {
   @include font-size($font-size-in-px);
   line-height: #{($vertical-height-in-px / $font-size-in-px)};
 }
 
 @mixin _heading-base-typography() {
-  font-family: $libero-font-secondary;
+  font-family: $font-secondary;
   font-weight: bold;
 }
 
 @mixin h1-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h1-in-px, 48);
+  @include set-font-size-and-vertical-height($font-size-h1_in_px, 48);
 }
 
 @mixin h2-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h2-in-px, 30);
+  @include set-font-size-and-vertical-height($font-size-h2_in_px, 30);
 }
 
 @mixin h3-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h3-in-px);
+  @include set-font-size-and-vertical-height($font-size-h3_in_px);
 }
 
 @mixin h4-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h4-in-px);
+  @include set-font-size-and-vertical-height($font-size-h4_in_px);
 }
 
 @mixin h5-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h5-in-px);
+  @include set-font-size-and-vertical-height($font-size-h5_in_px);
 }
 
 @mixin h6-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($libero-font-size-h6-in-px);
+  @include set-font-size-and-vertical-height($font-size-h6_in_px);
 }
 
 @mixin body-typography() {
-  font-family: $libero-font-primary;
-  @include set-font-size-and-vertical-height($libero-font-size-base-in-px);
+  font-family: $font-primary;
+  @include set-font-size-and-vertical-height($font-size-base-in-px);
   font-weight: normal;
 }
 
 @mixin small-typography() {
-  font-family: $libero-font-primary;
+  font-family: $font-primary;
   font-style: normal;
   @include set-font-size-and-vertical-height(11);
 }

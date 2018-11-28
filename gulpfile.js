@@ -1,6 +1,7 @@
 'use strict';
 
 const del = require('del');
+const distributeConfig = require('./libero-config/bin/distributeConfig');
 const flatten = require('gulp-flatten');
 const gulp = require('gulp');
 const mergeStreams = require('merge-stream');
@@ -46,6 +47,7 @@ function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
   config.dir.src.images = `${config.sourceRoot}images/`;
   config.dir.src.fonts = `${config.sourceRoot}fonts/`;
   config.dir.src.templates = `${config.sourceRoot}_patterns/`;
+  config.dir.src.js = `${config.sourceRoot}js/`;
 
   config.dir.test.sass = `${config.testRoot}sass/`;
 
@@ -70,6 +72,10 @@ function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
   config.files.src.images = [`${config.dir.src.images}/*`, `${config.dir.src.images}/**/*`];
   config.files.src.fonts = [`${config.dir.src.fonts}/*`, `${config.dir.src.fonts}/**/*`];
   config.files.src.templates = [`${config.dir.src.templates}/*.twig`, `${config.dir.src.templates}/**/*.twig`];
+  config.files.src.derivedConfigs = [
+    `${config.dir.src.sass}variables/**/*`,
+    `${config.dir.src.js}derivedConfig.json`
+  ];
 
   config.files.test.sass = `${config.dir.test.sass}**/*.spec.scss`;
   config.files.test.sassTestsEntryPoint = `${config.dir.test.sass}test_sass.js`;
@@ -151,14 +157,33 @@ gulp.task('exportPatterns', ['patternsExport:clean'], () => {
 
 });
 
+gulp.task('sharedConfig:clean', () => {
+  return del(config.files.src.derivedConfigs);
+});
+
+gulp.task('distributeSharedConfig', ['sharedConfig:clean'], (done) => {
+  distributeConfig();
+  done();
+});
+
 gulp.task('sass:watch', () => {
   return gulp.watch([config.files.src.sass, config.files.test.sass], ['css:generate']);
 });
 
+gulp.task('assemble', done => {
+  runSequence(
+    'distributeSharedConfig',
+    'build',
+    done,
+  );
+});
+
 gulp.task('default', done => {
   runSequence(
-    'build',
+    'assemble',
     'exportPatterns',
     done,
   );
 });
+
+gulp.task('watch', ['sass:watch']);

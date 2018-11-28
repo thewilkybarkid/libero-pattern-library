@@ -13,7 +13,7 @@ body {
 
 body {
   background-color: #fff;
-  color: $libero-color-text;
+  color: $color-text-normal;
   text-rendering: optimizeLegibility;
 }
 
@@ -53,7 +53,7 @@ p {
 }
 
 a {
-  color: $libero-color-primary;
+  color: $color-primary-normal;
   text-decoration: none;
 }
 
@@ -75,7 +75,7 @@ strong {
 }
 
 .monospace {
-  font-family: $libero-font-monospace;
+  font-family: $font-monospace;
 }
 
 .sequence {
@@ -198,7 +198,7 @@ address {
 }
 
 main {
-  border-top: 1px solid $libero-color-text-dividers;
+  border-top: 1px solid $color-text-dividers;
 }
 
 img {
@@ -212,24 +212,24 @@ input[type="radio"] {
 }
 
 select {
-  height: #{$libero-blg-space-small-in-px}px;
+  height: #{$baselinegrid-space-small-in-px}px;
 }
 
 // See https://css-tricks.com/almanac/selectors/p/placeholder/ for discussion of non-std :placeholder pseudoelement
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: $libero-color-text-placeholder;
+  color: $color-text-placeholder;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
-  color: $libero-color-text-placeholder;
+  color: $color-text-placeholder;
 }
 
 :-ms-input-placeholder { /* IE 10+ */
-  color: $libero-color-text-placeholder;
+  color: $color-text-placeholder;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: $libero-color-text-placeholder;
+  color: $color-text-placeholder;
 }
 
 h1,
