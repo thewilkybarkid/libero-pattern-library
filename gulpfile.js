@@ -10,6 +10,7 @@ const mocha = require('gulp-mocha');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const reporter = require('postcss-reporter');
+const replace = require('gulp-replace');
 const runSequence = require('run-sequence').use(gulp);
 const sass = require('gulp-sass');
 const sassGlob = require('gulp-sass-glob');
@@ -94,6 +95,7 @@ gulp.task('css:generate', ['sass:test'], () => {
              .pipe(sourcemaps.init())
              .pipe(sassGlob())
              .pipe(sass(sassOptions).on('error', sass.logError))
+             .pipe(replace(/\.\.\/\.\.\/fonts\//g, '../fonts/'))
              .pipe(rename(config.files.out.cssFilename))
              .pipe(sourcemaps.write('./'))
              .pipe(gulp.dest(config.dir.src.css));

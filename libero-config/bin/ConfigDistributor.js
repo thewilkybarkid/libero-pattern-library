@@ -57,7 +57,7 @@ module.exports = class ConfigDistributor {
       const dataForAllocation = {};
       dataForAllocation[allocation] = data[allocation];
       const processedItemData = ConfigDistributor.processForSass(dataForAllocation);
-      const outFileName = path.join(this.paths.out.sassVariablesPath, `${allocation}.scss`);
+      const outFileName = path.join(this.paths.out.sassVariablesPath, `_${allocation}.scss`);
       fileWritePromises.push(
         new Promise((resolve) => {
           resolve(ConfigDistributor.writeFile(processedItemData, outFileName));
