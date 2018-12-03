@@ -5,13 +5,11 @@ language: minimal
 services: docker
 
 script:
-    # conventional image name, but no intention to push it so far
-    - docker build -t liberoadmin/patterns-core .
+    - docker-compose --file docker-compose.yml --file docker-compose.ci.yml build
 
 after_success:
-    - docker run --name patterns-core liberoadmin/patterns-core node_modules/.bin/gulp exportPatterns
-    # TODO: empty out committed export/ folder
-    - docker cp patterns-core:/patterns-core/export/. export/
+    - docker run --name patterns-core-patterns patternscore_gulp npx gulp exportPatterns
+    - docker cp patterns-core-patterns:/app/export/. export/
     - .travis/package.sh
 
 deploy:

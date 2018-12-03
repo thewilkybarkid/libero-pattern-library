@@ -168,6 +168,10 @@ gulp.task('distributeSharedConfig', ['sharedConfig:clean'], (done) => {
   done();
 });
 
+gulp.task('sharedConfig:watch', () => {
+  return gulp.watch('libero-config/**/*', ['distributeSharedConfig']);
+});
+
 gulp.task('sass:watch', () => {
   return gulp.watch([config.files.src.sass, config.files.test.sass], ['css:generate']);
 });
@@ -188,4 +192,4 @@ gulp.task('default', done => {
   );
 });
 
-gulp.task('watch', ['sass:watch']);
+gulp.task('watch', ['sass:watch', 'sharedConfig:watch']);

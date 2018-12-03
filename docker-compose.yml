@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  ui:
+    build:
+      context: .
+      target: ui
+    ports:
+      - 8889:80

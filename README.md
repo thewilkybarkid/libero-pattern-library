@@ -1,16 +1,11 @@
-
 Libero pattern library  
 ======================  
-  
-## Developing patterns with the pattern library  
-[No patterns yet!
 
-This section is a work in progress.]   
+## Developing with the pattern library
+Developer quick start: running `docker-compose down --volumes && docker-compose up --build` will set up the pattern environment, run gulp and start the pattern library web server. The UI is available at http://localhost:8889/.  
 
-  
 ### Configuration
-N.B. When configuration files are changed, the config needs to be regenerated, either by running `node ./libero-config/bin/distributeConfig.js` or the Gulp task `distributeConfig`.  
-  
+ 
 #### Uses of configuration  
 Configuration is used to be the single source of truth for knowledge that needs to be shared across across front end technology boundaries. For example, media query breakpoint values need to exist in the styling layer, but they are also often needed by JavaScript. Note that for flexibility all configuration could be maintained using this system in order to make it easier to later distribute configuration if it suddenly becomes necessary.  
   

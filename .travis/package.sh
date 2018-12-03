@@ -7,6 +7,5 @@ tar -czf "$filename" \
     -C export/ \
     css \
     fonts \
-    images \
     templates
 echo "Created $filename"

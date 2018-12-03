@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+  gulp:
+    build:
+      context: .
+      target: gulp

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  watch-gulp:
+    build:
+      context: .
+      target: gulp
+    command: bash -c "npx gulp assemble && npx gulp watch"
+    volumes:
+      - ./libero-config:/app/libero-config
+      - ./source:/app/source
+  watch-build:
+    build:
+      context: .
+      target: build
+    command: core/console --watch
+    volumes:
+      - public:/app/public
+      - ./source:/app/source:ro
+    depends_on:
+      - watch-gulp
+  ui:
+    volumes:
+      - public:/usr/share/nginx/html:ro
+    depends_on:
+      - watch-build
+
+volumes:
+  public:

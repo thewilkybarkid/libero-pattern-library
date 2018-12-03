@@ -20,6 +20,8 @@ module.exports = class ConfigGenerator {
     const prefix = pathPrefix || '../';
     configPaths.forEach((configPath) => {
       const path = `${prefix}${configPath}`;
+
+      delete require.cache[require.resolve(path)];
       configs.push(require(path));
     });
 
