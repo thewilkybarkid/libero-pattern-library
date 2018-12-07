@@ -8,6 +8,7 @@
     },
     "require": {
         "php": "^7.2",
+        "cweagans/composer-patches": "^1.6",
         "pattern-lab/core": "^2.0",
         "pattern-lab/patternengine-twig": "^2.0",
         "pattern-lab/styleguidekit-twig-default": "^3.0"
@@ -36,5 +37,13 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "pattern-lab/core": {
+                "Stop exceptions from breaking the watcher": "https://github.com/pattern-lab/patternlab-php-core/pull/170.patch"
+            }
+        }
     }
 }
