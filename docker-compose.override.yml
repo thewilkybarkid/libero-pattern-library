@@ -13,7 +13,7 @@ services:
     build:
       context: .
       target: build
-    command: core/console --watch
+    command: core/watch
     volumes:
       - public:/app/public
       - ./source:/app/source:ro

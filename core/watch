@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+use Lurker\ResourceWatcher;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+(new Application())
+    ->register('watch')
+    ->setCode(function (InputInterface $input, OutputInterface $output): void {
+        $errOutput = $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output;
+
+        $watcher = new ResourceWatcher;
+        $watcher->track('source', __DIR__ . '/../source');
+
+        $process = new Process(['core/console', '--generate']);
+        $process->setWorkingDirectory(__DIR__ . '/..');
+
+        $watcher->addListener('source', function () use ($errOutput, $output, $process) : void {
+            $process->run(function ($type, $buffer) use ($errOutput, $output) : void {
+                if (Process::ERR === $type) {
+                    $errOutput->write($buffer);
+                } else {
+                    $output->write($buffer);
+                }
+            });
+        });
+
+        $watcher->start();
+    })
+    ->getApplication()
+    ->setDefaultCommand('watch', true)
+    ->run();

@@ -56,6 +56,12 @@ RUN mkdir public source && \
 #
 FROM php:7.2.12-cli-alpine AS build
 
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS && \
+    pecl install inotify && \
+    docker-php-ext-enable inotify && \
+    rm -rf /tmp/pear/ && \
+    apk del .build-deps
+
 WORKDIR /app
 
 COPY core/ core/

@@ -8,10 +8,12 @@
     },
     "require": {
         "php": "^7.2",
-        "cweagans/composer-patches": "^1.6",
+        "henrikbjorn/lurker": "^1.2",
         "pattern-lab/core": "^2.0",
         "pattern-lab/patternengine-twig": "^2.0",
-        "pattern-lab/styleguidekit-twig-default": "^3.0"
+        "pattern-lab/styleguidekit-twig-default": "^3.0",
+        "symfony/console": "^3.4",
+        "symfony/process": "^3.4"
     },
     "scripts": {
         "post-install-cmd": [
@@ -37,13 +39,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "composer-exit-on-patch-failure": true,
-        "patches": {
-            "pattern-lab/core": {
-                "Stop exceptions from breaking the watcher": "https://github.com/pattern-lab/patternlab-php-core/pull/170.patch"
-            }
-        }
     }
 }
