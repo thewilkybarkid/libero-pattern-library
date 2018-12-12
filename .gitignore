@@ -1,7 +1,7 @@
 /.sass-cache/
 /export/
 /node_modules/
-/patterns-core-*.tar.gz
+/pattern-library-*.tar.gz
 /public/
 /source/css/*.css
 !/source/css/pattern-scaffolding.css

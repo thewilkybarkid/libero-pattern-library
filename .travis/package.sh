@@ -1,7 +1,7 @@
 #!/bin/bash 
 set -e
 
-filename="patterns-core-${TRAVIS_TAG:-master}.tar.gz"
+filename="pattern-library-${TRAVIS_TAG:-master}.tar.gz"
 rm -f "$filename"
 tar -czf "$filename" \
     -C export/ \
