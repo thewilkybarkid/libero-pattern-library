@@ -1,7 +1,7 @@
-@import "utility-functions";
-@import "variables";
-
-// NOTE: mixins beginning with underscore "_" are internal to this file only: they MUST NOT be used externally.
+@import "../functions/sizes";
+@import "../functions/validation";
+@import "../variables/baselinegrid";
+@import "../variables/breakpoint";
 
 @mixin _spacing-left($size-in-px, $space-type) {
   @if $size-in-px == 0 {

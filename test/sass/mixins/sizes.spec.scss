@@ -1,0 +1,122 @@
+@import "../../../node_modules/sass-true/sass/true";
+@import "../../../source/css/sass/mixins/sizes";
+
+@include describe("@mixin block-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include block-size(32);
+      }
+
+      @include expect {
+        height: 32px;
+        height: 2rem;
+        block-size: 2rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("@mixin inline-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include inline-size(32);
+      }
+
+      @include expect {
+        width: 32px;
+        width: 2rem;
+        inline-size: 2rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("@mixin max-block-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include max-block-size(32);
+      }
+
+      @include expect {
+        max-height: 32px;
+        max-height: 2rem;
+        max-block-size: 2rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("@mixin min-block-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include min-block-size(32);
+      }
+
+      @include expect {
+        min-height: 32px;
+        min-height: 2rem;
+        min-block-size: 2rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("@mixin max-inline-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include max-inline-size(32);
+      }
+
+      @include expect {
+        max-width: 32px;
+        max-width: 2rem;
+        max-inline-size: 2rem;
+      }
+
+    }
+  }
+
+}
+
+@include describe("@mixin min-inline-size") {
+
+  @include it("generates correct fallbacks") {
+    @include assert() {
+
+      @include output {
+        @include min-inline-size(32);
+      }
+
+      @include expect {
+        min-width: 32px;
+        min-width: 2rem;
+        min-inline-size: 2rem;
+      }
+
+    }
+  }
+
+}

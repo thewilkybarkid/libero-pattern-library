@@ -1,0 +1,21 @@
+@import "../../../node_modules/sass-true/sass/true";
+@import "../../../source/css/sass/functions/sizes";
+@import "../variables_test";
+
+@include test-module("@function get-rem-from-px") {
+
+  @include test("returns 2 when supplied with 32") {
+    @include assert-equal(
+      get-rem-from-px(32),
+      2
+    );
+  }
+
+  @include test("returns 2.5 when supplied with 40") {
+    @include assert-equal(
+      get-rem-from-px(40),
+      2.5
+    );
+  }
+
+}

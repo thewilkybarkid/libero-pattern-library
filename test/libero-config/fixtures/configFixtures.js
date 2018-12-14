@@ -5,17 +5,17 @@ const firstGenericConfig = {
     clash: 'config 1 clashing value',
     objects: [
       {
-        id: 1
+        id: 1,
       },
       {
-        id: 2
+        id: 2,
       },
       {
-        id: 3
-      }
+        id: 3,
+      },
     ],
-    color: Color('#663399')
-  }
+    color: Color('#663399'),
+  },
 };
 
 const secondGenericConfig = {
@@ -24,23 +24,23 @@ const secondGenericConfig = {
     additionalProperty: 'I am only in one of the configs',
     objects: [
       {
-        id: 4
+        id: 4,
       },
       {
-        id: 5
+        id: 5,
       },
       {
-        id: 6
-      }
-    ]
-  }
+        id: 6,
+      },
+    ],
+  },
 };
 
 module.exports = {
 
   configPaths: [
     './config--libero',
-    './config--custom'
+    './config--custom',
   ],
 
   configWithNoDeferrals: {
@@ -48,25 +48,25 @@ module.exports = {
     nestedStringProperty: {
       nested: {
         string: {
-          property: 'nested string property value'
-        }
-      }
-    }
+          property: 'nested string property value',
+        },
+      },
+    },
   },
 
   configWithDeferrals: {
     rootValue: 10,
-    derivedValue: '!expression rootValue * 30'
+    derivedValue: '!expression rootValue * 30',
   },
 
   configsToMerge: {
     firstConfig: firstGenericConfig,
-    secondConfig: secondGenericConfig
+    secondConfig: secondGenericConfig,
   },
 
   configsWithData: {
     firstConfig: firstGenericConfig,
-    secondConfig: secondGenericConfig
+    secondConfig: secondGenericConfig,
   },
 
   configLayerAllocations: [
@@ -74,15 +74,15 @@ module.exports = {
       layerAllocations: {
         sass: ['breakpoints', 'colors'],
         js: ['breakpoints'],
-        template: ['grid']
-      }
+        template: ['grid'],
+      },
     },
     {
       layerAllocations: {
         sass: ['breakpoints', 'colors', 'grid'],
-        js: ['breakpoints', 'colors']
-      }
-    }
+        js: ['breakpoints', 'colors'],
+      },
+    },
   ],
 
   sassConfigToProcess: {
@@ -94,16 +94,16 @@ module.exports = {
           medium: 730,
           wide: 900,
           'x_wide': 1400,
-          'xx_wide': 1600
-        }
-      }
+          'xx_wide': 1600,
+        },
+      },
     },
     expected: '$breakpoints-site-x_small: 320;\n'
-            + '$breakpoints-site-small: 480;\n'
-            + '$breakpoints-site-medium: 730;\n'
-            + '$breakpoints-site-wide: 900;\n'
-            + '$breakpoints-site-x_wide: 1400;\n'
-            + '$breakpoints-site-xx_wide: 1600;\n'
+      + '$breakpoints-site-small: 480;\n'
+      + '$breakpoints-site-medium: 730;\n'
+      + '$breakpoints-site-wide: 900;\n'
+      + '$breakpoints-site-x_wide: 1400;\n'
+      + '$breakpoints-site-xx_wide: 1600;\n',
   },
 
   jsConfigToProcess: {
@@ -115,11 +115,11 @@ module.exports = {
           medium: 730,
           wide: 900,
           'x_wide': 1400,
-          'xx_wide': 1600
-        }
-      }
-    }
+          'xx_wide': 1600,
+        },
+      },
+    },
 
-  }
+  },
 
 };

@@ -22,8 +22,7 @@ FROM node AS gulp
 
 WORKDIR /app
 
-COPY .stylelintignore \
-    .stylelintrc \
+COPY .stylelintrc \
     gulpfile.js \
     ./
 COPY libero-config/ libero-config/

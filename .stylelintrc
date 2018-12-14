@@ -1,4 +1,10 @@
 {
+  "ignoreFiles": [
+    "./**/!(*.scss)",
+    "./export/css/sass/**/*",
+    "./source/css/sass/variables/**/*",
+    "./source/css/sass/vendor/**/*"
+  ],
   "rules": {
     "block-closing-brace-newline-after": ["always", {"ignoreAtRules": ["if", "else"]}],
     "block-no-empty": true,

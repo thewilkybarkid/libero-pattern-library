@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const sinon = require('sinon');
 
-const Color = require('color');
 const fixtures = require('./fixtures/configFixtures');
 const ConfigDistributor = require('../../libero-config/bin/ConfigDistributor');
 
@@ -32,7 +31,7 @@ describe('A DistributeConfig class', () => {
         const configGeneratorMock = {
           generateConfig: () => {
             return Promise.resolve(standAloneConfigFixture);
-          }
+          },
         };
         spy(configGeneratorMock, 'generateConfig');
 

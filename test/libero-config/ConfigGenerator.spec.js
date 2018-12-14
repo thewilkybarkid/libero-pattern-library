@@ -9,11 +9,6 @@ const Color = require('color');
 const fixtures = require('./fixtures/configFixtures');
 const ConfigGenerator = require('../../libero-config/bin/ConfigGenerator');
 
-const configPaths = [
-  './config--libero',
-  './config--custom'
-];
-
 describe('A ConfigGenerator class', () => {
 
   context('instansiated object', () => {
@@ -32,7 +27,7 @@ describe('A ConfigGenerator class', () => {
           expect(() => {
             configGenerator.loadConfigs(null);
           }).to.throw('loadConfigs must he supplied with an array');
-        })
+        });
 
       });
 
@@ -42,7 +37,7 @@ describe('A ConfigGenerator class', () => {
           expect(() => {
             configGenerator.loadConfigs([]);
           }).not.to.throw('loadConfigs must he supplied with an array');
-        })
+        });
 
         context('when a value in the supplied array does not resolve to a file system path', () => {
 
@@ -50,7 +45,7 @@ describe('A ConfigGenerator class', () => {
             expect(() => {
               configGenerator.loadConfigs(['./path/to/non-existant/file']);
             }).to.throw(/Cannot find module/);
-          })
+          });
 
         });
 
@@ -58,11 +53,11 @@ describe('A ConfigGenerator class', () => {
 
           it('does not throw', () => {
             expect(() => {
-              configGenerator.loadConfigs(['configFixtures.js'], `${__dirname}/fixtures/`)
+              configGenerator.loadConfigs(['configFixtures.js'], `${__dirname}/fixtures/`);
             }).not.to.throw();
           });
 
-        })
+        });
 
       });
 
@@ -149,7 +144,7 @@ describe('A ConfigGenerator class', () => {
 
       it('evaluates that expression within the context of config', () => {
         return expect(
-          ConfigGenerator.processDeferredConfig(configWithDeferrals)
+          ConfigGenerator.processDeferredConfig(configWithDeferrals),
         ).to.eventually.have.own.property('derivedValue', 300);
       });
 
@@ -159,7 +154,7 @@ describe('A ConfigGenerator class', () => {
 
       it('passes that value through unchanged', () => {
         return expect(
-          ConfigGenerator.processDeferredConfig(configWithDeferrals)
+          ConfigGenerator.processDeferredConfig(configWithDeferrals),
         ).to.eventually.have.own.property('rootValue', 10);
       });
 

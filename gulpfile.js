@@ -17,6 +17,7 @@ const sassGlob = require('gulp-sass-glob');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('stylelint');
 const syntaxScss = require('postcss-scss');
+const vfs = require('vinyl-fs');
 
 function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
 
@@ -24,11 +25,11 @@ function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
     invocationArgs, {
       default: {
         environment: 'production',
-        sassEntryPoint: 'build.scss',
+        sassEntryPoint: 'base.scss',
         cssOutFilename: 'all.css',
-        'sass-lint': true
+        'sass-lint': true,
       },
-    }
+    },
   );
 
   const config = {};
@@ -41,7 +42,7 @@ function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
   config.dir = {
     src: {},
     test: {},
-    out: {}
+    out: {},
   };
   config.dir.src.css = `${config.sourceRoot}css/`;
   config.dir.src.sass = `${config.dir.src.css}sass/`;
@@ -61,21 +62,31 @@ function buildConfig(invocationArgs, sourceRoot, testRoot, exportRoot) {
   config.files = {
     src: {},
     test: {},
-    out: {}
+    out: {},
   };
   config.files.src.css = [
-    `${config.dir.src.css}/**/*.css`,
-    `${config.dir.src.css}/**/*.map`,
-    `!${config.dir.src.css}pattern-scaffolding.css`
+    `${config.dir.src.css}**/*.css`,
+    `${config.dir.src.css}**/*.map`,
+    `!${config.dir.src.css}pattern-scaffolding.css`,
+    `!${config.dir.src.css}sass/**/*`,
   ];
-  config.files.src.sass = `${config.dir.src.sass}/**/*.scss`;
+  config.files.src.sass = [
+    `${config.dir.src.sass}**/*.scss`,
+    `!${config.dir.src.sass}vendor/**/*`,
+  ];
   config.files.src.sassEntryPoint = config.dir.src.sass + invocationOptions.sassEntryPoint;
+  console.log(config.files.src.sassEntryPoint);
+  config.files.src.sassVendor = [
+    `${config.dir.src.sass}vendor/**/*.scss`,
+    `${config.dir.src.sass}vendor/**/*.css`,
+    `${config.dir.src.sass}vendor/**/LICENSE.*`,
+  ];
   config.files.src.images = [`${config.dir.src.images}/*`, `${config.dir.src.images}/**/*`];
   config.files.src.fonts = [`${config.dir.src.fonts}/*`, `${config.dir.src.fonts}/**/*`];
   config.files.src.templates = [`${config.dir.src.templates}/*.twig`, `${config.dir.src.templates}/**/*.twig`];
   config.files.src.derivedConfigs = [
     `${config.dir.src.sass}variables/**/*`,
-    `${config.dir.src.js}derivedConfig.json`
+    `${config.dir.src.js}derivedConfig.json`,
   ];
 
   config.files.test.sass = `${config.dir.test.sass}**/*.spec.scss`;
@@ -92,18 +103,18 @@ const config = buildConfig(process.argv, 'source/', 'test/', 'export/');
 gulp.task('css:generate', ['sass:test'], () => {
   const sassOptions = config.environment === 'production' ? {outputStyle: 'compressed'} : null;
   return gulp.src(config.files.src.sassEntryPoint)
-             .pipe(sourcemaps.init())
-             .pipe(sassGlob())
-             .pipe(sass(sassOptions).on('error', sass.logError))
-             .pipe(replace(/\.\.\/\.\.\/fonts\//g, '../fonts/'))
-             .pipe(rename(config.files.out.cssFilename))
-             .pipe(sourcemaps.write('./'))
-             .pipe(gulp.dest(config.dir.src.css));
+    .pipe(sourcemaps.init())
+    .pipe(sassGlob())
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(replace(/\.\.\/\.\.\/fonts\//g, '../fonts/'))
+    .pipe(rename(config.files.out.cssFilename))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(config.dir.src.css));
 });
 
 gulp.task('sass:lint', ['css:clean'], () => {
   if (!config.sassLinting) {
-    console.info("Skipping sass:lint");
+    console.info('Skipping sass:lint');
     return;
   }
 
@@ -112,18 +123,18 @@ gulp.task('sass:lint', ['css:clean'], () => {
     reporter(
       {
         clearMessages: true,
-        throwError: true
-      }
-    )
+        throwError: true,
+      },
+    ),
   ];
 
-  return gulp.src([config.files.src.sass])
-             .pipe(postcss(processors, {syntax: syntaxScss}));
+  return gulp.src(config.files.src.sass)
+    .pipe(postcss(processors, {syntax: syntaxScss}));
 });
 
 gulp.task('sass:test', ['sass:lint'], () => {
   return gulp.src(config.files.test.sassTestsEntryPoint)
-             .pipe(mocha({ reporter: 'spec' }));
+    .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('css:clean', () => {
@@ -140,28 +151,31 @@ gulp.task('exportPatterns', ['patternsExport:clean'], () => {
 
   return mergeStreams(
     gulp.src(config.files.src.css)
-        .pipe(gulp.dest(config.dir.out.css)),
+      .pipe(gulp.dest(config.dir.out.css)),
 
     gulp.src(config.files.src.sass)
-        .pipe(gulp.dest(config.dir.out.sass)),
+      .pipe(gulp.dest(config.dir.out.sass)),
+
+    vfs.src(config.files.src.sassVendor)
+      .pipe(vfs.dest(`${config.dir.out.sass}vendor/`)),
 
     gulp.src(config.files.src.images)
-        .pipe(gulp.dest(config.dir.out.images)),
+      .pipe(gulp.dest(config.dir.out.images)),
 
     gulp.src(config.files.src.fonts)
-        .pipe(gulp.dest(config.dir.out.fonts)),
+      .pipe(gulp.dest(config.dir.out.fonts)),
 
     gulp.src(config.files.src.templates)
-        // Rename files to standard Twig usage
-        .pipe(rename(path => {
-            path.basename = path.basename.replace(/^_/, '');
-            path.extname = '.html.twig';
-        }))
-        // Replace pattern-lab partial inclusion with generic Twig syntax
-        .pipe(replace(/('|")(?:atoms|molecules|organisms)-(.+?)(\1)(?=[\s\S]*?(}}|%}))/g, '$1@LiberoPatterns/$2.html.twig$3'))
-        // Template files don't need their authoring hierarchy for downstream use
-        .pipe(flatten({ includeParents: false }))
-        .pipe(gulp.dest(config.dir.out.templates)),
+      // Rename files to standard Twig usage
+      .pipe(rename(path => {
+        path.basename = path.basename.replace(/^_/, '');
+        path.extname = '.html.twig';
+      }))
+      // Replace pattern-lab partial inclusion with generic Twig syntax
+      .pipe(replace(/('|")(?:atoms|molecules|organisms)-(.+?)(\1)(?=[\s\S]*?(}}|%}))/g, '$1@LiberoPatterns/$2.html.twig$3'))
+      // Template files don't need their authoring hierarchy for downstream use
+      .pipe(flatten({includeParents: false}))
+      .pipe(gulp.dest(config.dir.out.templates)),
   );
 
 });

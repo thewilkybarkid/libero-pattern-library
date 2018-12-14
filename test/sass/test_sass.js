@@ -1,16 +1,13 @@
-const path = require('path');
+const glob = require('glob');
 const sassTrue = require('sass-true');
 
-// TODO: derive from directory listing rather than explicitly describing
-[
-  'utility-functions.spec.scss',
-  'mixins--spacing.spec.scss'
-].forEach((filename) => {
-  sassTrue.runSass(
-    {
-      file: path.join(__dirname, filename)
-    },
-    describe,
-    it);
-});
-
+glob.sync('**/*.spec.scss')
+  .forEach(file => {
+    sassTrue.runSass(
+      {
+        file,
+      },
+      describe,
+      it);
+  })
+;

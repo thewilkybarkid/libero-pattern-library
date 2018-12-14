@@ -1,7 +1,3 @@
-// Put all general purpose functions in here
-
-@import "variables/font";
-
 @function _error($message, $capture: false) {
   @if $capture {
     @return "ERROR: #{$message}";
@@ -46,8 +42,4 @@
 
   @return "OK";
 
-}
-
-@function get-rem-from-px($size_in_px) {
-  @return $size_in_px/$font-size-base-in-px;
 }

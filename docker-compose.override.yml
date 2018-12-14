@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: gulp
-    command: bash -c "npx gulp assemble && npx gulp watch"
+    command: bash -c "npx gulp assemble --environment=development --sass-lint=${LINT_SASS} && npx gulp watch --environment=development --sass-lint=${LINT_SASS}"
     volumes:
       - ./libero-config:/app/libero-config
       - ./source:/app/source
