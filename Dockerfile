@@ -22,8 +22,9 @@ FROM node AS gulp
 
 WORKDIR /app
 
-COPY .stylelintrc \
-    gulpfile.js \
+COPY .babelrc \
+    .stylelintrc \
+    gulpfile.babel.js \
     ./
 COPY libero-config/ libero-config/
 COPY --from=npm /app/node_modules/ node_modules/
