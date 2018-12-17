@@ -1,5 +1,6 @@
 @import "../functions/sizes";
 @import "../functions/validation";
+@import "../mixins/media-query";
 @import "../mixins/sizes";
 @import "../variables/baselinegrid";
 @import "../variables/breakpoint";
@@ -300,7 +301,7 @@
 
   @include blg-spacing("block-start", "small");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-start", "medium");
   }
 
@@ -310,7 +311,7 @@
 
   @include blg-spacing("block-end", "small");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-end", "medium");
   }
 
@@ -320,7 +321,7 @@
 
   @include blg-spacing("block-start", "large");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-start", "extra-large");
   }
 
@@ -330,7 +331,7 @@
 
   @include blg-spacing("block-end", "large");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-end", "extra-large");
   }
 
@@ -350,7 +351,7 @@
 
   @include blg-spacing("block-end", "medium", "margin");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-end", "large", "margin");
   }
 
@@ -360,7 +361,7 @@
 
   @include blg-spacing("block-end", "small", "margin");
 
-  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($from: medium) {
     @include blg-spacing("block-end", "medium", "margin");
   }
 
@@ -422,13 +423,13 @@
   padding-right: 7%;
   padding-inline: 7%;
 
-  @media only screen and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+  @include mq($media-type: screen, $from: medium) {
     padding-left: 14%;
     padding-right: 14%;
     padding-inline: 14%;
   }
 
-  @media only screen and (min-width: #{get-rem-from-px($breakpoint-site-x_wide)}em) {
+  @include mq($media-type: screen, $from: x-wide) {
     padding-left: 3%;
     padding-right: 3%;
     padding-inline: 3%;
