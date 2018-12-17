@@ -1,0 +1,131 @@
+@import "../../variables/baselinegrid";
+@import "../../variables/color";
+@import "../../variables/content_header";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+
+.content-header {
+  color: $color-text-normal;
+  text-align: center;
+  @include blg-spacing("block-start", "medium");
+  @include blg-spacing("block-end", "small");
+
+  &:after {
+    border-bottom: 1px solid $color-text-dividers;
+    border-block-end: 1px solid $color-text-dividers;
+    content: "";
+    display: block;
+    @include padding($baselinegrid-space-small-in-px - 1, "block-start");
+    width: 100%;
+  }
+}
+
+.content-header__title {
+  @include margin(0, "block-start");
+  @include blg-spacing("block-end", "small", "margin");
+}
+
+.content-header__title--xx-short {
+  @include font-size($content_header-title-size-xx_large);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-small)}em) {
+    @include font-size($content_header-title-size-xxx_large);
+  }
+}
+
+.content-header__title--x-short {
+  @include font-size($content_header-title-size-x_large);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+    @include font-size($content_header-title-size-xx_large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-wide)}em) {
+    @include font-size($content_header-title-size-xxx_large);
+  }
+}
+
+.content-header__title--short {
+  @include font-size($content_header-title-size-medium);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-small)}em) {
+    @include font-size($content_header-title-size-large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+    @include font-size($content_header-title-size-x_large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-wide)}em) {
+    @include font-size($content_header-title-size-xx_large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-x-wide)}em) {
+    @include font-size($content_header-title-size-xxx_large);
+  }
+}
+
+.content-header__title--medium {
+  @include font-size($content_header-title-size-small);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-small)}em) {
+    @include font-size($content_header-title-size-medium);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+    @include font-size($content_header-title-size-large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-wide)}em) {
+    @include font-size($content_header-title-size-x_large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-x-wide)}em) {
+    @include font-size($content_header-title-size-xxx_large);
+  }
+}
+
+.content-header__title--long {
+  @include font-size($content_header-title-size-x_small);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-small)}em) {
+    @include font-size($content_header-title-size-small);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+    @include font-size($content_header-title-size-large);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-x-wide)}em) {
+    @include font-size($content_header-title-size-x_large);
+  }
+
+}
+
+.content-header__title--x-long {
+  @include font-size($content_header-title-size-x_small);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-medium)}em) {
+    @include font-size($content_header-title-size-small);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-wide)}em) {
+    @include font-size($content_header-title-size-small);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-x-wide)}em) {
+    @include font-size($content_header-title-size-medium);
+  }
+}
+
+.content-header__title--xx-long {
+  @include font-size($content_header-title-size-xx_small);
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-small)}em) {
+    @include font-size($content_header-title-size-x_small);
+  }
+
+  @media only all and (min-width: #{get-rem-from-px($breakpoint-site-wide)}em) {
+    @include font-size($content_header-title-size-small);
+  }
+}

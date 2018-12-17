@@ -13,7 +13,8 @@ patternStates:
     - inprogress
     - inreview
     - complete
-styleGuideExcludes: ''
+styleGuideExcludes:
+    - 02-pages
 cacheBusterOn: 'true'
 exportDir: export
 publicDir: public

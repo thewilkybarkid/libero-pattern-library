@@ -17,6 +17,9 @@ config.data.breakpoint.site.medium = 730;
 config.data.breakpoint.site.wide = 900;
 config.data.breakpoint.site.x_wide = 1200;
 
+config.data.grid = {};
+config.data.grid.max_width = 1114;
+
 config.data.color = { primary: {}, text: {} };
 config.data.color.background = Color('#fff');
 config.data.color.primary.normal = Color('#0288d1');
@@ -40,6 +43,16 @@ config.data.color.success_dark = Color('#569037');
 config.data.color.attention = Color('#cf0c4e');
 config.data.color.warning = Color('#e65100');
 
+config.data.content_header = { title: { size: {} } };
+config.data.content_header.title.size.xx_small = 18;
+config.data.content_header.title.size.x_small = 20;
+config.data.content_header.title.size.small = 26;
+config.data.content_header.title.size.medium = 30;
+config.data.content_header.title.size.large = 36;
+config.data.content_header.title.size.x_large = 41;
+config.data.content_header.title.size.xx_large = 46;
+config.data.content_header.title.size.xxx_large = 52;
+
 config.data.font = { size: {} };
 config.data.font.primary = '"Noto Serif", serif';
 config.data.font.secondary = '"Noto Sans", Arial, Helvetica, sans-serif';
@@ -55,7 +68,7 @@ config.data.font.size.caption_in_px = 13;
 
 // Specify the top level properties to be distributed to layers (sass, js & templates)
 config.layerAllocations = {
-  sass: ['baselinegrid', 'breakpoint', 'color', 'font'],
+  sass: ['baselinegrid', 'breakpoint', 'color', 'content_header', 'font', 'grid'],
   js: ['breakpoint'],
   // template: ['breakpoint']
 };
