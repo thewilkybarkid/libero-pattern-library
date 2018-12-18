@@ -80,3 +80,4 @@ RUN core/console --generate
 FROM nginx:1.15.7-alpine AS ui
 
 COPY --from=build /app/public/ /usr/share/nginx/html/
+HEALTHCHECK --interval=5s CMD nc -z localhost 80

@@ -4,13 +4,20 @@ language: minimal
 
 services: docker
 
+env:
+    global:
+        - COMPOSE_PROJECT_NAME=patternlibrary
+        - IMAGE_TAG=$TRAVIS_COMMIT
+
 script:
     - docker-compose --file docker-compose.yml --file docker-compose.ci.yml build
+    - .travis/smoke-test.sh
 
 after_success:
     - docker run --name pattern-library-patterns patternlibrary_gulp npx gulp exportPatterns
     - docker cp pattern-library-patterns:/app/export/. export/
     - .travis/package.sh
+    - .scripts/travis/push-image.sh pattern-library
 
 deploy:
   provider: releases
