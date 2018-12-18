@@ -11,14 +11,14 @@ config.data.baselinegrid.space.large_in_px = '!expression baselinegrid.space.sma
 config.data.baselinegrid.space.extra_large_in_px = '!expression baselinegrid.space.small_in_px * 5';
 
 config.data.breakpoint = {site: {}};
-config.data.breakpoint.site.x_small = 320;
-config.data.breakpoint.site.small = 480;
-config.data.breakpoint.site.medium = 730;
-config.data.breakpoint.site.wide = 900;
-config.data.breakpoint.site.x_wide = 1200;
+config.data.breakpoint.site.x_small_in_px = 320;
+config.data.breakpoint.site.small_in_px = 480;
+config.data.breakpoint.site.medium_in_px = 730;
+config.data.breakpoint.site.wide_in_px = 900;
+config.data.breakpoint.site.x_wide_in_px = 1200;
 
 config.data.grid = {};
-config.data.grid.max_width = 1114;
+config.data.grid.max_width_in_px = 1114;
 
 config.data.color = { primary: {}, text: {} };
 config.data.color.background = Color('#fff');
@@ -44,14 +44,14 @@ config.data.color.attention = Color('#cf0c4e');
 config.data.color.warning = Color('#e65100');
 
 config.data.content_header = { title: { size: {} } };
-config.data.content_header.title.size.xx_small = 18;
-config.data.content_header.title.size.x_small = 20;
-config.data.content_header.title.size.small = 26;
-config.data.content_header.title.size.medium = 30;
-config.data.content_header.title.size.large = 36;
-config.data.content_header.title.size.x_large = 41;
-config.data.content_header.title.size.xx_large = 46;
-config.data.content_header.title.size.xxx_large = 52;
+config.data.content_header.title.size.xx_small_in_px = 18;
+config.data.content_header.title.size.x_small_in_px = 20;
+config.data.content_header.title.size.small_in_px = 26;
+config.data.content_header.title.size.medium_in_px = 30;
+config.data.content_header.title.size.large_in_px = 36;
+config.data.content_header.title.size.x_large_in_px = 41;
+config.data.content_header.title.size.xx_large_in_px = 46;
+config.data.content_header.title.size.xxx_large_in_px = 52;
 
 config.data.font = { size: {} };
 config.data.font.primary = '"Noto Serif", serif';

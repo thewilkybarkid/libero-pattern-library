@@ -63,7 +63,7 @@ ul,
 ol {
   @include blg-spacing("block-end", "small", "margin");
   margin-top: 0;
-  @include padding(48, "inline-start");
+  @include padding(48px, "inline-start");
 }
 
 dl {

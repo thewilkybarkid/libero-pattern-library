@@ -6,37 +6,37 @@
   @error "#{$message}";
 }
 
-@function validate-spacing-arguments($sizes-in-px, $space-type, $dimension: "", $capture-errors: false) {
+@function validate-spacing-arguments($sizes, $space-type, $dimension: "", $capture-errors: false) {
 
   @if $space-type != "padding" and $space-type != "margin" {
     @return _error("Incorrect space-type supplied: must be either 'margin' or 'padding'", $capture-errors);
   }
 
-  @if $dimension == "" and length($sizes-in-px) > 4 {
+  @if $dimension == "" and length($sizes) > 4 {
     @return _error("More than four sizes supplied when no dimension", $capture-errors);
   }
 
-  @if $dimension == "inline" and length($sizes-in-px) > 2 {
+  @if $dimension == "inline" and length($sizes) > 2 {
     @return _error("More than two sizes supplied with 'inline' dimension", $capture-errors);
   }
 
-  @if $dimension == "inline-start" and length($sizes-in-px) > 1 {
+  @if $dimension == "inline-start" and length($sizes) > 1 {
     @return _error("More than one size supplied with 'inline-start' dimension", $capture-errors);
   }
 
-  @if $dimension == "inline-end" and length($sizes-in-px) > 1 {
+  @if $dimension == "inline-end" and length($sizes) > 1 {
     @return _error("More than one size supplied with 'inline-end' dimension", $capture-errors);
   }
 
-  @if $dimension == "block" and length($sizes-in-px) > 2 {
+  @if $dimension == "block" and length($sizes) > 2 {
     @return _error("More than two sizes supplied with 'block' dimension", $capture-errors);
   }
 
-  @if $dimension == "block-start" and length($sizes-in-px) > 1 {
+  @if $dimension == "block-start" and length($sizes) > 1 {
     @return _error("More than one size supplied with 'block-start' dimension", $capture-errors);
   }
 
-  @if $dimension == "block-end" and length($sizes-in-px) > 1 {
+  @if $dimension == "block-end" and length($sizes) > 1 {
     @return _error("More than one size supplied with 'block-end' dimension", $capture-errors);
   }
 

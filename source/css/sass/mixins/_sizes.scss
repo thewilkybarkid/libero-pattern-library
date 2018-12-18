@@ -1,41 +1,38 @@
-@import "../functions/sizes";
+@import "../functions/types";
+@import "../mixins/types";
 
-@mixin block-size($size_in_px) {
-  height: #{$size_in_px}px;
-  height: #{get-rem-from-px($size_in_px)}rem;
-  block-size: #{get-rem-from-px($size_in_px)}rem;
+@mixin block-size($size) {
+  @include rem(height, $size);
+  block-size: rem($size);
 }
 
-@mixin inline-size($size_in_px) {
-  width: #{$size_in_px}px;
-  width: #{get-rem-from-px($size_in_px)}rem;
-  inline-size: #{get-rem-from-px($size_in_px)}rem;
+@mixin inline-size($size) {
+  @include rem(width, $size);
+  inline-size: rem($size);
 }
 
-@mixin _constrain-block-size($size_in_px, $extreme) {
-  #{$extreme}-height: #{$size_in_px}px;
-  #{$extreme}-height: #{get-rem-from-px($size_in_px)}rem;
-  #{$extreme}-block-size: #{get-rem-from-px($size_in_px)}rem;
+@mixin _constrain-block-size($size, $extreme) {
+  @include rem(#{$extreme}-height, $size);
+  #{$extreme}-block-size: rem($size);
 }
 
-@mixin _constrain-inline-size($size_in_px, $extreme) {
-  #{$extreme}-width: #{$size_in_px}px;
-  #{$extreme}-width: #{get-rem-from-px($size_in_px)}rem;
-  #{$extreme}-inline-size: #{get-rem-from-px($size_in_px)}rem;
+@mixin _constrain-inline-size($size, $extreme) {
+  @include rem(#{$extreme}-width, $size);
+  #{$extreme}-inline-size: rem($size);
 }
 
-@mixin max-block-size($size_in_px) {
-  @include _constrain-block-size($size_in_px, max);
+@mixin max-block-size($size) {
+  @include _constrain-block-size($size, max);
 }
 
-@mixin min-block-size($size_in_px) {
-  @include _constrain-block-size($size_in_px, min);
+@mixin min-block-size($size) {
+  @include _constrain-block-size($size, min);
 }
 
-@mixin max-inline-size($size_in_px) {
-  @include _constrain-inline-size($size_in_px, max);
+@mixin max-inline-size($size) {
+  @include _constrain-inline-size($size, max);
 }
 
-@mixin min-inline-size($size_in_px) {
-  @include _constrain-inline-size($size_in_px, min);
+@mixin min-inline-size($size) {
+  @include _constrain-inline-size($size, min);
 }

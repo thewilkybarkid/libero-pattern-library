@@ -1,15 +1,14 @@
-@import "../functions/sizes";
 @import "../variables/breakpoint";
 @import "../variables/font";
 
-$mq-base-font-size: to-px($font-size-base-in-px);
+$mq-base-font-size: $font-size-base;
 
 $mq-breakpoints: (
-  x-small: to-px($breakpoint-site-x_small),
-  small: to-px($breakpoint-site-small),
-  medium: to-px($breakpoint-site-medium),
-  wide: to-px($breakpoint-site-wide),
-  x-wide: to-px($breakpoint-site-x_wide),
+  x-small: $breakpoint-site-x_small,
+  small: $breakpoint-site-small,
+  medium: $breakpoint-site-medium,
+  wide: $breakpoint-site-wide,
+  x-wide: $breakpoint-site-x_wide,
 );
 
 @import "../vendor/sass-mq/_mq";

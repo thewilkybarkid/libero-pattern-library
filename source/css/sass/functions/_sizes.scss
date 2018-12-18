@@ -1,9 +1,0 @@
-@import "../variables/font";
-
-@function get-rem-from-px($size_in_px) {
-  @return $size_in_px/$font-size-base-in-px;
-}
-
-@function to-px($value) {
-  @return $value + 0px;
-}

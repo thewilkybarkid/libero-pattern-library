@@ -7,7 +7,7 @@
     @include assert() {
 
       @include output {
-        @include block-size(32);
+        @include block-size(32px);
       }
 
       @include expect {
@@ -27,7 +27,7 @@
     @include assert() {
 
       @include output {
-        @include inline-size(32);
+        @include inline-size(32px);
       }
 
       @include expect {
@@ -47,7 +47,7 @@
     @include assert() {
 
       @include output {
-        @include max-block-size(32);
+        @include max-block-size(32px);
       }
 
       @include expect {
@@ -67,7 +67,7 @@
     @include assert() {
 
       @include output {
-        @include min-block-size(32);
+        @include min-block-size(32px);
       }
 
       @include expect {
@@ -87,7 +87,7 @@
     @include assert() {
 
       @include output {
-        @include max-inline-size(32);
+        @include max-inline-size(32px);
       }
 
       @include expect {
@@ -107,7 +107,7 @@
     @include assert() {
 
       @include output {
-        @include min-inline-size(32);
+        @include min-inline-size(32px);
       }
 
       @include expect {

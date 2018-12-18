@@ -87,7 +87,13 @@ module.exports = class ConfigDistributor {
 
     return Object.entries(flatten(data, {delimiter: '-'}))
       .reduce((carry, pair) => {
-        const [key, value] = pair;
+        let [key, value] = pair;
+
+        if (key.endsWith('_in_px')) {
+          key = key.substring(0, key.length - 6);
+          value = `${value}px`;
+        }
+
         return `${carry}$${key}: ${value};\n`;
       }, '');
   }
