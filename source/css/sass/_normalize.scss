@@ -18,6 +18,7 @@ body {
   background-color: $color-background;
   color: $color-text-normal;
   text-rendering: optimizeLegibility;
+  @include body-typography();
 }
 
 h1 {
