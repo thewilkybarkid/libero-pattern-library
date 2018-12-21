@@ -2,6 +2,7 @@
 <?php
 
 use Lurker\ResourceWatcher;
+use Lurker\Tracker\InotifyTracker;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
@@ -15,7 +16,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
     ->setCode(function (InputInterface $input, OutputInterface $output): void {
         $errOutput = $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output;
 
-        $watcher = new ResourceWatcher;
+        $tracker = new class extends InotifyTracker
+        {
+            public function getEvents(): array
+            {
+                // Simplistic debouncing.
+                sleep(1);
+
+                // Since we don't care about individual files, avoid processing multiple times.
+                return array_slice(parent::getEvents(), 0, 1);
+            }
+        };
+
+        $watcher = new ResourceWatcher($tracker);
         $watcher->track('source', __DIR__ . '/../source');
 
         $process = new Process(['core/console', '--generate']);

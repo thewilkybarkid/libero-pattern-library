@@ -1,3 +1,4 @@
+import browserSync from 'browser-sync';
 import del from 'del';
 import distributeConfig from './libero-config/bin/distributeConfig';
 import flatten from 'gulp-flatten';
@@ -14,7 +15,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'stylelint';
 import syntaxScss from 'postcss-scss';
 
-const buildConfig = (invocationArgs, sourceRoot, testRoot, exportRoot) => {
+const buildConfig = (invocationArgs, publicRoot, sourceRoot, testRoot, exportRoot) => {
 
   const invocationOptions = minimist(
     invocationArgs, {
@@ -29,6 +30,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, exportRoot) => {
 
   const config = {};
   config.environment = invocationOptions.environment;
+  config.publicRoot = publicRoot;
   config.sourceRoot = sourceRoot;
   config.testRoot = testRoot;
   config.exportRoot = exportRoot;
@@ -100,7 +102,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, exportRoot) => {
 
 };
 
-const config = buildConfig(process.argv, 'source', 'test', 'export');
+const config = buildConfig(process.argv, 'public', 'source', 'test', 'export');
 
 // Builders
 
@@ -207,3 +209,26 @@ const watchSassTests = () => gulp.watch(config.files.test.sass, build);
 const watchSharedConfig = () => gulp.watch('libero-config/**/*', distributeSharedConfig);
 
 export const watch = gulp.parallel(watchSass, watchSassTests, watchSharedConfig);
+
+// Server
+
+const reloadServer = done => {
+  browserSync.reload();
+  done();
+};
+
+const watchServer = () => gulp.watch(config.publicRoot, reloadServer);
+
+const initialiseServer = done => {
+  browserSync.init({
+    notify: false,
+    open: false,
+    port: 80,
+    server: {
+      baseDir: config.publicRoot,
+    },
+  });
+  done();
+};
+
+export const server = gulp.series(initialiseServer, watchServer);

@@ -20,8 +20,15 @@ services:
     depends_on:
       - watch-gulp
   ui:
+    build:
+      context: .
+      target: gulp
+    command: npx gulp server
+    ports:
+      - 8889:80
+      - 3000:3000
     volumes:
-      - public:/usr/share/nginx/html:ro
+      - public:/app/public:ro
     depends_on:
       - watch-build
 
