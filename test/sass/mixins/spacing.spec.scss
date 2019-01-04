@@ -1,9 +1,10 @@
-@import "../../../node_modules/sass-true/sass/true";
+@import "../test";
 @import "../../../source/css/sass/mixins/spacing";
 
 @include describe("@mixin padding") {
 
   @include it("generates correct fallbacks with a single zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -15,9 +16,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -30,9 +33,36 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em);
+      }
+
+      @include expect {
+        padding: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem);
+      }
+
+      @include expect {
+        padding: 16px;
+        padding: 1rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a pair of non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -45,9 +75,36 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(2em 3em);
+      }
+
+      @include expect {
+        padding: 2em 3em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(2rem 3rem);
+      }
+
+      @include expect {
+        padding: 32px 48px;
+        padding: 2rem 3rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with three non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -60,9 +117,36 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(2em 3em 4em);
+      }
+
+      @include expect {
+        padding: 2em 3em 4em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(2rem 3rem 4rem);
+      }
+
+      @include expect {
+        padding: 32px 48px 64px;
+        padding: 2rem 3rem 4rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with one zero and one non-zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -89,9 +173,35 @@
 
     }
 
+    @include assert() {
+
+      @include output {
+        @include padding(0 3em);
+      }
+
+      @include expect {
+        padding: 0 3em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(0 3rem);
+      }
+
+      @include expect {
+        padding: 0 48px;
+        padding: 0 3rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with in total three zero and/or non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -134,6 +244,31 @@
     @include assert() {
 
       @include output {
+        @include padding(3em 0 8em);
+      }
+
+      @include expect {
+        padding: 3em 0 8em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(3rem 0 8rem);
+      }
+
+      @include expect {
+        padding: 48px 0 128px;
+        padding: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include padding(0 0 0);
       }
 
@@ -146,10 +281,36 @@
   }
 
   @include it("generates correct fallbacks with in total four zero and/or non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
         @include padding(0 48px 128px 256px);
+      }
+
+      @include expect {
+        padding: 0 48px 128px 256px;
+        padding: 0 3rem 8rem 16rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(0 3em 8em 16em);
+      }
+
+      @include expect {
+        padding: 0 3em 8em 16em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(0 3rem 8rem 16rem);
       }
 
       @include expect {
@@ -173,7 +334,24 @@
 
   }
 
+  @include it("errors when 5 sizes values passed and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2 3 4 5);
+      }
+
+      @include expect {
+        _error: "More than four sizes supplied when no dimension";
+      }
+
+    }
+
+  }
+
   @include it("generates correct fallbacks with a single zero value for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
@@ -187,9 +365,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
@@ -205,13 +385,99 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "inline");
+      }
+
+      @include expect {
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-inline: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "inline");
+      }
+
+      @include expect {
+        padding-left: 16px;
+        padding-left: 1rem;
+        padding-right: 16px;
+        padding-right: 1rem;
+        padding-inline: 1rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a pair of values for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
         @include padding(16px 32px, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 16px;
+          padding-left: 1rem;
+          padding-right: 32px;
+          padding-right: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 16px;
+          padding-right: 1rem;
+          padding-left: 32px;
+          padding-left: 2rem;
+        }
+
+        html[dir] & {
+          padding-inline: 1rem 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em 2em, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 1em;
+          padding-right: 2em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 1em;
+          padding-left: 2em;
+        }
+
+        html[dir] & {
+          padding-inline: 1em 2em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem 2rem, "inline");
       }
 
       @include expect {
@@ -320,9 +586,27 @@
       }
 
     }
+
+  }
+
+  @include it("errors when 3 sizes values passed with dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2 3, "inline");
+      }
+
+      @include expect {
+        _error: "More than two sizes supplied with 'inline' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for the dimension 'inline-start'") {
+
     @include assert() {
 
       @include output {
@@ -343,10 +627,13 @@
         }
 
       }
+
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-start'") {
+
     @include assert() {
 
       @include output {
@@ -369,9 +656,73 @@
         }
       }
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 1em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 1em;
+        }
+        html[dir] & {
+          padding-inline-start: 1em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-left: 16px;
+          padding-left: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-right: 16px;
+          padding-right: 1rem;
+        }
+        html[dir] & {
+          padding-inline-start: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2, "inline-start");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'inline-start' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for the dimension 'inline-end'") {
+
     @include assert() {
 
       @include output {
@@ -392,10 +743,13 @@
         }
 
       }
+
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-end'") {
+
     @include assert() {
 
       @include output {
@@ -417,10 +771,75 @@
           padding-inline-end: 1rem;
         }
       }
+
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-right: 1em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-left: 1em;
+        }
+        html[dir] & {
+          padding-inline-end: 1em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          padding-right: 16px;
+          padding-right: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          padding-left: 16px;
+          padding-left: 1rem;
+        }
+        html[dir] & {
+          padding-inline-end: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'inline-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2, "inline-end");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'inline-end' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -434,9 +853,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -452,10 +873,42 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "block");
+      }
+
+      @include expect {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        padding-block: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "block");
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-top: 1rem;
+        padding-bottom: 16px;
+        padding-bottom: 1rem;
+        padding-block: 1rem;
+      }
+
+    }
+
   }
 
   // Vertical writing modes not yet supported
   @include it("generates correct fallbacks with a pair of non-zero values for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -467,14 +920,61 @@
         padding-top: 1rem;
         padding-bottom: 32px;
         padding-bottom: 2rem;
-
         padding-block: 1rem 2rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em 2em, "block");
+      }
+
+      @include expect {
+        padding-top: 1em;
+        padding-bottom: 2em;
+        padding-block: 1em 2em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem 2rem, "block");
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-top: 1rem;
+        padding-bottom: 32px;
+        padding-bottom: 2rem;
+        padding-block: 1rem 2rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 3 sizes values passed with dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2 3, "block");
+      }
+
+      @include expect {
+        _error: "More than two sizes supplied with 'block' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct values for a single zero value and dimension 'block-start'") {
+
     @include assert() {
 
       @include output {
@@ -487,9 +987,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct values for a single non-zero value and dimension 'block-start'") {
+
     @include assert() {
 
       @include output {
@@ -499,14 +1001,58 @@
       @include expect {
         padding-top: 16px;
         padding-top: 1rem;
-
         padding-block-start: 1rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "block-start");
+      }
+
+      @include expect {
+        padding-top: 1em;
+        padding-block-start: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "block-start");
+      }
+
+      @include expect {
+        padding-top: 16px;
+        padding-top: 1rem;
+        padding-block-start: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'block-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2, "block-start");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'block-start' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct values for a single zero value and dimension 'block-end'") {
+
     @include assert() {
 
       @include output {
@@ -519,9 +1065,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct values for a single non-zero value and dimension 'block-end'") {
+
     @include assert() {
 
       @include output {
@@ -531,11 +1079,82 @@
       @include expect {
         padding-bottom: 16px;
         padding-bottom: 1rem;
-
         padding-block-end: 1rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1em, "block-end");
+      }
+
+      @include expect {
+        padding-bottom: 1em;
+        padding-block-end: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1rem, "block-end");
+      }
+
+      @include expect {
+        padding-bottom: 16px;
+        padding-bottom: 1rem;
+        padding-block-end: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1 2, "block-end");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'block-end' dimension";
+      }
+
+    }
+
+  }
+
+  @include it("errors on invalid dimensions") {
+
+    @include assert() {
+
+      @include output {
+        @include padding(1, "top");
+      }
+
+      @include expect {
+        _error: "'top' is a physical dimension, use its logical equivilant";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include padding(1, "foo");
+      }
+
+      @include expect {
+        _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
   }
 
 }
@@ -543,6 +1162,7 @@
 @include describe("@mixin margin") {
 
   @include it("generates correct fallbacks with a single zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -554,9 +1174,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -569,9 +1191,36 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em);
+      }
+
+      @include expect {
+        margin: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a pair of non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -584,9 +1233,78 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(2em 3em);
+      }
+
+      @include expect {
+        margin: 2em 3em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(2rem 3rem);
+      }
+
+      @include expect {
+        margin: 32px 48px;
+        margin: 2rem 3rem;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks with three non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(32px 48px 64px);
+      }
+
+      @include expect {
+        margin: 32px 48px 64px;
+        margin: 2rem 3rem 4rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(2em 3em 4em);
+      }
+
+      @include expect {
+        margin: 2em 3em 4em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(2rem 3rem 4rem);
+      }
+
+      @include expect {
+        margin: 32px 48px 64px;
+        margin: 2rem 3rem 4rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with one zero and one non-zero value and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -613,24 +1331,35 @@
 
     }
 
-  }
-
-  @include it("generates correct fallbacks with three non-zero values and no dimension") {
     @include assert() {
 
       @include output {
-        @include margin(32px 48px 64px);
+        @include margin(0 3em);
       }
 
       @include expect {
-        margin: 32px 48px 64px;
-        margin: 2rem 3rem 4rem;
+        margin: 0 3em;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 3rem);
+      }
+
+      @include expect {
+        margin: 0 48px;
+        margin: 0 3rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with in total three zero and/or non-zero values and no dimension") {
+
     @include assert() {
 
       @include output {
@@ -673,6 +1402,31 @@
     @include assert() {
 
       @include output {
+        @include margin(3em 0 8em);
+      }
+
+      @include expect {
+        margin: 3em 0 8em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(3rem 0 8rem);
+      }
+
+      @include expect {
+        margin: 48px 0 128px;
+        margin: 3rem 0 8rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
         @include margin(0 0 0);
       }
 
@@ -684,7 +1438,78 @@
 
   }
 
+  @include it("generates correct fallbacks with in total four zero and/or non-zero values and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 48px 128px 256px);
+      }
+
+      @include expect {
+        margin: 0 48px 128px 256px;
+        margin: 0 3rem 8rem 16rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 3em 8em 16em);
+      }
+
+      @include expect {
+        margin: 0 3em 8em 16em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 3rem 8rem 16rem);
+      }
+
+      @include expect {
+        margin: 0 48px 128px 256px;
+        margin: 0 3rem 8rem 16rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(0 0 0 0);
+      }
+
+      @include expect {
+        margin: 0 0 0 0;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 5 sizes values passed and no dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2 3 4 5);
+      }
+
+      @include expect {
+        _error: "More than four sizes supplied when no dimension";
+      }
+
+    }
+
+  }
+
   @include it("generates correct fallbacks with a single zero value for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
@@ -698,9 +1523,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
@@ -716,13 +1543,99 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "inline");
+      }
+
+      @include expect {
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-inline: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "inline");
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-left: 1rem;
+        margin-right: 16px;
+        margin-right: 1rem;
+        margin-inline: 1rem;
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a pair of values for dimension 'inline'") {
+
     @include assert() {
 
       @include output {
         @include margin(16px 32px, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+          margin-right: 32px;
+          margin-right: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+          margin-left: 32px;
+          margin-left: 2rem;
+        }
+
+        html[dir] & {
+          margin-inline: 1rem 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em 2em, "inline");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 1em;
+          margin-right: 2em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 1em;
+          margin-left: 2em;
+        }
+
+        html[dir] & {
+          margin-inline: 1em 2em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem 2rem, "inline");
       }
 
       @include expect {
@@ -831,9 +1744,27 @@
       }
 
     }
+
+  }
+
+  @include it("errors when 3 sizes values passed with dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2 3, "inline");
+      }
+
+      @include expect {
+        _error: "More than two sizes supplied with 'inline' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for the dimension 'inline-start'") {
+
     @include assert() {
 
       @include output {
@@ -854,10 +1785,13 @@
         }
 
       }
+
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-start'") {
+
     @include assert() {
 
       @include output {
@@ -880,9 +1814,73 @@
         }
       }
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 1em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 1em;
+        }
+        html[dir] & {
+          margin-inline-start: 1em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+        }
+        html[dir] & {
+          margin-inline-start: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2, "inline-start");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'inline-start' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for the dimension 'inline-end'") {
+
     @include assert() {
 
       @include output {
@@ -903,10 +1901,13 @@
         }
 
       }
+
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for the dimension 'inline-end'") {
+
     @include assert() {
 
       @include output {
@@ -928,10 +1929,75 @@
           margin-inline-end: 1rem;
         }
       }
+
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 1em;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 1em;
+        }
+        html[dir] & {
+          margin-inline-end: 1em;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+        }
+        html[dir] & {
+          margin-inline-end: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'inline-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2, "inline-end");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'inline-end' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct fallbacks with a single zero value for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -945,9 +2011,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct fallbacks with a single non-zero value for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -963,10 +2031,42 @@
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "block");
+      }
+
+      @include expect {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-block: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "block");
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block: 1rem;
+      }
+
+    }
+
   }
 
   // Vertical writing modes not yet supported
   @include it("generates correct fallbacks with a pair of non-zero values for dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -978,14 +2078,61 @@
         margin-top: 1rem;
         margin-bottom: 32px;
         margin-bottom: 2rem;
-
         margin-block: 1rem 2rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em 2em, "block");
+      }
+
+      @include expect {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        margin-block: 1em 2em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem 2rem, "block");
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 32px;
+        margin-bottom: 2rem;
+        margin-block: 1rem 2rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 3 sizes values passed with dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2 3, "block");
+      }
+
+      @include expect {
+        _error: "More than two sizes supplied with 'block' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct values for a single zero value and dimension 'block-start'") {
+
     @include assert() {
 
       @include output {
@@ -998,9 +2145,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct values for a single non-zero value and dimension 'block-start'") {
+
     @include assert() {
 
       @include output {
@@ -1010,14 +2159,58 @@
       @include expect {
         margin-top: 16px;
         margin-top: 1rem;
-
         margin-block-start: 1rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "block-start");
+      }
+
+      @include expect {
+        margin-top: 1em;
+        margin-block-start: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "block-start");
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-block-start: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'block-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2, "block-start");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'block-start' dimension";
+      }
+
+    }
+
   }
 
   @include it("generates correct values for a single zero value and dimension 'block-end'") {
+
     @include assert() {
 
       @include output {
@@ -1030,9 +2223,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct values for a single non-zero value and dimension 'block-end'") {
+
     @include assert() {
 
       @include output {
@@ -1042,11 +2237,82 @@
       @include expect {
         margin-bottom: 16px;
         margin-bottom: 1rem;
-
         margin-block-end: 1rem;
       }
 
     }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1em, "block-end");
+      }
+
+      @include expect {
+        margin-bottom: 1em;
+        margin-block-end: 1em;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1rem, "block-end");
+      }
+
+      @include expect {
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block-end: 1rem;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 2 sizes values passed with dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1 2, "block-end");
+      }
+
+      @include expect {
+        _error: "More than one size supplied with 'block-end' dimension";
+      }
+
+    }
+
+  }
+
+  @include it("errors on invalid dimensions") {
+
+    @include assert() {
+
+      @include output {
+        @include margin(1, "top");
+      }
+
+      @include expect {
+        _error: "'top' is a physical dimension, use its logical equivilant";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include margin(1, "foo");
+      }
+
+      @include expect {
+        _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
   }
 
 }
@@ -1054,6 +2320,7 @@
 @include describe("@mixin nospace") {
 
   @include it("generates correct zeroing for the dimension 'inline'") {
+
     @include assert() {
 
       @include output {
@@ -1075,6 +2342,7 @@
   }
 
   @include it("generates correct zeroing for the dimension 'inline-start'") {
+
     @include assert {
 
       @include output {
@@ -1108,9 +2376,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct zeroing for the dimension 'inline-end'") {
+
     @include assert {
 
       @include output {
@@ -1142,10 +2412,13 @@
           padding-inline-end: 0;
         }
       }
+
     }
+
   }
 
   @include it("generates correct zeroing for the dimension 'block'") {
+
     @include assert() {
 
       @include output {
@@ -1162,10 +2435,12 @@
       }
 
     }
+
   }
 
   // vertical writing modes not supported, so block-start always maps to top at the moment.
   @include it("generates correct zeroing for the dimension 'block-start'") {
+
     @include assert() {
 
       @include output {
@@ -1180,9 +2455,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct zeroing for the dimension 'block-end'") {
+
     @include assert() {
 
       @include output {
@@ -1197,9 +2474,11 @@
       }
 
     }
+
   }
 
   @include it("generates correct zeroing for all dimensions when not supplied with any dimension") {
+
     @include assert() {
 
       @include output {
@@ -1212,5 +2491,35 @@
       }
 
     }
+
   }
+
+  @include it("errors on invalid dimensions") {
+
+    @include assert() {
+
+      @include output {
+        @include nospace("top");
+      }
+
+      @include contains {
+        _error: "'top' is a physical dimension, use its logical equivilant";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include nospace("foo");
+      }
+
+      @include contains {
+        _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
 }

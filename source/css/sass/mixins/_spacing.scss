@@ -1,3 +1,4 @@
+@import "validation";
 @import "sizes";
 @import "types";
 @import "../functions/validation";
@@ -42,107 +43,136 @@
 //</div>
 @mixin _spacing($sizes, $space-type, $dimension: "") {
 
-  // $validation-status is throw away, it's only used to enable validate-spacing-arguments() function to be invoked
-  $validation-status: validate-spacing-arguments($sizes, $space-type, $dimension);
-
   @if $dimension == "" {
-    @include rem($space-type, $sizes);
-  }
 
-  @if $dimension == "inline" {
-    @if length($sizes) == 1 {
+    @include _expect_at_most($sizes, 4, "More than four sizes supplied when no dimension") {
+      @include rem($space-type, $sizes);
+    }
 
-      @include rem(#{$space-type}-left, $sizes);
-      @include rem(#{$space-type}-right, $sizes);
-      #{$space-type}-inline: rem($sizes);
+  } @else if $dimension == "inline" {
 
-    } @else {
+    @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
 
-      $firstValue: nth($sizes, 1);
-      $secondValue: nth($sizes, 2);
+      @if length($sizes) == 1 {
 
-      @if $firstValue == $secondValue {
-
-        @include rem(#{$space-type}-left, $firstValue);
-        @include rem(#{$space-type}-right, $secondValue);
+        @include rem((
+          #{$space-type}-left: $sizes,
+          #{$space-type}-right: $sizes,
+        ));
+        #{$space-type}-inline: rem($sizes);
 
       } @else {
 
-        @include _when-left-to-right {
-          @include rem(#{$space-type}-left, $firstValue);
-          @include rem(#{$space-type}-right, $secondValue);
-        }
+        $firstValue: nth($sizes, 1);
+        $secondValue: nth($sizes, 2);
 
-        @include _when-right-to-left {
-          @include rem(#{$space-type}-right, $firstValue);
-          @include rem(#{$space-type}-left, $secondValue);
+        @if $firstValue == $secondValue {
+
+          @include rem((
+            #{$space-type}-left: $firstValue,
+            #{$space-type}-right: $secondValue,
+          ));
+          #{$space-type}-inline: rem($firstValue);
+
+        } @else {
+
+          @include _when-left-to-right {
+            @include rem((
+              #{$space-type}-left: $firstValue,
+              #{$space-type}-right: $secondValue,
+            ));
+          }
+
+          @include _when-right-to-left {
+            @include rem((
+              #{$space-type}-right: $firstValue,
+              #{$space-type}-left: $secondValue,
+            ));
+          }
+
+          html[dir] & {
+            #{$space-type}-inline: rem($firstValue $secondValue);
+          }
+
         }
 
       }
 
-      @if $firstValue == $secondValue {
-        #{$space-type}-inline: rem($firstValue);
-      } @else {
-        html[dir] & {
-          #{$space-type}-inline: rem($firstValue $secondValue);
-        }
+    }
+
+  } @else if $dimension == "inline-start" {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'inline-start' dimension") {
+
+      @include _when-left-to-right {
+        @include rem(#{$space-type}-left, $sizes);
+      }
+      @include _when-right-to-left {
+        @include rem(#{$space-type}-right, $sizes);
+      }
+      html[dir] & {
+        #{$space-type}-inline-start: rem($sizes);
       }
 
     }
+
+  } @else if $dimension == "inline-end" {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'inline-end' dimension") {
+
+      @include _when-left-to-right {
+        @include rem(#{$space-type}-right, $sizes);
+      }
+      @include _when-right-to-left {
+        @include rem(#{$space-type}-left, $sizes);
+      }
+      html[dir] & {
+        #{$space-type}-inline-end: rem($sizes);
+      }
+
+    }
+
+  } @else if $dimension == "block" {
+
+    @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
+
+      @if length($sizes) == 2 {
+        @include rem((
+          #{$space-type}-top: nth($sizes, 1),
+          #{$space-type}-bottom: nth($sizes, 2),
+        ));
+      } @else {
+        @include rem((
+          #{$space-type}-top: $sizes,
+          #{$space-type}-bottom: $sizes,
+        ));
+      }
+      #{$space-type}-block: rem($sizes);
+
+    }
+
+  } @else if $dimension == "block-start" {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'block-start' dimension") {
+
+      @include rem(#{$space-type}-top, $sizes);
+      #{$space-type}-block-start: rem($sizes);
+    }
+
+  } @else if $dimension == "block-end" {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'block-end' dimension") {
+
+      @include rem(#{$space-type}-bottom, $sizes);
+      #{$space-type}-block-end: rem($sizes);
+    }
+
+  } @else if index(("top", "bottom", "left", "right"), $dimension) {
+    @include _error("'#{$dimension}' is a physical dimension, use its logical equivilant");
+  } @else {
+    @include _error("Unknown dimension '#{$dimension}'");
   }
 
-  @if $dimension == "inline-start" {
-    @include _when-left-to-right {
-      @include rem(#{$space-type}-left, nth($sizes, 1));
-    }
-    @include _when-right-to-left {
-      @include rem(#{$space-type}-right, nth($sizes, 1));
-    }
-    html[dir] & {
-      #{$space-type}-inline-start: rem(nth($sizes, 1));
-    }
-  }
-
-  @if $dimension == "inline-end" {
-
-    @include _when-left-to-right {
-      @include rem(#{$space-type}-right, nth($sizes, 1));
-    }
-    @include _when-right-to-left {
-      @include rem(#{$space-type}-left, nth($sizes, 1));
-    }
-    html[dir] & {
-      #{$space-type}-inline-end: rem(nth($sizes, 1));
-    }
-
-  }
-
-  // Vertical writing modes not yet supported
-  @if $dimension == "block" {
-
-    @if type_of($sizes) == list and length($sizes) >= 2 {
-      @include rem((
-        #{$space-type}-top: nth($sizes, 1),
-        #{$space-type}-bottom: nth($sizes, 2),
-      ));
-    } @else {
-      @include rem((
-        #{$space-type}-top: $sizes,
-        #{$space-type}-bottom: $sizes,
-      ));
-    }
-    #{$space-type}-block: rem($sizes);
-  }
-
-  @if $dimension == "block-start" {
-    @include rem(#{$space-type}-top, $sizes);
-    #{$space-type}-block-start: rem($sizes);
-  }
-
-  @if $dimension == "block-end" {
-    @include rem(#{$space-type}-bottom, $sizes);
-    #{$space-type}-block-end: rem($sizes);
-  }
 }
 
 @mixin padding($sizes, $dimension: "") {
@@ -154,23 +184,8 @@
 }
 
 @mixin nospace($dimension: "") {
-  $allowed-dimensions: "inline", "inline-start", "inline-end", "block", "";
-  @if index($allowed-dimensions, $dimension) != null {
-    @include margin(0, $dimension);
-    @include padding(0, $dimension);
-  } @else if $dimension == "block-start" {
-    //vertical writing modes not yet supported
-    margin-top: 0;
-    margin-block-start: 0;
-    padding-top: 0;
-    padding-block-start: 0;
-  } @else if $dimension == "block-end" {
-    //vertical writing modes not yet supported
-    margin-bottom: 0;
-    margin-block-end: 0;
-    padding-bottom: 0;
-    padding-block-end: 0;
-  }
+  @include margin(0, $dimension);
+  @include padding(0, $dimension);
 }
 
 // blg stands for "baseline grid"

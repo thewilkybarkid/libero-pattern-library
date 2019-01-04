@@ -1,0 +1,23 @@
+@import "../functions/validation";
+
+@mixin _error($message) {
+  _error: _error($message);
+}
+
+@mixin _expect_at_most($value, $maxLength, $message: "Expected at most #{$maxLength} values") {
+
+  @if length($value) > $maxLength {
+    @include _error($message);
+  } @else {
+    @content;
+  }
+
+}
+
+@mixin _expect_single_value($value, $message: "Expected a single value") {
+
+  @include _expect_at_most($value, 1, $message) {
+    @content;
+  }
+
+}
