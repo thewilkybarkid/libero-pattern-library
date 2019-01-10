@@ -47,8 +47,11 @@ COPY composer.json \
     ./
 
 RUN mkdir public source && \
-    composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-suggest --prefer-dist
+    composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-autoloader --no-suggest --prefer-dist
 
+COPY source/php/ source/php/
+
+RUN composer --no-interaction dump-autoload --classmap-authoritative
 
 
 #

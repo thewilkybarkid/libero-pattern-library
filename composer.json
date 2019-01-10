@@ -4,6 +4,9 @@
     "autoload": {
         "psr-0": {
             "PatternLab\\": "core/src/"
+        },
+        "psr-4": {
+            "Libero\\PatternLibrary\\": "source/php"
         }
     },
     "require": {
