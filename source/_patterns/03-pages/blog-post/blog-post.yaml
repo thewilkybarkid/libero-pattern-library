@@ -1,0 +1,45 @@
+contentHeader:
+  contentTitle:
+    text: Next three early-career researchers awarded travel grants
+itemTags:
+  groups:
+    - title:
+        text: Colours of the rainbow
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: Red
+          - content:
+              text: Orange
+          - content:
+              text: Yellow
+          - content:
+              attributes:
+                href: '#'
+              text: Green
+          - content:
+              attributes:
+                href: '#'
+              text: Blue
+          - content:
+              text: Indigo
+          - content:
+              text: Violet
+    - title:
+        text: Points of the compass
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: North
+          - content:
+              attributes:
+                href: '#'
+              text: East
+          - content:
+              text: South
+          - content:
+              text: West
