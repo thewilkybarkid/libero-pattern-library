@@ -30,7 +30,7 @@ deploy:
       on:
           tags: true
     - provider: script
-      script: .travis/downstream.sh environments "Update pattern-library to $TRAVIS_COMMIT"
+      script: .scripts/travis/downstream.sh environments "Update pattern-library to $TRAVIS_COMMIT"
       on:
           branch: master
 
