@@ -17,6 +17,7 @@ import sassGlob from 'gulp-sass-glob';
 import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'stylelint';
 import syntaxScss from 'postcss-scss';
+import tags from 'language-tags';
 
 const buildConfig = (invocationArgs, publicRoot, sourceRoot, testRoot, exportRoot) => {
 
@@ -120,6 +121,7 @@ const generateSassLocaleData = () => {
   const locales = cldr.localeIds.filter(locale => locale !== 'root')
     .concat(Object.keys(cldr.extractLanguageSupplementalMetadata()))
     .map(locale => locale.replace(/_/g, '-').toLowerCase())
+    .filter(locale => tags.check(locale))
     .reduce((localeParents, locale) => {
       while (true) {
         const parent = locale.replace(/-[^-]+$/, '');
@@ -134,10 +136,11 @@ const generateSassLocaleData = () => {
       }
     }, {});
 
+  const aliases = cldr.extractLanguageSupplementalMetadata();
   const listSeparators = ['und'].concat(Object.keys(locales))
     .reduce((carry, locale) =>
       Object.assign(carry,
-        {[locale]: cldr.extractListPatterns(locale).default.middle.replace(/{[0|1]}/g, '')},
+        {[locale]: cldr.extractListPatterns(aliases[locale] ? aliases[locale]['replacement'] : locale).default.middle.replace(/{[0|1]}/g, '')},
       ), {});
 
   const queue = Object.keys(listSeparators).sort().reverse();
