@@ -1,11 +1,14 @@
 import browserSync from 'browser-sync';
+import cldr from 'cldr';
 import del from 'del';
 import distributeConfig from './libero-config/bin/distributeConfig';
 import flatten from 'gulp-flatten';
+import fs from 'fs';
 import gulp from 'gulp';
 import minimist from 'minimist';
 import mocha from 'gulp-mocha';
 import postcss from 'gulp-postcss';
+import {promisify} from 'util';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import reporter from 'postcss-reporter';
@@ -88,6 +91,7 @@ const buildConfig = (invocationArgs, publicRoot, sourceRoot, testRoot, exportRoo
     `${config.dir.src.templates}/**/*.twig`,
     `!${config.dir.src.templates}/02-pages/**/*.twig`
   ];
+  config.files.src.sassLocales = `${config.dir.src.sass}/_locales.scss`;
   config.files.src.derivedConfigs = [
     `${config.dir.src.sass}/variables/**/*`,
     `${config.dir.src.js}/derivedConfig.json`,
@@ -109,6 +113,61 @@ const config = buildConfig(process.argv, 'public', 'source', 'test', 'export');
 const cleanSharedConfig = () => del(config.files.src.derivedConfigs);
 
 export const distributeSharedConfig = gulp.series(cleanSharedConfig, distributeConfig);
+
+const cleanSassLocaleData = () => del([config.files.src.sassLocales]);
+
+const generateSassLocaleData = () => {
+  const locales = cldr.localeIds.filter(locale => locale !== 'root')
+    .concat(Object.keys(cldr.extractLanguageSupplementalMetadata()))
+    .map(locale => locale.replace(/_/g, '-').toLowerCase())
+    .reduce((localeParents, locale) => {
+      while (true) {
+        const parent = locale.replace(/-[^-]+$/, '');
+
+        if (parent === locale) {
+          localeParents[locale] = 'und';
+          return localeParents;
+        }
+
+        localeParents[locale] = parent;
+        locale = parent;
+      }
+    }, {});
+
+  const listSeparators = ['und'].concat(Object.keys(locales))
+    .reduce((carry, locale) =>
+      Object.assign(carry,
+        {[locale]: cldr.extractListPatterns(locale).default.middle.replace(/{[0|1]}/g, '')},
+      ), {});
+
+  const queue = Object.keys(listSeparators).sort().reverse();
+  while (queue.length > 0) {
+    const locale = queue.shift();
+
+    if (Object.values(locales).indexOf(locale) !== -1) {
+      queue.push(locale);
+      continue;
+    }
+
+    const parent = locales[locale];
+
+    if (listSeparators[locale] === listSeparators[parent]) {
+      delete listSeparators[locale];
+    }
+
+    delete locales[locale];
+  }
+
+  let sass = '';
+
+  sass += '$list-separators: (\n';
+  Object.entries(listSeparators).forEach(entry => sass += `  "${entry[0]}": "${entry[1]}",\n`);
+  sass += ');\n';
+
+  return promisify(fs.writeFile).call(null, config.files.src.sassLocales, sass);
+};
+
+export const assembleSassLocaleData = gulp.series(cleanSassLocaleData, generateSassLocaleData);
 
 const lintSass = () => {
   if (!config.sass.linting) {
@@ -152,7 +211,10 @@ export const generateCss = gulp.series(cleanCss, compileCss);
 
 export const build = gulp.parallel(validateSass, generateCss);
 
-export const assemble = gulp.series(distributeSharedConfig, build);
+export const assemble = gulp.series(
+  gulp.parallel(distributeSharedConfig, assembleSassLocaleData),
+  build,
+);
 
 // Exporters
 

@@ -1,3 +1,4 @@
+@import "../../locales";
 @import "../../mixins/typography";
 
 .item-tag-list {
@@ -13,16 +14,16 @@
   display: inline;
   @include label-subject-typography();
 
-  &:after {
-    content: ", ";
-  }
-
-  &:lang(ar):after {
-    content: "، ";
-  }
-
-  &:lang(ja):after {
-    content: "、";
+  @each $locale, $separator in $list-separators {
+    @if $locale == "und" {
+      &:after {
+        content: $separator;
+      }
+    } @else {
+      &:lang(#{$locale}):after {
+        content: $separator;
+      }
+    }
   }
 
   &:last-child:after {

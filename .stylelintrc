@@ -2,6 +2,7 @@
   "ignoreFiles": [
     "./**/!(*.scss)",
     "./export/css/sass/**/*",
+    "./source/css/sass/_locales.scss",
     "./source/css/sass/variables/**/*",
     "./source/css/sass/vendor/**/*"
   ],

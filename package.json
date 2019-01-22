@@ -8,6 +8,7 @@
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "cldr": "^4.13.0",
     "color": "^3.1.0",
     "deep-iterator": "^1.1.0",
     "deepmerge": "^2.2.1",
