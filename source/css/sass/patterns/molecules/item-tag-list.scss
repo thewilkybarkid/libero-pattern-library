@@ -1,34 +1,17 @@
-@import "../../locales";
+@import "../../mixins/lists";
 @import "../../mixins/typography";
 
 .item-tag-list {
-  list-style: none;
+  @include inline-list();
   @include blg-spacing("block-end", "small", "margin");
-  @include nospace("inline-start");
   .item-tags__group:last-child & {
     @include margin(0, "block-end");
   }
 }
 
 .item-tag-list__item {
-  display: inline;
+  @include inline-list-item();
   @include label-subject-typography();
-
-  @each $locale, $separator in $list-separators {
-    @if $locale == "und" {
-      &:after {
-        content: $separator;
-      }
-    } @else {
-      &:lang(#{$locale}):after {
-        content: $separator;
-      }
-    }
-  }
-
-  &:last-child:after {
-    content: "";
-  }
 }
 
 .item-tag-list__link {

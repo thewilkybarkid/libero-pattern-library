@@ -163,7 +163,7 @@ const generateSassLocaleData = () => {
 
   let sass = '';
 
-  sass += '$list-separators: (\n';
+  sass += '$inline-list-separators: (\n';
   Object.entries(listSeparators).forEach(entry => sass += `  "${entry[0]}": "${entry[1]}",\n`);
   sass += ');\n';
 
