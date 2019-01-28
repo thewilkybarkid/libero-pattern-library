@@ -4,6 +4,16 @@
 
   {%- block body -%}
 
+    {%- with categories|default({}) only -%}
+      {%- block categories -%}
+
+        {%- if items|length -%}
+          {%- include 'molecules-tag-list' with {list: _context|merge({singleLine: true})} only -%}
+        {%- endif -%}
+
+      {%- endblock categories -%}
+    {%- endwith -%}
+
     {%- with contentTitle only -%}
 
       {%- block title -%}

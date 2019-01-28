@@ -4,6 +4,14 @@ attributes:
 contentHeader:
   contentTitle:
     text: 中国のジュラ紀からの予期せぬ非虫歯の蔓延した花
+  categories:
+    attributes:
+      aria-label: この記事を含むカテゴリの一覧
+    items:
+      - content:
+          text: 進化生物学
+      - content:
+          text: 植物生物学
 
 tags:
   groups:

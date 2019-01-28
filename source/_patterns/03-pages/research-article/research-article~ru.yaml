@@ -4,6 +4,14 @@ attributes:
 contentHeader:
   contentTitle:
     text: Неожиданный некарпеллитный эпигиновый цветок из китайской юры
+  categories:
+    attributes:
+      aria-label: Списки категорий, которые включают эту статью
+    items:
+      - content:
+          text: Эволюционная биология
+      - content:
+          text: Биология растений
 
 tags:
   groups:

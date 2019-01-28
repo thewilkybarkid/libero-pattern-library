@@ -1,6 +1,14 @@
 contentHeader:
   contentTitle:
     text: An unexpected noncarpellate epigynous flower from the Jurassic of China
+  categories:
+    attributes:
+      aria-label: Category listings that include this article
+    items:
+      - content:
+          text: Evolutionary Biology
+      - content:
+          text: Plant Biology
 
 tags:
   groups:

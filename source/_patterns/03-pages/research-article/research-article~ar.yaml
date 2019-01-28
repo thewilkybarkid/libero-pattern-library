@@ -4,6 +4,14 @@ dir: rtl
 contentHeader:
   contentTitle:
     text: زهرة غير منتجة غير منتجة من العصر الجوراسي في الصين
+  categories:
+    attributes:
+      aria-label: قوائم الفئة التي تتضمن هذه المقالة
+    items:
+      - content:
+          text: علم الأحياء التطوري
+      - content:
+          text: علم الأحياء النباتية
 
 tags:
   groups:

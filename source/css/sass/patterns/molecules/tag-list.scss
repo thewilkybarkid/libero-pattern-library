@@ -1,3 +1,4 @@
+@import "../../mixins/sizes";
 @import "../../mixins/typography";
 
 .tag-list {
@@ -12,7 +13,12 @@
 .tag-list__list {
   list-style: none;
   @include blg-spacing("block-end", "small", "margin");
+  @include label-tag-typography();
   @include padding(0, "inline-start");
+}
+
+.tag-list__list--single-line {
+  @include truncate-with-ellipsis();
 }
 
 .tag-list__item {

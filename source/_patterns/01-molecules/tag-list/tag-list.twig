@@ -20,6 +20,10 @@
 
       {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__list']) }) -%}
 
+      {%- if singleLine|default(false) -%}
+        {%- set attributes = attributes|merge({class: attributes.class|merge(['tag-list__list--single-line']) }) -%}
+      {%- endif -%}
+
       <ul {%- include('atoms-attributes') -%}>
 
         {%- for item in items -%}
