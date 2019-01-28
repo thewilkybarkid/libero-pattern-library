@@ -1,0 +1,58 @@
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list']) }) -%}
+
+<div {%- include('atoms-attributes') -%}>
+
+  {%- with title|default({}) only -%}
+    {%- block title -%}
+
+      {% if text %}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__title']) }) -%}
+        {%- include 'atoms-heading' with {level: level|default(4)} -%}
+
+      {% endif %}
+
+    {%- endblock title -%}
+  {%- endwith -%}
+
+  {%- with list only -%}
+    {%- block list -%}
+
+      {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__list']) }) -%}
+
+      <ul {%- include('atoms-attributes') -%}>
+
+        {%- for item in items -%}
+
+          {%- with item only -%}
+            {%- block item -%}
+
+              {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__item']) }) -%}
+
+              <li {%- include('atoms-attributes') -%}>
+
+                {%- with content only -%}
+                  {%- block content -%}
+
+                    {%- if attributes.href is defined -%}
+                      {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__link']) }) -%}
+                    {%- endif -%}
+
+                    {%- include 'atoms-link' -%}
+
+                  {%- endblock content -%}
+                {%- endwith -%}
+
+              </li>
+
+            {%- endblock item -%}
+          {%- endwith -%}
+
+        {%- endfor -%}
+
+      </ul>
+
+    {%- endblock list -%}
+  {%- endwith -%}
+
+</div>

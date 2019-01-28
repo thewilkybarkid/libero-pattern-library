@@ -1,0 +1,34 @@
+contentHeader:
+  contentTitle:
+    text: An unexpected noncarpellate epigynous flower from the Jurassic of China
+
+tags:
+  groups:
+    - title:
+        text: Categories and tags
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: Research Article
+          - content:
+              text: Evolutionary Biology
+          - content:
+              text: Plant biology
+          - content:
+              attributes:
+                href: '#'
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: Fossil
+          - content:
+              text: Jurassic
+          - content:
+              text: China
+          - content:
+              text: Angiosperms
+          - content:
+              text: Flower

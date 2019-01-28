@@ -1,0 +1,39 @@
+lang: ar
+dir: rtl
+
+contentHeader:
+  contentTitle:
+    text: زهرة غير منتجة غير منتجة من العصر الجوراسي في الصين
+
+tags:
+  groups:
+    - title:
+        text: الفئات والعلامات
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: مقاله بحثيه
+          - content:
+              text: علم الأحياء التطوري
+          - content:
+              text: علم الأحياء النباتية
+          - content:
+              attributes:
+                href: '#'
+                lang: la
+                dir: ltr
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: الحجري
+          - content:
+              text: جوراسي
+          - content:
+              text: الصين
+          - content:
+              text: كاسيات البذور
+          - content:
+              text: زهرة

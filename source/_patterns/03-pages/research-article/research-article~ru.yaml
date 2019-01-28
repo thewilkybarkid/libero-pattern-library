@@ -1,0 +1,38 @@
+attributes:
+  lang: ru
+
+contentHeader:
+  contentTitle:
+    text: Неожиданный некарпеллитный эпигиновый цветок из китайской юры
+
+tags:
+  groups:
+    - title:
+        text: Категории и теги
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: Научная статья
+          - content:
+              text: Эволюционная биология
+          - content:
+              text: Биология растений
+          - content:
+              attributes:
+                href: '#'
+                lang: la
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: Ископаемое
+          - content:
+              text: Юра
+          - content:
+              text: Китай
+          - content:
+              text: Покрытосеменные
+          - content:
+              text: Цветок

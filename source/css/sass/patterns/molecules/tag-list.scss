@@ -1,17 +1,23 @@
 @import "../../mixins/typography";
 
-.item-tag-list {
-  list-style: none;
+.tag-list {
   @include blg-spacing("block-end", "small", "margin");
-  @include nospace("inline-start");
-  .item-tags__group:last-child & {
-    @include margin(0, "block-end");
-  }
 }
 
-.item-tag-list__item {
+.tag-list__title {
+  @include label-content-typography();
+  @include padding(0, "block");
+}
+
+.tag-list__list {
+  list-style: none;
+  @include blg-spacing("block-end", "small", "margin");
+  @include padding(0, "inline-start");
+}
+
+.tag-list__item {
   display: inline;
-  @include label-subject-typography();
+  @include label-tag-typography();
 
   &:after {
     content: ", ";
@@ -30,7 +36,7 @@
   }
 }
 
-.item-tag-list__link {
+.tag-list__link {
   color: inherit;
   text-decoration: inherit;
 

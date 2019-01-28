@@ -1,0 +1,38 @@
+attributes:
+  lang: ja
+
+contentHeader:
+  contentTitle:
+    text: 中国のジュラ紀からの予期せぬ非虫歯の蔓延した花
+
+tags:
+  groups:
+    - title:
+        text: カテゴリーとタグ
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: 研究論文
+          - content:
+              text: 進化生物学
+          - content:
+              text: 植物生物学
+          - content:
+              attributes:
+                href: '#'
+                lang: la
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: 化石
+          - content:
+              text: ジュラ紀
+          - content:
+              text: 中国
+          - content:
+              text: 被子植物
+          - content:
+              text: 花

@@ -72,7 +72,7 @@
   font-family: $font-secondary;
   font-weight: normal;
   @include set-font-size-and-vertical-height($font-size-label);
-  letter-spacing: #{$font-letterspacing-label};
+  letter-spacing: $font-letterspacing-label;
   @if $uppercase {
     text-transform: uppercase;
   }
@@ -82,6 +82,6 @@
   @include _label-typography($color, $uppercase);
 }
 
-@mixin label-subject-typography() {
+@mixin label-tag-typography() {
   @include _label-typography($color-primary-normal);
 }
