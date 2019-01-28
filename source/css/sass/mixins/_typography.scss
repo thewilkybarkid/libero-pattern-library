@@ -66,3 +66,22 @@
   max-height: 1em;
   vertical-align: middle;
 }
+
+@mixin _label-typography($color, $uppercase: true) {
+  color: $color;
+  font-family: $font-secondary;
+  font-weight: normal;
+  @include set-font-size-and-vertical-height($font-size-label);
+  letter-spacing: #{$font-letterspacing-label};
+  @if $uppercase {
+    text-transform: uppercase;
+  }
+}
+
+@mixin label-content-typography($color: $color-text-secondary, $uppercase: true) {
+  @include _label-typography($color, $uppercase);
+}
+
+@mixin label-subject-typography() {
+  @include _label-typography($color-primary-normal);
+}

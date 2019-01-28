@@ -1,0 +1,24 @@
+title:
+  text: Colours of the rainbow
+list:
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Red
+    - content:
+        text: Orange
+    - content:
+        text: Yellow
+    - content:
+        attributes:
+          href: '#'
+        text: Green
+    - content:
+        attributes:
+          href: '#'
+        text: Blue
+    - content:
+        text: Indigo
+    - content:
+        text: Violet

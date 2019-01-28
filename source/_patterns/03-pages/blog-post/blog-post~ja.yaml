@@ -1,0 +1,47 @@
+lang: ja
+
+contentHeader:
+  contentTitle:
+    text: 次の3名の早期キャリア研究者が旅行補助金を授与した
+
+groups:
+  - title:
+      text: 虹色
+    list:
+      items:
+        - content:
+            attributes:
+              href: '#'
+            text: 赤
+        - content:
+            text: オレンジ
+        - content:
+            text: 黄色
+        - content:
+            attributes:
+              href: '#'
+            text: 緑
+        - content:
+            attributes:
+              href: '#'
+            text: 水色
+        - content:
+            text: 青
+        - content:
+            text: 紫
+  - title:
+      text: コンパスのポイント
+    list:
+      items:
+        - content:
+            attributes:
+              href: '#'
+            text: 北
+        - content:
+            attributes:
+              href: '#'
+            text: 東
+        - content:
+            text: 南
+        - content:
+            text: 西

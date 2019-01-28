@@ -1,0 +1,6 @@
+@import "../../mixins/typography";
+
+.item-tag-group__title {
+  @include label-content-typography();
+  @include padding(0, "block");
+}

@@ -1,0 +1,40 @@
+@import "../../mixins/typography";
+
+.item-tag-list {
+  list-style: none;
+  @include blg-spacing("block-end", "small", "margin");
+  @include nospace("inline-start");
+  .item-tags__group:last-child & {
+    @include margin(0, "block-end");
+  }
+}
+
+.item-tag-list__item {
+  display: inline;
+  @include label-subject-typography();
+
+  &:after {
+    content: ", ";
+  }
+
+  &:lang(ar):after {
+    content: "، ";
+  }
+
+  &:lang(ja):after {
+    content: "、";
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}
+
+.item-tag-list__link {
+  color: inherit;
+  text-decoration: inherit;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}

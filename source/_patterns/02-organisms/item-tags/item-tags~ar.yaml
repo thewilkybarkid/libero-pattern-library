@@ -1,0 +1,44 @@
+attributes:
+  dir: rtl
+  lang: ar
+groups:
+  - title:
+      text: ألوان قوس قزح
+    list:
+      items:
+        - content:
+            attributes:
+              href: '#'
+            text: أحمر
+        - content:
+            text: برتقالي
+        - content:
+            text: أصفر
+        - content:
+            attributes:
+              href: '#'
+            text: أخضر
+        - content:
+            attributes:
+              href: '#'
+            text: أزرق
+        - content:
+            text: نيلي
+        - content:
+            text: بنفسجي
+  - title:
+      text: اتجاهات البوصلة
+    list:
+      items:
+        - content:
+            attributes:
+              href: '#'
+            text: شمال
+        - content:
+            attributes:
+              href: '#'
+            text: شرق
+        - content:
+            text: جنوب
+        - content:
+            text: غرب

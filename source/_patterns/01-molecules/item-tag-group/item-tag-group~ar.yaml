@@ -1,0 +1,27 @@
+attributes:
+  dir: rtl
+  lang: ar
+title:
+  text: ألوان قوس قزح
+list:
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: أحمر
+    - content:
+        text: برتقالي
+    - content:
+        text: أصفر
+    - content:
+        attributes:
+          href: '#'
+        text: أخضر
+    - content:
+        attributes:
+          href: '#'
+        text: أزرق
+    - content:
+        text: نيلي
+    - content:
+        text: بنفسجي
