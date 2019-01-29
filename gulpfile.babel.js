@@ -86,7 +86,7 @@ const buildConfig = (invocationArgs, publicRoot, sourceRoot, testRoot, exportRoo
   config.files.src.templates = [
     `${config.dir.src.templates}/*.twig`,
     `${config.dir.src.templates}/**/*.twig`,
-    `!${config.dir.src.templates}/03-pages/**/*.twig`,
+    `!${config.dir.src.templates}/04-pages/**/*.twig`,
   ];
   config.files.src.derivedConfigs = [
     `${config.dir.src.sass}/variables/**/*`,

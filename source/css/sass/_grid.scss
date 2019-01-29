@@ -3,3 +3,14 @@
 .wrapper {
   @include wrapper();
 }
+
+.grid {
+  @supports (display: grid) {
+    display: grid;
+  }
+  // consider setting some sensible gap defaults here.
+}
+
+.grid--single-column {
+  //@include margin(1.6%, "inline");
+}
