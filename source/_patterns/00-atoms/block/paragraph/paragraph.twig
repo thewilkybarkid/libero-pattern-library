@@ -1,0 +1,7 @@
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['paragraph']) }) -%}
+
+<p {%- include 'atoms-attributes' -%}>
+
+  {%- include 'atoms-text' with {nodes: text} -%}
+
+</p>
