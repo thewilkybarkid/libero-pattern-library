@@ -5,7 +5,7 @@
   {%- with title|default({}) only -%}
     {%- block title -%}
 
-      {% if text %}
+      {% if text is defined %}
 
         {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__title']) }) -%}
         {%- include 'atoms-heading' with {level: level|default(4)} -%}

@@ -7,7 +7,7 @@
     {%- with categories|default({}) only -%}
       {%- block categories -%}
 
-        {%- if items|length -%}
+        {%- if items|default([])|length -%}
           {%- include 'molecules-tag-list' with {list: _context|merge({singleLine: true})} only -%}
         {%- endif -%}
 
