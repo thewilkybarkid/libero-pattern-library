@@ -40,10 +40,14 @@ body:
           angiosperm origins.
   - template: atoms-paragraph
     arguments:
-      text: |
-        From oranges to apples, flowering plants produce most of the fruits and vegetables that we can see on display in
-        a supermarket. While we may take little notice of the poppy fields and plum blossoms around us, how flowers came
-        to be has been an intensely debated mystery.
+      text:
+        - |
+          From oranges to apples, flowering plants produce most of the fruits and vegetables that we can see on display
+          in a supermarket. While we may take little notice of the
+        - template: atoms-bold
+          arguments:
+            text: ' poppy fields '
+        - and plum blossoms around us, how flowers came to be has been an intensely debated mystery.
   - template: atoms-paragraph
     arguments:
       text: |
