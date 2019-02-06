@@ -1,0 +1,5 @@
+@import "../variables/color";
+
+@mixin divider($side) {
+  border-#{$side}: 1px solid $color-text-dividers;
+}

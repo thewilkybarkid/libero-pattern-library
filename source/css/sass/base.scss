@@ -1,4 +1,6 @@
 @import "fonts";
 @import "normalize";
 @import "grid";
+@import "mixins/decorations";
+
 @import "patterns/**/[^_]*.scss";
