@@ -9,11 +9,25 @@
 
 .grid {
   @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width), true);
-  width: 100vw;
 
   & > * {
     @include grid-span-all-but-edges();
   }
+
+}
+
+.grid-no-margins {
+  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width));
+
+  & > * {
+    @include grid-span-all();
+  }
+
+}
+
+.grid,
+.grid-no-margins {
+  width: 100vw;
 
   & > .grid-item-span-all {
     @include grid-span-all();
