@@ -4,13 +4,11 @@
 @import "../vendor/sass-mq/mq";
 @import "../functions/grid";
 
-/*
-The grid comprises $column-count columns. Optionally pass true as the fourth argument to add one column to each side
-of the $column-count columns in order to provide centring while retaining the ability to appear to break out of the
-grid into the this left / right space normally used for centring.
-*/
+//The grid comprises $column-count columns. Optionally pass true as the fourth argument to add one column to each side
+//of the $column-count columns in order to provide centring while retaining the ability to appear to break out of the
+//grid into the this left / right space normally used for centring.
 
-// $column-count is the number of columns for the main area (i.e. excluding gutter tracks on the left and right edge)
+// $column-count is the number of columns for the main area (i.e. excluding any gutter tracks on the left and right edge)
 // $column-gap can be set in any css length unit
 // $max-width: the maximum width for the main area (currently assumes will kick in at x-wide breakpoint)
 // $add-edge-space: should there be any space on either side of the main grid area?
@@ -45,12 +43,10 @@ grid into the this left / right space normally used for centring.
   }
 }
 
-// Span every column track
 @mixin grid-span-all {
   grid-column: 1 / -1;
 }
 
-// Span every main column track (i.e. all except the respective left / right gutter tracks)
 @mixin grid-span-all-but-edges {
   grid-column: 2 / -2;
 }
