@@ -15,7 +15,7 @@
     @include grid-span-full();
   }
 
-  & > .grid-item--span-all {
+  & > .grid-item-span-all {
     @include grid-span-all();
   }
 
