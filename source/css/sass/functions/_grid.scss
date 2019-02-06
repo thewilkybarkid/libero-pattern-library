@@ -1,0 +1,13 @@
+// TODO: Move to configuration once using refactor arriving via npm module
+$grid: (
+  column-count: 12,
+  edge-space-medium: 7vw,
+  edge-space-large: 14vw,
+  column-gap: 1.6%,
+  max-width: 1114px
+);
+
+// Nullify the effect of the first and last gutters by reducing both the first and last column tracks by the width of the grid gap.
+@function grid-edge-space($size, $grid-gap) {
+  @return calc(#{map_get($grid, edge-space-#{$size})} - #{$grid-gap});
+}

@@ -2,15 +2,7 @@
 @import "../variables/font";
 @import "../vendor/sass-rem/rem";
 @import "../vendor/sass-mq/mq";
-
-// TODO: Move to configuration once using refactor arriving via npm module
-$grid: (
-  column-count: 12,
-  edge-space-medium: 7vw,
-  edge-space-large: 14vw,
-  column-gap: 1.6%,
-  max-width: 1114px
-);
+@import "../functions/grid";
 
 /*
 The grid comprises a central 12 columns plus one left gutter and one right gutter. The central 12 columns are where
@@ -20,11 +12,6 @@ This could be provided by the addition of extra columns either side of the centr
 further investigation to maintain the centring capability provided by the left/right gutters when additional
 columns within the gutters are added.
 */
-
-// Nullify the effect of the first and last gutters by reducing both the first and last column tracks by the width of the grid gap.
-@function grid-edge-space($size, $grid-gap) {
-  @return calc(#{map_get($grid, edge-space-#{$size})} - #{$grid-gap});
-}
 
 // Span every column track
 @mixin grid-span-all {
