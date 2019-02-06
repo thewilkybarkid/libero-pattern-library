@@ -19,7 +19,7 @@ columns within the gutters are added.
 }
 
 // Span every main column track (i.e. all except the respective left / right gutter tracks)
-@mixin grid-span-full {
+@mixin grid-span-main {
   grid-column: 2 / -2;
 }
 

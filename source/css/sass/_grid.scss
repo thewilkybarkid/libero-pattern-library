@@ -12,7 +12,7 @@
   width: 100vw;
 
   & > * {
-    @include grid-span-full();
+    @include grid-span-main();
   }
 
   & > .grid-item-span-all {
@@ -20,7 +20,7 @@
   }
 
   & > .grid-item--span-full {
-    @include grid-span-full();
+    @include grid-span-main();
   }
 
 }
