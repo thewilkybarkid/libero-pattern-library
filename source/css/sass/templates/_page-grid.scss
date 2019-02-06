@@ -1,0 +1,5 @@
+@import "../mixins/decorations";
+
+.site-header-wrapper {
+  @include divider(bottom);
+}
