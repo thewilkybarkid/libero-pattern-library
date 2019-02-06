@@ -6,10 +6,20 @@
     <!-- site-header-wrapper is needed to allow a full width keyline beneath the site header, whilst at the same time
         not requiring the site header to display across the width of the page -->
     <div class="site-header-wrapper grid grid-item--span-all">
-        <div class="site-header">Site header</div>
+        <div class="site-header">Site header goes here</div>
     </div>
 
     <div class="main">
+        <p>A lot of this page is currently placeholder, but the grid defining its layout it real.</p>
+        <h2>CSS classes used</h2>
+        <dl>
+            <dt>grid</dt>
+            <dd>specify a grid container</dd>
+            <dt>grid-item--span-all</dt>
+            <dd>make a grid item span all grid columns, including the left / right grid edge spaces</dd>
+            <dt>grid-span-full</dt>
+            <dd>make a grid item span all content columns, but not the left / right grid edge spaces</dd>
+        </dl>
         {%- include 'atoms-text' with {nodes: content} -%}
     </div>
 
@@ -26,7 +36,7 @@
     </div>
 
     <div class="site-footer">
-        site footer
+        Site footer goes here
     </div>
 
 </div>

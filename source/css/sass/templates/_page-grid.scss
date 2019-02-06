@@ -3,3 +3,12 @@
 .site-header-wrapper {
   @include divider(bottom);
 }
+
+.email-form {
+  @include divider(top);
+}
+
+.investor-logos {
+  @include divider(top);
+  @include divider(bottom);
+}
