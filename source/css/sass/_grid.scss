@@ -19,7 +19,7 @@
     @include grid-span-all();
   }
 
-  & > .grid-item--span-full {
+  & > .grid-item-span-main {
     @include grid-span-main();
   }
 
