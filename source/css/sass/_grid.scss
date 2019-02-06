@@ -1,16 +1,26 @@
+@import "variables/color";
+@import "mixins/grid";
 @import "mixins/spacing";
 
+// TODO: Remove this wrapper and account for it
 .wrapper {
   @include wrapper();
 }
 
 .grid {
-  @supports (display: grid) {
-    display: grid;
-  }
-  // consider setting some sensible gap defaults here.
-}
+  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width));
+  width: 100vw;
 
-.grid--single-column {
-  //@include margin(1.6%, "inline");
+  & > * {
+    @include grid-span-full();
+  }
+
+  & > .grid-item--span-all {
+    @include grid-span-all();
+  }
+
+  & > .grid-item--span-full {
+    @include grid-span-full();
+  }
+
 }

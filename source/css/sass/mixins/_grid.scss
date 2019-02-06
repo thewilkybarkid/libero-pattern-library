@@ -1,0 +1,63 @@
+@import "../variables/grid";
+@import "../variables/font";
+@import "../vendor/sass-rem/rem";
+@import "../vendor/sass-mq/mq";
+
+// TODO: Move to configuration once using refactor arriving via npm module
+$grid: (
+  column-count: 12,
+  edge-space-medium: 7vw,
+  edge-space-large: 14vw,
+  column-gap: 1.6%,
+  max-width: 1114px
+);
+
+/*
+The grid comprises a central 12 columns plus one left gutter and one right gutter. The central 12 columns are where
+everything normally goes, the side gutters provide centring, and allow elements to appear to break out of the grid.
+The 'breaking out' is to one or both viewport edges, there's no more finely grained differential offset at the moment.
+This could be provided by the addition of extra columns either side of the central 12 columns, but would require
+further investigation to maintain the centring capability provided by the left/right gutters when additional
+columns within the gutters are added.
+*/
+
+// Nullify the effect of the first and last gutters by reducing both the first and last column tracks by the width of the grid gap.
+@function grid-edge-space($size, $grid-gap) {
+  @return calc(#{map_get($grid, edge-space-#{$size})} - #{$grid-gap});
+}
+
+// Span every column track
+@mixin grid-span-all {
+  grid-column: 1 / -1;
+}
+
+// Span every main column track (i.e. all except the respective left / right gutter tracks)
+@mixin grid-span-full {
+  grid-column: 2 / -2;
+}
+
+// $column-count is the number of columns for the main area (i.e. excluding gutter tracks on the left and right edge)
+// $column-gap can be set in any css length unit
+// $max-width: the maximum width for the main area
+@mixin grid-setup($column-count, $column-gap, $max-width) {
+  display: grid;
+  grid-column-gap: $column-gap;
+  grid-template-columns: grid-edge-space(medium, $column-gap) repeat($column-count, 1fr) grid-edge-space(medium, $column-gap);
+
+  @include mq($from: medium) {
+    grid-template-columns: grid-edge-space(large, $column-gap) repeat($column-count, 1fr) grid-edge-space(large, $column-gap);
+  }
+
+  @include mq($from: x-wide) {
+    //The main $column-count column section of the grid has a fixed width from this breakpoint.
+    $column-gap-fixed: $column-gap;
+    @if unit($column-gap) == "%" {
+      $column-gap-fixed: $max-width * ($column-gap / 100%);
+      grid-column-gap: $column-gap-fixed;
+    }
+
+    // There are $column-count - 1 gutters to account for within the central $column-count number of columns:
+    $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
+    grid-template-columns: 1fr repeat($column-count, $column-track-fixed) 1fr;
+  }
+}
