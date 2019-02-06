@@ -2,11 +2,6 @@
 @import "mixins/grid";
 @import "mixins/spacing";
 
-// TODO: Remove this wrapper and account for it
-.wrapper {
-  @include wrapper();
-}
-
 .grid {
   @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width), true);
 
