@@ -8,19 +8,19 @@
 }
 
 .grid {
-  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width));
+  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width), true);
   width: 100vw;
 
   & > * {
-    @include grid-span-main();
+    @include grid-span-all-but-edges();
   }
 
   & > .grid-item-span-all {
     @include grid-span-all();
   }
 
-  & > .grid-item-span-main {
-    @include grid-span-main();
+  & > .grid-item-span-all-but-edges {
+    @include grid-span-all-but-edges();
   }
 
 }

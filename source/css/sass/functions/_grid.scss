@@ -11,3 +11,11 @@ $grid: (
 @function grid-edge-space($size, $grid-gap) {
   @return calc(#{map_get($grid, edge-space-#{$size})} - #{$grid-gap});
 }
+
+// return the column gap even if specified as a percentage
+@function calc-fixed-col-gap($specified-col-gap, $max-width) {
+  @if unit($specified-col-gap) != "%" {
+    @return $specified-col-gap;
+  }
+  @return $max-width * ($specified-col-gap / 100%);
+}
