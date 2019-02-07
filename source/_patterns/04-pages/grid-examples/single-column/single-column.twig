@@ -1,0 +1,35 @@
+{% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['grid']) }) -%}
+
+<div {%- include 'atoms-attributes' %}>
+
+    <!-- site-header-wrapper is needed to allow a full width keyline beneath the site header, whilst at the same time
+        not requiring the site header to display across the width of the page -->
+    <div class="site-header-wrapper grid grid-item-span-all">
+        <div class="site-header">Site header goes here</div>
+    </div>
+
+    <div>
+        {% include 'organisms-content-header' with contentHeader only %}
+    </div>
+
+    <div>
+        {%- include 'atoms-text' with {nodes: content} -%}
+    </div>
+
+    <div class="end-matter grid-item-span-all">
+
+        <div class="email-form">
+            email form
+        </div>
+
+        <div class="investor-logos">
+            investor logos
+        </div>
+
+    </div>
+
+    <div>
+        Site footer goes here
+    </div>
+
+</div>
