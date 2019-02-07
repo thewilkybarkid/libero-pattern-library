@@ -22,35 +22,39 @@
 // TODO: consider using more abstract name if that would ease re-use
 .grid--article {
 
-  .grid-tertiary-column {
+  .grid {
 
-    @include mq($from: x-wide) {
-      display: block;
-      grid-column: 2 / 4;
+    .grid-tertiary-column {
+
+      @include mq($from: x-wide) {
+        display: block;
+        grid-column: 2 / 4;
+      }
+
     }
 
-  }
+    & > .grid-main-column {
 
-  & > .grid-main-column {
+      @include mq($from: wide) {
+        grid-column: 2 / 10;
+      }
 
-    @include mq($from: wide) {
-      grid-column: 2 / 10;
+      @include mq($from: x-wide) {
+        grid-column: 4 / 11;
+      }
+
     }
 
-    @include mq($from: x-wide) {
-      grid-column: 4 / 11;
-    }
+    & > .grid-secondary-column {
 
-  }
+      @include mq($from: wide) {
+        grid-column: 10 / 14;
+      }
 
-  & > .grid-secondary-column {
+      @include mq($from: x-wide) {
+        grid-column: 11 / 14;
+      }
 
-    @include mq($from: wide) {
-      grid-column: 10 / 14;
-    }
-
-    @include mq($from: x-wide) {
-      grid-column: 11 / 14;
     }
 
   }
