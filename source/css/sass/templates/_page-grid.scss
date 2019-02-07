@@ -6,9 +6,11 @@
 
 .email-form {
   @include divider(top);
+  text-align: center;
 }
 
 .investor-logos {
   @include divider(top);
   @include divider(bottom);
+  text-align: center;
 }
