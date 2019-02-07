@@ -1,0 +1,47 @@
+{% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['grid', 'grid--article']) }) -%}
+
+<div {%- include 'atoms-attributes' %}>
+
+
+    <!-- site-header-wrapper is needed to allow a full width keyline beneath the site header, whilst at the same time
+        not requiring the site header to display across the width of the page -->
+    <div class="site-header-wrapper grid grid-item-span-all">
+        <div class="site-header">Site header goes here</div>
+    </div>
+
+    <div class="top">
+        {% include 'organisms-content-header' with contentHeader only %}
+    </div>
+
+    <div class="grid-tertiary-column">
+        tertiary content (view selector)
+    </div>
+
+    <div class="grid-main-column">
+        <h2>Main content</h2>
+        {%- include 'atoms-text' with {nodes: content} -%}
+    </div>
+
+    <div class="grid-secondary-column">
+        <h2>Secondary content</h2>
+        {%- include 'atoms-text' with {nodes: sidebar} -%}
+    </div>
+
+
+    <div class="end-matter grid-item-span-all">
+
+        <div class="email-form">
+            email form
+        </div>
+
+        <div class="investor-logos">
+            investor logos
+        </div>
+
+    </div>
+
+    <div>
+        Site footer goes here
+    </div>
+
+</div>
