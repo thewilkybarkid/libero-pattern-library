@@ -4,27 +4,20 @@
 @import "../vendor/sass-mq/mq";
 @import "../functions/grid";
 
-//The grid comprises $column-count columns. Optionally pass true as the fourth argument to add one column to each side
-//of the $column-count columns in order to provide centring while retaining the ability to appear to break out of the
-//grid into the this left / right space normally used for centring.
+//The grid comprises $column-count columns, plus one column on each side of the $column-count columns in order to
+// provide centring while retaining the ability to appear to break out of the grid into the this left / right space
+// normally used for centring.
 
 // $column-count is the number of columns for the main area (i.e. excluding any gutter tracks on the left and right edge)
 // $column-gap can be set in any css length unit
 // $max-width: the maximum width for the main area (currently assumes will kick in at x-wide breakpoint)
-// $add-edge-space: should there be any space on either side of the main grid area?
-@mixin grid-setup($column-count, $column-gap, $max-width, $add-edge-space: false) {
+@mixin grid-setup($column-count, $column-gap, $max-width) {
   display: grid;
   grid-column-gap: $column-gap;
+  grid-template-columns: grid-edge-space(medium, $column-gap) repeat($column-count, 1fr) grid-edge-space(medium, $column-gap);
 
-  @if $add-edge-space {
-    grid-template-columns: grid-edge-space(medium, $column-gap) repeat($column-count, 1fr) grid-edge-space(medium, $column-gap);
-
-    @include mq($from: medium) {
-      grid-template-columns: grid-edge-space(large, $column-gap) repeat($column-count, 1fr) grid-edge-space(large, $column-gap);
-    }
-
-  } @else {
-    grid-template-columns: repeat($column-count, 1fr);
+  @include mq($from: medium) {
+    grid-template-columns: grid-edge-space(large, $column-gap) repeat($column-count, 1fr) grid-edge-space(large, $column-gap);
   }
 
   // Assumption: max-width constraint kicks in when the x-wide breakpoint is triggered
@@ -34,12 +27,7 @@
 
     // There are $column-count - 1 gutters to account for within the central $column-count number of columns:
     $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
-
-    @if $add-edge-space {
-      grid-template-columns: 1fr repeat($column-count, $column-track-fixed) 1fr;
-    } @else {
-      grid-template-columns: repeat($column-count, $column-track-fixed);
-    }
+    grid-template-columns: 1fr repeat($column-count, $column-track-fixed) 1fr;
   }
 }
 

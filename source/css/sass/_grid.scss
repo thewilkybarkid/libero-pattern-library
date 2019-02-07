@@ -3,26 +3,11 @@
 @import "mixins/spacing";
 
 .grid {
-  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width), true);
+  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width));
 
   & > * {
     @include grid-span-all-but-edges();
   }
-
-}
-
-.grid-no-margins {
-  @include grid-setup(map_get($grid, column-count), map_get($grid, column-gap), map_get($grid, max-width));
-
-  & > * {
-    @include grid-span-all();
-  }
-
-}
-
-.grid,
-.grid-no-margins {
-  width: 100vw;
 
   & > .grid-item-span-all {
     @include grid-span-all();
@@ -30,6 +15,44 @@
 
   & > .grid-item-span-all-but-edges {
     @include grid-span-all-but-edges();
+  }
+
+}
+
+// TODO: consider using more abstract name if that would ease re-use
+.grid--article {
+
+  .grid-tertiary-column {
+
+    @include mq($from: x-wide) {
+      display: block;
+      grid-column: 2 / 4;
+    }
+
+  }
+
+  & > .grid-main-column {
+
+    @include mq($from: wide) {
+      grid-column: 2 / 10;
+    }
+
+    @include mq($from: x-wide) {
+      grid-column: 4 / 11;
+    }
+
+  }
+
+  & > .grid-secondary-column {
+
+    @include mq($from: wide) {
+      grid-column: 10 / 14;
+    }
+
+    @include mq($from: x-wide) {
+      grid-column: 11 / 14;
+    }
+
   }
 
 }
