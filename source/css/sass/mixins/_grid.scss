@@ -12,29 +12,66 @@
 // $column-gap can be set in any css length unit
 // $max-width: the maximum width for the main area (currently assumes will kick in at x-wide breakpoint)
 @mixin grid-setup($column-count, $column-gap, $max-width) {
+  //display: grid;
+  //grid-column-gap: $column-gap;
+  //grid-template-columns: grid-edge-space(medium, $column-gap) repeat($column-count, 1fr) grid-edge-space(medium, $column-gap);
+  //
+  //@include mq($from: medium) {
+  //  grid-template-columns: grid-edge-space(large, $column-gap) repeat($column-count, 1fr) grid-edge-space(large, $column-gap);
+  //}
+  //
+  //// Assumption: max-width constraint kicks in when the x-wide breakpoint is triggered
+  //@include mq($from: x-wide) {
+  //  $column-gap-fixed: calc-fixed-col-gap($column-gap, $max-width);
+  //  grid-column-gap: $column-gap-fixed;
+  //
+  //  // There are $column-count - 1 gutters to account for within the central $column-count number of columns:
+  //  $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
+  //  grid-template-columns: 1fr repeat($column-count, $column-track-fixed) 1fr;
+  //}
+
+  $column-gap-fixed: calc-fixed-col-gap($column-gap, $max-width);
+  $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
+
   display: grid;
   grid-column-gap: $column-gap;
-  grid-template-columns: grid-edge-space(medium, $column-gap) repeat($column-count, 1fr) grid-edge-space(medium, $column-gap);
+  grid-template-columns:
+    [full-start] minmax($column-gap, 1fr)
+    [main-start] repeat($column-count, [column-start] minmax(auto, $column-track-fixed)) [main-end]
+    minmax($column-gap, 1fr) [full-end];
 
-  @include mq($from: medium) {
-    grid-template-columns: grid-edge-space(large, $column-gap) repeat($column-count, 1fr) grid-edge-space(large, $column-gap);
-  }
+  //@include mq($from: wide) {
+  //  grid-template-columns:
+  //    [full-start gutter-start-start]
+  //    minmax($column-gap-fixed, 1fr)
+  //    [gutter-start-end main-start tertiary-start]
+  //    minmax($column-track-fixed, $column-track-fixed * 2)
+  //    [tertiary-end primary-start]
+  //    minmax($column-track-fixed, $column-track-fixed * ($column-count - 3 - 2))
+  //    [primary-end secondary-start]
+  //    minmax($column-track-fixed, $column-track-fixed * 3)
+  //    [secondary-end main-end gutter-end-start]
+  //    minmax($column-gap-fixed, 1fr)
+  //    [gutter-end-end full-end];
+  //}
 
-  // Assumption: max-width constraint kicks in when the x-wide breakpoint is triggered
-  @include mq($from: x-wide) {
-    $column-gap-fixed: calc-fixed-col-gap($column-gap, $max-width);
-    grid-column-gap: $column-gap-fixed;
-
-    // There are $column-count - 1 gutters to account for within the central $column-count number of columns:
-    $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
-    grid-template-columns: 1fr repeat($column-count, $column-track-fixed) 1fr;
-  }
-}
-
-@mixin grid-span-all {
-  grid-column: 1 / -1;
-}
-
-@mixin grid-span-all-but-edges {
-  grid-column: 2 / -2;
+  //@include mq($from: medium) {
+  //  grid-template-columns:
+  //    [full-start] grid-edge-space(large, $column-gap)
+  //    [main-start] repeat($column-count, 1fr) [main-end]
+  //    grid-edge-space(large, $column-gap) [full-end];
+  //}
+  //
+  //@include mq($from: x-wide) {
+  //  $column-gap-fixed: calc-fixed-col-gap($column-gap, $max-width);
+  //  grid-column-gap: $column-gap-fixed;
+  //
+  //  // There are $column-count - 1 gutters to account for within the central $column-count number of columns:
+  //  $column-track-fixed: ($max-width - ($column-gap-fixed * ($column-count - 1))) / $column-count;
+  //
+  //  grid-template-columns:
+  //    [full-start] 1fr
+  //    [main-start] repeat($column-count, $column-track-fixed) [main-end]
+  //    1fr [full-end];
+  //}
 }

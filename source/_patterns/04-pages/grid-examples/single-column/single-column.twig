@@ -4,19 +4,13 @@
 
     <!-- site-header-wrapper is needed to allow a full width keyline beneath the site header, whilst at the same time
         not requiring the site header to display across the width of the page -->
-    <div class="site-header-wrapper grid grid-item-span-all">
-        <div class="site-header">Site header goes here</div>
+    <div class="site-header-wrapper grid grid-item-full">
+        <div class="site-header grid-item-main">Site header goes here</div>
     </div>
 
-    <div>
-        {% include 'organisms-content-header' with contentHeader only %}
-    </div>
+    {%- include 'atoms-text' with {nodes: content} only -%}
 
-    <div>
-        {%- include 'atoms-text' with {nodes: content} -%}
-    </div>
-
-    <div class="end-matter grid-item-span-all">
+    <div class="end-matter grid-item-full">
 
         <div class="email-form">
             email form

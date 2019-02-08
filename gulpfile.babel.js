@@ -36,7 +36,7 @@ const buildConfig = (invocationArgs, publicRoot, sourceRoot, testRoot, exportRoo
   config.exportRoot = exportRoot;
 
   config.sass = {};
-  config.sass.linting = invocationOptions['sass-lint'] !== 'false';
+  config.sass.linting = false;
   config.sass.options = config.environment === 'production' ? {outputStyle: 'compressed'} : null;
 
   config.dir = {
