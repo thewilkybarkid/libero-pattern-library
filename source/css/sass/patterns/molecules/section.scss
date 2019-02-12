@@ -1,0 +1,5 @@
+@import "../../mixins/spacing";
+
+.section__body {
+  @include body-spacing();
+}
