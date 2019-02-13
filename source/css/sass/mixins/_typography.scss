@@ -83,6 +83,9 @@
   @if $position == sub {
     @include _base_font-variant-position($position);
     bottom: -0.25em;
+  } @else if $position == super {
+    @include _base_font-variant-position($position);
+    top: -0.5em;
   } @else {
     @include _error("Unknown position '#{$position}'");
   }
