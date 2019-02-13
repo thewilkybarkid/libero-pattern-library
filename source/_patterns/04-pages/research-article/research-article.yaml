@@ -52,9 +52,14 @@ body:
         - template: atoms-paragraph
           arguments:
             text:
-              - |
-                From oranges to apples, flowering plants produce most of the fruits and vegetables that we can see on
-                display in a supermarket. While we may take little notice of the
+              - |1
+                From
+              - template: atoms-sub
+                arguments:
+                  text: oranges
+              - |1
+                to apples, flowering plants produce most of the fruits and vegetables that we can see on display in a
+                supermarket. While we may take little notice of the
               - template: atoms-bold
                 arguments:
                   text: ' poppy fields '

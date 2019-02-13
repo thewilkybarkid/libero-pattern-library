@@ -67,6 +67,27 @@
   vertical-align: middle;
 }
 
+@mixin _base-font-variant-position($position) {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  @supports (font-variant-position: #{$position}) {
+    font-size: inherit;
+    font-variant-position: $position;
+    position: static;
+  }
+}
+
+@mixin font-variant-position($position) {
+  @if $position == sub {
+    @include _base_font-variant-position($position);
+    bottom: -0.25em;
+  } @else {
+    @include _error("Unknown position '#{$position}'");
+  }
+}
+
 @mixin _label-typography($color, $uppercase: true) {
   color: $color;
   font-family: $font-secondary;
