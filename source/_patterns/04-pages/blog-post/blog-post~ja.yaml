@@ -7,17 +7,17 @@ contentHeader:
 body:
   - template: atoms-paragraph
     arguments:
-      text: |
+      text: >
         2017年の2回目の申請では、Sabrina Florencia Mansilla、Richard Lindsay、およびMargarita Calvoが、eLife上級編集者によって
         、検討のために提出されたeLife論文の質に基づいて旅行助成金を受けることに選ばれました。
   - template: atoms-paragraph
     arguments:
-      text: |
+      text: >
         このラウンドで取り上げた主題は、細胞生物学、発生生物学と幹細胞、免疫学、微生物学と感染症、癌生物学、遺伝子と染色体、ゲノミクスと
         進化生物学、エコロジー、植物生物学、そして神経科学でした。 私たちはこのラウンドで48を超える申し込みを受け、最終締め切りまでにさ
         らに4つのラウンドと13の助成金を授与することができます。
   - template: atoms-paragraph
     arguments:
-      text: |
+      text: >
         それぞれ最大1,000ドルの助成金で、受賞者は自分の選んだ会議に出席して自分の作品を発表することができ、その分野の一流の科学者の間で
         露出し、認識を得ることができます。
