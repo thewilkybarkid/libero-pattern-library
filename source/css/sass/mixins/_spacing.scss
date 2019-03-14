@@ -1,3 +1,4 @@
+@import "logical-properties";
 @import "validation";
 @import "sizes";
 @import "types";
@@ -6,20 +7,6 @@
 @import "../variables/baselinegrid";
 @import "../variables/breakpoint";
 @import "../variables/grid";
-
-@mixin _when-left-to-right {
-  html[dir="ltr"] &:not([dir]),
-  &[dir="ltr"] {
-    @content;
-  }
-}
-
-@mixin _when-right-to-left {
-  html[dir="rtl"] &:not([dir]),
-  &[dir="rtl"] {
-    @content;
-  }
-}
 
 // Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
 //  - document level: always specified, via the HTML element
@@ -52,119 +39,37 @@
   } @else if $dimension == "inline" {
 
     @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
-
-      @if length($sizes) == 1 {
-
-        @include rem((
-          #{$space-type}-left: $sizes,
-          #{$space-type}-right: $sizes,
-        ));
-        #{$space-type}-inline: rem($sizes);
-
-      } @else {
-
-        $firstValue: nth($sizes, 1);
-        $secondValue: nth($sizes, 2);
-
-        @if $firstValue == $secondValue {
-
-          @include rem((
-            #{$space-type}-left: $firstValue,
-            #{$space-type}-right: $secondValue,
-          ));
-          #{$space-type}-inline: rem($firstValue);
-
-        } @else {
-
-          @include _when-left-to-right {
-            @include rem((
-              #{$space-type}-left: $firstValue,
-              #{$space-type}-right: $secondValue,
-            ));
-          }
-
-          @include _when-right-to-left {
-            @include rem((
-              #{$space-type}-right: $firstValue,
-              #{$space-type}-left: $secondValue,
-            ));
-          }
-
-          html[dir] & {
-            #{$space-type}-inline: rem($firstValue $secondValue);
-          }
-
-        }
-
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if $dimension == "inline-start" {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'inline-start' dimension") {
-
-      @include _when-left-to-right {
-        @include rem(#{$space-type}-left, $sizes);
-      }
-      @include _when-right-to-left {
-        @include rem(#{$space-type}-right, $sizes);
-      }
-      html[dir] & {
-        #{$space-type}-inline-start: rem($sizes);
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if $dimension == "inline-end" {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'inline-end' dimension") {
-
-      @include _when-left-to-right {
-        @include rem(#{$space-type}-right, $sizes);
-      }
-      @include _when-right-to-left {
-        @include rem(#{$space-type}-left, $sizes);
-      }
-      html[dir] & {
-        #{$space-type}-inline-end: rem($sizes);
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if $dimension == "block" {
 
     @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
-
-      @if length($sizes) == 2 {
-        @include rem((
-          #{$space-type}-top: nth($sizes, 1),
-          #{$space-type}-bottom: nth($sizes, 2),
-        ));
-      } @else {
-        @include rem((
-          #{$space-type}-top: $sizes,
-          #{$space-type}-bottom: $sizes,
-        ));
-      }
-      #{$space-type}-block: rem($sizes);
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if $dimension == "block-start" {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'block-start' dimension") {
-
-      @include rem(#{$space-type}-top, $sizes);
-      #{$space-type}-block-start: rem($sizes);
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if $dimension == "block-end" {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'block-end' dimension") {
-
-      @include rem(#{$space-type}-bottom, $sizes);
-      #{$space-type}-block-end: rem($sizes);
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
   } @else if index(("top", "bottom", "left", "right"), $dimension) {

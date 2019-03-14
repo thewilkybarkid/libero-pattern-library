@@ -5,6 +5,9 @@
     "./source/css/sass/variables/**/*",
     "./source/css/sass/vendor/**/*"
   ],
+  "plugins": [
+    "stylelint-use-logical"
+  ],
   "rules": {
     "block-closing-brace-newline-after": ["always", {"ignoreAtRules": ["if", "else"]}],
     "block-no-empty": true,
@@ -15,6 +18,7 @@
     "color-hex-length": "short",
     "color-no-invalid-hex": true,
     "comment-empty-line-before": "always",
+    "csstools/use-logical": "always",
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-semicolon-space-before": "never",
     "declaration-block-trailing-semicolon": "always",

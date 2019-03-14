@@ -11,7 +11,7 @@
 
 html,
 body {
-  height: 100%;
+  @include block-size(100%);
 }
 
 body {
@@ -63,12 +63,12 @@ a {
 ul,
 ol {
   @include blg-spacing("block-end", "small", "margin");
-  margin-top: 0;
+  @include margin(0, "block-start");
 }
 
 dl {
   @include blg-spacing("block-end", "small", "margin");
-  margin-top: 0;
+  @include margin(0, "block-start");
 }
 
 li,
@@ -86,7 +86,7 @@ dt {
 }
 
 dd {
-  margin-left: 0;
+  @include margin(0, "inline-start");
 }
 
 small {
@@ -108,8 +108,8 @@ address {
 }
 
 img {
-  max-height: 100%;
-  max-width: 100%;
+  @include max-block-size(100%);
+  @include max-inline-size(100%);
 }
 
 h1,

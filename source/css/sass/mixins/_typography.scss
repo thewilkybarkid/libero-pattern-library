@@ -4,9 +4,9 @@
 @import "../variables/font";
 @import "spacing";
 
-@mixin set-font-size-and-vertical-height($font-size, $vertical-height: $baselinegrid-space-small) {
+@mixin set-font-size-and-line-height($font-size, $block-size: $baselinegrid-space-small) {
   @include rem(font-size, $font-size);
-  line-height: $vertical-height / $font-size;
+  line-height: $block-size / $font-size;
 }
 
 @mixin _heading-base-typography() {
@@ -16,44 +16,44 @@
 
 @mixin h1-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h1, 48px);
+  @include set-font-size-and-line-height($font-size-h1, 48px);
 }
 
 @mixin h2-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h2, 30px);
+  @include set-font-size-and-line-height($font-size-h2, 30px);
 }
 
 @mixin h3-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h3);
+  @include set-font-size-and-line-height($font-size-h3);
 }
 
 @mixin h4-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h4);
+  @include set-font-size-and-line-height($font-size-h4);
 }
 
 @mixin h5-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h5);
+  @include set-font-size-and-line-height($font-size-h5);
 }
 
 @mixin h6-typography() {
   @include _heading-base-typography();
-  @include set-font-size-and-vertical-height($font-size-h6);
+  @include set-font-size-and-line-height($font-size-h6);
 }
 
 @mixin body-typography() {
   font-family: $font-primary;
-  @include set-font-size-and-vertical-height($font-size-base);
+  @include set-font-size-and-line-height($font-size-base);
   font-weight: normal;
 }
 
 @mixin small-typography() {
   font-family: $font-primary;
   font-style: normal;
-  @include set-font-size-and-vertical-height(11px);
+  @include set-font-size-and-line-height(11px);
 }
 
 @mixin body-para {
@@ -62,8 +62,8 @@
 }
 
 @mixin inline-image {
-  margin-bottom: 0.1em;
-  max-height: 1em;
+  @include margin(0.1em, "block-end");
+  @include max-block-size(1em);
   vertical-align: middle;
 }
 
@@ -82,10 +82,10 @@
 @mixin font-variant-position($position) {
   @if $position == sub {
     @include _base_font-variant-position($position);
-    bottom: -0.25em;
+    bottom: -0.25em; // stylelint-disable-line csstools/use-logical
   } @else if $position == super {
     @include _base_font-variant-position($position);
-    top: -0.5em;
+    top: -0.5em; // stylelint-disable-line csstools/use-logical
   } @else {
     @include _error("Unknown position '#{$position}'");
   }
@@ -95,7 +95,7 @@
   color: $color;
   font-family: $font-secondary;
   font-weight: normal;
-  @include set-font-size-and-vertical-height($font-size-label);
+  @include set-font-size-and-line-height($font-size-label);
   letter-spacing: $font-letterspacing-label;
   @if $uppercase {
     text-transform: uppercase;

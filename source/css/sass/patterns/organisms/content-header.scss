@@ -2,6 +2,7 @@
 @import "../../variables/color";
 @import "../../variables/content_header";
 @import "../../functions/types";
+@import "../../mixins/logical-properties";
 @import "../../mixins/media-query";
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
@@ -13,12 +14,11 @@
   @include blg-spacing("block-end", "small");
 
   &:after {
-    border-bottom: 1px solid $color-text-dividers;
-    border-block-end: 1px solid $color-text-dividers;
+    @include logical-property(border, block-end, 1px solid $color-text-dividers, $to-rem: false);
     content: "";
     display: block;
     @include padding($baselinegrid-space-small - 1, "block-start");
-    width: 100%;
+    @include inline-size(100%);
   }
 }
 

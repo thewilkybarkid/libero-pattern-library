@@ -1,0 +1,666 @@
+@import "../test";
+@import "../../../source/css/sass/mixins/logical-properties";
+
+@include describe("@mixin logical-property") {
+
+  @include it("generates correct fallbacks for the dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline, 16px);
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-left: 1rem;
+        margin-right: 16px;
+        margin-right: 1rem;
+        margin-inline: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), inline, 16px);
+      }
+
+      @include expect {
+        border-left-width: 16px;
+        border-left-width: 1rem;
+        border-right-width: 16px;
+        border-right-width: 1rem;
+        border-inline-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline, (16px 16px));
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-left: 1rem;
+        margin-right: 16px;
+        margin-right: 1rem;
+        margin-inline: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), inline, (16px 16px));
+      }
+
+      @include expect {
+        border-left-width: 16px;
+        border-left-width: 1rem;
+        border-right-width: 16px;
+        border-right-width: 1rem;
+        border-inline-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline, (16px, 32px));
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+          margin-right: 32px;
+          margin-right: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+          margin-left: 32px;
+          margin-left: 2rem;
+        }
+
+        html[dir] & {
+          margin-inline-start: 1rem;
+          margin-inline-end: 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), inline, (16px, 32px));
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          border-left-width: 16px;
+          border-left-width: 1rem;
+          border-right-width: 32px;
+          border-right-width: 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          border-right-width: 16px;
+          border-right-width: 1rem;
+          border-left-width: 32px;
+          border-left-width: 2rem;
+        }
+
+        html[dir] & {
+          border-inline-start-width: 1rem;
+          border-inline-end-width: 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline, (16px, 32px, 48px));
+      }
+
+      @include expect {
+        _error: "More than two arguments supplied with 'inline' dimension";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-inline: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline-start, 16px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+        }
+
+        html[dir] & {
+          margin-inline-start: 1rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), inline-start, 16px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          border-left-width: 16px;
+          border-left-width: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          border-right-width: 16px;
+          border-right-width: 1rem;
+        }
+
+        html[dir] & {
+          border-inline-start-width: 1rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline-start, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-left: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-right: 16px;
+        }
+
+        html[dir] & {
+          margin-inline-start: 16px;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'inline-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline-end, 16px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 16px;
+          margin-right: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 16px;
+          margin-left: 1rem;
+        }
+
+        html[dir] & {
+          margin-inline-end: 1rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), inline-end, 16px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          border-right-width: 16px;
+          border-right-width: 1rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          border-left-width: 16px;
+          border-left-width: 1rem;
+        }
+
+        html[dir] & {
+          border-inline-end-width: 1rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, inline-end, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin-right: 16px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin-left: 16px;
+        }
+
+        html[dir] & {
+          margin-inline-end: 16px;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'inline-size'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property("", inline-size, 16px);
+      }
+
+      @include expect {
+        width: 16px;
+        width: 1rem;
+        inline-size: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(max, inline-size, 16px);
+      }
+
+      @include expect {
+        max-width: 16px;
+        max-width: 1rem;
+        max-inline-size: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property("", inline-size, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        width: 16px;
+        inline-size: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block, 16px);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), block, 16px);
+      }
+
+      @include expect {
+        border-top-width: 16px;
+        border-top-width: 1rem;
+        border-bottom-width: 16px;
+        border-bottom-width: 1rem;
+        border-block-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block, (16px 16px));
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), block, (16px 16px));
+      }
+
+      @include expect {
+        border-top-width: 16px;
+        border-top-width: 1rem;
+        border-bottom-width: 16px;
+        border-bottom-width: 1rem;
+        border-block-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block, (16px, 32px));
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 32px;
+        margin-bottom: 2rem;
+        margin-block-start: 1rem;
+        margin-block-end: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), block, (16px, 32px));
+      }
+
+      @include expect {
+        border-top-width: 16px;
+        border-top-width: 1rem;
+        border-bottom-width: 32px;
+        border-bottom-width: 2rem;
+        border-block-start-width: 1rem;
+        border-block-end-width: 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block, (16px, 32px, 48px));
+      }
+
+      @include expect {
+        _error: "More than two arguments supplied with 'block' dimension";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-block: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'block-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block-start, 16px);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-top: 1rem;
+        margin-block-start: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), block-start, 16px);
+      }
+
+      @include expect {
+        border-top-width: 16px;
+        border-top-width: 1rem;
+        border-block-start-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block-start, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin-top: 16px;
+        margin-block-start: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block-end, 16px);
+      }
+
+      @include expect {
+        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        margin-block-end: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((border width), block-end, 16px);
+      }
+
+      @include expect {
+        border-bottom-width: 16px;
+        border-bottom-width: 1rem;
+        border-block-end-width: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, block-end, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin-bottom: 16px;
+        margin-block-end: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for the dimension 'block-size'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property("", block-size, 16px);
+      }
+
+      @include expect {
+        height: 16px;
+        height: 1rem;
+        block-size: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(max, block-size, 16px);
+      }
+
+      @include expect {
+        max-height: 16px;
+        max-height: 1rem;
+        max-block-size: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property("", block-size, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        height: 16px;
+        block-size: 16px;
+      }
+
+    }
+
+  }
+
+  @include it("errors when 3 property name parts are passed") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((foo bar baz), inline, 16px);
+      }
+
+      @include expect {
+        _error: "Expected at most two property name parts";
+      }
+
+    }
+
+  }
+
+  @include it("errors on invalid dimensions") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, top, 16px);
+      }
+
+      @include contains {
+        _error: "'top' is a physical dimension, use its logical equivilant";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, foo, 16px);
+      }
+
+      @include contains {
+        _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
+}
