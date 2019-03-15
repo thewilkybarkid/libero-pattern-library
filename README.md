@@ -94,9 +94,9 @@ The build process uses a Node.js container image to build all assets, and copy t
 `export/` can then be packaged to be released on Github, or reused elsewhere.
 
 
-### Styling
+## Styling
 
-#### CSS Custom Properties
+### CSS Custom Properties
 These guidelines govern the use of custom properties in this codebase:
 
 1. constant values should be defined in SCSS; there is no need to express these as custom properties
