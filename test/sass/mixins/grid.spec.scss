@@ -1,0 +1,36 @@
+@import "../test";
+@import "../../../source/css/sass/mixins/grid";
+
+@include describe("@mixin base-grid") {
+
+  @include it("generates correct fallbacks") {
+
+    @include assert() {
+
+      @include output {
+        @include base-grid(1232px);
+      }
+
+      @include expect {
+        max-width: 1232px;
+        max-width: 77rem;
+        max-inline-size: 77rem;
+        @include margin(auto, inline);
+        @include padding(1.6%, inline);
+        box-sizing: content-box;
+
+        @supports (display: grid) and (--custom: property) {
+          display: grid;
+          max-width: unset;
+          max-inline-size: unset;
+          @include margin(unset, inline);
+          @include padding(unset, inline);
+          box-sizing: border-box;
+        }
+      }
+
+    }
+
+  }
+
+}

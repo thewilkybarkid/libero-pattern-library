@@ -1,7 +1,0 @@
-{% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['grid', 'grid--single-column', 'wrapper']) }) -%}
-
-<div {%- include 'atoms-attributes' %}>
-
-  {%- include 'atoms-text' with {nodes: content} -%}
-
-</div>

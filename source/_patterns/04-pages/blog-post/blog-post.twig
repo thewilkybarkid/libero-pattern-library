@@ -1,3 +1,17 @@
-{% include 'organisms-content-header' with contentHeader only %}
-
-{% include 'templates-single-column-grid' with {content: body} only %}
+{% include 'templates-page-grid' with {
+  main: {
+    template: 'templates-content-grid',
+    arguments: {
+      content: [
+        {
+          template: 'organisms-content-header',
+          arguments: contentHeader,
+        },
+        {
+          area: 'primary',
+          content: body,
+        },
+      ],
+    },
+  },
+} only %}

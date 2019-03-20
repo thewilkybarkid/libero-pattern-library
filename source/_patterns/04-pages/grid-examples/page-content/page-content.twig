@@ -8,10 +8,16 @@
           arguments: contentHeader,
         },
         {
+          area: 'menu',
+          content: menu|default([]),
+        },
+        {
           area: 'primary',
-          content: body|merge([
-            {template: 'organisms-item-tags', arguments: tags},
-          ]),
+          content: primary,
+        },
+        {
+          area: 'secondary',
+          content: secondary|default([]),
         },
       ],
     },

@@ -1,0 +1,3 @@
+@function get-overall-width($columns) {
+  @return calc((#{$columns} * var(--GRID-COLUMN-WIDTH)) + (#{$columns - 1} * var(--GRID-COLUMN-GAP)));
+}

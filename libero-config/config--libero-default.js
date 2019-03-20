@@ -17,8 +17,12 @@ config.data.breakpoint.site.medium_in_px = 730;
 config.data.breakpoint.site.wide_in_px = 900;
 config.data.breakpoint.site.x_wide_in_px = 1200;
 
-config.data.grid = {};
+config.data.grid = { edge_space: {} };
 config.data.grid.max_width_in_px = 1114;
+config.data.grid.main_column_count = 12;
+config.data.grid.edge_space.medium_in_vw = 7;
+config.data.grid.edge_space.large_in_vw = 14;
+config.data.grid.column_gap_in_percent = 1.6;
 
 config.data.color = { primary: {}, text: {} };
 config.data.color.background = Color('#fff');

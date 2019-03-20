@@ -10,21 +10,14 @@
 .content-header {
   color: $color-text-normal;
   text-align: center;
-  @include blg-spacing("block-start", "medium");
-  @include blg-spacing("block-end", "small");
-
-  &:after {
-    @include divider(block-end);
-    content: "";
-    display: block;
-    @include padding($baselinegrid-space-small - 1, "block-start");
-    @include inline-size(100%);
-  }
+  @include blg-spacing("block-start", "medium", "margin");
+  @include blg-spacing("block-end", "small", "margin");
+  @include divider("block-end");
 }
 
 .content-header__title {
   @include margin(0, "block-start");
-  @include blg-spacing("block-end", "small", "margin");
+  @include blg-spacing("block-end", "medium", "margin");
 }
 
 .content-header__title--xx-short {

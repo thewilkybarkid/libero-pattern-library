@@ -1,16 +1,17 @@
-@import "mixins/spacing";
+@import "mixins/media-query";
+@import "variables/grid";
 
-.wrapper {
-  @include wrapper();
-}
+:root {
+  --GRID-COLUMN-GAP: #{$grid-column_gap};
+  --GRID-EDGE-SPACE: #{$grid-edge_space-medium};
+  --GRID-COLUMN-WIDTH: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$grid-main_column_count - 1})) / #{$grid-main_column_count});
 
-.grid {
-  @supports (display: grid) {
-    display: grid;
+  @include mq($from: medium) {
+    --GRID-EDGE-SPACE: #{$grid-edge_space-large};
   }
-  // consider setting some sensible gap defaults here.
-}
 
-.grid--single-column {
-  //@include margin(1.6%, "inline");
+  @include mq($from: x-wide) {
+    --GRID-COLUMN-GAP: #{($grid-max_width * $grid-column_gap) / 100%};
+    --GRID-COLUMN-WIDTH: calc((#{$grid-max_width} - (var(--GRID-COLUMN-GAP) * #{$grid-main_column_count - 1})) / #{$grid-main_column_count});
+  }
 }

@@ -239,19 +239,3 @@
 @mixin small-spacing() {
   @include blg-spacing("block-end", "small");
 }
-
-@mixin wrapper() {
-  box-sizing: content-box;
-  @include max-inline-size($grid-max_width);
-  margin: auto;
-
-  @include padding(7%, "inline");
-
-  @include mq($media-type: screen, $from: medium) {
-    @include padding(14%, "inline");
-  }
-
-  @include mq($media-type: screen, $from: x-wide) {
-    @include padding(3%, "inline");
-  }
-}

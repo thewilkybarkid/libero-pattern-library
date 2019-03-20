@@ -93,6 +93,50 @@ The build process uses a Node.js container image to build all assets, and copy t
   
 `export/` can then be packaged to be released on Github, or reused elsewhere.
 
+## Grid system
+### Concept
+The grid comprises a full-viewport-width grid within which is a central section of 12<sup>*</sup> equal-sized columns. The central 12 columns are collectively known as the `main` part of the grid, which holds the content of the page. The full width of the grid from viewport edge to viewport edge is known as the `full` width grid. The `full` width grid exists in order to allow items of content to give the impression of breaking out of the (`main` part of the) grid. It should also make it easier to implement [subgrids](https://www.w3.org/TR/css-grid-2/#subgrids) when they get browser support.
+
+<sup>*</sup>12 is the default number of columns, but this can be configured. See "Configuring the grid" below. 
+
+### Implementation
+The grid is implemented using CSS grid. Non-supporting browsers will display a single centred column, constrained to the specified max width, with a minimum inline start / end page gutter set the same as the grid column gap. 
+
+Page templates implementing this grid system should use the `03-templates/page-grid/page-grid.twig` grid template directly. `page-grid.twig` sets up the rows of the top level explicit grid, and handles loading of the lower order grids that directly control content layout with respect to the grid columns (e.g. `03-templates/content-grid/content-grid.twig`).  
+
+In order to preserve the capabilities of seeming to break out of the grid, and of attempting to be future-friendly to sub grids, every lower order grid (i.e. below the level of `page-grid`) must span the `full` width of the grid, and, in addition to anything else the template does, supply css classes to allow its items to span the `full` or `main` width of the grid. For example the `content-grid` provides the css classes `content-grid__item--full` and `content-grid__item--main` respectively.
+
+All nested levels of grid must conform to this `main` / `full` model in order to retain the benefits of this approach.
+
+#### Grid templates
+
+##### `page-grid`
+The top level page grid. It sets up the rows of the top level explicit grid as named areas `start`, `main` and `end`. Typically `start` and `end` would be used to hold the site header and site footer respectively, with everything else located in the `main` row. This is the template to include directly in implementations. Lower level grids, into which the page content actually loads, should be included by `page-grid`.
+
+###### grid areas recommended usage
+- `start`: put the site header here
+- `main`: put everything between the site header and footer here       
+- `end`: put the site footer here
+
+##### `content-grid`
+The grid for all content pages (i.e. not listing pages). In addition to the capability to specify if content spans the entirety of the `main` or `full` sections, this grid defines areas called `primary`, `secondary`, and `menu`. These names are used for both the CSS grid area names and the twig template section names. This grid lays out content with a very similar layout to that of an eLife article.
+
+###### grid areas recommended usage
+- `pimary`: the content that makes this page what it is
+- `secondary`: supplementary info, typically used for asides       
+- `menu`: a menu / navigation appropriate to the content level
+   
+
+#### Configuring the grid
+The grid may be configured using the following Sass variables:
+
+- `$grid-max_width` the max width of the `main` grid section in pixels (default: `1114px`)
+- `$grid-main_column_count` the number of columns in the `main` area of the grid (default: `12`).
+- `$grid-column_gap` the width between grid columns, also the minimum inline start / end page gutter when CSS grid is not supported by the browser; may be expressed in any css length unit (default: `1.6%`)  
+- `$grid-edge_space-medium`: a medium sized inline start / end page gutter (default: `7vw`), usage controlled by a breakpoint
+- `$grid-edge_space-large`: a large inline start / end page gutter (default: `14vw`), usage controlled by a breakpoint
+
+     
 
 ## Styling
 
@@ -140,7 +184,7 @@ These guidelines govern the use of custom properties in this codebase:
            
     }
     ``` 
- 
+
 Getting help
 ------------
 
