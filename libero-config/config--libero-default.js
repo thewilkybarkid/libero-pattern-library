@@ -18,6 +18,7 @@ config.data.breakpoint.site.wide_in_px = 900;
 config.data.breakpoint.site.x_wide_in_px = 1200;
 
 config.data.grid = { edge_space: {} };
+config.data.grid.min_width_in_px = 320;
 config.data.grid.max_width_in_px = 1114;
 config.data.grid.main_column_count = 12;
 config.data.grid.edge_space.medium_in_vw = 7;
