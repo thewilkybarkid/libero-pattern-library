@@ -31,7 +31,7 @@
     "sass-mq": "^5.0.0",
     "sass-rem": "^2.0.1",
     "sass-true": "^4.0.0",
-    "sinon": "^7.1.1",
+    "sinon": "^7.2.7",
     "sinon-as-promised": "^4.0.3",
     "stylelint": "^9.4.0",
     "stylelint-use-logical": "^1.1.0"
