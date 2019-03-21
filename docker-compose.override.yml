@@ -6,14 +6,17 @@ services:
       context: .
       target: gulp
     command: bash -c "npx gulp assemble --environment=development --sass-lint=${LINT_SASS} && npx gulp watch --environment=development --sass-lint=${LINT_SASS}"
+    restart: on-failure
     volumes:
       - ./libero-config:/app/libero-config
       - ./source:/app/source
+      - ./test:/app/test
   watch-build:
     build:
       context: .
       target: build
     command: core/watch
+    restart: on-failure
     volumes:
       - public:/app/public
       - ./source:/app/source:ro
