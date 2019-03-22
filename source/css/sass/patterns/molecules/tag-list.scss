@@ -43,10 +43,5 @@
 }
 
 .tag-list__link {
-  color: inherit;
-  text-decoration: inherit;
-
-  &:hover {
-    color: $color-primary-dark;
-  }
+  @include covert-link();
 }

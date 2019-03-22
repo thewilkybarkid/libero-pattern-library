@@ -3,6 +3,7 @@
 @import "../variables/color";
 @import "../variables/font";
 @import "spacing";
+@import "utilities";
 
 @mixin set-font-size-and-line-height($font-size, $block-size: $baselinegrid-space-small) {
   @include rem(font-size, $font-size);
@@ -108,4 +109,13 @@
 
 @mixin label-tag-typography() {
   @include _label-typography($color-primary-normal);
+}
+
+@mixin covert-link($hover-color: $color-primary-dark) {
+  @include inherit-all($ensure: color text-decoration);
+  cursor: pointer;
+
+  &:hover {
+    color: $hover-color;
+  }
 }

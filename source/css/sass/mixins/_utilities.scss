@@ -1,0 +1,7 @@
+@mixin inherit-all($ensure: ()) {
+  @each $property in $ensure {
+    #{$property}: inherit;
+  }
+
+  all: inherit;
+}
