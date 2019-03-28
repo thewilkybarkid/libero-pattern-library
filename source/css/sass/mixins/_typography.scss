@@ -119,3 +119,9 @@
     color: $hover-color;
   }
 }
+
+@mixin list-style-none() {
+  @include padding(0, inline-start);
+  // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
+  overflow: auto;
+}

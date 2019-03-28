@@ -11,6 +11,20 @@ contentHeader:
           text: Эволюционная биология
       - content:
           text: Биология растений
+  meta:
+    attributes:
+      aria-label: Подробности публикации
+    items:
+      - attributes:
+          aria-label: Тип статьи
+        content:
+          attributes:
+            href: '#'
+          text: Научная статья
+      - attributes:
+          aria-label: Номер выпуска
+        content:
+          text: Номер 1
 
 body:
   - template: molecules-section

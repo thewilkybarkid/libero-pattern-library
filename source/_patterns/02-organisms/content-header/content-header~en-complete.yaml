@@ -1,0 +1,26 @@
+contentTitle:
+  text: Content title
+categories:
+  attributes:
+    aria-label: Category listings that include this article
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Cell Biology
+    - content:
+        text: Epidemiology and Global Health
+meta:
+  attributes:
+    aria-label: Publication details
+  items:
+    - attributes:
+        aria-label: Type of article
+      content:
+        attributes:
+          href: '#'
+        text: Research Article
+    - attributes:
+        aria-label: Issue number
+      content:
+        text: Issue 1

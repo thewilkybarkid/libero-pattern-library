@@ -11,6 +11,20 @@ contentHeader:
           text: 進化生物学
       - content:
           text: 植物生物学
+  meta:
+    attributes:
+      aria-label: 出版物の詳細
+    items:
+      - attributes:
+          aria-label: 記事の種類
+        content:
+          attributes:
+            href: '#'
+          text: 研究論文
+      - attributes:
+          aria-label: 発行番号
+        content:
+          text: 第1号
 
 body:
   - template: molecules-section

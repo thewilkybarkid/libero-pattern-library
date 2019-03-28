@@ -9,6 +9,20 @@ contentHeader:
           text: Evolutionary Biology
       - content:
           text: Plant Biology
+  meta:
+    attributes:
+      aria-label: Publication details
+    items:
+      - attributes:
+          aria-label: Type of article
+        content:
+          attributes:
+            href: '#'
+          text: Research Article
+      - attributes:
+          aria-label: Issue number
+        content:
+          text: Issue 1
 
 body:
   - template: molecules-section

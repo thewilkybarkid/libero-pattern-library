@@ -12,6 +12,20 @@ contentHeader:
           text: علم الأحياء التطوري
       - content:
           text: علم الأحياء النباتية
+  meta:
+    attributes:
+      aria-label: تفاصيل المنشور
+    items:
+      - attributes:
+          aria-label: نوع المقالة
+        content:
+          attributes:
+            href: '#'
+          text: مقاله بحثيه
+      - attributes:
+          aria-label: رقم الإصدار
+        content:
+          text: العدد ١
 
 body:
   - template: molecules-section
