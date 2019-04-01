@@ -38,7 +38,7 @@
         &[dir="rtl"] {
           border-right: 1px solid rgb(224, 224, 224);
         }
-        html[dir] & {
+        html[dir][dir] & {
           border-inline-start: 1px solid rgb(224, 224, 224);
         }
       }
@@ -64,7 +64,7 @@
         &[dir="rtl"] {
           border-left: 1px solid rgb(224, 224, 224);
         }
-        html[dir] & {
+        html[dir][dir] & {
           border-inline-end: 1px solid rgb(224, 224, 224);
         }
       }

@@ -16,7 +16,7 @@
 }
 
 @mixin _when-logical {
-  html[dir] & {
+  html[dir][dir] & {
     @content;
   }
 }

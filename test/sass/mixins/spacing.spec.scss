@@ -442,7 +442,7 @@
           padding-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1rem;
           padding-inline-end: 2rem;
         }
@@ -468,7 +468,7 @@
           padding-left: 2em;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1em;
           padding-inline-end: 2em;
         }
@@ -498,7 +498,7 @@
           padding-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1rem;
           padding-inline-end: 2rem;
         }
@@ -542,7 +542,7 @@
           padding-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 0;
           padding-inline-end: 2rem;
         }
@@ -570,7 +570,7 @@
           padding-left: 0;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1rem;
           padding-inline-end: 0;
         }
@@ -627,7 +627,7 @@
         &[dir="rtl"] {
           padding-right: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 0;
         }
 
@@ -656,7 +656,7 @@
           padding-right: 16px;
           padding-right: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1rem;
         }
       }
@@ -677,7 +677,7 @@
         &[dir="rtl"] {
           padding-right: 1em;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1em;
         }
       }
@@ -701,7 +701,7 @@
           padding-right: 16px;
           padding-right: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 1rem;
         }
       }
@@ -743,7 +743,7 @@
         &[dir="rtl"] {
           padding-left: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-end: 0;
         }
 
@@ -772,7 +772,7 @@
           padding-left: 16px;
           padding-left: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-end: 1rem;
         }
       }
@@ -794,7 +794,7 @@
         &[dir="rtl"] {
           padding-left: 1em;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-end: 1em;
         }
       }
@@ -818,7 +818,7 @@
           padding-left: 16px;
           padding-left: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-end: 1rem;
         }
       }
@@ -1608,7 +1608,7 @@
           margin-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1rem;
           margin-inline-end: 2rem;
         }
@@ -1634,7 +1634,7 @@
           margin-left: 2em;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1em;
           margin-inline-end: 2em;
         }
@@ -1664,7 +1664,7 @@
           margin-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1rem;
           margin-inline-end: 2rem;
         }
@@ -1708,7 +1708,7 @@
           margin-left: 2rem;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 0;
           margin-inline-end: 2rem;
         }
@@ -1736,7 +1736,7 @@
           margin-left: 0;
         }
 
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1rem;
           margin-inline-end: 0;
         }
@@ -1793,7 +1793,7 @@
         &[dir="rtl"] {
           margin-right: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 0;
         }
 
@@ -1822,7 +1822,7 @@
           margin-right: 16px;
           margin-right: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1rem;
         }
       }
@@ -1843,7 +1843,7 @@
         &[dir="rtl"] {
           margin-right: 1em;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1em;
         }
       }
@@ -1867,7 +1867,7 @@
           margin-right: 16px;
           margin-right: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 1rem;
         }
       }
@@ -1909,7 +1909,7 @@
         &[dir="rtl"] {
           margin-left: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-end: 0;
         }
 
@@ -1938,7 +1938,7 @@
           margin-left: 16px;
           margin-left: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-end: 1rem;
         }
       }
@@ -1960,7 +1960,7 @@
         &[dir="rtl"] {
           margin-left: 1em;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-end: 1em;
         }
       }
@@ -1984,7 +1984,7 @@
           margin-left: 16px;
           margin-left: 1rem;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-end: 1rem;
         }
       }
@@ -2375,7 +2375,7 @@
         &[dir="rtl"] {
           margin-right: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-start: 0;
         }
         html[dir="ltr"] &:not([dir]),
@@ -2386,7 +2386,7 @@
         &[dir="rtl"] {
           padding-right: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-start: 0;
         }
       }
@@ -2413,7 +2413,7 @@
         &[dir="rtl"] {
           margin-left: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           margin-inline-end: 0;
         }
         html[dir="ltr"] &:not([dir]),
@@ -2424,7 +2424,7 @@
         &[dir="rtl"] {
           padding-left: 0;
         }
-        html[dir] & {
+        html[dir][dir] & {
           padding-inline-end: 0;
         }
       }
