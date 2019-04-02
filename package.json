@@ -25,6 +25,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "jexl": "^1.1.4",
     "minimist": "^1.2.0",
+    "modularscale-sass": "^3.0.8",
     "normalize.css": "^8.0.1",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^2.0.0",

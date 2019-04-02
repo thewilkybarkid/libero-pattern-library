@@ -3,7 +3,7 @@
 
 .content-meta {
   @include list-style-none();
-  @include body-spacing();
+  @include block-spacing();
 }
 
 .content-meta__item {

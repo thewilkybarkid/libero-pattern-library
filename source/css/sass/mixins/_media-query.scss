@@ -1,7 +1,7 @@
 @import "../variables/breakpoint";
 @import "../variables/font";
 
-$mq-base-font-size: $font-size-base;
+$mq-base-font-size: $font-size;
 
 $mq-breakpoints: (
   x-small: $breakpoint-site-x_small,

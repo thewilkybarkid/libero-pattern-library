@@ -15,16 +15,27 @@
         max-width: 1232px;
         max-width: 77rem;
         max-inline-size: 77rem;
-        @include margin(auto, inline);
-        @include padding(1.6%, inline);
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-block: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-inline: auto;
+        padding-left: 1.6%;
+        padding-right: 1.6%;
+        padding-inline: 1.6%;
         box-sizing: content-box;
 
         @supports (display: grid) and (--custom: property) {
           display: grid;
           max-width: unset;
           max-inline-size: unset;
-          @include margin(unset, inline);
-          @include padding(unset, inline);
+          margin-left: unset;
+          margin-right: unset;
+          margin-inline: unset;
+          padding-left: unset;
+          padding-right: unset;
+          padding-inline: unset;
           box-sizing: border-box;
         }
       }

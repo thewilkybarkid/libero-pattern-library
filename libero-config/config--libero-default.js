@@ -3,7 +3,7 @@ const Color = require('color');
 const config = { data: {}, layerAllocations: {} };
 
 config.data.baselinegrid = {space: {}};
-config.data.baselinegrid.space.extra_small_in_px = 12;
+config.data.baselinegrid.space.extra_small_in_px = '!expression font.size_in_px * 0.75';
 config.data.baselinegrid.space.small_in_px = '!expression baselinegrid.space.extra_small_in_px * 2';
 config.data.baselinegrid.space.smallish_in_px = '!expression baselinegrid.space.small_in_px * 1.5';
 config.data.baselinegrid.space.medium_in_px = '!expression baselinegrid.space.small_in_px * 2';
@@ -24,6 +24,7 @@ config.data.grid.main_column_count = 12;
 config.data.grid.edge_space.medium_in_vw = 7;
 config.data.grid.edge_space.large_in_vw = 14;
 config.data.grid.column_gap_in_percent = 1.6;
+config.data.grid.divider_size_in_px = 1;
 
 config.data.color = { primary: {}, text: {} };
 config.data.color.background = Color('#fff');
@@ -48,34 +49,16 @@ config.data.color.success_dark = Color('#569037');
 config.data.color.attention = Color('#cf0c4e');
 config.data.color.warning = Color('#e65100');
 
-config.data.content_header = { title: { size: {} } };
-config.data.content_header.title.size.xx_small_in_px = 18;
-config.data.content_header.title.size.x_small_in_px = 20;
-config.data.content_header.title.size.small_in_px = 26;
-config.data.content_header.title.size.medium_in_px = 30;
-config.data.content_header.title.size.large_in_px = 36;
-config.data.content_header.title.size.x_large_in_px = 41;
-config.data.content_header.title.size.xx_large_in_px = 46;
-config.data.content_header.title.size.xxx_large_in_px = 52;
-
-config.data.font = { size: {}, letterspacing: {} };
+config.data.font = { letterspacing: {} };
 config.data.font.primary = '"Noto Serif", serif';
 config.data.font.secondary = '"Noto Sans", Arial, Helvetica, sans-serif';
 config.data.font.monospace = '"Courier 10 Pitch", Courier, monospace';
-config.data.font.size.base_in_px = 16;
-config.data.font.size.h1_in_px = 36;
-config.data.font.size.h2_in_px = 26;
-config.data.font.size.h3_in_px = 22;
-config.data.font.size.h4_in_px = 20;
-config.data.font.size.h5_in_px = 18;
-config.data.font.size.h6_in_px = 16;
-config.data.font.size.caption_in_px = 13;
-config.data.font.size.label_in_px = 11;
+config.data.font.size_in_px = 16;
 config.data.font.letterspacing.label_in_px = 0.5;
 
 // Specify the top level properties to be distributed to layers (sass, js & templates)
 config.layerAllocations = {
-  sass: ['baselinegrid', 'breakpoint', 'color', 'content_header', 'font', 'grid'],
+  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid'],
   js: ['breakpoint'],
   // template: ['breakpoint']
 };

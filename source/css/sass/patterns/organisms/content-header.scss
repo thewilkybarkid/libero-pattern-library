@@ -1,130 +1,127 @@
-@import "../../variables/baselinegrid";
-@import "../../variables/color";
-@import "../../variables/content_header";
 @import "../../functions/types";
+@import "../../mixins/scale";
 @import "../../mixins/decorations";
 @import "../../mixins/media-query";
 @import "../../mixins/spacing";
-@import "../../mixins/typography";
+@import "../../variables/baselinegrid";
+@import "../../variables/grid";
 
 .content-header {
-  color: $color-text-normal;
   text-align: center;
-  @include blg-spacing("block-start", "medium", "margin");
-  @include blg-spacing("block-end", "small", "margin");
-  @include divider("block-end");
+  @include padding($baselinegrid-space-medium, block-start);
+  @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
+  @include divider(block-end);
 }
 
 .content-header__title {
-  @include margin(0, "block-start");
-  @include blg-spacing("block-end", "small", "margin");
+  @include block-spacing($end: $baselinegrid-space-small);
 
   &:last-child {
-    @include blg-spacing("block-end", "medium", "margin");
+    @include block-spacing($end: $baselinegrid-space-medium);
   }
 }
 
 .content-header__title--xx-short {
-  @include rem(font-size, $content_header-title-size-xx_large);
+  @include rem(font-size, scale(9));
 
   @include mq($from: small) {
-    @include rem(font-size, $content_header-title-size-xxx_large);
+    @include rem(font-size, scale(10));
   }
 }
 
 .content-header__title--x-short {
-  @include rem(font-size, $content_header-title-size-x_large);
+  @include rem(font-size, scale(8));
 
   @include mq($from: medium) {
-    @include rem(font-size, $content_header-title-size-xx_large);
+    @include rem(font-size, scale(9));
   }
 
   @include mq($from: wide) {
-    @include rem(font-size, $content_header-title-size-xxx_large);
+    @include rem(font-size, scale(10));
   }
 }
 
 .content-header__title--short {
-  @include rem(font-size, $content_header-title-size-medium);
+  @include rem(font-size, scale(6));
 
   @include mq($from: small) {
-    @include rem(font-size, $content_header-title-size-large);
+    @include rem(font-size, scale(7));
   }
 
   @include mq($from: medium) {
-    @include rem(font-size, $content_header-title-size-x_large);
+    @include rem(font-size, scale(8));
   }
 
   @include mq($from: wide) {
-    @include rem(font-size, $content_header-title-size-xx_large);
+    @include rem(font-size, scale(9));
   }
 
   @include mq($from: x-wide) {
-    @include rem(font-size, $content_header-title-size-xxx_large);
+    @include rem(font-size, scale(10));
   }
 }
 
 .content-header__title--medium {
-  @include rem(font-size, $content_header-title-size-small);
+  @include rem(font-size, scale(4));
 
   @include mq($from: small) {
-    @include rem(font-size, $content_header-title-size-medium);
+    @include rem(font-size, scale(6));
   }
 
   @include mq($from: medium) {
-    @include rem(font-size, $content_header-title-size-large);
+    @include rem(font-size, scale(7));
   }
 
   @include mq($from: wide) {
-    @include rem(font-size, $content_header-title-size-x_large);
+    @include rem(font-size, scale(8));
   }
 
   @include mq($from: x-wide) {
-    @include rem(font-size, $content_header-title-size-xxx_large);
+    @include rem(font-size, scale(10));
   }
 }
 
 .content-header__title--long {
-  @include rem(font-size, $content_header-title-size-x_small);
+  @include rem(font-size, scale(2));
 
   @include mq($from: small) {
-    @include rem(font-size, $content_header-title-size-small);
+    @include rem(font-size, scale(4));
   }
 
   @include mq($from: medium) {
-    @include rem(font-size, $content_header-title-size-large);
+    @include rem(font-size, scale(7));
   }
 
   @include mq($from: x-wide) {
-    @include rem(font-size, $content_header-title-size-x_large);
+    @include rem(font-size, scale(8));
   }
 
 }
 
 .content-header__title--x-long {
-  @include rem(font-size, $content_header-title-size-x_small);
+  @include rem(font-size, scale(2));
 
   @include mq($from: medium) {
-    @include rem(font-size, $content_header-title-size-small);
+    @include rem(font-size, scale(4));
   }
 
   @include mq($from: wide) {
-    @include rem(font-size, $content_header-title-size-small);
+    @include rem(font-size, scale(4));
   }
 
   @include mq($from: x-wide) {
-    @include rem(font-size, $content_header-title-size-medium);
+    @include rem(font-size, scale(6));
   }
 }
 
 .content-header__title--xx-long {
-  @include rem(font-size, $content_header-title-size-xx_small);
+  @include rem(font-size, scale(1));
 
   @include mq($from: small) {
-    @include rem(font-size, $content_header-title-size-x_small);
+    @include rem(font-size, scale(2));
   }
 
   @include mq($from: wide) {
-    @include rem(font-size, $content_header-title-size-small);
+    @include rem(font-size, scale(4));
   }
 }

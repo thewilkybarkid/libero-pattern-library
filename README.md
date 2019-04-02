@@ -184,6 +184,14 @@ These guidelines govern the use of custom properties in this codebase:
            
     }
     ``` 
+ 
+### Margins
+
+This codebase follows [single-direction margin declarations](https://csswizardry.com/2012/06/single-direction-margin-declarations/), that is margins should only be specified on `block-end` and `inline-end`. There may be exceptions, though.
+
+### Padding
+
+Margins are generally preferred to padding for whitespace (due to [margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)), but the latter can be used when relevant.
 
 Getting help
 ------------

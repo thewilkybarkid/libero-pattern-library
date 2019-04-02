@@ -1,11 +1,12 @@
 @import "../mixins/logical-properties";
 @import "../variables/color";
+@import "../variables/grid";
 
 @mixin divider($dimension) {
 
-  @if index(("inline", "inline-start", "inline-end", "block", "block-start", "block-end"), $dimension) {
-    @include logical-property(border, $dimension, (1px solid $color-text-dividers,), $to-rem: false);
-  } @else if index(("top", "bottom", "left", "right"), $dimension) {
+  @if index((inline, inline-start, inline-end, block, block-start, block-end), $dimension) {
+    @include logical-property(border, $dimension, ($grid-divider_size solid $color-text-dividers,), $to-rem: false);
+  } @else if index((top, bottom, left, right), $dimension) {
     @include _error("'#{$dimension}' is a physical dimension, use its logical equivilant");
   } @else {
     @include _error("Unknown dimension '#{$dimension}'");

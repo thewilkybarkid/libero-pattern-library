@@ -94,7 +94,7 @@ module.exports = class ConfigDistributor {
           value = `${value}%`;
         } else if (key.endsWith('_in_px')) {
           key = key.substring(0, key.length - 6);
-          value = `${value}px`;
+          value = Math.round(value) + 'px';
         } else if (key.endsWith('_in_vw')) {
           key = key.substring(0, key.length - 6);
           value = `${value}vw`;

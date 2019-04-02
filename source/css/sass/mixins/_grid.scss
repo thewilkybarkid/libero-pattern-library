@@ -1,9 +1,11 @@
 @import "spacing";
 @import "types";
 @import "../functions/grid";
+@import "../variables/grid";
 
 @mixin base-grid($max-inline-size) {
   @include max-inline-size($max-inline-size);
+  @include block-spacing($end: 0);
   @include margin(auto, inline);
   @include padding($grid-column_gap, inline);
   box-sizing: content-box;

@@ -1,18 +1,19 @@
 @import "../../mixins/sizes";
 @import "../../mixins/typography";
+@import "../../variables/baselinegrid";
 
 .tag-list {
-  @include blg-spacing("block-end", "small", "margin");
+  @include block-spacing();
 }
 
 .tag-list__title {
   @include label-content-typography();
-  @include padding(0, "block");
+  @include block-spacing($end: 0);
 }
 
 .tag-list__list {
   @include list-style-none();
-  @include blg-spacing("block-end", "small", "margin");
+  @include label-tag-typography();
 }
 
 .tag-list__list--single-line {
