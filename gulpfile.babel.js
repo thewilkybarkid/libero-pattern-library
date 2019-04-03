@@ -183,7 +183,7 @@ const exportFonts = () =>
 
 const exportTemplates = () =>
   gulp.src(config.files.src.templates)
-  // Rename files to standard Twig usage
+    // Rename files to standard Twig usage
     .pipe(rename(path => {
       path.basename = path.basename.replace(/^_/, '');
       path.extname = '.html.twig';
