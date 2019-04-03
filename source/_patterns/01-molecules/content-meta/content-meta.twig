@@ -1,4 +1,4 @@
-{%- set attributes = {class: ['content-meta']}|merge_recursive(attributes|default({})) -%}
+{%- set attributes = {class: 'content-meta'}|merge_recursive(attributes|default({})) -%}
 
 <ul {%- include('atoms-attributes') -%}>
 
@@ -7,7 +7,7 @@
     {%- with item only -%}
       {%- block item -%}
 
-        {%- set attributes = {class: ['content-meta__item']}|merge_recursive(attributes|default({})) -%}
+        {%- set attributes = {class: 'content-meta__item'}|merge_recursive(attributes|default({})) -%}
 
         <li {%- include('atoms-attributes') -%}>
 
@@ -15,7 +15,7 @@
             {%- block content -%}
 
               {%- if attributes.href is defined -%}
-                {%- set attributes = {class: ['content-meta__link']}|merge_recursive(attributes|default({})) -%}
+                {%- set attributes = {class: 'content-meta__link'}|merge_recursive(attributes) -%}
               {%- endif -%}
 
               {%- include 'atoms-link' -%}

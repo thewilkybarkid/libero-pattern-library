@@ -34,7 +34,7 @@
 
           {%- with arguments|merge({_template: template}) only -%}
 
-            {%- set attributes = {class: ['content-grid__item']}|merge_recursive(attributes|default({})) -%}
+            {%- set attributes = {class: 'content-grid__item'}|merge_recursive(attributes|default({})) -%}
 
             {%- include _template -%}
 
