@@ -1,0 +1,47 @@
+@import "../../mixins/sizes";
+@import "../../mixins/typography";
+@import "../../variables/baselinegrid";
+
+.tag-list {
+  @include block-spacing();
+}
+
+.tag-list__title {
+  @include label-content-typography();
+  @include block-spacing($end: 0);
+}
+
+.tag-list__list {
+  @include list-style-none();
+  @include label-tag-typography();
+}
+
+.tag-list__list--single-line {
+  @include truncate-with-ellipsis();
+}
+
+.tag-list__item {
+  display: inline-block;
+  @include label-tag-typography();
+
+  &:after {
+    display: inline;
+    content: ",\a0";
+  }
+
+  &:lang(ar):after {
+    content: "،\a0";
+  }
+
+  &:lang(ja):after {
+    content: "、";
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}
+
+.tag-list__link {
+  @include covert-link();
+}

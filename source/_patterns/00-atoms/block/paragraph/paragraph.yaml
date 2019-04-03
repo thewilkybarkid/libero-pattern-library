@@ -1,0 +1,10 @@
+text:
+  - 'It''s not '
+  - template: atoms-italic
+    arguments:
+      text: just
+  - ' a question of conquering a summit previously unknown, but of tracing '
+  - template: atoms-italic
+    arguments:
+      text: step by step
+  - ' a new pathway to it.'

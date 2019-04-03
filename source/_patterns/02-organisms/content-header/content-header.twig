@@ -1,0 +1,60 @@
+{% set attributes = {class: ['content-header']}|merge_recursive(attributes|default({})) %}
+
+<header {%- include 'atoms-attributes' %}>
+
+  {%- block body -%}
+
+    {%- with categories|default({}) only -%}
+      {%- block categories -%}
+
+        {%- if items|default([])|length -%}
+          {%- include 'molecules-tag-list' with {list: _context|merge({singleLine: true})} only -%}
+        {%- endif -%}
+
+      {%- endblock categories -%}
+    {%- endwith -%}
+
+    {%- with contentTitle only -%}
+
+      {%- block title -%}
+
+        {% set length = include('atoms-heading')|striptags|trim|length %}
+
+        {% if length < 20 %}
+          {% set lengthClass = 'xx-short' %}
+        {% elseif length < 36 %}
+          {% set lengthClass = 'x-short' %}
+        {% elseif length < 46 %}
+          {% set lengthClass = 'short' %}
+        {% elseif length < 57 %}
+          {% set lengthClass = 'medium' %}
+        {% elseif length < 80 %}
+          {% set lengthClass = 'long' %}
+        {% elseif length < 120 %}
+          {% set lengthClass = 'x-long' %}
+        {% else %}
+          {% set lengthClass = 'xx-long' %}
+        {% endif %}
+
+        {% set attributes = {class: ['content-header__title', 'content-header__title--' ~ lengthClass]}|merge_recursive(attributes|default({})) %}
+        {% set level = 1 %}
+
+        {% include 'atoms-heading' %}
+
+      {%- endblock -%}
+
+    {%- endwith -%}
+
+    {%- with meta|default({}) only -%}
+      {%- block meta -%}
+
+        {%- if items|default([])|length -%}
+          {%- include 'molecules-content-meta' -%}
+        {%- endif -%}
+
+      {%- endblock meta -%}
+    {%- endwith -%}
+
+  {%- endblock -%}
+
+</header>

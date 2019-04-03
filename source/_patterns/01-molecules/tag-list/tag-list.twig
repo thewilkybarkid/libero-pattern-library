@@ -1,0 +1,62 @@
+{%- set attributes = {class: ['tag-list']}|merge_recursive(attributes|default({})) -%}
+
+<div {%- include('atoms-attributes') -%}>
+
+  {%- with title|default({}) only -%}
+    {%- block title -%}
+
+      {% if text is defined %}
+
+        {%- set attributes = {class: ['tag-list__title']}|merge_recursive(attributes|default({})) -%}
+        {%- include 'atoms-heading' with {level: level|default(4)} -%}
+
+      {% endif %}
+
+    {%- endblock title -%}
+  {%- endwith -%}
+
+  {%- with list only -%}
+    {%- block list -%}
+
+      {%- set attributes = {class: ['tag-list__list']}|merge_recursive(attributes|default({})) -%}
+
+      {%- if singleLine|default(false) -%}
+        {%- set attributes = {class: ['tag-list__list--single-line']}|merge_recursive(attributes|default({})) -%}
+      {%- endif -%}
+
+      <ul {%- include('atoms-attributes') -%}>
+
+        {%- for item in items -%}
+
+          {%- with item only -%}
+            {%- block item -%}
+
+              {%- set attributes = {class: ['tag-list__item']}|merge_recursive(attributes|default({})) -%}
+
+              <li {%- include('atoms-attributes') -%}>
+
+                {%- with content only -%}
+                  {%- block content -%}
+
+                    {%- if attributes.href is defined -%}
+                      {%- set attributes = {class: ['tag-list__link']}|merge_recursive(attributes|default({})) -%}
+                    {%- endif -%}
+
+                    {%- include 'atoms-link' -%}
+
+                  {%- endblock content -%}
+                {%- endwith -%}
+
+              </li>
+
+            {%- endblock item -%}
+          {%- endwith -%}
+
+        {%- endfor -%}
+
+      </ul>
+
+    {%- endblock list -%}
+  {%- endwith -%}
+
+</div>

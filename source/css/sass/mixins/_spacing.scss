@@ -1,25 +1,9 @@
-@import "validation";
+@import "logical-properties";
+@import "media-query";
 @import "sizes";
 @import "types";
-@import "../functions/validation";
-@import "../mixins/media-query";
+@import "validation";
 @import "../variables/baselinegrid";
-@import "../variables/breakpoint";
-@import "../variables/grid";
-
-@mixin _when-left-to-right {
-  html[dir="ltr"] &:not([dir]),
-  &[dir="ltr"] {
-    @content;
-  }
-}
-
-@mixin _when-right-to-left {
-  html[dir="rtl"] &:not([dir]),
-  &[dir="rtl"] {
-    @content;
-  }
-}
 
 // Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
 //  - document level: always specified, via the HTML element
@@ -49,125 +33,43 @@
       @include rem($space-type, $sizes);
     }
 
-  } @else if $dimension == "inline" {
+  } @else if $dimension == inline {
 
     @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
-
-      @if length($sizes) == 1 {
-
-        @include rem((
-          #{$space-type}-left: $sizes,
-          #{$space-type}-right: $sizes,
-        ));
-        #{$space-type}-inline: rem($sizes);
-
-      } @else {
-
-        $firstValue: nth($sizes, 1);
-        $secondValue: nth($sizes, 2);
-
-        @if $firstValue == $secondValue {
-
-          @include rem((
-            #{$space-type}-left: $firstValue,
-            #{$space-type}-right: $secondValue,
-          ));
-          #{$space-type}-inline: rem($firstValue);
-
-        } @else {
-
-          @include _when-left-to-right {
-            @include rem((
-              #{$space-type}-left: $firstValue,
-              #{$space-type}-right: $secondValue,
-            ));
-          }
-
-          @include _when-right-to-left {
-            @include rem((
-              #{$space-type}-right: $firstValue,
-              #{$space-type}-left: $secondValue,
-            ));
-          }
-
-          html[dir] & {
-            #{$space-type}-inline: rem($firstValue $secondValue);
-          }
-
-        }
-
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if $dimension == "inline-start" {
+  } @else if $dimension == inline-start {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'inline-start' dimension") {
-
-      @include _when-left-to-right {
-        @include rem(#{$space-type}-left, $sizes);
-      }
-      @include _when-right-to-left {
-        @include rem(#{$space-type}-right, $sizes);
-      }
-      html[dir] & {
-        #{$space-type}-inline-start: rem($sizes);
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if $dimension == "inline-end" {
+  } @else if $dimension == inline-end {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'inline-end' dimension") {
-
-      @include _when-left-to-right {
-        @include rem(#{$space-type}-right, $sizes);
-      }
-      @include _when-right-to-left {
-        @include rem(#{$space-type}-left, $sizes);
-      }
-      html[dir] & {
-        #{$space-type}-inline-end: rem($sizes);
-      }
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if $dimension == "block" {
+  } @else if $dimension == block {
 
     @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
-
-      @if length($sizes) == 2 {
-        @include rem((
-          #{$space-type}-top: nth($sizes, 1),
-          #{$space-type}-bottom: nth($sizes, 2),
-        ));
-      } @else {
-        @include rem((
-          #{$space-type}-top: $sizes,
-          #{$space-type}-bottom: $sizes,
-        ));
-      }
-      #{$space-type}-block: rem($sizes);
-
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if $dimension == "block-start" {
+  } @else if $dimension == block-start {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'block-start' dimension") {
-
-      @include rem(#{$space-type}-top, $sizes);
-      #{$space-type}-block-start: rem($sizes);
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if $dimension == "block-end" {
+  } @else if $dimension == block-end {
 
     @include _expect_single_value($sizes, "More than one size supplied with 'block-end' dimension") {
-
-      @include rem(#{$space-type}-bottom, $sizes);
-      #{$space-type}-block-end: rem($sizes);
+      @include logical-property($space-type, $dimension, $sizes);
     }
 
-  } @else if index(("top", "bottom", "left", "right"), $dimension) {
+  } @else if index((top, bottom, left, right), $dimension) {
     @include _error("'#{$dimension}' is a physical dimension, use its logical equivilant");
   } @else {
     @include _error("Unknown dimension '#{$dimension}'");
@@ -188,165 +90,45 @@
   @include padding(0, $dimension);
 }
 
-// blg stands for "baseline grid"
-
-@mixin blg-spacing($dimension, $level, $type: "padding") {
-  @if $type == "padding" {
-    @if $level == "extra-small" {
-      @include padding($baselinegrid-space-extra-small, $dimension);
-    } @else if $level == "small" {
-      @include padding($baselinegrid-space-small, $dimension);
-    } @else if $level == "smallish" {
-      @include padding($baselinegrid-space-smallish, $dimension);
-    } @else if $level == "medium" {
-      @include padding($baselinegrid-space-medium, $dimension);
-    } @else if $level == "large" {
-      @include padding($baselinegrid-space-large, $dimension);
-    }
-  } @else if $type == "margin" {
-    @if $level == "extra-small" {
-      @include margin($baselinegrid-space-extra-small, $dimension);
-    } @else if $level == "small" {
-      @include margin($baselinegrid-space-small, $dimension);
-    } @else if $level == "smallish" {
-      @include margin($baselinegrid-space-smallish, $dimension);
-    } @else if $level == "medium" {
-      @include margin($baselinegrid-space-medium, $dimension);
-    } @else if $level == "large" {
-      @include margin($baselinegrid-space-large, $dimension);
-    }
-  }
+@mixin block-spacing($start: 0, $end: $baselinegrid-space-small) {
+  @include margin($start $end, block);
 }
 
-@mixin blg-pad-top--small-to-medium {
+@function _calculate-spacing($block-size, $unit-size: $baselinegrid-space-small) {
+  $remaining: $unit-size - $block-size;
 
-  @include blg-spacing("block-start", "small");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-start", "medium");
+  @if ($remaining > 0) {
+    @return $remaining;
   }
 
-}
-
-@mixin blg-pad-bottom--small-to-medium {
-
-  @include blg-spacing("block-end", "small");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-end", "medium");
-  }
-
-}
-
-@mixin blg-pad-top--large-to-extra-large {
-
-  @include blg-spacing("block-start", "large");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-start", "extra-large");
-  }
-
-}
-
-@mixin blg-pad-bottom--large-to-extra-large {
-
-  @include blg-spacing("block-end", "large");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-end", "extra-large");
-  }
-
-}
-
-@mixin blg-pad-vertical-small-to-medium {
-  @include blg-pad-top--small-to-medium();
-  @include blg-pad-bottom--small-to-medium();
-}
-
-@mixin blg-pad-vertical-large-to-extra-large {
-  @include blg-pad-top--large-to-extra-large();
-  @include blg-pad-bottom--large-to-extra-large();
-}
-
-@mixin blg-margin-bottom--medium-to-large {
-
-  @include blg-spacing("block-end", "medium", "margin");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-end", "large", "margin");
-  }
-
-}
-
-@mixin blg-margin-bottom--small-to-medium {
-
-  @include blg-spacing("block-end", "small", "margin");
-
-  @include mq($from: medium) {
-    @include blg-spacing("block-end", "medium", "margin");
-  }
-
-}
-
-@mixin blg-column-container() {
-  @include blg-margin-bottom--medium-to-large();
+  @return $unit-size;
 }
 
 @mixin h1-spacing() {
-  margin: 0;
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-medium));
 }
 
 @mixin h2-spacing() {
-  margin: 0;
-  @include padding(21px, "block-end");
-  @include padding(21px, "block-start");
+  @include block-spacing($end: _calculate-spacing(($baselinegrid-space-small + $baselinegrid-space-smallish) / 2, $baselinegrid-space-medium));
 }
 
 @mixin h3-spacing() {
-  margin: 0;
-  @include blg-spacing("block-start", "extra-small");
-  @include blg-spacing("block-end", "extra-small");
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
 }
 
 @mixin h4-spacing() {
-  margin: 0;
-  @include blg-spacing("block-start", "extra-small");
-  @include blg-spacing("block-end", "extra-small");
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
 }
 
 @mixin h5-spacing() {
-  margin: 0;
-  @include blg-spacing("block-start", "extra-small");
-  @include blg-spacing("block-end", "extra-small");
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
 }
 
 @mixin h6-spacing() {
-  margin: 0;
-  @include padding(10px, "block-start");
-  @include padding(14px, "block-end");
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
 }
 
-@mixin body-spacing() {
-  margin: 0;
-  @include blg-spacing("block-end", "small", "margin");
-}
-
-@mixin small-spacing() {
-  @include blg-spacing("block-end", "small");
-}
-
-@mixin wrapper() {
-  box-sizing: content-box;
-  @include max-inline-size($grid-max_width);
-  margin: auto;
-
-  @include padding(7%, "inline");
-
-  @include mq($media-type: screen, $from: medium) {
-    @include padding(14%, "inline");
-  }
-
-  @include mq($media-type: screen, $from: x-wide) {
-    @include padding(3%, "inline");
-  }
+@mixin list-style-none() {
+  list-style: none;
+  @include padding(0, inline-start);
 }

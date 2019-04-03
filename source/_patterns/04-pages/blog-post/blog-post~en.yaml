@@ -1,0 +1,23 @@
+contentHeader:
+  contentTitle:
+    text: Next three early-career researchers awarded travel grants
+
+body:
+  - template: atoms-paragraph
+    arguments:
+      text: >
+        In the second round of applications for 2017, Sabrina Florencia Mansilla, Richard Lindsay and Margarita
+        Calvo have been selected by eLife Senior Editors to receive travel grants, based on the quality of the eLife
+        papers they put forward for consideration.
+  - template: atoms-paragraph
+    arguments:
+      text: >
+        The subjects covered in this round were Cell Biology, Developmental Biology and Stem Cells, Immunology,
+        Microbiology and Infectious Disease, Cancer Biology, Genes and Chromosomes, Genomics and Evolutionary Biology,
+        Ecology, Plant Biology, and Neuroscience. We received over 48 applications for this round and have four more
+        rounds and 13 grants available to award before the final deadline.
+  - template: atoms-paragraph
+    arguments:
+      text: >
+        The grants of up to $1,000 each will allow the winners to travel to attend a meeting of their choice and present
+        their work, helping them to get exposure and gain recognition among leading scientists in their fields.

@@ -1,4 +1,4 @@
-{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['item-tags']) }) -%}
+{%- set attributes = {class: ['item-tags']}|merge_recursive(attributes|default({})) -%}
 
 <div {%- include('atoms-attributes') -%}>
 
@@ -9,7 +9,7 @@
       {%- with group only -%}
         {%- block group -%}
 
-            {%- include('molecules-item-tag-group') -%}
+          {%- include('molecules-tag-list') -%}
 
         {%- endblock group -%}
       {%- endwith -%}

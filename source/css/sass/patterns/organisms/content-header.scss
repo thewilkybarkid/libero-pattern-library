@@ -1,0 +1,127 @@
+@import "../../functions/types";
+@import "../../mixins/scale";
+@import "../../mixins/decorations";
+@import "../../mixins/media-query";
+@import "../../mixins/spacing";
+@import "../../variables/baselinegrid";
+@import "../../variables/grid";
+
+.content-header {
+  text-align: center;
+  @include padding($baselinegrid-space-medium, block-start);
+  @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
+  @include divider(block-end);
+}
+
+.content-header__title {
+  @include block-spacing($end: $baselinegrid-space-small);
+
+  &:last-child {
+    @include block-spacing($end: $baselinegrid-space-medium);
+  }
+}
+
+.content-header__title--xx-short {
+  @include rem(font-size, scale(9));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--x-short {
+  @include rem(font-size, scale(8));
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(9));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--short {
+  @include rem(font-size, scale(6));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(8));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(9));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--medium {
+  @include rem(font-size, scale(4));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(6));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(8));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--long {
+  @include rem(font-size, scale(2));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(8));
+  }
+
+}
+
+.content-header__title--x-long {
+  @include rem(font-size, scale(2));
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(6));
+  }
+}
+
+.content-header__title--xx-long {
+  @include rem(font-size, scale(1));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(2));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(4));
+  }
+}

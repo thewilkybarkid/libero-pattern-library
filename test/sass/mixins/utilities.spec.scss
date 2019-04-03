@@ -1,0 +1,40 @@
+@import "../test";
+@import "../../../source/css/sass/mixins/utilities";
+
+@include describe("@mixin inherit-all") {
+
+  @include it("generates a simple 'inherit: all'") {
+
+    @include assert() {
+
+      @include output {
+        @include inherit-all();
+      }
+
+      @include expect {
+        all: inherit;
+      }
+
+    }
+
+  }
+
+  @include it("can ensure some properties are inheritied") {
+
+    @include assert() {
+
+      @include output {
+        @include inherit-all($ensure: color margin);
+      }
+
+      @include expect {
+        color: inherit;
+        margin: inherit;
+        all: inherit;
+      }
+
+    }
+
+  }
+
+}

@@ -1,6 +1,8 @@
+@import "mixins/decorations";
 @import "mixins/spacing";
 @import "mixins/typography";
 @import "variables/color";
+@import "variables/grid";
 @import "vendor/normalize.css/normalize";
 
 *,
@@ -9,9 +11,13 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: ($font-size / 16px) * 100%;
+}
+
 html,
 body {
-  height: 100%;
+  @include min-block-size(100%);
 }
 
 body {
@@ -51,8 +57,55 @@ h6 {
   @include h6-spacing();
 }
 
-p {
-  @include body-para();
+address,
+article,
+aside,
+blockquote,
+caption,
+details,
+dl,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+ol,
+p,
+pre,
+section,
+table,
+ul {
+  @include block-spacing();
+}
+
+b,
+code,
+kbd,
+strong {
+  line-height: 1;
+}
+
+hr {
+  border: 0;
+  @include divider(block-end);
+  @include block-spacing($end: $baselinegrid-space-small - $grid-divider_size);
+}
+
+figure {
+  @include margin(0, inline);
+}
+
+dl,
+ol,
+ul {
+  dd > &,
+  li > & {
+    @include block-spacing($end: 0);
+  }
 }
 
 a {
@@ -60,48 +113,37 @@ a {
   text-decoration: none;
 }
 
-ul,
-ol {
-  @include blg-spacing("block-end", "small", "margin");
-  margin-top: 0;
-}
-
-dl {
-  @include blg-spacing("block-end", "small", "margin");
-  margin-top: 0;
-}
-
-li,
-dt,
-dd {
-  @include body-typography();
-}
-
 dt {
   font-weight: bold;
 
   dd + & {
-    @include blg-spacing("block-start", "small", "margin");
+    @include block-spacing($baselinegrid-space-small, 0);
   }
 }
 
 dd {
-  margin-left: 0;
-}
-
-small {
-  @include small-typography();
-  @include small-spacing();
+  @include margin(0, inline-start);
 }
 
 address {
-  @include small-typography();
-  @include small-spacing();
+  @include set-font-size-and-line-height(scale(-3));
+}
+
+small {
+  @include rem(font-size, scale(-3));
+}
+
+sub {
+  @include font-variant-position(sub);
+}
+
+sup {
+  @include font-variant-position(super);
 }
 
 img {
-  max-height: 100%;
-  max-width: 100%;
+  @include max-block-size(100%);
+  @include max-inline-size(100%);
 }
 
 h1,

@@ -1,0 +1,50 @@
+{%- set classes = ['content-grid'] -%}
+
+{%- set hasSecondary = false -%}
+{%- for area in content if area.area|default('full') == 'secondary' and area.content|default([])|length -%}
+  {%- set hasSecondary = true -%}
+{%- endfor -%}
+
+{%- if hasSecondary -%}
+  {%- set classes = classes|merge(['content-grid--has-secondary']) -%}
+{%- endif -%}
+
+{%- set attributes = {class: classes}|merge_recursive(attributes|default({})) -%}
+
+<{{ element|default('div') }} {%- include 'atoms-attributes' %}>
+
+  {%- for area in content -%}
+    {%- with area only -%}
+
+      {%- block item -%}
+
+        {%- if area is defined -%}
+
+          {%- if content|default([])|length -%}
+
+            {%- set attributes = {class: ['content-grid__item', 'content-grid__item--' ~ area]}|merge_recursive(attributes|default({})) -%}
+
+            <div {%- include 'atoms-attributes' %}>
+              {%- include 'atoms-text' with {nodes: content} -%}
+            </div>
+
+          {%- endif -%}
+
+        {%- else -%}
+
+          {%- with arguments|merge({_template: template}) only -%}
+
+            {%- set attributes = {class: ['content-grid__item']}|merge_recursive(attributes|default({})) -%}
+
+            {%- include _template -%}
+
+          {%- endwith -%}
+
+        {%- endif -%}
+
+      {%- endblock item -%}
+
+    {%- endwith -%}
+  {%- endfor -%}
+
+</{{ element|default('div') }}>

@@ -1,5 +1,5 @@
+@import "../mixins/types";
 @import "../variables/font";
-@import "../vendor/sass-rem/rem";
 
-$rem-baseline: $font-size-base;
+$rem-baseline: $font-size;
 $rem-fallback: true;

@@ -1,0 +1,24 @@
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+
+.content-meta {
+  @include list-style-none();
+  @include block-spacing();
+}
+
+.content-meta__item {
+  display: inline-block;
+  @include label-content-typography();
+
+  &:after {
+    content: "\a0\2022\a0";
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}
+
+.content-meta__link {
+  @include covert-link();
+}

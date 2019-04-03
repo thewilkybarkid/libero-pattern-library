@@ -1,0 +1,36 @@
+{%- set attributes ={class: ['section']}|merge_recursive(attributes|default({})) -%}
+
+<section {%- include 'atoms-attributes' -%}>
+
+  {%- with heading|default({}) only -%}
+
+    {%- block heading -%}
+
+      {%- if text is defined -%}
+
+        {%- set attributes = {class: ['section__heading']}|merge_recursive(attributes|default({})) -%}
+        {%- set level = level|default(2) -%}
+
+        {%- include 'atoms-heading' -%}
+
+      {%- endif -%}
+
+    {%- endblock -%}
+
+  {%- endwith -%}
+
+  {%- with {content: content} only -%}
+
+    {%- block content -%}
+
+      {%- set attributes = {class: ['section__body']}|merge_recursive(attributes|default({})) -%}
+
+      <div {%- include 'atoms-attributes' -%}>
+        {%- include 'atoms-text' with {nodes: content} -%}
+      </div>
+
+    {%- endblock -%}
+
+  {%- endwith -%}
+
+</section>

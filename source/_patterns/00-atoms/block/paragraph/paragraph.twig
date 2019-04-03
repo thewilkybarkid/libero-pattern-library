@@ -1,0 +1,7 @@
+{%- set attributes = {class: ['paragraph']}|merge_recursive(attributes|default({})) -%}
+
+<p {%- include 'atoms-attributes' -%}>
+
+  {%- include 'atoms-text' with {nodes: text} -%}
+
+</p>

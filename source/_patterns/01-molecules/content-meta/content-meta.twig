@@ -1,0 +1,33 @@
+{%- set attributes = {class: ['content-meta']}|merge_recursive(attributes|default({})) -%}
+
+<ul {%- include('atoms-attributes') -%}>
+
+  {%- for item in items -%}
+
+    {%- with item only -%}
+      {%- block item -%}
+
+        {%- set attributes = {class: ['content-meta__item']}|merge_recursive(attributes|default({})) -%}
+
+        <li {%- include('atoms-attributes') -%}>
+
+          {%- with content only -%}
+            {%- block content -%}
+
+              {%- if attributes.href is defined -%}
+                {%- set attributes = {class: ['content-meta__link']}|merge_recursive(attributes|default({})) -%}
+              {%- endif -%}
+
+              {%- include 'atoms-link' -%}
+
+            {%- endblock content -%}
+          {%- endwith -%}
+
+        </li>
+
+      {%- endblock item -%}
+    {%- endwith -%}
+
+  {%- endfor -%}
+
+</ul>

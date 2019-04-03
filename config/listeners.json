@@ -1,3 +1,6 @@
 {
-    "listeners": []
+  "listeners": [
+    "\\PatternLab\\Twig\\PseudoPatternsListener",
+    "\\PatternLab\\Twig\\StrictVariablesListener"
+  ]
 }

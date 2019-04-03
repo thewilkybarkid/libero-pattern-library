@@ -16,12 +16,8 @@ final class MergeExtension extends AbstractExtension implements GlobalsInterface
         yield new TwigFilter('merge_recursive', Closure::fromCallable([$this, 'mergeRecursive']));
     }
 
-    private function mergeRecursive(iterable $one, ?iterable $two): iterable
+    private function mergeRecursive(iterable $one, iterable $two): iterable
     {
-        if (!is_iterable($two)) {
-            return $one;
-        }
-
         return array_merge_recursive($this->toArray($one), $this->toArray($two));
     }
 

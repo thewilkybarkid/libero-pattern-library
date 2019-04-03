@@ -1,0 +1,56 @@
+{% set attributes = {class: ['page-grid']}|merge_recursive(attributes|default({})) -%}
+
+<div {%- include 'atoms-attributes' %}>
+
+  {%- with start|default({}) only -%}
+    {%- block start -%}
+
+      {%- if template is defined -%}
+
+        {%- with arguments|merge({_template: template}) only -%}
+
+          {%- set attributes = {class: ['page-grid__item', 'page-grid__start']}|merge_recursive(attributes|default({})) -%}
+
+          {%- include _template -%}
+
+        {%- endwith -%}
+
+      {%- endif -%}
+
+    {%- endblock start -%}
+  {%- endwith -%}
+
+  {%- with main only -%}
+    {%- block main -%}
+
+      {%- with arguments|merge({_template: template}) only -%}
+
+        {%- set attributes = {class: ['page-grid__item', 'page-grid__main'], role: 'main'}|merge_recursive(attributes|default({})) -%}
+        {%- set element = "main" -%}
+
+        {%- include _template -%}
+
+      {%- endwith -%}
+
+    {%- endblock main -%}
+  {%- endwith -%}
+
+  {%- with end|default({}) only -%}
+    {%- block end -%}
+
+      {%- if template is defined -%}
+
+        {%- with arguments|merge({_template: template}) only -%}
+
+          {%- set attributes = {class: ['page-grid__item', 'page-grid__end']}|merge_recursive(attributes|default({})) -%}
+
+          {%- include _template -%}
+
+        {%- endwith -%}
+
+      {%- endif -%}
+
+    {%- endblock end -%}
+  {%- endwith -%}
+
+</div>

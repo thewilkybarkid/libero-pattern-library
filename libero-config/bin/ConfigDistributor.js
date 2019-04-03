@@ -89,9 +89,15 @@ module.exports = class ConfigDistributor {
       .reduce((carry, pair) => {
         let [key, value] = pair;
 
-        if (key.endsWith('_in_px')) {
+        if (key.endsWith('_in_percent')) {
+          key = key.substring(0, key.length - 11);
+          value = `${value}%`;
+        } else if (key.endsWith('_in_px')) {
           key = key.substring(0, key.length - 6);
-          value = `${value}px`;
+          value = Math.round(value) + 'px';
+        } else if (key.endsWith('_in_vw')) {
+          key = key.substring(0, key.length - 6);
+          value = `${value}vw`;
         }
 
         return `${carry}$${key}: ${value};\n`;
