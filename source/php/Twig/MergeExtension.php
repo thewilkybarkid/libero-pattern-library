@@ -2,7 +2,6 @@
 
 namespace Libero\PatternLibrary\Twig;
 
-use Closure;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFilter;
@@ -13,10 +12,10 @@ final class MergeExtension extends AbstractExtension implements GlobalsInterface
 {
     public function getFilters(): iterable
     {
-        yield new TwigFilter('merge_recursive', Closure::fromCallable([$this, 'mergeRecursive']));
+        yield new TwigFilter('merge_recursive', [$this, 'mergeRecursive']);
     }
 
-    private function mergeRecursive(iterable $one, iterable $two): iterable
+    public function mergeRecursive(iterable $one, iterable $two): iterable
     {
         return array_merge_recursive($this->toArray($one), $this->toArray($two));
     }
