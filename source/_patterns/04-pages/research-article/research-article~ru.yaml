@@ -22,9 +22,14 @@ contentHeader:
             href: '#'
           text: Научная статья
       - attributes:
-          aria-label: Номер выпуска
+          aria-label: Дата публикации
         content:
-          text: Номер 1
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: 18 дек. 2018 г.
 
 body:
   - template: molecules-section

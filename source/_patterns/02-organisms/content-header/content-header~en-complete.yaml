@@ -21,6 +21,15 @@ meta:
           href: '#'
         text: Research Article
     - attributes:
+        aria-label: Publication date
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: April 5, 2019
+    - attributes:
         aria-label: Issue number
       content:
         text: Issue 1

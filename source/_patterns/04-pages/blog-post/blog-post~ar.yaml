@@ -4,6 +4,19 @@ dir: rtl
 contentHeader:
   contentTitle:
     text: وقد منح الباحثون الثلاثة الباقون منحة السفر
+  meta:
+    attributes:
+      aria-label: تفاصيل المنشور
+    items:
+      - attributes:
+          aria-label: تاريخ النشر
+        content:
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2017-05-22'
+                text: ١٨/١٢/٢٠١٨
 
 body:
   - template: atoms-paragraph
