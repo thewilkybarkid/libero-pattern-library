@@ -1,0 +1,16 @@
+attributes:
+  lang: ja
+list:
+  items:
+    - content:
+        href: '#'
+        heading:
+          text: ティーザータイトル1
+    - content:
+        href: '#'
+        heading:
+          text: ティーザータイトル2
+    - content:
+        href: '#'
+        heading:
+          text: ティーザータイトル3

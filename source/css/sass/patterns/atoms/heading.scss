@@ -1,0 +1,5 @@
+@import "../../mixins/typography";
+
+.heading__link {
+  @include covert-link();
+}

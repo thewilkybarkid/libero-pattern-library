@@ -1,0 +1,55 @@
+lang: ar
+dir: rtl
+
+contentHeader:
+  contentTitle:
+    text: المجلة الدولية للمظاهرة
+
+body:
+  - template: organisms-teaser-list
+    arguments:
+      title:
+        text: أحدث المقالات
+      list:
+        items:
+          - content:
+              href: '#'
+              heading:
+                text: آلية مورفوجينية محفوظة لحفظ المورم من الخلايا العصبية الحسية المسبب للألم
+          - content:
+              href: '#'
+              heading:
+                text: التأسيس الزماني المكاني للمستعمرات البكتيرية الكثيفة التي تنمو على أجار قاسية
+          - content:
+              href: '#'
+              heading:
+                text: ينشأ تكافؤ التكافؤ في الهيبنولا الجانبية من المنطقة المحيطة بالعين
+          - content:
+              href: '#'
+              heading:
+                text: يلتف Importin-9 حول قلب H2A-H2B ليكون بمثابة مستورد نووي ورافعة هيستون
+          - content:
+              href: '#'
+              heading:
+                text: يعتبر سد الغشاء بواسطة Munc13-1 أمرًا ضروريًا لإطلاق الناقل العصبي
+          - content:
+              href: '#'
+              heading:
+                text: هيكل Ctf19c/CCAN من مهدها الخميرة
+          - content:
+              href: '#'
+              heading:
+                text: فرط النشاط PUMILIO يدفع الشيخوخة المبكرة للفئران التي تعاني من نقص نوراد
+          - content:
+              href: '#'
+              heading:
+                text: عدم الاستقرار الميكانيكية والطاقة بينية محرك التشكل بيوفيلم
+          - content:
+              href: '#'
+              heading:
+                text: هناك آليتان متميزتان تستهدفان مجمع E3 المرتبط بالبلعمة الذاتية إلى بنية ما قبل البلعوم
+          - content:
+              href: '#'
+              heading:
+                text: >-
+                  تسمم البروتينات الناتجة عن التخليق الحيوي للريبوسوم الشاذ يثبط استقرار تشابك اللياقة البدنية في دماغ الثدييات
