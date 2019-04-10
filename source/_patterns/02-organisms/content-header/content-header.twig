@@ -1,6 +1,8 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header']) }) -%}
 
-<header {%- include 'atoms-attributes' %}>
+<header {{- html.attributes(attributes) }}>
 
   {%- block body -%}
 

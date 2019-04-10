@@ -1,6 +1,8 @@
-{% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['page-grid']) }) -%}
+{%- import 'atoms-html' as html -%}
 
-<div {%- include 'atoms-attributes' %}>
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['page-grid']) }) -%}
+
+<div {{- html.attributes(attributes) }}>
 
   {%- with start|default({}) only -%}
     {%- block start -%}

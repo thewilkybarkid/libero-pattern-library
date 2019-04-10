@@ -1,6 +1,8 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['heading']) }) -%}
 
-<h{{ level|default(1) }} {%- include 'atoms-attributes' %}>
+<h{{ level|default(1) }} {{- html.attributes(attributes) }}>
 
   {%- if text.text is not defined -%}
     {%- set text = {text: text} -%}

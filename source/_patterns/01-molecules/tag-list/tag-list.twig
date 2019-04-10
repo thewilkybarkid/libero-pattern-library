@@ -1,6 +1,8 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list']) }) -%}
 
-<div {%- include('atoms-attributes') -%}>
+<div {{- html.attributes(attributes) }}>
 
   {%- with title|default({}) only -%}
     {%- block title -%}
@@ -15,7 +17,7 @@
     {%- endblock title -%}
   {%- endwith -%}
 
-  {%- with list only -%}
+  {%- with list|merge({html: html}) only -%}
     {%- block list -%}
 
       {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__list']) }) -%}
@@ -24,16 +26,16 @@
         {%- set attributes = attributes|merge({class: attributes.class|merge(['tag-list__list--single-line']) }) -%}
       {%- endif -%}
 
-      <ul {%- include('atoms-attributes') -%}>
+      <ul {{- html.attributes(attributes) }}>
 
         {%- for item in items -%}
 
-          {%- with item only -%}
+          {%- with item|merge({html: html}) only -%}
             {%- block item -%}
 
               {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['tag-list__item']) }) -%}
 
-              <li {%- include('atoms-attributes') -%}>
+              <li {{- html.attributes(attributes) }}>
 
                 {%- with content only -%}
                   {%- block content -%}

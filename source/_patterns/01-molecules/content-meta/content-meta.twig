@@ -1,15 +1,16 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-meta']) }) -%}
 
-<ul {%- include('atoms-attributes') -%}>
-
+<ul {{- html.attributes(attributes) }}>
   {%- for item in items -%}
 
-    {%- with item only -%}
+    {%- with item|merge({html: html}) only -%}
       {%- block item -%}
 
         {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-meta__item']) }) -%}
 
-        <li {%- include('atoms-attributes') -%}>
+        <li {{- html.attributes(attributes) }}>
 
           {%- with content only -%}
             {%- block content -%}
