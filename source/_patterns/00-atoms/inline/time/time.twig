@@ -2,10 +2,10 @@
 
 {% spaceless %}
 
-  <sup {{- html.attributes(attributes|default({})) }}>
+  <time {{- html.attributes(attributes|default({})) }}>
 
     {{- html.content(text) -}}
 
-  </sup>
+  </time>
 
 {% endspaceless %}

@@ -1,3 +1,5 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set classes = ['content-grid'] -%}
 
 {%- set hasSecondary = false -%}
@@ -11,10 +13,10 @@
 
 {%- set attributes = {class: classes}|merge_recursive(attributes|default({})) -%}
 
-<{{ element|default('div') }} {%- include 'atoms-attributes' %}>
+<{{ element|default('div') }} {{- html.attributes(attributes) }}>
 
   {%- for area in content -%}
-    {%- with area only -%}
+    {%- with area|merge({html: html}) only -%}
 
       {%- block item -%}
 
@@ -24,8 +26,8 @@
 
             {%- set attributes = {class: ['content-grid__item', 'content-grid__item--' ~ area]}|merge_recursive(attributes|default({})) -%}
 
-            <div {%- include 'atoms-attributes' %}>
-              {%- include 'atoms-text' with {nodes: content} -%}
+            <div {{- html.attributes(attributes) }}>
+              {{- html.content(content) -}}
             </div>
 
           {%- endif -%}

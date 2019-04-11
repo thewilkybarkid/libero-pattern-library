@@ -1,0 +1,54 @@
+@import "../../functions/grid";
+@import "../../mixins/grid";
+@import "../../mixins/media-query";
+@import "../../variables/grid";
+
+.listing-grid {
+  --primary-column-width: #{get-overall-width($grid-main_column_count)};
+
+  @include base-grid($grid-max_width);
+  grid-template-areas: ". primary .";
+  grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) [main-end] 1fr [full-end];
+  grid-column-gap: var(--GRID-COLUMN-GAP);
+
+  @include mq($from: x-wide) {
+    $primary-column-count: floor($grid-main_column_count * 0.7);
+    $indent-column-count: floor(($grid-main_column_count - $primary-column-count) / 2);
+    --primary-column-width: #{get-overall-width($primary-column-count)};
+    --indent-column-width: #{get-overall-width($indent-column-count)};
+    grid-template-areas: ". . primary . .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--indent-column-width) var(--primary-column-width) var(--indent-column-width) [main-end] 1fr [full-end];
+  }
+}
+
+.listing-grid--has-secondary {
+  grid-template-areas:
+    ". primary   ."
+    ". secondary .";
+
+  @include mq($from: x-wide) {
+    $primary-column-count: floor($grid-main_column_count * 0.7);
+    $secondary-column-count: $grid-main_column_count - $primary-column-count;
+    --primary-column-width: #{get-overall-width($primary-column-count)};
+    --secondary-column-width: #{get-overall-width($secondary-column-count)};
+    grid-template-areas: ". primary secondary .";
+    grid-template-columns: [full-start] 1fr [main-start] var(--primary-column-width) var(--secondary-column-width) [main-end] 1fr [full-end];
+  }
+}
+
+.listing-grid__item,
+.listing-grid__item--main {
+  grid-column: main;
+}
+
+.listing-grid__item--full {
+  grid-column: full;
+}
+
+.listing-grid__item--primary {
+  grid-column: primary;
+}
+
+.listing-grid__item--secondary {
+  grid-column: secondary;
+}

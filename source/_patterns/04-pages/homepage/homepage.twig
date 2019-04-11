@@ -1,0 +1,17 @@
+{% include 'templates-page-grid' with {
+  main: {
+    template: 'templates-listing-grid',
+    arguments: {
+      content: [
+        {
+          template: 'organisms-content-header',
+          arguments: contentHeader,
+        },
+        {
+          area: 'primary',
+          content: body,
+        },
+      ],
+    },
+  },
+} only %}

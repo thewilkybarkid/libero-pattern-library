@@ -1,5 +1,23 @@
-<h{{ level|default(1) }} {%- include 'atoms-attributes' %}>
+{%- import 'atoms-html' as html -%}
 
-  {%- include 'atoms-text' with {nodes: text} only -%}
+{%- set attributes = {class: 'heading'}|merge_recursive(attributes|default({})) -%}
+
+<h{{ level|default(1) }} {{- html.attributes(attributes) }}>
+
+  {%- if text.text is not defined -%}
+    {%- set text = {text: text} -%}
+  {%- endif -%}
+
+  {%- with text only -%}
+    {%- block text -%}
+
+      {%- if attributes.href is defined -%}
+        {%- set attributes = {class: 'heading__link'}|merge_recursive(attributes|default({})) -%}
+      {%- endif -%}
+
+      {%- include 'atoms-link' -%}
+
+    {%- endblock -%}
+  {%- endwith -%}
 
 </h{{ level|default(1) }}>

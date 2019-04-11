@@ -1,8 +1,10 @@
+{%- import 'atoms-html' as html -%}
+
 {% spaceless %}
 
-  <i {%- include 'atoms-attributes' %}>
+  <i {{- html.attributes(attributes|default({})) }}>
 
-    {%- include 'atoms-text' with {nodes: text} only -%}
+    {{- html.content(text) -}}
 
   </i>
 

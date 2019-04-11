@@ -23,9 +23,14 @@ contentHeader:
             href: '#'
           text: مقاله بحثيه
       - attributes:
-          aria-label: رقم الإصدار
+          aria-label: تاريخ النشر
         content:
-          text: العدد ١
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: ١٨/١٢/٢٠١٨
 
 body:
   - template: molecules-section

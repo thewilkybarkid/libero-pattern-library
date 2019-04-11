@@ -1,6 +1,8 @@
+{%- import 'atoms-html' as html -%}
+
 {%- set attributes = {class: 'item-tags'}|merge_recursive(attributes|default({})) -%}
 
-<div {%- include('atoms-attributes') -%}>
+<div {{- html.attributes(attributes) }}>
 
   {%- block body -%}
 

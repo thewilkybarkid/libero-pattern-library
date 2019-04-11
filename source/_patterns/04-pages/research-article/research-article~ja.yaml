@@ -22,9 +22,14 @@ contentHeader:
             href: '#'
           text: 研究論文
       - attributes:
-          aria-label: 発行番号
+          aria-label: 発行日
         content:
-          text: 第1号
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: 2018年12月18日
 
 body:
   - template: molecules-section

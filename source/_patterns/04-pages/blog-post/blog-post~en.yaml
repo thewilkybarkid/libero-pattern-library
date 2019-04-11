@@ -1,6 +1,19 @@
 contentHeader:
   contentTitle:
     text: Next three early-career researchers awarded travel grants
+  meta:
+    attributes:
+      aria-label: Publication details
+    items:
+      - attributes:
+          aria-label: Publication date
+        content:
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2017-05-22'
+                text: May 22, 2017
 
 body:
   - template: atoms-paragraph

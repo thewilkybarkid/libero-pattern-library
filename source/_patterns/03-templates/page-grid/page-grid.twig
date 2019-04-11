@@ -1,6 +1,8 @@
-{% set attributes = {class: 'page-grid'}|merge_recursive(attributes|default({})) -%}
+{%- import 'atoms-html' as html -%}
 
-<div {%- include 'atoms-attributes' %}>
+{%- set attributes = {class: 'page-grid'}|merge_recursive(attributes|default({})) -%}
+
+<div {{- html.attributes(attributes) }}>
 
   {%- with start|default({}) only -%}
     {%- block start -%}

@@ -20,9 +20,14 @@ contentHeader:
             href: '#'
           text: Research Article
       - attributes:
-          aria-label: Issue number
+          aria-label: Publication date
         content:
-          text: Issue 1
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: Dec 18, 2018
 
 body:
   - template: molecules-section

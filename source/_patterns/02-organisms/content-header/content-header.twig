@@ -1,6 +1,8 @@
-{% set attributes = {class: 'content-header'}|merge_recursive(attributes|default({})) %}
+{%- import 'atoms-html' as html -%}
 
-<header {%- include 'atoms-attributes' %}>
+{%- set attributes = {class: 'content-header'}|merge_recursive(attributes|default({})) -%}
+
+<header {{- html.attributes(attributes) }}>
 
   {%- block body -%}
 

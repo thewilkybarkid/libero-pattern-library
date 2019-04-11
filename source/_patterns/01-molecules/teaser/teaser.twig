@@ -1,0 +1,29 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = {class: 'teaser'}|merge_recursive(attributes|default({})) -%}
+
+<div {{- html.attributes(attributes) }}>
+
+  {%- with {attributes: {class: []}} -%}
+    {%- block header -%}
+
+      {%- set attributes = attributes|merge({class: attributes.class|merge(['teaser__header']) }) -%}
+      <header {{- html.attributes(attributes) }}>
+
+        {%- with heading|merge({text: {attributes: {href: href}, text: heading.text} }) only -%}
+          {%- block heading -%}
+
+            {%- set attributes = {class: 'teaser__heading'}|merge_recursive(attributes|default({})) -%}
+            {%- set level = level|default(3) -%}
+
+            {%- include 'atoms-heading' -%}
+
+          {%- endblock heading -%}
+        {%- endwith -%}
+
+      </header>
+
+    {%- endblock header -%}
+  {%- endwith -%}
+
+</div>

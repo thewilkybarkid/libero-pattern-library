@@ -1,0 +1,52 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set classes = ['listing-grid'] -%}
+
+{%- set hasSecondary = false -%}
+{%- for area in content if area.area|default('full') == 'secondary' and area.content|default([])|length -%}
+  {%- set hasSecondary = true -%}
+{%- endfor -%}
+
+{%- if hasSecondary -%}
+  {%- set classes = classes|merge(['listing-grid--has-secondary']) -%}
+{%- endif -%}
+
+{%- set attributes = {class: classes}|merge_recursive(attributes|default({})) -%}
+
+<{{ element|default('div') }} {{- html.attributes(attributes) }}>
+
+{%- for area in content -%}
+  {%- with area|merge({html: html}) only -%}
+
+    {%- block item -%}
+
+      {%- if area is defined -%}
+
+        {%- if content|default([])|length -%}
+
+          {%- set attributes = {class: ['listing-grid__item', 'listing-grid__item--' ~ area]}|merge_recursive(attributes|default({})) -%}
+
+          <div {{- html.attributes(attributes) }}>
+            {{- html.content(content) -}}
+          </div>
+
+        {%- endif -%}
+
+      {%- else -%}
+
+        {%- with arguments|merge({_template: template}) only -%}
+
+          {%- set attributes = {class: 'listing-grid__item'}|merge_recursive(attributes|default({})) -%}
+
+          {%- include _template -%}
+
+        {%- endwith -%}
+
+      {%- endif -%}
+
+    {%- endblock item -%}
+
+  {%- endwith -%}
+{%- endfor -%}
+
+</{{ element|default('div') }}>

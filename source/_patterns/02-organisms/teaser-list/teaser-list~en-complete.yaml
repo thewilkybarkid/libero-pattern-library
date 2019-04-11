@@ -1,0 +1,22 @@
+title:
+  attributes:
+    id: listing-title
+  level: 1
+  text: Listing title
+list:
+  items:
+    - content:
+        href: '#'
+        heading:
+          level: 2
+          text: Teaser title 1
+    - content:
+        href: '#'
+        heading:
+          level: 2
+          text: Teaser title 2
+    - content:
+        href: '#'
+        heading:
+          level: 2
+          text: Teaser title 3
