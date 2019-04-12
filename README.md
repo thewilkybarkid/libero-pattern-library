@@ -122,7 +122,7 @@ The top level page grid. It sets up the rows of the top level explicit grid as n
 The grid for all content pages (i.e. not listing pages). In addition to the capability to specify if content spans the entirety of the `main` or `full` sections, this grid defines areas called `primary`, `secondary`, and `menu`. These names are used for both the CSS grid area names and the twig template section names. This grid lays out content with a very similar layout to that of an eLife article.
 
 ###### grid areas recommended usage
-- `pimary`: the content that makes this page what it is
+- `primary`: the content that makes this page what it is
 - `secondary`: supplementary info, typically used for asides       
 - `menu`: a menu / navigation appropriate to the content level
    
