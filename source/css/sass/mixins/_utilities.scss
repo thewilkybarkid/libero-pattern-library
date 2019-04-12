@@ -3,5 +3,8 @@
     #{$property}: inherit;
   }
 
-  all: inherit;
+  @supports (all: inherit) {
+    all: inherit;
+    @content;
+  }
 }

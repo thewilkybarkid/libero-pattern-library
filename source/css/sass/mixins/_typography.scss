@@ -102,8 +102,10 @@
 }
 
 @mixin covert-link($hover-color: $color-primary-dark) {
-  @include inherit-all($ensure: color text-decoration);
-  cursor: pointer;
+  @include inherit-all($ensure: color text-decoration) {
+    cursor: pointer;
+    display: inline;
+  }
 
   &:hover {
     color: $hover-color;

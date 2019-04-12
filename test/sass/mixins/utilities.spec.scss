@@ -12,7 +12,9 @@
       }
 
       @include expect {
-        all: inherit;
+        @supports (all: inherit) {
+          all: inherit;
+        }
       }
 
     }
@@ -30,7 +32,30 @@
       @include expect {
         color: inherit;
         margin: inherit;
-        all: inherit;
+        @supports (all: inherit) {
+          all: inherit;
+        }
+      }
+
+    }
+
+  }
+
+  @include it("can set other properties so they are not inherited") {
+
+    @include assert() {
+
+      @include output {
+        @include inherit-all() {
+          display: inline;
+        }
+      }
+
+      @include expect {
+        @supports (all: inherit) {
+          all: inherit;
+          display: inline;
+        }
       }
 
     }
