@@ -78,6 +78,19 @@ body:
               のような部分 - について説明します。 Nanjinganthusと呼ばれるこの植物は、1億7,400万年以上前にさかのぼり、約5千万年の歴
               史を持つ「本物の」花の最も古い記録となっています。主流の信念に反して、これは花盛りの植物の出現を恐竜が惑星を支配するのを
               見た時代初期のジュラ紀に置くでしょう。この発見は、花の進化についての私たちの現在の理解を再構築するかもしれません。
+        - template: molecules-figure
+          arguments:
+            content:
+              template: atoms-image
+              arguments:
+                image:
+                  src: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg
+                  alt: ''
+                sources:
+                  - type: image/webp
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
+                  - type: image/jpeg
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
 
 tags:
   groups:

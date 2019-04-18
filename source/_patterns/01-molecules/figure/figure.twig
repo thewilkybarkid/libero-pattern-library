@@ -1,0 +1,13 @@
+{%- import 'atoms-html' as html -%}
+
+<figure {{- html.attributes(attributes|default({})) }}>
+
+  {%- with {content: content, html: html} only -%}
+    {%- block content -%}
+
+      {{- html.content(content) -}}
+
+    {%- endblock -%}
+  {%- endwith -%}
+
+</figure>

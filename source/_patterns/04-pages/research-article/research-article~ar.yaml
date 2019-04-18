@@ -82,6 +82,19 @@ body:
               تاريخه إلى أكثر من 174 مليون سنة مضت ، ما يجعله أقدم سجل معروف لزهرة "حقيقية" قبل حوالي 50 مليون سنة. على
               عكس الاعتقاد السائد ، فإن هذا من شأنه أن يعرض ظهور النباتات المزهرة إلى العصر الجوراسي المبكر ، وهي
               الفترة التي شهدت هيمنة الديناصورات على الكوكب. هذا الاكتشاف قد يعيد تشكيل فهمنا الحالي لتطور الأزهار.
+        - template: molecules-figure
+          arguments:
+            content:
+              template: atoms-image
+              arguments:
+                image:
+                  src: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg
+                  alt: ''
+                sources:
+                  - type: image/webp
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
+                  - type: image/jpeg
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
 
 tags:
   groups:

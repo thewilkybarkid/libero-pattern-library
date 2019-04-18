@@ -117,6 +117,19 @@ body:
                 flower by almost 50 million years. Contrary to mainstream belief, this would place the apparition of
                 flowering plants to the Early Jurassic, the period that saw dinosaurs dominating the planet. This
                 discovery may reshape our current understanding of the evolution of flowers.
+        - template: molecules-figure
+          arguments:
+            content:
+              template: atoms-image
+              arguments:
+                image:
+                  src: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg
+                  alt: ''
+                sources:
+                  - type: image/webp
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
+                  - type: image/jpeg
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
 
 tags:
   groups:

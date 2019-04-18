@@ -142,7 +142,6 @@ sup {
 }
 
 img {
-  @include max-block-size(100%);
   @include max-inline-size(100%);
 }
 
