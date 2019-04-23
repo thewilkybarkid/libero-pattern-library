@@ -46,8 +46,7 @@ COPY composer.json \
     composer.lock \
     ./
 
-RUN mkdir public source && \
-    composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-suggest --prefer-dist
+RUN composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-suggest --prefer-dist
 
 
 
@@ -66,9 +65,8 @@ WORKDIR /app
 
 COPY core/ core/
 COPY config/ config/
-COPY --from=composer /app/public/ public/
 COPY --from=composer /app/vendor/ vendor/
-COPY --from=gulp /app/source/ source/
+COPY --from=gulp /app/build/source/ build/source/
 
 RUN core/console --generate
 
@@ -79,5 +77,5 @@ RUN core/console --generate
 #
 FROM nginx:1.15.7-alpine AS ui
 
-COPY --from=build /app/public/ /usr/share/nginx/html/
+COPY --from=build /app/build/public/ /usr/share/nginx/html/
 HEALTHCHECK --interval=5s CMD nc -z localhost 80

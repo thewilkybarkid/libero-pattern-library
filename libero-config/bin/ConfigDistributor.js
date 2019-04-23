@@ -16,7 +16,7 @@ module.exports = class ConfigDistributor {
   constructor() {
     this.paths = {
       out: {
-        sassVariablesPath: '/source/css/sass/variables',
+        sassVariablesPath: '/source/sass/variables',
         jsonFileName: '/source/js/derivedConfig.json'
       }
     };

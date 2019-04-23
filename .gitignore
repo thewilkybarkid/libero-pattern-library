@@ -1,12 +1,5 @@
-/.sass-cache/
-/export/
+/build/
 /node_modules/
-/pattern-library-*.tar.gz
-/public/
-/source/css/*.css
-!/source/css/pattern-scaffolding.css
-/source/css/*.map
-/source/styleguide/
-/vendor/
-/source/css/sass/variables/
+/source/sass/variables/
 /source/js/derivedConfig.json
+/vendor/

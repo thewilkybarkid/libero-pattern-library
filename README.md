@@ -49,7 +49,7 @@ The result is that `config.data.baselinegrid.space.small_in_px` will have the va
 
 #### Distributing configuration  
 ##### Distributing to SASS  
-Each property of `config.data` specified in `config.layerAllocations.sass` is eventually written as a SASS file to  `/source/css/sass/variables/[propertyname].sass`. Each of these files contains the SASS variables describing the config for that property. Looking at the `breakpoint` example again, this config  
+Each property of `config.data` specified in `config.layerAllocations.sass` is eventually written as a SASS file to  `/source/sass/variables/[propertyname].sass`. Each of these files contains the SASS variables describing the config for that property. Looking at the `breakpoint` example again, this config  
   
 ```  
 // specified in a config file  
@@ -62,7 +62,7 @@ config.layerAllocations.sass = ['breakpoint'];
   
 generates this file:  
 ```  
-// /source/css/sass/variables/breakpoint.sass  
+// /source/sass/variables/breakpoint.sass  
 $breakpoint-site-small: 480;  
 $breakpoint-site-medium: 730;  
 ```   

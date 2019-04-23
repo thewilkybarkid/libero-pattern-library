@@ -2,8 +2,8 @@
   "ignoreFiles": [
     "./**/!(*.scss)",
     "./export/css/sass/**/*",
-    "./source/css/sass/variables/**/*",
-    "./source/css/sass/vendor/**/*"
+    "./source/sass/variables/**/*",
+    "./source/sass/vendor/**/*"
   ],
   "plugins": [
     "stylelint-use-logical"

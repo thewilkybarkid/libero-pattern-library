@@ -18,11 +18,11 @@ styleGuideExcludes:
     - 04-pages
 cacheBusterOn: 'true'
 exportDir: export
-publicDir: public
-sourceDir: source
+publicDir: build/public
+sourceDir: build/source
 defaultPattern: all
 defaultShowPatternInfo: false
-ishMinimum: '240'
+ishMinimum: '320'
 ishMaximum: '2600'
 ishControlsHide:
     - hay
