@@ -91,6 +91,45 @@ body:
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
                   - type: image/jpeg
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
+            caption:
+              heading:
+                text: Nanjinganthusを担持するシルト岩スラブ。
+                level: 3
+              content:
+                - template: atoms-paragraph
+                  arguments:
+                    text:
+                      - すべてのバーは1センチの長さです。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ａ
+                      - ）同じスラブ上の6つの花（1〜6）、および平行した連通を伴う関連する三角のリーフレット。PB22227。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｂ
+                      - ）同じスラブ上にいくつかの花があります。 図１〜３は図２ｆおよび６ｄに詳細に示されている。PB22226。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｃ
+                      - ）同じスラブ上のいくつかの花（1〜8）とそれに関連するNilssonia parabrevis（上）。PB22220。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｄ
+                      - ）同じスラブ上のいくつかの花（1〜6）。1〜3の詳細は、図2hおよび3a〜cに示されています。PB22224。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｅ
+                      - >-
+                        ）同じスラブにたくさんの花があります。 番号が付けられたもののいくつかは後の図で詳細に示されています。
+                        PB22222a。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｆ
+                      - ）たくさんの花が咲く板。PB22221。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｇ
+                      - ）スラブはほとんど花で覆われていました。PB22228。
 
 tags:
   groups:

@@ -103,6 +103,51 @@ body:
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
                   - type: image/jpeg
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
+            caption:
+              heading:
+                text: Плиты из алевролита, несущие Nanjinganthus.
+                level: 3
+              content:
+                - template: atoms-paragraph
+                  arguments:
+                    text:
+                      - Все бруски длиной 1 см. (
+                      - template: atoms-bold
+                        arguments:
+                          text: A
+                      - >-
+                        ) Шесть цветов (1-6) на одной плите и связанная треугольная листовка с параллельным венингом.
+                        PB22227. (
+                      - template: atoms-bold
+                        arguments:
+                          text: B
+                      - ) Несколько цветов на одной плите. 1–3 подробно показаны на рисунках 2f и 6d,e. PB22226. (
+                      - template: atoms-bold
+                        arguments:
+                          text: C
+                      - >-
+                        ) Несколько цветов (1-8) на одной и той же плите и связанный с ней Nilssonia parabrevis
+                        (вверху). PB22220. (
+                      - template: atoms-bold
+                        arguments:
+                          text: D
+                      - >-
+                        ) Несколько цветов (1-6) на одной плите. 1–3 подробно показаны на рисунках 2h и 3a – c.
+                        PB22224. (
+                      - template: atoms-bold
+                        arguments:
+                          text: E
+                      - >-
+                        ) Много цветов на одной плите. Некоторые из пронумерованных подробно показаны на следующих
+                        рисунках. PB22222a. (
+                      - template: atoms-bold
+                        arguments:
+                          text: F
+                      - ) Плита с многочисленными цветами. PB22221. (
+                      - template: atoms-bold
+                        arguments:
+                          text: G
+                      - ) Плита почти полностью покрыта цветами. PB22228.
 
 tags:
   groups:

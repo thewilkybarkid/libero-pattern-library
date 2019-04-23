@@ -130,6 +130,58 @@ body:
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
                   - type: image/jpeg
                     srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
+            caption:
+              heading:
+                text:
+                  - 'Siltstone slabs bearing '
+                  - template: atoms-italic
+                    arguments:
+                      text: Nanjinganthus
+                  - .
+                level: 3
+              content:
+                - template: atoms-paragraph
+                  arguments:
+                    text:
+                      - All bars are 1 cm long. (
+                      - template: atoms-bold
+                        arguments:
+                          text: A
+                      - >-
+                        ) Six flowers (1-6) on the same slab, and an associated triangular leaflet with parallel
+                        venation. PB22227. (
+                      - template: atoms-bold
+                        arguments:
+                          text: B
+                      - ) Several flowers on the same slab. 1–3 are shown in detail in Figures 2f and 6d,e. PB22226. (
+                      - template: atoms-bold
+                        arguments:
+                          text: C
+                      - ') Several flowers (1-8) on the same slab and the associated '
+                      - template: atoms-italic
+                        arguments:
+                          text: Nilssonia parabrevis
+                      - ' (top). PB22220. ('
+                      - template: atoms-bold
+                        arguments:
+                          text: D
+                      - >-
+                        ) Several flowers (1-6) on the same slab. 1–3 are shown in detail in Figures 2h and 3a–c.
+                        PB22224. (
+                      - template: atoms-bold
+                        arguments:
+                          text: E
+                      - >-
+                        ) Many flowers on the same slab. Some of the numbered ones are shown in detail in later figures.
+                        PB22222a. (
+                      - template: atoms-bold
+                        arguments:
+                          text: F
+                      - ) A slab with numerous flowers. PB22221. (
+                      - template: atoms-bold
+                        arguments:
+                          text: G
+                      - ) A slab almost fully covered with flowers. PB22228.
 
 tags:
   groups:
