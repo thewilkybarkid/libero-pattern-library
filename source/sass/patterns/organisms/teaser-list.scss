@@ -1,0 +1,16 @@
+@import "../../variables/color";
+@import "../../mixins/decorations";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+
+.teaser-list__title {
+  @include block-spacing();
+  @include label-content-typography($color-text-normal);
+  @include set-font-size-and-line-height(scale(-1));
+  font-weight: bold;
+}
+
+.teaser-list__list {
+  @include list-style-none();
+  @include padding(0, inline-start);
+}

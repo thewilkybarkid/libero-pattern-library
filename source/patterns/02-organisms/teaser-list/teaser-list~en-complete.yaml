@@ -1,8 +1,8 @@
 title:
   attributes:
     id: listing-title
-  level: 1
-  text: Listing title
+  level: 3
+  text: Latest research
 list:
   items:
     - content:

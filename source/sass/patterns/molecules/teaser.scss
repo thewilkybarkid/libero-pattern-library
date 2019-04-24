@@ -1,0 +1,17 @@
+@import "../../mixins/decorations";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+
+.teaser {
+
+  .teaser-list__item:not(:last-child) & {
+    @include divider(block-end);
+    @include block-spacing($end: $baselinegrid-space-small - $grid-divider_size);
+  }
+
+}
+
+.teaser__heading {
+  @include h4-spacing();
+  @include h4-typography();
+}
