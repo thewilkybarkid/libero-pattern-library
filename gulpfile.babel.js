@@ -1,11 +1,16 @@
 import browserSync from 'browser-sync';
+import color from 'ansi-colors';
 import del from 'del';
 import distributeConfig from './libero-config/bin/distributeConfig';
+import eslint from 'gulp-eslint';
 import flatten from 'gulp-flatten';
 import fs from 'fs';
 import gulp from 'gulp';
+import log from 'fancy-log';
+import jest from 'gulp-jest';
 import minimist from 'minimist';
 import mocha from 'gulp-mocha';
+import path from 'path';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
@@ -15,6 +20,8 @@ import sassGlob from 'gulp-sass-glob';
 import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'stylelint';
 import syntaxScss from 'postcss-scss';
+import webpack from 'webpack';
+import webpackConfigFactory from './webpack.config.babel.js';
 
 const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
 
@@ -22,6 +29,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
     invocationArgs, {
       default: {
         environment: 'production',
+        jsEntryPoint: 'main.js',
         sassEntryPoint: 'base.scss',
         cssOutFilename: 'all.css',
         lint: true,
@@ -55,10 +63,12 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.dir.src.js = `${config.sourceRoot}/js`;
 
   config.dir.test.sass = `${config.testRoot}/sass`;
+  config.dir.test.js = `${config.testRoot}/js`;
 
   config.dir.build.src = `${config.buildRoot}/source`;
   config.dir.build.css = `${config.dir.build.src}/css`;
   config.dir.build.fonts = `${config.dir.build.src}/fonts`;
+  config.dir.build.js = `${config.dir.build.src}/js`;
   config.dir.build.meta = `${config.dir.build.src}/_meta`;
   config.dir.build.patterns = `${config.dir.build.src}/_patterns`;
   config.dir.build.stubs = [
@@ -67,6 +77,8 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   ];
 
   config.dir.export.css = `${config.exportRoot}/css`;
+  config.dir.export.js = `${config.exportRoot}/js`;
+  config.dir.export.jsSrc = `${config.dir.export.js}/src`;
   config.dir.export.sass = `${config.dir.export.css}/sass`;
   config.dir.export.sassVendor = `${config.dir.export.css}/sass/vendor`;
   config.dir.export.images = `${config.exportRoot}/images`;
@@ -90,6 +102,8 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
     `${config.dir.src.sassVendor}/**/{LICENSE,license}.*`,
     `!${config.dir.src.sassVendor}/modularscale-sass/{libsass,test-compass}/**/*`,
   ];
+  config.files.src.js = `${config.dir.src.js}/**/*.js`;
+  config.files.src.jsEntryPoint = `${config.dir.src.js}/${invocationOptions.jsEntryPoint}`;
   config.files.src.images = `${config.dir.src.images}/**/*`;
   config.files.src.fonts = `${config.dir.src.fonts}/**/*`;
   config.files.src.meta = `${config.dir.src.meta}/**/*`;
@@ -100,10 +114,13 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
     `${config.dir.src.js}/derivedConfig.json`,
   ];
 
+  config.files.test.js = `${config.dir.test.js}/**/*.spec.js`;
   config.files.test.sass = `${config.dir.test.sass}/**/*.spec.scss`;
   config.files.test.sassTestsEntryPoint = `${config.dir.test.sass}/test_sass.js`;
 
   config.files.build.cssFilename = invocationOptions.cssOutFilename;
+
+  config.webpack = webpackConfigFactory(config.environment, path.resolve(config.files.src.jsEntryPoint), path.resolve(config.dir.build.js));
 
   return config;
 
@@ -160,6 +177,50 @@ export const generateCss = gulp.series(cleanCss, compileCss);
 
 export const buildCss = gulp.parallel(validateSass, generateCss);
 
+// JavaScript tasks
+
+const lintJs = () => {
+  if (!config.lint) {
+    console.info('Skipping lintJs');
+    return Promise.resolve();
+  }
+
+  return gulp.src(config.files.src.js)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+};
+
+const testJs = () =>
+  gulp.src(config.dir.test.js)
+  // TODO: remove passWithNoTests once js work has started
+    .pipe(jest({'passWithNoTests': true}));
+
+export const validateJs = gulp.parallel(lintJs, testJs);
+
+const cleanJs = () => del(config.dir.build.js);
+
+const compileJs = done => {
+  const logBuild = (err, stats) => {
+    if (err) {
+      log('Error', err);
+      done();
+    } else {
+      Object.getOwnPropertyNames(stats.compilation.assets).forEach((asset) => {
+        log('Webpack: output', color.green(asset));
+      });
+    }
+    log('Webpack:', color.blue('finished'));
+    done();
+  };
+
+  webpack(config.webpack).run(logBuild);
+};
+
+export const generateJs = gulp.series(cleanJs, compileJs);
+
+export const buildJs = gulp.series(validateJs, generateJs);
+
 // Pattern Lab tasks
 
 const cleanPatternLab = () => del([config.dir.build.fonts, config.dir.build.meta, config.dir.build.patterns].concat(config.dir.build.stubs));
@@ -188,11 +249,11 @@ export const buildPatternLab = gulp.series(cleanPatternLab, generatePatternLab);
 
 // Combined tasks
 
-export const build = gulp.parallel(buildCss, buildPatternLab);
+export const build = gulp.parallel(buildCss, buildJs, buildPatternLab);
 
 export const assemble = gulp.series(distributeSharedConfig, build);
 
-export const test = gulp.parallel(validateSass);
+export const test = gulp.parallel(validateJs, validateSass);
 
 // Exporters
 
@@ -218,6 +279,14 @@ const exportFonts = () =>
   gulp.src(config.files.src.fonts)
     .pipe(gulp.dest(config.dir.export.fonts));
 
+const exportJs = () =>
+  gulp.src(`${config.dir.build.js}/**/*`)
+    .pipe(gulp.dest(config.dir.export.js));
+
+const exportJsSrc = () =>
+  gulp.src(config.files.src.js)
+    .pipe(gulp.dest(config.dir.export.jsSrc));
+
 const exportTemplates = () =>
   gulp.src(config.files.src.templates)
     // Rename files to standard Twig usage
@@ -233,7 +302,7 @@ const exportTemplates = () =>
 
 export const exportPatterns = gulp.series(
   cleanExport,
-  gulp.parallel(exportCss, exportSass, exportSassVendor, exportImages, exportFonts, exportTemplates),
+  gulp.parallel(exportCss, exportSass, exportSassVendor, exportImages, exportFonts, exportTemplates, exportJs, exportJsSrc),
 );
 
 // Default
@@ -242,13 +311,15 @@ export default gulp.series(assemble, exportPatterns);
 
 // Watchers
 
+const watchJs = () => gulp.watch([config.files.src.js, config.files.test.js], buildJs);
+
 const watchPatternLab = () => gulp.watch([config.dir.src.fonts, config.dir.src.meta, config.dir.src.patterns], buildPatternLab);
 
 const watchSass = () => gulp.watch(config.files.src.sass.concat([config.files.test.sass]), buildCss);
 
 const watchSharedConfig = () => gulp.watch('libero-config/**/*', distributeSharedConfig);
 
-export const watch = gulp.parallel(watchPatternLab, watchSass, watchSharedConfig);
+export const watch = gulp.parallel(watchJs, watchPatternLab, watchSass, watchSharedConfig);
 
 // Server
 

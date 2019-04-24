@@ -23,8 +23,12 @@ FROM node AS gulp
 WORKDIR /app
 
 COPY .babelrc \
+    .browserslistrc \
+    .eslintrc.js \
     .stylelintrc \
     gulpfile.babel.js \
+    jest.config.js \
+    webpack.config.babel.js \
     ./
 COPY libero-config/ libero-config/
 COPY --from=npm /app/node_modules/ node_modules/
