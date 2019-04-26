@@ -97,13 +97,20 @@ module.exports = {
           'xx_wide': 1600,
         },
       },
+      font: {
+        letterspacing: {
+          label_in_px: 1.005,
+        },
+      }
     },
     expected: '$breakpoints-site-x_small: 320;\n'
       + '$breakpoints-site-small: 480;\n'
       + '$breakpoints-site-medium: 730;\n'
       + '$breakpoints-site-wide: 900;\n'
       + '$breakpoints-site-x_wide: 1400;\n'
-      + '$breakpoints-site-xx_wide: 1600;\n',
+      + '$breakpoints-site-xx_wide: 1600;\n'
+      + '$font-letterspacing-label: 1.01px;\n',
+
   },
 
   jsConfigToProcess: {
