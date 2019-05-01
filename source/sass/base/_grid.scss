@@ -1,6 +1,6 @@
-@import "mixins/logical-properties";
-@import "mixins/media-query";
-@import "variables/grid";
+@import "../mixins/logical-properties";
+@import "../mixins/media-query";
+@import "../variables/grid";
 
 :root {
   --GRID-COLUMN-GAP: #{$grid-column_gap};

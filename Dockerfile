@@ -1,4 +1,4 @@
-FROM node:10.12.0-slim AS node
+FROM node:10.15.3-slim AS node
 
 #
 # Stage: NPM install
@@ -22,6 +22,12 @@ FROM node AS gulp
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install --yes --no-install-recommends \
+        python3-pip \
+    && pip3 --no-cache-dir install \
+        brotli \
+        fonttools \
+    && rm -rf /var/lib/apt/lists/*
 COPY .babelrc \
     .browserslistrc \
     .eslintrc.js \

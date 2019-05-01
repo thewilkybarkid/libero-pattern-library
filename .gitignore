@@ -1,5 +1,8 @@
 /build/
 /node_modules/
+/source/fonts/*
+!/source/fonts/fonts.yaml
+/source/sass/fonts/
 /source/sass/variables/
 /source/js/derivedConfig.json
 /vendor/
