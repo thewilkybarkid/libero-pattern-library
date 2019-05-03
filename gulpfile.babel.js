@@ -9,13 +9,15 @@ import flatten from 'gulp-flatten';
 import fontRanger from 'font-ranger/lib/font-ranger';
 import fs from 'fs-extra';
 import gulp from 'gulp';
-import log from 'fancy-log';
+import imagemin from 'gulp-imagemin';
 import jest from 'gulp-jest';
 import Keyv from 'keyv';
 import KeyvFile from 'keyv-file';
+import log from 'fancy-log';
 import minimist from 'minimist';
 import mocha from 'gulp-mocha';
 import path from 'path';
+import pngToIco from 'png-to-ico';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
@@ -23,6 +25,7 @@ import replaceStream from 'replacestream';
 import reporter from 'postcss-reporter';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
+import sharp from 'sharp';
 import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'stylelint';
 import syntaxScss from 'postcss-scss';
@@ -66,6 +69,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.dir.src.sassFonts = `${config.dir.src.sass}/fonts`;
   config.dir.src.sassVendor = `${config.dir.src.sass}/vendor`;
   config.dir.src.fonts = `${config.sourceRoot}/fonts`;
+  config.dir.src.images = `${config.sourceRoot}/images`;
   config.dir.src.patterns = `${config.sourceRoot}/patterns`;
   config.dir.src.meta = `${config.sourceRoot}/meta`;
   config.dir.src.js = `${config.sourceRoot}/js`;
@@ -78,6 +82,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.dir.build.src = `${config.buildRoot}/source`;
   config.dir.build.css = `${config.dir.build.src}/css`;
   config.dir.build.fonts = `${config.dir.build.src}/fonts`;
+  config.dir.build.images = `${config.dir.build.src}/images`;
   config.dir.build.js = `${config.dir.build.src}/js`;
   config.dir.build.meta = `${config.dir.build.src}/_meta`;
   config.dir.build.patterns = `${config.dir.build.src}/_patterns`;
@@ -99,6 +104,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
     src: {},
     test: {},
     build: {},
+    export: {},
   };
 
   config.files.src.sass = [
@@ -115,6 +121,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.files.src.js = `${config.dir.src.js}/**/*.js`;
   config.files.src.jsEntryPoint = `${config.dir.src.js}/${invocationOptions.jsEntryPoint}`;
   config.files.src.images = `${config.dir.src.images}/**/*`;
+  config.files.src.favicon = `${config.dir.src.images}/logo.svg`;
   config.files.src.fontsDefinition = `${config.dir.src.fonts}/fonts.yaml`;
   config.files.src.fonts = [
     `${config.dir.src.fonts}/**/*`,
@@ -132,7 +139,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.files.test.sass = `${config.dir.test.sass}/**/*.spec.scss`;
   config.files.test.sassTestsEntryPoint = `${config.dir.test.sass}/test_sass.js`;
 
-  config.files.build.cssFilename = invocationOptions.cssOutFilename;
+  config.files.build.favicon = `${config.dir.build.src}/favicon.ico`;
 
   config.webpack = webpackConfigFactory(config.environment, path.resolve(config.files.src.jsEntryPoint), path.resolve(config.dir.build.js));
 
@@ -304,6 +311,27 @@ export const generateJs = gulp.series(cleanJs, compileJs);
 
 export const buildJs = gulp.series(validateJs, generateJs);
 
+// Image tasks
+
+const cleanImages = () => del(config.dir.build.images);
+
+const compileImages = () =>
+  gulp.src(config.files.src.images)
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.dir.build.images));
+
+const generateImages = gulp.series(cleanImages, compileImages);
+
+const generateFavicon = () =>
+  sharp(config.files.src.favicon)
+    .resize(256, 256, {background: {r: 255, g: 255, b: 255, alpha: 0}, fit: 'contain'})
+    .png()
+    .toBuffer()
+    .then(png => pngToIco(png))
+    .then(ico => fs.outputFile(config.files.build.favicon, ico));
+
+export const buildImages = gulp.parallel(generateFavicon, generateImages);
+
 // Pattern Lab tasks
 
 const cleanPatternLab = () => del([config.dir.build.fonts, config.dir.build.meta, config.dir.build.patterns].concat(config.dir.build.stubs));
@@ -332,7 +360,7 @@ export const buildPatternLab = gulp.series(cleanPatternLab, generatePatternLab);
 
 // Combined tasks
 
-export const build = gulp.series(gulp.parallel(gulp.series(buildFonts, buildCss), buildJs), buildPatternLab);
+export const build = gulp.series(gulp.parallel(gulp.series(buildFonts, buildCss), buildImages, buildJs), buildPatternLab);
 
 export const assemble = gulp.series(distributeSharedConfig, build);
 
@@ -355,8 +383,12 @@ const exportSassVendor = () =>
     .pipe(gulp.dest(config.dir.export.sassVendor));
 
 const exportImages = () =>
-  gulp.src(config.files.src.images)
+  gulp.src(`${config.dir.build.images}/**/*`)
     .pipe(gulp.dest(config.dir.export.images));
+
+const exportFavicon = () =>
+  gulp.src(config.files.build.favicon)
+    .pipe(gulp.dest(config.exportRoot));
 
 const exportFonts = () =>
   gulp.src(config.files.src.fonts)
@@ -385,7 +417,7 @@ const exportTemplates = () =>
 
 export const exportPatterns = gulp.series(
   cleanExport,
-  gulp.parallel(exportCss, exportSass, exportSassVendor, exportImages, exportFonts, exportTemplates, exportJs, exportJsSrc),
+  gulp.parallel(exportCss, exportSass, exportSassVendor, exportImages, exportFavicon, exportFonts, exportTemplates, exportJs, exportJsSrc),
 );
 
 // Default
@@ -396,6 +428,8 @@ export default gulp.series(assemble, exportPatterns);
 
 const watchFonts = () => gulp.watch(config.files.src.fontsDefinition, gulp.series(buildFonts, gulp.parallel(buildCss, patternLabFonts)));
 
+const watchImages = () => gulp.watch(config.files.src.images, buildImages);
+
 const watchJs = () => gulp.watch([config.files.src.js, config.files.test.js], buildJs);
 
 const watchPatternLab = () => gulp.watch([config.dir.src.meta, config.dir.src.patterns], buildPatternLab);
@@ -404,7 +438,7 @@ const watchSass = () => gulp.watch(config.files.src.sass.concat([config.files.te
 
 const watchSharedConfig = () => gulp.watch('libero-config/**/*', distributeSharedConfig);
 
-export const watch = gulp.parallel(watchFonts, watchJs, watchPatternLab, watchSass, watchSharedConfig);
+export const watch = gulp.parallel(watchFonts, watchImages, watchJs, watchPatternLab, watchSass, watchSharedConfig);
 
 // Server
 
