@@ -12,11 +12,11 @@
 
   <meta name="format-detection" content="telephone=no">
 
-  <link rel="stylesheet" href="../../css/fonts.css?{{ cacheBuster }}"/>
-  <link rel="stylesheet" href="../../css/styles.css?{{ cacheBuster }}"/>
-  <link rel="icon" href="../../images/logo.svg" sizes="any" type="image/svg+xml"/>
+  <link rel="stylesheet" href="{{ asset('css/fonts.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+  <link rel="icon" href="{{ asset('images/logo.svg') }}" sizes="any" type="image/svg+xml"/>
 
-  <script defer src="../../js/main.bundle.js?{{ cacheBuster }}"></script>
+  <script defer src="{{ asset('js/main.bundle.js') }}"></script>
 
   {{ patternLabHead|raw }}
 

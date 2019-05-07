@@ -411,6 +411,8 @@ const exportTemplates = () =>
     }))
     // Replace pattern-lab partial inclusion with generic Twig syntax
     .pipe(replace(/(['"])(?:atoms|molecules|organisms|templates)-(.+?)(\1)(?=[\s\S]*?(}}|%}))/g, '$1@LiberoPatterns/$2.html.twig$3'))
+    // Add asset package
+    .pipe(replace(/asset\s*\(\s*(['"])(.*?)(?:\1)\s*\)(?=[\s\S]*?(?:}}|%}))/g, 'asset($1$2$1, $1libero_patterns$1)'))
     // Template files don't need their authoring hierarchy for downstream use
     .pipe(flatten({includeParents: false}))
     .pipe(gulp.dest(config.dir.export.templates));
