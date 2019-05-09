@@ -12,7 +12,7 @@
 
 .page-grid__start {
   grid-row: start;
-  @include divider(block-end);
+  @include border(block-end);
 }
 
 .page-grid__main {
@@ -21,5 +21,5 @@
 
 .page-grid__end {
   grid-row: end;
-  @include divider(block-start);
+  @include border(block-start);
 }

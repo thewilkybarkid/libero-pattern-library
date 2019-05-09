@@ -10,7 +10,7 @@
   text-align: center;
   @include padding($baselinegrid-space-medium, block-start);
   @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
-  @include divider(block-end);
+  @include border(block-end);
 }
 
 .content-header__title {

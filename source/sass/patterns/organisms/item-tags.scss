@@ -7,7 +7,7 @@
 .item-tags {
   @include padding($baselinegrid-space-medium - $grid-divider_size, block-start);
   @include block-spacing($end: $baselinegrid-space-medium);
-  @include divider(block-start);
+  @include border(block-start);
   text-align: center;
 
   @include mq($from: medium) {

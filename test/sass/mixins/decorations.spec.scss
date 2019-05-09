@@ -1,14 +1,14 @@
 @import "../test";
 @import "../../../source/sass/mixins/decorations";
 
-@include describe("@mixin divider") {
+@include describe("@mixin border") {
 
   @include it("generates correct fallbacks for dimension 'inline'") {
 
     @include assert() {
 
       @include output {
-        @include divider("inline");
+        @include border("inline");
       }
 
       @include expect {
@@ -26,7 +26,7 @@
     @include assert() {
 
       @include output {
-        @include divider("inline-start");
+        @include border("inline-start");
       }
 
       @include expect {
@@ -52,7 +52,7 @@
     @include assert() {
 
       @include output {
-        @include divider("inline-end");
+        @include border("inline-end");
       }
 
       @include expect {
@@ -78,7 +78,7 @@
     @include assert() {
 
       @include output {
-        @include divider("block");
+        @include border("block");
       }
 
       @include expect {
@@ -96,7 +96,7 @@
     @include assert() {
 
       @include output {
-        @include divider("block-start");
+        @include border("block-start");
       }
 
       @include expect {
@@ -113,7 +113,7 @@
     @include assert() {
 
       @include output {
-        @include divider("block-end");
+        @include border("block-end");
       }
 
       @include expect {
@@ -125,12 +125,28 @@
 
   }
 
+  @include it("may not have a dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include border();
+      }
+
+      @include expect {
+        border: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
   @include it("errors on invalid dimensions") {
 
     @include assert() {
 
       @include output {
-        @include divider("top");
+        @include border("top");
       }
 
       @include contains {
@@ -142,7 +158,7 @@
     @include assert() {
 
       @include output {
-        @include divider("foo");
+        @include border("foo");
       }
 
       @include contains {

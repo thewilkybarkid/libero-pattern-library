@@ -5,7 +5,7 @@
 .teaser {
 
   .teaser-list__item:not(:last-child) & {
-    @include divider(block-end);
+    @include border(block-end);
     @include block-spacing($end: $baselinegrid-space-small - $grid-divider_size);
   }
 
