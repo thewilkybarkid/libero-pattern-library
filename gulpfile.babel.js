@@ -259,7 +259,7 @@ const compileCss = () =>
   gulp.src(config.files.src.sassEntryPoints)
     .pipe(sourcemaps.init())
     .pipe(sassGlob())
-    .pipe(sass(config.sass).on('error', sass.logError))
+    .pipe(sass(config.sass))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.dir.build.css));
 
