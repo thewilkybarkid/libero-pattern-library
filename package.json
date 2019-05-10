@@ -50,6 +50,7 @@
     "png-to-ico": "^2.0.2",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^2.0.0",
+    "promise-parallel-throttle": "^3.3.0",
     "recursive-copy": "^2.0.10",
     "replacestream": "^4.0.3",
     "sass-mq": "^5.0.0",
