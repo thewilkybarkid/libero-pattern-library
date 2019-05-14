@@ -10,6 +10,9 @@ config.data.baselinegrid.space.medium_in_px = '!expression baselinegrid.space.sm
 config.data.baselinegrid.space.large_in_px = '!expression baselinegrid.space.small_in_px * 3';
 config.data.baselinegrid.space.extra_large_in_px = '!expression baselinegrid.space.small_in_px * 5';
 
+config.data.image = { inline: {} };
+config.data.image.inline.spacing_in_px = config.data.baselinegrid.space.extra_small_in_px;
+
 config.data.breakpoint = {site: {}};
 config.data.breakpoint.site.x_small_in_px = 320;
 config.data.breakpoint.site.small_in_px = 480;
@@ -58,7 +61,7 @@ config.data.font.letterspacing.label_in_px = 0.5;
 
 // Specify the top level properties to be distributed to layers (sass, js & templates)
 config.layerAllocations = {
-  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid'],
+  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid', 'image'],
   js: ['breakpoint'],
   // template: ['breakpoint']
 };

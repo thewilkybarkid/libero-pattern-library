@@ -27,6 +27,27 @@
     }
   }
 
+  @include describe("@mixin caption-typography") {
+
+    @include it("generates correct typography for figure caption") {
+
+      @include assert() {
+
+        @include output {
+          @include caption-typography();
+        }
+
+        @include expect {
+          font-family: $font-secondary;
+          font-size: 13px;
+          font-size: 0.8125rem;
+          line-height: 1.84615;
+        }
+      }
+    }
+
+  }
+
   @include it("generates correct fallbacks with position 'super'") {
 
     @include assert() {

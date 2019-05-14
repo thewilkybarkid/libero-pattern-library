@@ -1,0 +1,25 @@
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../variables/baselinegrid";
+@import "../../variables/breakpoint";
+@import "../../variables/image";
+
+.figure {
+  @include block-spacing($start: $baselinegrid-space-medium, $end: $baselinegrid-space-medium);
+}
+
+.figure__heading {
+  @include block-spacing($end: 0);
+  @include caption-typography();
+}
+
+.figure__caption {
+  @include caption-typography();
+  @include margin($image-inline-spacing, inline);
+}
+
+.figure__caption {
+  @include mq($from: medium) {
+    @include margin(0, inline);
+  }
+}
