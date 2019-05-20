@@ -8,7 +8,7 @@
 
 .content-header {
   text-align: center;
-  @include padding($baselinegrid-space-medium, block-start);
+  @include padding($baselinegrid-space-small, block-start);
   @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
   @include border(block-end);
 }
