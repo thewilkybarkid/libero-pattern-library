@@ -1,3 +1,7 @@
+siteHeader:
+  logo:
+    href: '#'
+
 contentHeader:
   contentTitle:
     text: The International Journal for Demonstration

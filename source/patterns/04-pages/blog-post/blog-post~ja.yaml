@@ -1,5 +1,11 @@
 lang: ja
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'Liberoのロゴ'
+
 contentHeader:
   contentTitle:
     text: 次の3名の早期キャリア研究者が旅行補助金を授与した

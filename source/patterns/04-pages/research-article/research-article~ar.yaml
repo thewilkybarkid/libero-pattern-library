@@ -1,6 +1,12 @@
 lang: ar
 dir: rtl
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'شعار مجاني'
+
 contentHeader:
   contentTitle:
     text: زهرة غير منتجة غير منتجة من العصر الجوراسي في الصين

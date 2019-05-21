@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 165 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Placeholder custom icon example</title>
+    <desc>Pentagon pointing upwards filled with a red radial gradient to black, originating in the top right quadrant</desc>
+    <defs>
+        <radialGradient cx="69.4238852%" cy="34.0590847%" fx="69.4238852%" fy="34.0590847%" r="78.4379569%" gradientTransform="translate(0.694239,0.340591),scale(1.000000,0.934426),rotate(90.000000),translate(-0.694239,-0.340591)" id="radialGradient-1">
+            <stop stop-color="#E81F1F" offset="0%"></stop>
+            <stop stop-color="#E01E1E" offset="13.7423156%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.839652535" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon stroke="#3D2929" fill="url(#radialGradient-1)" points="82.5 1 163.815332 64.224945 132.755639 166.525055 32.2443609 166.525055 1.18466786 64.224945"></polygon>
+    </g>
+</svg>

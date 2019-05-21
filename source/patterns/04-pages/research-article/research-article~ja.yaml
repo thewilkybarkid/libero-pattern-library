@@ -1,5 +1,11 @@
 lang: ja
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'Liberoのロゴ'
+
 contentHeader:
   contentTitle:
     text: 中国のジュラ紀からの予期せぬ非虫歯の蔓延した花

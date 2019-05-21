@@ -1,6 +1,12 @@
 lang: ar
 dir: rtl
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'شعار مجاني'
+
 contentHeader:
   contentTitle:
     text: المجلة الدولية للمظاهرة

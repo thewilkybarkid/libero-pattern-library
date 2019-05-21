@@ -1,5 +1,11 @@
 lang: ja
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'Liberoのロゴ'
+
 contentHeader:
   contentTitle:
     text: デモンストレーション国際ジャーナル

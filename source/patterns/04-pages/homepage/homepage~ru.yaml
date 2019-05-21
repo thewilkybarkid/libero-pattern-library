@@ -1,5 +1,11 @@
 lang: ru
 
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'Либеро логотип'
+
 contentHeader:
   contentTitle:
     text: Международный журнал для демонстрации

@@ -1,0 +1,20 @@
+@import "../../mixins/grid";
+@import "../../mixins/media-query";
+@import "../../mixins/sizes";
+@import "../../mixins/spacing";
+
+.site-header {
+  @include margin(6px auto 0);
+  @include max-inline-size($grid-max_width);
+}
+
+.site-header__image {
+  box-sizing: content-box;
+  @include block-size(28px);
+  @include inline-size(28px);
+  @include padding(6px, inline);
+
+  @include mq($from: x-wide) {
+    @include padding(0, inline-start);
+  }
+}

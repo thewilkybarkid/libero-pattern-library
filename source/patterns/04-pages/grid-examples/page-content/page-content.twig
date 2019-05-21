@@ -1,5 +1,20 @@
 {% include 'templates-page-grid' with {
-  main: {
+  start: {
+    template: 'templates-content-grid',
+    arguments: {
+      content: [
+        {
+          area: 'full',
+          content: [
+          {
+            template: 'organisms-site-header',
+            arguments: siteHeader,
+          }
+        ],
+        },
+      ],
+    },
+  },  main: {
     template: 'templates-content-grid',
     arguments: {
       content: [
