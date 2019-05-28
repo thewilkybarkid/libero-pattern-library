@@ -8,6 +8,7 @@
     },
     "require": {
         "php": "^7.2",
+        "allocine/twigcs": "^3.1",
         "henrikbjorn/lurker": "^1.2",
         "pattern-lab/core": "^2.0",
         "pattern-lab/patternengine-twig": "^2.0",

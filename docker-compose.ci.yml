@@ -5,3 +5,7 @@ services:
     build:
       context: .
       target: gulp
+  php:
+    build:
+      context: .
+      target: build
