@@ -30,7 +30,7 @@
   @if $dimension == "" {
 
     @include _expect_at_most($sizes, 4, "More than four sizes supplied when no dimension") {
-      @include rem($space-type, $sizes);
+      @include logical-property($space-type, all, $sizes);
     }
 
   } @else if $dimension == inline {
