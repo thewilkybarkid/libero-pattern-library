@@ -183,7 +183,7 @@ These guidelines govern the use of custom properties in this codebase:
       font-size: var(--font-size);
            
     }
-    ``` 
+    ```
  
 ### Margins
 

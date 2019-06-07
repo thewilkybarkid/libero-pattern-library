@@ -2,19 +2,82 @@
 @import "../../mixins/media-query";
 @import "../../mixins/sizes";
 @import "../../mixins/spacing";
+@import "../../variables/color";
+@import "../../variables/siteHeader";
 
 .site-header {
-  @include margin(6px auto 0);
+
+  @include margin(0 auto);
+  @include padding($siteHeader-block_start_space $siteHeader-block_end_space, block);
   @include max-inline-size($grid-max_width);
+
+  position: relative;
+  @supports (display:flex) {
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+
+  --block-size: #{$siteHeader-block_size__default};
+  @include block-size($siteHeader-block_size__default);
+
+  @include mq($from: medium) {
+    --block-size: #{$siteHeader-block_size__medium};
+    @include block-size($siteHeader-block_size__medium);
+  }
+
+  @supports (--name: value) {
+    @include block-size(var(--block-size));
+  }
+}
+
+.site-header__logo_link {
+
+  display: block;
+  box-sizing: content-box;
+
+  $_inviolate-space: $siteHeader-block_start_space + $siteHeader-block_end_space + $grid-divider_size;
+  $_max-block-size--default: $siteHeader-block_size__default - $_inviolate-space;
+  $_max-block-size--medium: $siteHeader-block_size__medium - $_inviolate-space;
+
+  --block-size: #{$siteHeader-image-block_size__default};
+  @include block-size($siteHeader-image-block_size__default);
+  --max-block-size: #{$_max-block-size--default};
+  @include max-block-size($_max-block-size--default);
+  --inline-size: #{$siteHeader-image-inline_size__default};
+  @include inline-size($siteHeader-image-inline_size__default);
+  --inline-end-space: #{$siteHeader-image-inline_space__default};
+  --inline-start-space: var(--inline-end-space);
+  @include padding(($siteHeader-block_size__default - $siteHeader-block_start_space - $siteHeader-image-block_size__default) / 2, block-start);
+
+  @include mq($from: medium) {
+    --block-size: #{$siteHeader-image-block_size__medium};
+    @include block-size($siteHeader-image-block_size__medium);
+    --max-block-size: #{$_max-block-size--medium};
+    @include max-block-size($_max-block-size--medium);
+    --inline-size: #{$siteHeader-image-inline_size__medium};
+    @include inline-size($siteHeader-image-inline_size__medium);
+    --inline-end-space: #{$siteHeader-image-inline_space__medium};
+    @include padding(($siteHeader-block_size__medium - $siteHeader-block_start_space - $siteHeader-image-block_size__medium) / 2, block-start);
+  }
+
+  @include mq($from: x-wide) {
+    --inline-start-space: #{$siteHeader-image-inline_start_space__x_wide};
+    @include margin($siteHeader-image-inline_start_space__x_wide, inline-start);
+  }
+
+  @supports (--name: value) {
+    @include block-size(var(--block-size));
+    @include max-block-size(var(--max-block-size));
+    @include inline-size(var(--inline-size));
+    @include margin(var(--inline-start-space) var(--inline-end-space), inline);
+    @include padding(0, block-start);
+  }
+
 }
 
 .site-header__image {
-  box-sizing: content-box;
-  @include block-size(28px);
-  @include inline-size(28px);
-  @include padding(6px, inline);
-
-  @include mq($from: x-wide) {
-    @include padding(0, inline-start);
-  }
+  display: block;
+  @include inline-size(100%);
+  @include block-size(100%);
 }

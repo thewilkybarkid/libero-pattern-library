@@ -2,6 +2,7 @@ const Color = require('color');
 
 const config = { data: {}, layerAllocations: {} };
 
+// GLOBAL SETTINGS
 config.data.baselinegrid = {space: {}};
 config.data.baselinegrid.space.extra_small_in_px = '!expression font.size_in_px * 0.75';
 config.data.baselinegrid.space.small_in_px = '!expression baselinegrid.space.extra_small_in_px * 2';
@@ -9,9 +10,6 @@ config.data.baselinegrid.space.smallish_in_px = '!expression baselinegrid.space.
 config.data.baselinegrid.space.medium_in_px = '!expression baselinegrid.space.small_in_px * 2';
 config.data.baselinegrid.space.large_in_px = '!expression baselinegrid.space.small_in_px * 3';
 config.data.baselinegrid.space.extra_large_in_px = '!expression baselinegrid.space.small_in_px * 5';
-
-config.data.image = { inline: {} };
-config.data.image.inline.spacing_in_px = config.data.baselinegrid.space.extra_small_in_px;
 
 config.data.breakpoint = {site: {}};
 config.data.breakpoint.site.x_small_in_px = 320;
@@ -59,9 +57,26 @@ config.data.font.monospace = '"Courier 10 Pitch", Courier, monospace';
 config.data.font.size_in_px = 16;
 config.data.font.letterspacing.label_in_px = 0.5;
 
+// PATTERN-LEVEL SETTINGS
+config.data.image = { inline: {} };
+config.data.image.inline.spacing_in_px = config.data.baselinegrid.space.extra_small_in_px;
+
+config.data.siteHeader = { image: {} };
+config.data.siteHeader.block_size__default_in_px = 60;
+config.data.siteHeader.block_size__medium_in_px = 96;
+config.data.siteHeader.block_start_space_in_px = 8;
+config.data.siteHeader.block_end_space_in_px = 7;
+config.data.siteHeader.image.block_size__default_in_px = 24;
+config.data.siteHeader.image.block_size__medium_in_px = 36;
+config.data.siteHeader.image.inline_size__default_in_px = 18;
+config.data.siteHeader.image.inline_size__medium_in_px = 28;
+config.data.siteHeader.image.inline_space__default_in_px = 18;
+config.data.siteHeader.image.inline_space__medium_in_px = 36;
+config.data.siteHeader.image.inline_start_space__x_wide = 0;
+
 // Specify the top level properties to be distributed to layers (sass, js & templates)
 config.layerAllocations = {
-  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid', 'image'],
+  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid', 'image', 'siteHeader'],
   js: ['breakpoint'],
   // template: ['breakpoint']
 };
