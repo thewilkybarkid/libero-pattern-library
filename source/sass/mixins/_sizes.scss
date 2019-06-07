@@ -8,9 +8,9 @@
   }
 }
 
-@mixin inline-size($size) {
+@mixin inline-size($size, $to-rem: true) {
   @include _expect_single_value($size) {
-    @include logical-property("", inline-size, ($size));
+    @include logical-property("", inline-size, ($size), $to-rem);
   }
 }
 

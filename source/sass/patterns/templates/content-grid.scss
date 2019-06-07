@@ -7,6 +7,10 @@
   --primary-column-width: #{get-overall-width($grid-main_column_count)};
 
   @include base-grid($grid-max_width);
+  &.page-grid__start {
+    @include padding(0, inline);
+  }
+
   grid-template-areas:
     ". menu    ."
     ". primary .";

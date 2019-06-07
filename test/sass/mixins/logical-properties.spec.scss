@@ -1,6 +1,8 @@
 @import "../test";
 @import "../../../source/sass/mixins/logical-properties";
 
+/* stylelint-disable csstools/use-logical  */
+
 @include describe("@mixin logical-property") {
 
   @include it("generates correct fallbacks for the dimension 'inline'") {
@@ -619,6 +621,190 @@
 
   }
 
+  @include it("generates correct fallbacks for the dimension 'all'") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 16px);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 32px);
+      }
+
+      @include expect {
+        margin: 16px 32px;
+        margin: 1rem 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 16px 16px);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 16px 32px);
+      }
+
+      @include expect {
+        margin: 16px 16px 32px;
+        margin: 1rem 1rem 2rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 16px 16px 16px);
+      }
+
+      @include expect {
+        margin: 16px;
+        margin: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 16px 16px 32px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin: 16px 16px 16px 32px;
+          margin: 1rem 1rem 1rem 2rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin: 16px 32px 16px 16px;
+          margin: 1rem 2rem 1rem 1rem;
+        }
+        html[dir][dir] & {
+          margin-inline-start: 2rem;
+          margin-inline-end: 1rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 32px 48px 64px);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin: 16px 32px 48px 64px;
+          margin: 1rem 2rem 3rem 4rem;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin: 16px 64px 48px 32px;
+          margin: 1rem 4rem 3rem 2rem;
+        }
+        html[dir][dir] & {
+          margin-block-start: 1rem;
+          margin-block-end: 3rem;
+          margin-inline-start: 4rem;
+          margin-inline-end: 2rem;
+        }
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(padding, all, 16px);
+      }
+
+      @include expect {
+        padding: 16px;
+        padding: 1rem;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px, $to-rem: false);
+      }
+
+      @include expect {
+        margin: 16px;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(margin, all, 16px 32px 48px 64px, $to-rem: false);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          margin: 16px 32px 48px 64px;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          margin: 16px 64px 48px 32px;
+        }
+        html[dir][dir] & {
+          margin-block-start: 16px;
+          margin-block-end: 48px;
+          margin-inline-start: 64px;
+          margin-inline-end: 32px;
+        }
+      }
+
+    }
+
+  }
+
   @include it("errors when 3 property name parts are passed") {
 
     @include assert() {
@@ -657,6 +843,34 @@
 
       @include contains {
         _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
+  @include it("errors when in the dimensions 'all' with an invalid property name") {
+
+    @include assert() {
+
+      @include output {
+        @include logical-property(border, all, 16px);
+      }
+
+      @include expect {
+        _error: "Can't combine block and inline for 'border'";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include logical-property((margin padding), all, 16px);
+      }
+
+      @include expect {
+        _error: "Expected a single property name";
       }
 
     }
