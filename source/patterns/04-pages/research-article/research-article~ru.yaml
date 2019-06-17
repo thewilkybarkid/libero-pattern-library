@@ -36,6 +36,48 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: 18 дек. 2018 г.
+  authors:
+    attributes:
+      aria-label: Авторы этой статьи
+    items:
+      - content:
+          text: Влад Яшин
+      - content:
+          text: Полина Исаевa
+      - content:
+          text: Константин Ульянов
+      - content:
+          text: Галина Уваровa
+      - content:
+          text: Кира Тарасовa
+      - content:
+          text: Ксения Седых
+      - content:
+          text: Василий Цветков
+      - content:
+          text: Кирилл Фадеев
+      - content:
+          text: Альбина Евдокимовa
+      - content:
+          text: Лев Семёнов
+      - content:
+          text: Татьяна Ильинa
+  affiliations:
+    attributes:
+      aria-label: Авторская принадлежность
+    items:
+      - content:
+          text: Китайская академия наук, Китай
+      - content:
+          text: Университет Виго, Испания
+      - content:
+          text: Брисбенский ботанический сад, Австралия
+      - content:
+          text: Фуцзянский университет сельского и лесного хозяйства, Китай
+      - content:
+          text: Китайская геологическая служба, Китай
+      - content:
+          text: Нанкинский педагогический университет, Китай
 
 body:
   - template: molecules-section

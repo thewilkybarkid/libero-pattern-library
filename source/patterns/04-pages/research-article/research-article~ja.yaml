@@ -36,6 +36,48 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: 2018年12月18日
+  authors:
+    attributes:
+      aria-label: この記事の著者
+    items:
+      - content:
+          text: 清水輝
+      - content:
+          text: 木村菜々子
+      - content:
+          text: 山田誠
+      - content:
+          text: 岡田翔太
+      - content:
+          text: 中島心愛
+      - content:
+          text: 山崎優斗
+      - content:
+          text: 伊藤昭三
+      - content:
+          text: 前田真由
+      - content:
+          text: 松本優奈
+      - content:
+          text: 加藤蓮
+      - content:
+          text: 井上貴大
+  affiliations:
+    attributes:
+      aria-label: 著者所属
+    items:
+      - content:
+          text: 中国科学院、中国
+      - content:
+          text: スペイン、ビーゴ大学
+      - content:
+          text: ブリスベン植物園、オーストラリア
+      - content:
+          text: 福建省農林大学、中国
+      - content:
+          text: 中国地質調査、中国
+      - content:
+          text: 南京師範大学、中国
 
 body:
   - template: molecules-section

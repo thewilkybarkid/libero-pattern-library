@@ -32,6 +32,48 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: Dec 18, 2018
+  authors:
+    attributes:
+      aria-label: Authors of this article
+    items:
+      - content:
+          text: Andrea Campbell
+      - content:
+          text: Raymond Clark
+      - content:
+          text: Harry Stanley
+      - content:
+          text: Rebecca Hicks
+      - content:
+          text: Rose Silva
+      - content:
+          text: Ashley Moreno
+      - content:
+          text: Diana Ramos
+      - content:
+          text: Kathleen Jacobs
+      - content:
+          text: Judy Willis
+      - content:
+          text: Helen Walters
+      - content:
+          text: Lisa Lawson
+  affiliations:
+    attributes:
+      aria-label: Author affiliations
+    items:
+      - content:
+          text: Chinese Academy of Sciences, China
+      - content:
+          text: Universidad de Vigo, Spain
+      - content:
+          text: Brisbane Botanical Gardens Mt Coot-tha, Australia
+      - content:
+          text: Fujian Agriculture and Forestry University, China
+      - content:
+          text: China Geological Survey, China
+      - content:
+          text: Nanjing Normal University, China
 
 body:
   - template: molecules-section

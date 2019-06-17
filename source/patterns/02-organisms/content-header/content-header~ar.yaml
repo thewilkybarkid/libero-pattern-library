@@ -3,3 +3,25 @@ attributes:
   lang: ar
 contentTitle:
   text: عنوان المحتوى
+authors:
+  attributes:
+    aria-label: مؤلفو هذا المقال
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 1
+    - content:
+        text: المؤلف 2
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 3
+affiliations:
+  attributes:
+    aria-label: الكاتب الانتماءات
+  items:
+    - content:
+        text: الانتماء 1
+    - content:
+        text: الانتماء 2

@@ -38,6 +38,49 @@ contentHeader:
                   datetime: '2018-12-18'
                 text: ١٨/١٢/٢٠١٨
 
+  authors:
+    attributes:
+      aria-label: مؤلفو هذا المقال
+    items:
+      - content:
+          text: جابر عادل
+      - content:
+          text: مؤمن ياسر
+      - content:
+          text: هشام عادل
+      - content:
+          text: مروة عبدالمنعم
+      - content:
+          text: مي حسين
+      - content:
+          text: نهي محمود
+      - content:
+          text: مروة عبدالمنعم
+      - content:
+          text: عبير الروقي
+      - content:
+          text: وليد النفيسة
+      - content:
+          text: سلطان الكاف
+      - content:
+          text: رنا الروقي
+  affiliations:
+    attributes:
+      aria-label: الكاتب الانتماءات
+    items:
+      - content:
+          text: الأكاديمية الصينية للعلوم ، الصين
+      - content:
+          text: جامعة فيجو ، اسبانيا
+      - content:
+          text: حدائق بريسبان النباتية ، أستراليا
+      - content:
+          text: جامعة فوجيان للزراعة والغابات ، الصين
+      - content:
+          text: المسح الجيولوجي الصيني ، الصين
+      - content:
+          text: جامعة نانجينغ العادية ، الصين
+
 body:
   - template: molecules-section
     arguments:
