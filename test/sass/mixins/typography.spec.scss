@@ -87,3 +87,99 @@
   }
 
 }
+
+@include describe("@mixin list-separator") {
+
+  @include it("Provides the default separator correctly") {
+
+    @include assert() {
+
+      @include output {
+        @include list-separator(default);
+      }
+
+      @include expect {
+        &:after {
+          content: ",\a0";
+        }
+
+        &:lang(ar):after {
+          content: "،\a0";
+        }
+
+        &:lang(ja):after {
+          content: "、";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+      }
+    }
+
+    @include assert() {
+
+      @include output {
+        @include list-separator();
+      }
+
+      @include expect {
+        &:after {
+          content: ",\a0";
+        }
+
+        &:lang(ar):after {
+          content: "،\a0";
+        }
+
+        &:lang(ja):after {
+          content: "、";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+      }
+    }
+
+  }
+
+  @include it("Provides the alternative separator correctly") {
+
+    @include assert() {
+
+      @include output {
+        @include list-separator(alternative);
+      }
+
+      @include expect {
+        &:after {
+          content: ";\a0";
+        }
+
+        &:lang(ar):after {
+          content: "\61b\a0";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+      }
+    }
+
+  }
+
+  @include it("errors on invalid separators") {
+    @include assert() {
+
+      @include output {
+        @include list-separator("invalid");
+      }
+
+      @include expect {
+        _error: "Unknown list separator 'invalid'";
+      }
+    }
+  };
+
+};

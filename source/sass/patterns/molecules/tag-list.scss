@@ -23,23 +23,7 @@
 .tag-list__item {
   display: inline-block;
   @include label-tag-typography();
-
-  &:after {
-    display: inline;
-    content: ",\a0";
-  }
-
-  &:lang(ar):after {
-    content: "،\a0";
-  }
-
-  &:lang(ja):after {
-    content: "、";
-  }
-
-  &:last-child:after {
-    content: "";
-  }
+  @include list-separator();
 }
 
 .tag-list__link {

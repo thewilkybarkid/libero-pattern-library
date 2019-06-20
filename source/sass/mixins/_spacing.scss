@@ -127,8 +127,3 @@
 @mixin h6-spacing() {
   @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
 }
-
-@mixin list-style-none() {
-  list-style: none;
-  @include padding(0, inline-start);
-}
