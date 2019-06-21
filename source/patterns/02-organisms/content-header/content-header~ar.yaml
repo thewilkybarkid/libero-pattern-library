@@ -3,6 +3,10 @@ attributes:
   lang: ar
 contentTitle:
   text: عنوان المحتوى
+download:
+  link:
+    href: '#'
+  alt: قم بتنزيل ملف PDF لهذا المقال
 authors:
   attributes:
     aria-label: مؤلفو هذا المقال

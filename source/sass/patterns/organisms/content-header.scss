@@ -2,8 +2,10 @@
 @import "../../mixins/scale";
 @import "../../mixins/decorations";
 @import "../../mixins/media-query";
+@import "../../mixins/positioning";
 @import "../../mixins/spacing";
 @import "../../variables/baselinegrid";
+@import "../../variables/contentHeader";
 @import "../../variables/grid";
 
 .content-header {
@@ -12,6 +14,7 @@
   @include padding($baselinegrid-space-small, block-start);
   @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
   @include border(block-end);
+  position: relative;
 }
 
 .content-header__title {
@@ -124,5 +127,38 @@
 
   @include mq($from: wide) {
     @include rem(font-size, scale(4));
+  }
+}
+
+.content-header__categories {
+  @include margin(1.5 * $contentHeader-downloadIcon-inline_size__default, inline);
+
+  @include mq($from: medium) {
+    @include margin(1.5 * $contentHeader-downloadIcon-inline_size__medium, inline);
+  }
+}
+
+.content-header__download {
+  position: absolute;
+  @include inset(0, block-start);
+  @include inset(0, inline-end);
+  @include block-spacing($start: $baselinegrid-space-small, $end: 0);
+
+  @supports (display: flex) {
+    display: flex;
+    @include block-size($baselinegrid-space-small * 3);
+    @include block-spacing($end: 0);
+  }
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-header__download_icon {
+  display: block;
+  @include inline-size($contentHeader-downloadIcon-inline_size__default);
+
+  @include mq($from: medium) {
+    @include inline-size($contentHeader-downloadIcon-inline_size__medium);
   }
 }

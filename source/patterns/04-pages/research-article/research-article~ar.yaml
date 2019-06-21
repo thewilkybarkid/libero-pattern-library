@@ -8,6 +8,10 @@ siteHeader:
       alt: 'شعار مجاني'
 
 contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: قم بتنزيل ملف PDF لهذا المقال
   contentTitle:
     text: زهرة غير منتجة غير منتجة من العصر الجوراسي في الصين
   categories:

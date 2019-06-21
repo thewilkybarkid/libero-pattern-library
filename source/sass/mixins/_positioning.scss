@@ -1,0 +1,6 @@
+@import "logical-properties";
+@import "spacing";
+
+@mixin inset($sizes, $dimension: "") {
+  @include _spacing($sizes, inset, $dimension);
+}

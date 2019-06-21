@@ -3,6 +3,10 @@ siteHeader:
     href: '#'
 
 contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: Download the PDF for this article
   contentTitle:
     text: An unexpected noncarpellate epigynous flower from the Jurassic of China
   categories:

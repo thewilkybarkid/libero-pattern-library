@@ -58,6 +58,10 @@ config.data.font.size_in_px = 16;
 config.data.font.letterspacing.label_in_px = 0.5;
 
 // PATTERN-LEVEL SETTINGS
+config.data.contentHeader = { downloadIcon: {} };
+config.data.contentHeader.downloadIcon.inline_size__default_in_px = 20;
+config.data.contentHeader.downloadIcon.inline_size__medium_in_px = 44;
+
 config.data.image = { inline: {} };
 config.data.image.inline.spacing_in_px = config.data.baselinegrid.space.extra_small_in_px;
 
@@ -76,7 +80,7 @@ config.data.siteHeader.image.inline_start_space__x_wide = 0;
 
 // Specify the top level properties to be distributed to layers (sass, js & templates)
 config.layerAllocations = {
-  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid', 'image', 'siteHeader'],
+  sass: ['baselinegrid', 'breakpoint', 'color', 'font', 'grid', 'contentHeader', 'image', 'siteHeader'],
   js: ['breakpoint'],
   // template: ['breakpoint']
 };
