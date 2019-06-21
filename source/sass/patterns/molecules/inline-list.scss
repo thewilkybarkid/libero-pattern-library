@@ -10,7 +10,7 @@
 }
 
 .inline-list__item {
-  display: inline-block;
+  display: inline;
   @include list-separator();
 
   .inline-list--alternative-separators & {
