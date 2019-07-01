@@ -7,6 +7,19 @@ siteHeader:
     image:
       alt: 'شعار مجاني'
 
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 'هناك '
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: معلومات إضافية مثيرة للاهتمام
+    - text: ' المتاحة.'
+
 contentHeader:
   download:
     link:

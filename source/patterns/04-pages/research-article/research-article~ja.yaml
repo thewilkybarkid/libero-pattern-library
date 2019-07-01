@@ -6,6 +6,19 @@ siteHeader:
     image:
       alt: 'Liberoのロゴ'
 
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 追加の
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: 興味深い情報
+    - text: があります。
+
 contentHeader:
   download:
     link:

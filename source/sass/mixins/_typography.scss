@@ -112,6 +112,14 @@
   }
 }
 
+@mixin subtle-link() {
+  @include inherit-all($ensure: color) {
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
+  }
+}
+
 @mixin caption-typography() {
   font-family: $font-secondary;
   @include set-font-size-and-line-height(scale(-2));
