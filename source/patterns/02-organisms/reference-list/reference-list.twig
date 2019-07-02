@@ -1,0 +1,31 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference-list']) }) -%}
+
+<ol {{- html.attributes(attributes) }}>
+
+  {%- for item in items -%}
+
+    {%- with item|merge({html: html}) only -%}
+      {%- block item -%}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference-list__item']) }) -%}
+
+        <li {{- html.attributes(attributes) }}>
+
+          {%- with content only -%}
+            {%- block content -%}
+
+              {%- include 'molecules-reference' -%}
+
+            {%- endblock content -%}
+          {%- endwith -%}
+
+        </li>
+
+      {%- endblock item -%}
+    {%- endwith -%}
+
+  {%- endfor -%}
+
+</ol>
