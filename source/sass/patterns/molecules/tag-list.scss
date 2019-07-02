@@ -1,9 +1,8 @@
 @import "../../mixins/sizes";
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
-@import "../../variables/baselinegrid";
-@import "../../variables/contentHeader";
-@import "../../variables/grid";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
 
 .tag-list {
   @include block-spacing();

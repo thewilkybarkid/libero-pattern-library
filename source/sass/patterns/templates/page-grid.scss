@@ -1,6 +1,6 @@
 @import "../../mixins/decorations";
 @import "../../mixins/grid";
-@import "../../variables/grid";
+@import "../../settings/grid";
 
 .page-grid {
   @include base-grid($grid-max_width);

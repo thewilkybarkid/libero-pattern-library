@@ -4,9 +4,11 @@
 @import "../../mixins/media-query";
 @import "../../mixins/positioning";
 @import "../../mixins/spacing";
-@import "../../variables/baselinegrid";
-@import "../../variables/contentHeader";
-@import "../../variables/grid";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
+
+$contentHeader-downloadIcon-inline_size__default: 20px !default;
+$contentHeader-downloadIcon-inline_size__medium: 44px !default;
 
 .content-header {
   font-family: $font-secondary;

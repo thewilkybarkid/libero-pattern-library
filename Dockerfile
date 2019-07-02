@@ -36,12 +36,11 @@ COPY .babelrc \
     jest.config.js \
     webpack.config.babel.js \
     ./
-COPY libero-config/ libero-config/
 COPY --from=npm /app/node_modules/ node_modules/
 COPY test/ test/
 COPY source/ source/
 
-RUN npx gulp assemble
+RUN npx gulp build
 
 
 

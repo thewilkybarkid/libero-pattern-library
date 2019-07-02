@@ -1,18 +1,18 @@
-@import "../../variables/color";
-@import "../../variables/font";
 @import "../../mixins/positioning";
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
+@import "../../settings/color";
+@import "../../settings/font";
 
-$_info-bar-gutter: 8px;
-$_info-bar-image-offset: $font-size;
+$info-bar-gutter: 8px !default;
+$info-bar-image-offset: $font-size !default;
 
 .info-bar {
   color: $color-text-reverse;
   font-family: $font-secondary;
   font-weight: 600;
   @include set-font-size-and-line-height(scale(-1));
-  @include padding($baselinegrid-space-extra_small $_info-bar-gutter);
+  @include padding($baselinegrid-space-extra_small $info-bar-gutter);
   text-align: center;
 
   @supports (display: flex) {
@@ -44,7 +44,7 @@ $_info-bar-image-offset: $font-size;
 
 .info-bar__image {
   @include block-size($baselinegrid-space-small);
-  @include margin(0 $_info-bar-image-offset, inline);
+  @include margin(0 $info-bar-image-offset, inline);
   vertical-align: top;
 
   @supports (display: flex) {

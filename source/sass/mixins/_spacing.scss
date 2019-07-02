@@ -3,7 +3,7 @@
 @import "sizes";
 @import "types";
 @import "validation";
-@import "../variables/baselinegrid";
+@import "../settings/baselinegrid";
 
 // Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
 //  - document level: always specified, via the HTML element

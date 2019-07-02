@@ -1,0 +1,8 @@
+@import "font";
+
+$baselinegrid-space-extra_small: $font-size * 0.75 !default;
+$baselinegrid-space-small: $baselinegrid-space-extra_small * 2 !default;
+$baselinegrid-space-smallish: $baselinegrid-space-small * 1.5 !default;
+$baselinegrid-space-medium: $baselinegrid-space-small * 2 !default;
+$baselinegrid-space-large: $baselinegrid-space-small * 3 !default;
+$baselinegrid-space-extra_large: $baselinegrid-space-small * 5 !default;

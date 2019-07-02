@@ -1,7 +1,7 @@
-@import "../../variables/color";
 @import "../../mixins/decorations";
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
+@import "../../settings/color";
 
 .teaser-list__title {
   @include block-spacing();

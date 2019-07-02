@@ -1,8 +1,8 @@
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
-@import "../../variables/baselinegrid";
-@import "../../variables/breakpoint";
-@import "../../variables/image";
+@import "../../patterns/atoms/image";
+@import "../../settings/baselinegrid";
+@import "../../settings/breakpoint";
 
 .figure {
   @include block-spacing($start: $baselinegrid-space-medium, $end: $baselinegrid-space-medium);

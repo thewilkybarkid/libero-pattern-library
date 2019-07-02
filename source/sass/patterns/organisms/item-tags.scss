@@ -1,8 +1,8 @@
 @import "../../mixins/decorations";
 @import "../../mixins/media-query";
 @import "../../mixins/spacing";
-@import "../../variables/baselinegrid";
-@import "../../variables/grid";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
 
 .item-tags {
   @include padding($baselinegrid-space-medium - $grid-divider_size, block-start);

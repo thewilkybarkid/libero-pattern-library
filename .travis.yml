@@ -12,7 +12,6 @@ env:
 script:
     - docker-compose --file docker-compose.yml --file docker-compose.ci.yml build
     - .travis/smoke-test.sh
-    - docker-compose --file docker-compose.yml --file docker-compose.ci.yml run gulp npx mocha ./test/libero-config
 
 after_success:
     - docker run --name pattern-library-patterns patternlibrary_gulp npx gulp exportPatterns

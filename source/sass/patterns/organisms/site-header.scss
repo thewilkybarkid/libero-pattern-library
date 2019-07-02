@@ -2,8 +2,19 @@
 @import "../../mixins/media-query";
 @import "../../mixins/sizes";
 @import "../../mixins/spacing";
-@import "../../variables/color";
-@import "../../variables/siteHeader";
+@import "../../settings/color";
+
+$siteHeader-image-block_size__default: 27px !default;
+$siteHeader-image-block_size__medium: 36px !default;
+$siteHeader-image-inline_size__default: 21px !default;
+$siteHeader-image-inline_size__medium: 28px !default;
+$siteHeader-image-inline_space__default: 18px !default;
+$siteHeader-image-inline_space__medium: 36px !default;
+$siteHeader-image-inline_start_space__x_wide: 0 !default;
+$siteHeader-block_size__default: 60px !default;
+$siteHeader-block_size__medium: 96px !default;
+$siteHeader-block_start_space: 8px !default;
+$siteHeader-block_end_space: 7px !default;
 
 .site-header {
 
