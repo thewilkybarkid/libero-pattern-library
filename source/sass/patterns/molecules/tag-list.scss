@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.tag-list--compact {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
+}
+
 .tag-list__title {
   @include label-content-typography();
   @include block-spacing($end: 0);
