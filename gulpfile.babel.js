@@ -122,7 +122,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.files.src.js = `${config.dir.src.js}/**/*.js`;
   config.files.src.jsEntryPoint = `${config.dir.src.js}/${invocationOptions.jsEntryPoint}`;
   config.files.src.images = `${config.dir.src.images}/**/*`;
-  config.files.src.favicon = `${config.dir.src.images}/libero-logo.svg`;
+  config.files.src.favicon = `${config.dir.src.images}/libero-logo-small.svg`;
   config.files.src.fontsDefinition = `${config.dir.src.fonts}/fonts.yaml`;
   config.files.src.fonts = [
     `${config.dir.src.fonts}/**/*`,
@@ -311,7 +311,16 @@ const cleanImages = () => del(config.dir.build.images);
 
 const compileImages = () =>
   gulp.src(config.files.src.images)
-    .pipe(imagemin())
+    .pipe(imagemin(
+      imagemin.svgo({
+        plugins: [
+          {cleanupIDs: false},
+          {removeStyleElement: true},
+          {removeTitle: false},
+          {sortAttrs: true},
+        ],
+      }),
+    ))
     .pipe(gulp.dest(config.dir.build.images));
 
 const generateImages = gulp.series(cleanImages, compileImages);
