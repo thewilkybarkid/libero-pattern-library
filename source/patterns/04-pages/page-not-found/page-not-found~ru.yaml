@@ -1,0 +1,11 @@
+lang: ru
+
+siteHeader:
+  logo:
+    href: '#'
+
+error:
+  heading:
+    text: Оп!
+  details:
+    text: Страница, которую вы искали, не найдена.

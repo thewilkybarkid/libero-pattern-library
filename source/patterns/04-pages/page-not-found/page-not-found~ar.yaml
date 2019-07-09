@@ -1,0 +1,12 @@
+lang: ar
+dir: rtl
+
+siteHeader:
+  logo:
+    href: '#'
+
+error:
+  heading:
+    text: وجه الفتاة!
+  details:
+    text: الصفحة التي كنت تبحث عنها غير موجودة.

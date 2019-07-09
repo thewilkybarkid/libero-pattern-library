@@ -1,0 +1,11 @@
+lang: ja
+
+siteHeader:
+  logo:
+    href: '#'
+
+error:
+  heading:
+    text: おっとっと！
+  details:
+    text: 探しているページが見つかりません。
