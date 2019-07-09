@@ -1,21 +1,21 @@
 @import "types";
 @import "validation";
 
-@mixin _when-left-to-right {
+@mixin when-left-to-right {
   html[dir="ltr"] &:not([dir]),
   &[dir="ltr"] {
     @content;
   }
 }
 
-@mixin _when-right-to-left {
+@mixin when-right-to-left {
   html[dir="rtl"] &:not([dir]),
   &[dir="rtl"] {
     @content;
   }
 }
 
-@mixin _when-logical {
+@mixin when-logical {
   html[dir][dir] & {
     @content;
   }
@@ -88,17 +88,17 @@
 
         } @else {
 
-          @include _when-left-to-right() {
+          @include when-left-to-right() {
             @include _maybe-rem($to-rem, _property-name($property-name, left), $firstArgument);
             @include _maybe-rem($to-rem, _property-name($property-name, right), $secondArgument);
           }
 
-          @include _when-right-to-left() {
+          @include when-right-to-left() {
             @include _maybe-rem($to-rem, _property-name($property-name, right), $firstArgument);
             @include _maybe-rem($to-rem, _property-name($property-name, left), $secondArgument);
           }
 
-          @include _when-logical() {
+          @include when-logical() {
 
             @if $property-name == inset {
               #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument $secondArgument);
@@ -125,29 +125,29 @@
 
   } @else if $dimension == inline-start {
 
-    @include _when-left-to-right() {
+    @include when-left-to-right() {
       @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
     }
 
-    @include _when-right-to-left() {
+    @include when-right-to-left() {
       @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
     }
 
-    @include _when_logical() {
+    @include when-logical() {
       #{_property-name($property-name, inline-start)}: _maybe-rem($to-rem, $arguments);
     }
 
   } @else if $dimension == inline-end {
 
-    @include _when-left-to-right() {
+    @include when-left-to-right() {
       @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
     }
 
-    @include _when-right-to-left() {
+    @include when-right-to-left() {
       @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
     }
 
-    @include _when_logical() {
+    @include when-logical() {
       #{_property-name($property-name, inline-end)}: _maybe-rem($to-rem, $arguments);
     }
 
@@ -259,7 +259,7 @@
 
         } @else {
 
-          @include _when-left-to-right() {
+          @include when-left-to-right() {
             @if $property-name == inset {
               @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineEnd, bottom: $blockEnd, left: $inlineStart));
             } @else {
@@ -267,7 +267,7 @@
             }
           }
 
-          @include _when-right-to-left() {
+          @include when-right-to-left() {
             @if $property-name == inset {
               @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockEnd, left: $inlineEnd));
             } @else {
@@ -275,7 +275,7 @@
             }
           }
 
-          @include _when-logical() {
+          @include when-logical() {
 
             @if $blockStart != $blockEnd {
 

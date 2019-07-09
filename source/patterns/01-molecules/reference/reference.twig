@@ -16,6 +16,7 @@
         {%- with heading|merge({text: {attributes: {href: href|default(false)}, text: heading.text}}) only -%}
           {%- block heading -%}
 
+            {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference__heading']) }) -%}
             {%- set level = level|default(3) -%}
 
             {%- include 'atoms-heading' -%}
@@ -27,6 +28,7 @@
           {%- block authors -%}
 
             {%- if items|default([])|length -%}
+              {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference__authors_list']) }) -%}
               {%- include 'molecules-inline-list' with {small: true} -%}
             {%- endif -%}
 
@@ -37,6 +39,7 @@
           {%- block details -%}
 
             {%- if text is defined -%}
+              {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference__details']) }) -%}
               {%- include 'atoms-paragraph' -%}
             {%- endif -%}
 
@@ -47,7 +50,7 @@
           {%- block doi -%}
 
             {%- if doi -%}
-              {%- include 'atoms-link' with {attributes: {href: 'https://doi.org/'~doi}, text: 'https://doi.org/'~doi} only -%}
+              {%- include 'atoms-link' with {attributes: {class: 'reference__doi', href: 'https://doi.org/'~doi}, text: 'https://doi.org/'~doi} only -%}
             {%- endif -%}
 
           {%- endblock doi -%}

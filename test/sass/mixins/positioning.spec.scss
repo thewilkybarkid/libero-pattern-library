@@ -1338,3 +1338,185 @@
   }
 
 }
+
+@include describe("@mixin text-align") {
+
+  @include it("sets keywords and global values correctly") {
+
+    @include assert() {
+
+      @include output {
+        @include text-align(center);
+      }
+
+      @include expect {
+        text-align: center;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(justify);
+      }
+
+      @include expect {
+        text-align: justify;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(justify-all);
+      }
+
+      @include expect {
+        text-align: justify-all;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(match-parent);
+      }
+
+      @include expect {
+        text-align: match-parent;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(inherit);
+      }
+
+      @include expect {
+        text-align: inherit;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(initial);
+      }
+
+      @include expect {
+        text-align: initial;
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(unset);
+      }
+
+      @include expect {
+        text-align: unset;
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks when passed 'start'") {
+
+    @include assert() {
+
+      @include output {
+        @include text-align(start);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          text-align: left;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          text-align: right;
+        }
+        html[dir][dir] & {
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  @include it("generates correct fallbacks when passed 'end'") {
+
+    @include assert() {
+
+      @include output {
+        @include text-align(end);
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          text-align: right;
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          text-align: left;
+        }
+        html[dir][dir] & {
+          text-align: end;
+        }
+      }
+    }
+  }
+
+  @include it("errors when a physical property value is passed") {
+
+    @include assert() {
+
+      @include output {
+        @include text-align(left);
+      }
+
+      @include expect {
+        _error: "'left' is a physical alignment, use its logical equivalent";
+      }
+    }
+
+    @include assert() {
+
+      @include output {
+        @include text-align(right);
+      }
+
+      @include expect {
+        _error: "'right' is a physical alignment, use its logical equivalent";
+      }
+
+    }
+
+  }
+
+  @include it("errors on unknown value is passed") {
+
+    @include assert() {
+
+      @include output {
+        @include text-align(arbitrary);
+      }
+
+      @include expect {
+        _error: "Unknown alignment '#{arbitrary}'";
+      }
+    }
+
+  }
+
+}

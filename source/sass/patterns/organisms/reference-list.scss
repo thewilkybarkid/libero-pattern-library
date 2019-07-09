@@ -1,0 +1,59 @@
+@import "../../mixins/positioning";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/font";
+
+$_ordinal-inline-size: 2rem;
+$_ordinal-inline-size--large: 3rem;
+
+.reference-list {
+  @include list-style-none();
+  counter-reset: reference-count;
+}
+
+.reference-list__item {
+  counter-increment: reference-count;
+
+  --ordinal-inline-size: #{$_ordinal-inline-size};
+
+  @supports (content: counter(reference-count, cjk-decimal)) {
+    &:lang(ja) {
+      --ordinal-inline-size: #{$_ordinal-inline-size--large};
+
+      &:before {
+        content: counter(reference-count, cjk-decimal);
+      }
+    }
+  }
+
+  &:lang(ar) {
+    &:before {
+      content: counter(reference-count, arabic-indic);
+    }
+  }
+
+  &:before {
+    content: counter(reference-count, decimal);
+    font-weight: 600;
+    font-family: $font-secondary;
+    display: inline-block;
+    vertical-align: top;
+    @include text-align(end);
+    @include margin($font-size, inline-end);
+
+    @include inline-size($_ordinal-inline-size);
+    @supports (--name: value) {
+      @include inline-size(var(--ordinal-inline-size));
+    }
+  }
+
+  & > *:last-child {
+    display: inline-block;
+
+    @include inline-size(calc(100% - #{$font-size} - #{$_ordinal-inline-size}), false);
+    @supports (--name: value) {
+      @include inline-size(calc(100% - #{$font-size} - var(--ordinal-inline-size)), false);
+    }
+  }
+
+}
