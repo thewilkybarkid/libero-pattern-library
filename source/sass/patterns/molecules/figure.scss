@@ -16,10 +16,12 @@
 .figure__caption {
   @include caption-typography();
   @include margin($image-inline-spacing, inline);
-}
 
-.figure__caption {
   @include mq($from: medium) {
     @include margin(0, inline);
   }
+}
+
+.figure__asset {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
 }

@@ -8,11 +8,11 @@ $image-inline-spacing: $baselinegrid-space-extra_small !default;
 .image {
   @include block-spacing($start: $baselinegrid-space-medium, $end: $baselinegrid-space-medium);
   @include border();
-  @include padding($image-inline-spacing, inline);
-  @include padding($baselinegrid-space-extra_small, block);
+  @include padding($baselinegrid-space-extra_small $image-inline-spacing);
   display: block;
+}
 
-  .figure__asset & {
-    @include block-spacing($start: 0, $end: $baselinegrid-space-extra_small);
-  }
+.image__img {
+  display: block;
+  width: 100%;
 }
