@@ -195,6 +195,109 @@ body:
                         arguments:
                           text: Ｇ
                       - ）スラブはほとんど花で覆われていました。PB22228。
+  - template: molecules-section
+    arguments:
+      heading:
+        text: 出典
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: エドワードアーバー
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ジョンパーキン
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' 38、29–80'
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: リチャードベイトマン
+                    - content:
+                        text: ジェイソンヒルトン
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ポーラルダル
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of Experimental Botany
+                    - ' 57、3471–3503'
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: この本の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: チャヤビスワス
+                    - content:
+                        text: ブリジモハンジョリ
+                details:
+                  text: 'ベルリン: Springer-Verlag.'
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ノーマンボケ
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: American Journal of Botany
+                    - ' 51、598–610'
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
 
 tags:
   groups:

@@ -1,0 +1,13 @@
+items:
+  - content:
+      heading:
+        level: 2
+        text: 参照タイトル1
+  - content:
+      heading:
+        level: 2
+        text: 参照タイトル2
+  - content:
+      heading:
+        level: 2
+        text: 参照タイトル3

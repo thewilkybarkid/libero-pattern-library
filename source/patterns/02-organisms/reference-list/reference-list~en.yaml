@@ -1,0 +1,13 @@
+items:
+  - content:
+      heading:
+        level: 2
+        text: Reference title 1
+  - content:
+      heading:
+        level: 2
+        text: Reference title 2
+  - content:
+      heading:
+        level: 2
+        text: Reference title 3
