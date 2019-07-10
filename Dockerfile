@@ -47,7 +47,7 @@ RUN npx gulp build
 #
 # Stage: Composer install
 #
-FROM composer:1.7.3 as composer
+FROM composer:1.7.3 AS composer
 
 COPY core/ core/
 COPY config/ config/
@@ -88,3 +88,5 @@ FROM nginx:1.15.7-alpine AS ui
 
 COPY --from=build /app/build/public/ /usr/share/nginx/html/
 HEALTHCHECK --interval=5s CMD nc -z localhost 80
+ARG revision
+LABEL org.opencontainers.image.revision=${revision}

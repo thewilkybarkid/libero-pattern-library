@@ -5,6 +5,8 @@ services:
     build:
       context: .
       target: ui
+      args:
+        revision: ${IMAGE_REVISION:-master}
     image: libero/pattern-library:${IMAGE_TAG:-master}
     ports:
       - 8889:80
