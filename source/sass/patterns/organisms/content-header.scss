@@ -13,10 +13,14 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
 .content-header {
   font-family: $font-secondary;
   text-align: center;
-  @include padding($baselinegrid-space-small, block-start);
+  @include padding($baselinegrid-space-medium, block-start);
   @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
   @include border(block-end);
   position: relative;
+}
+
+.content-header--has-header {
+  @include padding($baselinegrid-space-large, block-start);
 }
 
 .content-header__title {
@@ -133,10 +137,12 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
 }
 
 .content-header__categories {
-  @include margin(1.5 * $contentHeader-downloadIcon-inline_size__default, inline);
+  position: absolute;
+  @include inset($baselinegrid-space-small, block-start);
+  @include inset(1.5 * $contentHeader-downloadIcon-inline_size__default, inline);
 
   @include mq($from: medium) {
-    @include margin(1.5 * $contentHeader-downloadIcon-inline_size__medium, inline);
+    @include inset(1.5 * $contentHeader-downloadIcon-inline_size__medium, inline);
   }
 }
 
