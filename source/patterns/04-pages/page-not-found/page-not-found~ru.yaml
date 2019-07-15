@@ -3,6 +3,16 @@ lang: ru
 siteHeader:
   logo:
     href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Главная
+    - attributes:
+        href: '#'
+      text: Номера
+    - attributes:
+        href: '#'
+      text: О нас
 
 error:
   heading:

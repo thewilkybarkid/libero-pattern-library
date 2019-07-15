@@ -5,6 +5,16 @@ siteHeader:
     href: '#'
     image:
       alt: 'Либеро логотип'
+  menu:
+    - attributes:
+        href: '#'
+      text: Главная
+    - attributes:
+        href: '#'
+      text: Номера
+    - attributes:
+        href: '#'
+      text: О нас
 
 infoBar:
   type: info

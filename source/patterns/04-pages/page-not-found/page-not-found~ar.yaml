@@ -4,6 +4,16 @@ dir: rtl
 siteHeader:
   logo:
     href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: رئيسية
+    - attributes:
+        href: '#'
+      text: أعداد
+    - attributes:
+        href: '#'
+      text: عن
 
 error:
   heading:

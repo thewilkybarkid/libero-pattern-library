@@ -1,0 +1,14 @@
+items:
+  - attributes:
+      href: '#'
+    text: Red
+  - text: Orange
+  - text: Yellow
+  - attributes:
+      href: '#'
+    text: Green
+  - attributes:
+      href: '#'
+    text: Blue
+  - text: Indigo
+  - text: Violet

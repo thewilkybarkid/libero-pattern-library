@@ -2,3 +2,13 @@ logo:
   href: '#'
   image:
     alt: 'Libero logo'
+menu:
+  - attributes:
+      href: '#'
+    text: Home
+  - attributes:
+      href: '#'
+    text: Issues
+  - attributes:
+      href: '#'
+    text: About

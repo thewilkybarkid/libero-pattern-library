@@ -3,6 +3,16 @@ lang: ja
 siteHeader:
   logo:
     href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: トップ
+    - attributes:
+        href: '#'
+      text: 号
+    - attributes:
+        href: '#'
+      text: について
 
 error:
   heading:

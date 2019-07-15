@@ -5,6 +5,16 @@ siteHeader:
     href: '#'
     image:
       alt: 'Liberoのロゴ'
+  menu:
+    - attributes:
+        href: '#'
+      text: トップ
+    - attributes:
+        href: '#'
+      text: 号
+    - attributes:
+        href: '#'
+      text: について
 
 infoBar:
   type: info

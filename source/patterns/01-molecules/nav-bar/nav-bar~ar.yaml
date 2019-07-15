@@ -1,0 +1,17 @@
+attributes:
+  dir: rtl
+  lang: ar
+items:
+  - attributes:
+      href: '#'
+    text: أحمر
+  - text: برتقالي
+  - text: أصفر
+  - attributes:
+      href: '#'
+    text: أخضر
+  - attributes:
+      href: '#'
+    text: أزرق
+  - text: نيلي
+  - text: بنفسجي

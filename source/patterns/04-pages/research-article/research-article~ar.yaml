@@ -6,6 +6,16 @@ siteHeader:
     href: '#'
     image:
       alt: 'شعار مجاني'
+  menu:
+    - attributes:
+        href: '#'
+      text: رئيسية
+    - attributes:
+        href: '#'
+      text: أعداد
+    - attributes:
+        href: '#'
+      text: عن
 
 infoBar:
   type: info
