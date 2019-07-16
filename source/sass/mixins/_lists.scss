@@ -1,0 +1,54 @@
+@import "spacing";
+@import "../locales";
+
+@mixin list-style-none() {
+  @include padding(0, inline-start);
+  // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
+  overflow-x: auto;
+}
+
+@mixin list-separator($separator: default) {
+
+  @if $separator == default {
+
+    @each $locale, $separator in $inline-list-separators {
+
+      @if $locale == "und" {
+
+        &:after {
+          content: $separator;
+        }
+
+      } @else {
+
+        &:lang(#{$locale}):after {
+          content: $separator;
+        }
+
+      }
+
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+
+  } @else if $separator == alternative {
+
+    &:after {
+      content: ";\a0";
+    }
+
+    &:lang(ar):after {
+      content: "\61b\a0";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+
+  } @else {
+    @include _error("Unknown list separator '#{$separator}'");
+  }
+
+}

@@ -1,0 +1,115 @@
+siteHeader:
+  logo:
+    href: '#'
+
+contentHeader:
+  contentTitle:
+    text: An unexpected noncarpellate epigynous flower from the Jurassic of China
+  categories:
+    attributes:
+      aria-label: Category listings that include this article
+    items:
+      - content:
+          text: Evolutionary Biology
+      - content:
+          text: Plant Biology
+
+primary:
+  - template: molecules-section
+    arguments:
+      heading:
+        text: Abstract
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - >
+                The origin of angiosperms has been a long-standing botanical debate. The great diversity of angiosperms
+                in the Early Cretaceous makes the Jurassic a promising period in which to anticipate the origins of the
+                angiosperms. Here, based on observations of 264 specimens of 198 individual flowers preserved on 34
+                slabs in various states and orientations, from the South Xiangshan Formation (Early Jurassic) of China,
+                we describe a fossil flower,
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus dendrostyla
+              - >1
+                gen. et sp. nov.. The large number of specimens and various preservations allow for an evidence-based
+                reconstruction of the flower. From the evidence of the combination of an invaginated receptacle and
+                ovarian roof, we infer that the seeds of
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >1
+                were completely enclosed. Evidence of an actinomorphic flower with a dendroid style, cup-form
+                receptacle, and angiospermy, is consistent with
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >1
+                being a bona fide angiosperm from the Jurassic, an inference that we hope will re-invigorate research
+                into angiosperm origins.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: eLife Digest
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - 'From '
+              - template: atoms-sub
+                arguments:
+                  text: oranges
+              - ' to '
+              - template: atoms-sup
+                arguments:
+                  text: apples
+              - >
+                , flowering plants produce most of the fruits and vegetables that we can see on display in a
+                supermarket. While we may take little notice of the
+              - template: atoms-bold
+                arguments:
+                  text: poppy fields
+              - ' and plum blossoms around us, how flowers came to be has been an intensely debated mystery.'
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              The current understanding, which is mainly based on previously available fossils, is that flowers appeared
+              about 125 million years ago in the Cretaceous, an era during which many insects such as bees also emerged.
+              But not everybody agrees that this is the case. Genetic analyses, for example, suggest that flowering
+              plants are much more ancient. Another intriguing element is that flowers seemed to have arisen during the
+              Cretaceous ‘out of nowhere’.
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              Fossils are essential to help settle the debate but it takes diligence and luck to find something as
+              fragile as a flower preserved in rocks for millions of years. In addition, digging out what could look
+              like a bloom is not enough. It is only if the ovules (the cells that will become seeds when fertilized) of
+              the plant are completely enclosed inside the ovary before pollination that researchers can definitely say
+              that they have found a ‘true’ flower.
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - >
+                Now, Fu et al. describe over 200 specimens of a new fossil flower that presents this characteristic, as
+                well as other distinctive features such as petals and sepals – the leaf-like parts that protect a flower
+                bud. Called
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >
+                , the plant dates back to more than 174 million years ago, making it the oldest known record of a ‘true’
+                flower by almost 50 million years. Contrary to mainstream belief, this would place the apparition of
+                flowering plants to the Early Jurassic, the period that saw dinosaurs dominating the planet. This
+                discovery may reshape our current understanding of the evolution of flowers.
+secondary:
+  - template: atoms-paragraph
+    arguments:
+      text: >
+        Secondary content: A world leader in advocacy for open science, Eisen, from University of California, Berkeley, and the Howard Hughes Medical Institute (HHMI), was chosen following a worldwide search and selection process. In addition to his scientific achievements as an HHMI Investigator and Professor of Molecular and Cell Biology, he has demonstrated outstanding leadership and commitment to reforming research communication for the benefit of scientists and society.
+
+menu:
+  - template: atoms-paragraph
+    arguments:
+      text: >
+        Menu may go here

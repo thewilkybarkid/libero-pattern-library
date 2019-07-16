@@ -1,0 +1,24 @@
+attributes:
+  lang: ja
+list:
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: 赤
+    - content:
+        text: オレンジ
+    - content:
+        text: 黄色
+    - content:
+        attributes:
+          href: '#'
+        text: 緑
+    - content:
+        attributes:
+          href: '#'
+        text: 水色
+    - content:
+        text: 青
+    - content:
+        text: 紫

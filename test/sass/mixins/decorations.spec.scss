@@ -1,0 +1,172 @@
+@import "../test";
+@import "../../../source/sass/mixins/decorations";
+
+@include describe("@mixin border") {
+
+  @include it("generates correct fallbacks for dimension 'inline'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("inline");
+      }
+
+      @include expect {
+        border-left: 1px solid rgb(224, 224, 224);
+        border-right: 1px solid rgb(224, 224, 224);
+        border-inline: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for dimension 'inline-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("inline-start");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          border-left: 1px solid rgb(224, 224, 224);
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          border-right: 1px solid rgb(224, 224, 224);
+        }
+        html[dir][dir] & {
+          border-inline-start: 1px solid rgb(224, 224, 224);
+        }
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for dimension 'inline-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("inline-end");
+      }
+
+      @include expect {
+        html[dir="ltr"] &:not([dir]),
+        &[dir="ltr"] {
+          border-right: 1px solid rgb(224, 224, 224);
+        }
+        html[dir="rtl"] &:not([dir]),
+        &[dir="rtl"] {
+          border-left: 1px solid rgb(224, 224, 224);
+        }
+        html[dir][dir] & {
+          border-inline-end: 1px solid rgb(224, 224, 224);
+        }
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for dimension 'block'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("block");
+      }
+
+      @include expect {
+        border-top: 1px solid rgb(224, 224, 224);
+        border-bottom: 1px solid rgb(224, 224, 224);
+        border-block: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for dimension 'block-start'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("block-start");
+      }
+
+      @include expect {
+        border-top: 1px solid rgb(224, 224, 224);
+        border-block-start: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
+  @include it("generates correct fallbacks for dimension 'block-end'") {
+
+    @include assert() {
+
+      @include output {
+        @include border("block-end");
+      }
+
+      @include expect {
+        border-bottom: 1px solid rgb(224, 224, 224);
+        border-block-end: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
+  @include it("may not have a dimension") {
+
+    @include assert() {
+
+      @include output {
+        @include border();
+      }
+
+      @include expect {
+        border: 1px solid rgb(224, 224, 224);
+      }
+
+    }
+
+  }
+
+  @include it("errors on invalid dimensions") {
+
+    @include assert() {
+
+      @include output {
+        @include border("top");
+      }
+
+      @include contains {
+        _error: "'top' is a physical dimension, use its logical equivilant";
+      }
+
+    }
+
+    @include assert() {
+
+      @include output {
+        @include border("foo");
+      }
+
+      @include contains {
+        _error: "Unknown dimension 'foo'";
+      }
+
+    }
+
+  }
+
+}

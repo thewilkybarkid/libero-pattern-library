@@ -1,0 +1,23 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['item-tags']) }) -%}
+
+<div {{- html.attributes(attributes) }}>
+
+  {%- block body -%}
+
+    {%- for group in groups -%}
+
+      {%- with group only -%}
+        {%- block group -%}
+
+          {%- include('molecules-tag-list') -%}
+
+        {%- endblock group -%}
+      {%- endwith -%}
+
+    {%- endfor -%}
+
+  {%- endblock body -%}
+
+</div>

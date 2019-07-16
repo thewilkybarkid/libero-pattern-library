@@ -1,0 +1,20 @@
+@import "../mixins/logical-properties";
+@import "../mixins/media-query";
+@import "../settings/grid";
+
+:root {
+  --GRID-COLUMN-GAP: #{$grid-column_gap};
+  --GRID-EDGE-SPACE: #{$grid-edge_space-medium};
+  --GRID-COLUMN-WIDTH: calc((100% - (var(--GRID-EDGE-SPACE) * 2) - (var(--GRID-COLUMN-GAP) * #{$grid-main_column_count - 1})) / #{$grid-main_column_count});
+
+  @include mq($from: medium) {
+    --GRID-EDGE-SPACE: #{$grid-edge_space-large};
+  }
+
+  @include mq($from: x-wide) {
+    --GRID-COLUMN-GAP: #{($grid-max_width * $grid-column_gap) / 100%};
+    --GRID-COLUMN-WIDTH: calc((#{$grid-max_width} - (var(--GRID-COLUMN-GAP) * #{$grid-main_column_count - 1})) / #{$grid-main_column_count});
+  }
+
+  @include logical-property(min, inline-size, $grid-min_width, $to-rem: false);
+}

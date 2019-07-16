@@ -1,0 +1,89 @@
+@import "../test";
+@import "../../../source/sass/mixins/typography";
+
+@include describe("@mixin font-variant-position") {
+
+  @include it("generates correct fallbacks with position 'sub'") {
+
+    @include assert() {
+
+      @include output {
+        @include font-variant-position(sub);
+      }
+
+      @include expect {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+        bottom: -0.25em;
+
+        @supports (font-variant-position: sub) {
+          font-size: inherit;
+          font-variant-position: sub;
+          position: static;
+        }
+      }
+    }
+  }
+
+  @include describe("@mixin caption-typography") {
+
+    @include it("generates correct typography for figure caption") {
+
+      @include assert() {
+
+        @include output {
+          @include caption-typography();
+        }
+
+        @include expect {
+          font-family: $font-secondary;
+          font-size: 13px;
+          font-size: 0.8125rem;
+          line-height: 1.84615;
+        }
+      }
+    }
+
+  }
+
+  @include it("generates correct fallbacks with position 'super'") {
+
+    @include assert() {
+
+      @include output {
+        @include font-variant-position(super);
+      }
+
+      @include expect {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+        top: -0.5em;
+
+        @supports (font-variant-position: super) {
+          font-size: inherit;
+          font-variant-position: super;
+          position: static;
+        }
+      }
+    }
+  }
+
+  @include it("errors on invalid positions") {
+
+    @include assert() {
+
+      @include output {
+        @include font-variant-position(abc);
+      }
+
+      @include expect {
+        _error: "Unknown position 'abc'";
+      }
+    }
+  }
+
+}

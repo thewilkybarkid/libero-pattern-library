@@ -7,6 +7,7 @@ services: docker
 env:
     global:
         - COMPOSE_PROJECT_NAME=patternlibrary
+        - IMAGE_REVISION=$TRAVIS_COMMIT
         - IMAGE_TAG=$TRAVIS_COMMIT
 
 script:
@@ -15,7 +16,7 @@ script:
 
 after_success:
     - docker run --name pattern-library-patterns patternlibrary_gulp npx gulp exportPatterns
-    - docker cp pattern-library-patterns:/app/export/. export/
+    - docker cp pattern-library-patterns:/app/export/. build/export/
     - .travis/package.sh
     - .scripts/travis/push-image.sh pattern-library
 
@@ -25,7 +26,7 @@ deploy:
           # Github token from user `liberoadmin` with `public_repo` scope
           secure: "pROX7jmt6nBkHFxbD/5G3UrsbIYfJkMgGj+RxFKkwPvBkKfVuVuJpJSFVOtIIm0pjx/DtPgeXPWyyRaM/VQ6el+OcJyvnIGN+1FqCgkZ1+ud2C0WESSnrcTfOx/zotBiuWwKsMUMfY0YuJrzkQgSDxlNNjp04PTod2hFWKud9zBSNL0zWqkzWAavbs2PCFWnRyePTn4+jRi9ylZrCH+jK0RPsvzBkN7RaHx/+Dfw56p7lyogEotre4imxrXyLmNk6tihtp6ASymJExhlsF4Nbilyn2tgXL5c/G/t8QtIDR150selo6795JTv8ZgmcLsE4ep5F2ZiT7/uZlVH/CPCPvSn4Hyv/6yf5nLtncyicTzi9u98xWoUnA1ALo8Mq8HIaBh1fI8vrnsKkfkVVsARIndMXcHbw+o8Ymd9X645naSQV1a3HHe3ucd9bUdZIImsPNfmInMEY25pI53fNHROmDi0RIBLKXRpiTBtER70G0scLlPy25Rr1zfuVNWopxrdhUt2ZBfbMhBjyQ7skhl4GNc5BlgzCS4yFzgj6/+6yTOWsewIsfNFOdsfVKS6Jqtbw2QsSZZlx3FcN0cooB172xy4mAPOHNtwUt12UhtbNP7bga4HG7W93n1wUaMYHjeJtrenz1sIOM5GSHKd4QckPKd6YsadUo8FVs6s/F57CNM="
       name: "${TRAVIS_TAG}"
-      file: "pattern-library-${TRAVIS_TAG}.tar.gz"
+      file: "build/pattern-library-${TRAVIS_TAG}.tar.gz"
       skip_cleanup: true
       on:
           tags: true

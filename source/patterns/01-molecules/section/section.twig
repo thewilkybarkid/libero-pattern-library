@@ -1,0 +1,38 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['section']) }) -%}
+
+<section {{- html.attributes(attributes) }}>
+
+  {%- with heading|default({}) only -%}
+
+    {%- block heading -%}
+
+      {%- if text is defined -%}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['section__heading']) }) -%}
+        {%- set level = level|default(2) -%}
+
+        {%- include 'atoms-heading' -%}
+
+      {%- endif -%}
+
+    {%- endblock -%}
+
+  {%- endwith -%}
+
+  {%- with {content: content, html: html} only -%}
+
+    {%- block content -%}
+
+      {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['section__body']) }) -%}
+
+      <div {{- html.attributes(attributes) }}>
+        {{- html.content(content) -}}
+      </div>
+
+    {%- endblock -%}
+
+  {%- endwith -%}
+
+</section>

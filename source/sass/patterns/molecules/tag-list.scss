@@ -1,0 +1,46 @@
+@import "../../mixins/lists";
+@import "../../mixins/sizes";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
+
+.tag-list {
+  @include block-spacing();
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tag-list--compact {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
+}
+
+.tag-list__title {
+  @include label-content-typography();
+  @include block-spacing($end: 0);
+}
+
+.tag-list__list {
+  @include list-style-none();
+  @include label-tag-typography();
+  @include block-spacing($end: 0);
+}
+
+.tag-list__list--single-line {
+  @include truncate-with-ellipsis();
+}
+
+.tag-list__item {
+  display: inline-block;
+  @include label-tag-typography();
+  @include list-separator();
+
+  .tag-list__list--single-line & {
+    display: inline;
+  }
+}
+
+.tag-list__link {
+  @include covert-link();
+}

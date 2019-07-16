@@ -1,0 +1,9 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['paragraph']) }) -%}
+
+<p {{- html.attributes(attributes) }}>
+
+  {{- html.content(text) -}}
+
+</p>

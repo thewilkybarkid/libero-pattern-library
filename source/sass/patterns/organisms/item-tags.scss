@@ -1,0 +1,16 @@
+@import "../../mixins/decorations";
+@import "../../mixins/media-query";
+@import "../../mixins/spacing";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
+
+.item-tags {
+  @include padding($baselinegrid-space-medium - $grid-divider_size, block-start);
+  @include block-spacing($end: $baselinegrid-space-medium);
+  @include border(block-start);
+  text-align: center;
+
+  @include mq($from: medium) {
+    text-align: initial;
+  }
+}

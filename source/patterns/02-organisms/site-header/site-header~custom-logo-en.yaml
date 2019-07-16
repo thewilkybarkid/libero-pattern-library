@@ -1,0 +1,5 @@
+logo:
+  href: '#'
+  image:
+    alt: 'Custom logo'
+    src: '../../images/local/custom-logo.svg'

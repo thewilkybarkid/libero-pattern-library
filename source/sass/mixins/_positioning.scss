@@ -1,0 +1,47 @@
+@import "logical-properties";
+@import "spacing";
+
+@mixin inset($sizes, $dimension: "") {
+  @include _spacing($sizes, inset, $dimension);
+}
+
+@mixin text-align($alignment) {
+
+  @if $alignment == start {
+
+    @include when-left-to-right {
+      text-align: left; // stylelint-disable-line csstools/use-logical
+    }
+
+    @include when-right-to-left {
+      text-align: right; // stylelint-disable-line csstools/use-logical
+    }
+
+    @include when-logical {
+      text-align: #{$alignment};
+    }
+
+  } @else if $alignment == end {
+
+    @include when-left-to-right {
+      text-align: right; // stylelint-disable-line csstools/use-logical
+    }
+
+    @include when-right-to-left {
+      text-align: left; // stylelint-disable-line csstools/use-logical
+    }
+
+    @include when-logical {
+      text-align: #{$alignment};
+    }
+
+  } @else if index(center inherit initial justify justify-all match-parent unset, $alignment) {
+    text-align: #{$alignment};
+  } @else if index(left right, $alignment) {
+    @include _error("'#{$alignment}' is a physical alignment, use its logical equivalent");
+  } @else {
+    // Character-based alignment in a table column is unsupported.
+    @include _error("Unknown alignment '#{$alignment}'");
+  }
+
+}

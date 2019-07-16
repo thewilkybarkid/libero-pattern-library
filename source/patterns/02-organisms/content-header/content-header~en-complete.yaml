@@ -1,0 +1,61 @@
+contentTitle:
+  text: Content title
+download:
+  link:
+    href: '#'
+  alt: Download the PDF for this article
+categories:
+  attributes:
+    aria-label: Category listings that include this article
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Cell Biology
+    - content:
+        text: Epidemiology and Global Health
+meta:
+  attributes:
+    aria-label: Publication details
+  items:
+    - attributes:
+        aria-label: Type of article
+      content:
+        attributes:
+          href: '#'
+        text: Research Article
+    - attributes:
+        aria-label: Publication date
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: April 5, 2019
+    - attributes:
+        aria-label: Issue number
+      content:
+        text: Issue 1
+authors:
+  attributes:
+    aria-label: Authors of this article
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Author 1
+    - content:
+        text: Author 2
+    - content:
+        attributes:
+          href: '#'
+        text: Author 3
+affiliations:
+  attributes:
+    aria-label: Author affiliations
+  items:
+    - content:
+        text: Affiliation 1
+    - content:
+        text: Affiliation 2

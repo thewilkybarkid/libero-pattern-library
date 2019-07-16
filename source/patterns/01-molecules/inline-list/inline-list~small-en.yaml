@@ -1,0 +1,8 @@
+small: true
+attributes:
+  aria-label: Author affiliations
+items:
+  - content:
+      text: Affiliation 1
+  - content:
+      text: Affiliation 2

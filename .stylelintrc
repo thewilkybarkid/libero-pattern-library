@@ -2,9 +2,13 @@
   "ignoreFiles": [
     "./**/!(*.scss)",
     "./export/css/sass/**/*",
-    "./source/css/sass/_locales.scss",
-    "./source/css/sass/variables/**/*",
-    "./source/css/sass/vendor/**/*"
+    "./source/sass/_locales.scss",
+    "./source/sass/fonts/**/*",
+    "./source/sass/variables/**/*",
+    "./source/sass/vendor/**/*"
+  ],
+  "plugins": [
+    "stylelint-use-logical"
   ],
   "rules": {
     "block-closing-brace-newline-after": ["always", {"ignoreAtRules": ["if", "else"]}],
@@ -16,10 +20,11 @@
     "color-hex-length": "short",
     "color-no-invalid-hex": true,
     "comment-empty-line-before": "always",
+    "csstools/use-logical": "always",
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-semicolon-space-before": "never",
     "declaration-block-trailing-semicolon": "always",
-    "declaration-colon-space-after": "always",
+    "declaration-colon-space-after": "always-single-line",
     "declaration-colon-space-before": "never",
     "function-calc-no-unspaced-operator": true,
     "indentation": 2,

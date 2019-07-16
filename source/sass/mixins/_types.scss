@@ -1,0 +1,44 @@
+@import "../settings/font";
+@import "../vendor/sass-rem/rem";
+
+$rem-baseline: $font-size;
+$rem-fallback: true;
+
+// Overridden to apply https://github.com/pierreburel/sass-rem/pull/12
+@mixin rem($properties, $values...) {
+
+  @if type-of($properties) == "map" {
+
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+
+  } @else {
+
+    $convert: false;
+    @each $valueList in $values {
+      @each $value in $valueList {
+        @if type-of($value) == "number" and index((rem, px), unit($value)) {
+          $convert: true;
+        }
+      }
+    }
+
+    @each $property in $properties {
+      @if $convert == true {
+        @if $rem-fallback or $rem-px-only {
+          #{$property}: rem-convert(px, $values...);
+        }
+        @if not $rem-px-only {
+          #{$property}: rem-convert(rem, $values...);
+        }
+      } @else if $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      } @else {
+        #{$property}: $values;
+      }
+    }
+
+  }
+
+}

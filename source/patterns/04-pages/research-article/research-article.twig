@@ -1,0 +1,43 @@
+{% include 'templates-page-grid' with {
+  start: {
+    template: 'templates-content-grid',
+    arguments: {
+      content: [
+        {
+          area: 'full',
+          content: [
+            {
+              template: 'organisms-site-header',
+              arguments: siteHeader,
+            },
+          ],
+        },
+      ],
+    },
+  },
+  main: {
+    template: 'templates-content-grid',
+    arguments: {
+      content: [
+        {
+          template: 'molecules-info-bar',
+          arguments: infoBar|merge({
+            attributes: infoBar.attributes|default({})|merge({
+              class: infoBar.attributes.class|default([])|merge(['content-grid__item--full']),
+            }),
+          }),
+        },
+        {
+          template: 'organisms-content-header',
+          arguments: contentHeader,
+        },
+        {
+          area: 'primary',
+          content: body|merge([
+            {template: 'organisms-item-tags', arguments: tags},
+          ]),
+        },
+      ],
+    },
+  },
+} only %}

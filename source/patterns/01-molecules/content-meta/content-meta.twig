@@ -1,0 +1,34 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-meta']) }) -%}
+
+<ul {{- html.attributes(attributes) }}>
+  {%- for item in items -%}
+
+    {%- with item|merge({html: html}) only -%}
+      {%- block item -%}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-meta__item']) }) -%}
+
+        <li {{- html.attributes(attributes) }}>
+
+          {%- with content only -%}
+            {%- block content -%}
+
+              {%- if attributes.href is defined -%}
+                {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-meta__link']) }) -%}
+              {%- endif -%}
+
+              {%- include 'atoms-link' -%}
+
+            {%- endblock content -%}
+          {%- endwith -%}
+
+        </li>
+
+      {%- endblock item -%}
+    {%- endwith -%}
+
+  {%- endfor -%}
+
+</ul>

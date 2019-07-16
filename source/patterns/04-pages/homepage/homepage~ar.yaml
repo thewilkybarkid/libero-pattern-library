@@ -1,0 +1,392 @@
+lang: ar
+dir: rtl
+
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'شعار مجاني'
+  menu:
+    - attributes:
+        href: '#'
+      text: رئيسية
+    - attributes:
+        href: '#'
+      text: أعداد
+    - attributes:
+        href: '#'
+      text: عن
+
+contentHeader:
+  contentTitle:
+    text: المجلة الدولية للمظاهرة
+
+body:
+  - template: organisms-teaser-list
+    arguments:
+      title:
+        text: أحدث المقالات
+      list:
+        items:
+          - content:
+              href: '#'
+              heading:
+                text: آلية مورفوجينية محفوظة لحفظ المورم من الخلايا العصبية الحسية المسبب للألم
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: أشواق السالم وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: علم الأعصاب
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: ١١/٠٣/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: التأسيس الزماني المكاني للمستعمرات البكتيرية الكثيفة التي تنمو على أجار قاسية
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: محمود النفيسة وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: بيولوجيا الحوسبة والنظم
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: ١١/٠٣/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: ينشأ تكافؤ التكافؤ في الهيبنولا الجانبية من المنطقة المحيطة بالعين
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: عبد الله العمودي وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: علم الأعصاب
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: ١١/٠٣/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: يلتف Importin-9 حول قلب H2A-H2B ليكون بمثابة مستورد نووي ورافعة هيستون
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: أحمد مسعود وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: البيولوجيا الإنشائية والفيزياء الحيوية الجزيئية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: ١١/٠٣/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: يعتبر سد الغشاء بواسطة Munc13-1 أمرًا ضروريًا لإطلاق الناقل العصبي
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: باسنت شعبان وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: علم الأعصاب
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: البيولوجيا الإنشائية والفيزياء الحيوية الجزيئية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-28'
+                            text: ٢٨/٠٢/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: هيكل Ctf19c/CCAN من مهدها الخميرة
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: نرجس الرياحي، مصعب الشّابّي
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: البيولوجيا الإنشائية والفيزياء الحيوية الجزيئية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-14'
+                            text: ١٤/٠٢/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: فرط النشاط PUMILIO يدفع الشيخوخة المبكرة للفئران التي تعاني من نقص نوراد
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: ميلاد القاسمي وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: الكروموسومات والتعبير الجيني
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: علم الوراثة وعلم الجينوم
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-08'
+                            text: ٠٨/٠٢/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: عدم الاستقرار الميكانيكية والطاقة بينية محرك التشكل بيوفيلم
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: مي عادل وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: فيزياء النظم الحية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-08'
+                            text: ٠٨/٠٣/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: هناك آليتان متميزتان تستهدفان مجمع E3 المرتبط بالبلعمة الذاتية إلى بنية ما قبل البلعوم
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: سعيد محمود وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: بيولوجيا الخلية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-27'
+                            text: ٢٦/٠٢/٢٠١٩
+          - content:
+              href: '#'
+              heading:
+                text: تسمم البروتينات الناتجة عن التخليق الحيوي للريبوسوم الشاذ يضر بخلية الخلية
+              details:
+                attributes:
+                  aria-label: مؤلفو هذا المقال
+                text: قمر الجعوان وآخرون
+              categories:
+                attributes:
+                  aria-label: قوائم الفئة التي تتضمن هذه المقالة
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: الكيمياء الحيوية والبيولوجيا الكيميائية
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: بيولوجيا الخلية
+              meta:
+                attributes:
+                  aria-label: تفاصيل المنشور
+                items:
+                  - attributes:
+                      aria-label: نوع المقالة
+                    content:
+                      attributes:
+                        href: '#'
+                      text: مقاله بحثيه
+                  - attributes:
+                      aria-label: تاريخ النشر
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-07'
+                            text: ٠٧/٠٣/٢٠١٩

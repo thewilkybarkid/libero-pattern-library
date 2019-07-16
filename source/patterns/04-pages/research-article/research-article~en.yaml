@@ -1,0 +1,389 @@
+siteHeader:
+  logo:
+    href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Home
+    - attributes:
+        href: '#'
+      text: Issues
+    - attributes:
+        href: '#'
+      text: About
+
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 'There is additional '
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: interesting infomation
+    - text: ' available.'
+
+contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: Download the PDF for this article
+  contentTitle:
+    text: An unexpected noncarpellate epigynous flower from the Jurassic of China
+  categories:
+    attributes:
+      aria-label: Category listings that include this article
+    items:
+      - content:
+          text: Evolutionary Biology
+      - content:
+          text: Plant Biology
+  meta:
+    attributes:
+      aria-label: Publication details
+    items:
+      - attributes:
+          aria-label: Type of article
+        content:
+          attributes:
+            href: '#'
+          text: Research Article
+      - attributes:
+          aria-label: Publication date
+        content:
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: Dec 18, 2018
+  authors:
+    attributes:
+      aria-label: Authors of this article
+    items:
+      - content:
+          text: Andrea Campbell
+      - content:
+          text: Raymond Clark
+      - content:
+          text: Harry Stanley
+      - content:
+          text: Rebecca Hicks
+      - content:
+          text: Rose Silva
+      - content:
+          text: Ashley Moreno
+      - content:
+          text: Diana Ramos
+      - content:
+          text: Kathleen Jacobs
+      - content:
+          text: Judy Willis
+      - content:
+          text: Helen Walters
+      - content:
+          text: Lisa Lawson
+  affiliations:
+    attributes:
+      aria-label: Author affiliations
+    items:
+      - content:
+          text: Chinese Academy of Sciences, China
+      - content:
+          text: Universidad de Vigo, Spain
+      - content:
+          text: Brisbane Botanical Gardens Mt Coot-tha, Australia
+      - content:
+          text: Fujian Agriculture and Forestry University, China
+      - content:
+          text: China Geological Survey, China
+      - content:
+          text: Nanjing Normal University, China
+
+body:
+  - template: molecules-section
+    arguments:
+      heading:
+        text: Abstract
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - >
+                The origin of angiosperms has been a long-standing botanical debate. The great diversity of angiosperms
+                in the Early Cretaceous makes the Jurassic a promising period in which to anticipate the origins of the
+                angiosperms. Here, based on observations of 264 specimens of 198 individual flowers preserved on 34
+                slabs in various states and orientations, from the South Xiangshan Formation (Early Jurassic) of China,
+                we describe a fossil flower,
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus dendrostyla
+              - >1
+                gen. et sp. nov.. The large number of specimens and various preservations allow for an evidence-based
+                reconstruction of the flower. From the evidence of the combination of an invaginated receptacle and
+                ovarian roof, we infer that the seeds of
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >1
+                were completely enclosed. Evidence of an actinomorphic flower with a dendroid style, cup-form
+                receptacle, and angiospermy, is consistent with
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >1
+                being a bona fide angiosperm from the Jurassic, an inference that we hope will re-invigorate research
+                into angiosperm origins.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: eLife Digest
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - 'From '
+              - template: atoms-sub
+                arguments:
+                  text: oranges
+              - ' to '
+              - template: atoms-sup
+                arguments:
+                  text: apples
+              - >
+                , flowering plants produce most of the fruits and vegetables that we can see on display in a
+                supermarket. While we may take little notice of the
+              - template: atoms-bold
+                arguments:
+                  text: poppy fields
+              - ' and plum blossoms around us, how flowers came to be has been an intensely debated mystery.'
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              The current understanding, which is mainly based on previously available fossils, is that flowers appeared
+              about 125 million years ago in the Cretaceous, an era during which many insects such as bees also emerged.
+              But not everybody agrees that this is the case. Genetic analyses, for example, suggest that flowering
+              plants are much more ancient. Another intriguing element is that flowers seemed to have arisen during the
+              Cretaceous ‘out of nowhere’.
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              Fossils are essential to help settle the debate but it takes diligence and luck to find something as
+              fragile as a flower preserved in rocks for millions of years. In addition, digging out what could look
+              like a bloom is not enough. It is only if the ovules (the cells that will become seeds when fertilized) of
+              the plant are completely enclosed inside the ovary before pollination that researchers can definitely say
+              that they have found a ‘true’ flower.
+        - template: atoms-paragraph
+          arguments:
+            text:
+              - >
+                Now, Fu et al. describe over 200 specimens of a new fossil flower that presents this characteristic, as
+                well as other distinctive features such as petals and sepals – the leaf-like parts that protect a flower
+                bud. Called
+              - template: atoms-italic
+                arguments:
+                  text: Nanjinganthus
+              - >
+                , the plant dates back to more than 174 million years ago, making it the oldest known record of a ‘true’
+                flower by almost 50 million years. Contrary to mainstream belief, this would place the apparition of
+                flowering plants to the Early Jurassic, the period that saw dinosaurs dominating the planet. This
+                discovery may reshape our current understanding of the evolution of flowers.
+        - template: molecules-figure
+          arguments:
+            content:
+              template: atoms-image
+              arguments:
+                image:
+                  src: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg
+                  alt: ''
+                sources:
+                  - type: image/webp
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
+                  - type: image/jpeg
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
+            caption:
+              heading:
+                text:
+                  - 'Siltstone slabs bearing '
+                  - template: atoms-italic
+                    arguments:
+                      text: Nanjinganthus
+                  - .
+                level: 3
+              content:
+                - template: atoms-paragraph
+                  arguments:
+                    text:
+                      - All bars are 1 cm long. (
+                      - template: atoms-bold
+                        arguments:
+                          text: A
+                      - >-
+                        ) Six flowers (1-6) on the same slab, and an associated triangular leaflet with parallel
+                        venation. PB22227. (
+                      - template: atoms-bold
+                        arguments:
+                          text: B
+                      - ) Several flowers on the same slab. 1–3 are shown in detail in Figures 2f and 6d,e. PB22226. (
+                      - template: atoms-bold
+                        arguments:
+                          text: C
+                      - ') Several flowers (1-8) on the same slab and the associated '
+                      - template: atoms-italic
+                        arguments:
+                          text: Nilssonia parabrevis
+                      - ' (top). PB22220. ('
+                      - template: atoms-bold
+                        arguments:
+                          text: D
+                      - >-
+                        ) Several flowers (1-6) on the same slab. 1–3 are shown in detail in Figures 2h and 3a–c.
+                        PB22224. (
+                      - template: atoms-bold
+                        arguments:
+                          text: E
+                      - >-
+                        ) Many flowers on the same slab. Some of the numbered ones are shown in detail in later figures.
+                        PB22222a. (
+                      - template: atoms-bold
+                        arguments:
+                          text: F
+                      - ) A slab with numerous flowers. PB22221. (
+                      - template: atoms-bold
+                        arguments:
+                          text: G
+                      - ) A slab almost fully covered with flowers. PB22228.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: References
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: EAN Arber
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: J Parkin
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 38
+                    - :29–80.
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: RM Bateman
+                    - content:
+                        text: J Hilton
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: PJ Rudall
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: Journal of Experimental Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 57
+                    - :3471–3503.
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: Authors of this book
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: C Biswas
+                    - content:
+                        text: M Johri
+                details:
+                  text: 'Berlin: Springer-Verlag.'
+            - content:
+                heading:
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: NH Boke
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: American Journal of Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 51
+                    - :598–610.
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
+
+tags:
+  groups:
+    - title:
+        text: Categories and tags
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: Research Article
+          - content:
+              text: Evolutionary Biology
+          - content:
+              text: Plant biology
+          - content:
+              attributes:
+                href: '#'
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: Fossil
+          - content:
+              text: Jurassic
+          - content:
+              text: China
+          - content:
+              text: Angiosperms
+          - content:
+              text: Flower

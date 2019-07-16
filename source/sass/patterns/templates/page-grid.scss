@@ -1,0 +1,25 @@
+@import "../../mixins/decorations";
+@import "../../mixins/grid";
+@import "../../settings/grid";
+
+.page-grid {
+  @include base-grid($grid-max_width);
+  grid-template-areas:
+    "start"
+    "main"
+    "end";
+}
+
+.page-grid__start {
+  grid-row: start;
+  @include border(block-end);
+}
+
+.page-grid__main {
+  grid-row: main;
+}
+
+.page-grid__end {
+  grid-row: end;
+  @include border(block-start);
+}

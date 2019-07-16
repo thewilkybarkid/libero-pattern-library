@@ -1,0 +1,63 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['teaser']) }) -%}
+
+<article {{- html.attributes(attributes) }}>
+
+  {%- block body -%}
+
+    {%- with {categories: categories|default({})} only -%}
+      {%- block categories -%}
+
+        {%- if categories.items|default([])|length -%}
+          {%- include 'molecules-tag-list' with {compact: true, list: categories|merge({singleLine: true})} only -%}
+        {%- endif -%}
+
+      {%- endblock categories -%}
+    {%- endwith -%}
+
+    {%- with {attributes: {class: []}} -%}
+      {%- block header -%}
+
+        {%- set attributes = attributes|merge({class: attributes.class|merge(['teaser__header']) }) -%}
+        <header {{- html.attributes(attributes) }}>
+
+          {%- with heading|merge({text: {attributes: {href: href}, text: heading.text} }) only -%}
+            {%- block heading -%}
+
+              {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['teaser__heading']) }) -%}
+              {%- set level = level|default(3) -%}
+
+              {%- include 'atoms-heading' -%}
+
+            {%- endblock heading -%}
+          {%- endwith -%}
+
+          {%- with details|default({}) only -%}
+            {%- block details -%}
+
+              {%- if text is defined -%}
+                {%- include 'atoms-paragraph' with {attributes: attributes|default({})|merge({class: attributes.class|default([])|merge(['teaser__details'])})} -%}
+              {%- endif -%}
+
+            {%- endblock details -%}
+          {%- endwith -%}
+
+        </header>
+
+      {%- endblock header -%}
+    {%- endwith -%}
+
+    {%- with meta|default({}) only -%}
+      {%- block meta -%}
+
+        {%- if items|default([])|length -%}
+          {%- include 'molecules-content-meta' -%}
+        {%- endif -%}
+
+      {%- endblock meta -%}
+    {%- endwith -%}
+
+  {%- endblock body -%}
+
+</article>

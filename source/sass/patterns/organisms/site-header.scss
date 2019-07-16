@@ -1,0 +1,107 @@
+@import "../molecules/nav-bar";
+@import "../../mixins/decorations";
+@import "../../mixins/grid";
+@import "../../mixins/media-query";
+@import "../../mixins/sizes";
+@import "../../mixins/spacing";
+@import "../../settings/color";
+
+$siteHeader-image-block_size__default: 27px !default;
+$siteHeader-image-block_size__medium: 36px !default;
+$siteHeader-inline_space__default: 18px !default;
+$siteHeader-inline_space__medium: 36px !default;
+$siteHeader-block_size__default: 60px !default;
+$siteHeader-block_size__medium: 96px !default;
+$siteHeader-block_start_space: 8px !default;
+$siteHeader-block_end_space: 7px !default;
+
+@mixin _site-header-item {
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  top: 50%; // stylelint-disable-line csstools/use-logical
+  transform: perspective(1px) translateY(-50%);
+  vertical-align: top;
+  @supports (display: flex) {
+    position: static;
+    transform: none;
+  }
+}
+
+.site-header {
+
+  @include margin(0 auto);
+  @include padding($siteHeader-block_start_space $siteHeader-block_end_space, block);
+  @include max-inline-size($grid-max_width);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  white-space: nowrap;
+
+  position: relative;
+  @supports (display: flex) {
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+
+  --block-size: #{$siteHeader-block_size__default};
+  --inline-space: #{$siteHeader-inline-space__default};
+  @include block-size($siteHeader-block_size__default);
+  @include padding($siteHeader-inline-space__default, inline);
+
+  @include mq($from: medium) {
+    --block-size: #{$siteHeader-block_size__medium};
+    --inline-space: #{$siteHeader-inline-space__medium};
+    @include block-size($siteHeader-block_size__medium);
+    @include padding($siteHeader-inline-space__medium, inline);
+  }
+
+  @include mq($from: x-wide) {
+    --inline-space: 0;
+    @include padding(0, inline);
+  }
+
+  @supports (--name: value) {
+    @include block-size(var(--block-size));
+    @include padding(var(--inline-space), inline);
+  }
+}
+
+.site-header__logo_link {
+  @include _site-header-item();
+}
+
+.site-header__image {
+
+  display: block;
+
+  $_inviolate-space: $siteHeader-block_start_space + $siteHeader-block_end_space + $grid-divider_size;
+  $_max-block-size--default: $siteHeader-block_size__default - $_inviolate-space;
+  $_max-block-size--medium: $siteHeader-block_size__medium - $_inviolate-space;
+
+  --max-block-size: #{$_max-block-size--default};
+  @include max-block-size($_max-block-size--default);
+
+  @include mq($from: medium) {
+    --max-block-size: #{$_max-block-size--medium};
+    @include max-block-size($_max-block-size--medium);
+  }
+
+  @supports (--name: value) {
+    @include max-block-size(var(--max-block-size));
+  }
+
+}
+
+.site-header__menu {
+  @include _site-header-item();
+  @include margin($nav-bar-item-spacing-default, inline-start);
+  @include padding($nav-bar-item-spacing-default, inline-start);
+  @include border(inline-start);
+
+  @include mq($from: medium) {
+    @include margin($nav-bar-item-spacing-medium, inline-start);
+    @include padding($nav-bar-item-spacing-medium, inline-start);
+  }
+}

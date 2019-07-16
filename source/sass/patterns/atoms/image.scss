@@ -1,0 +1,18 @@
+@import "../../mixins/decorations";
+@import "../../mixins/spacing";
+@import "../../settings/baselinegrid";
+@import "../../settings/color";
+
+$image-inline-spacing: $baselinegrid-space-extra_small !default;
+
+.image {
+  @include block-spacing($start: $baselinegrid-space-medium, $end: $baselinegrid-space-medium);
+  @include border();
+  @include padding($baselinegrid-space-extra_small $image-inline-spacing);
+  display: block;
+}
+
+.image__img {
+  display: block;
+  width: 100%;
+}

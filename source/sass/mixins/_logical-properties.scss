@@ -1,0 +1,311 @@
+@import "types";
+@import "validation";
+
+@mixin when-left-to-right {
+  html[dir="ltr"] &:not([dir]),
+  &[dir="ltr"] {
+    @content;
+  }
+}
+
+@mixin when-right-to-left {
+  html[dir="rtl"] &:not([dir]),
+  &[dir="rtl"] {
+    @content;
+  }
+}
+
+@mixin when-logical {
+  html[dir][dir] & {
+    @content;
+  }
+}
+
+@mixin _maybe-rem($to-rem, $properties, $values: ()) {
+  @if ($to-rem == false) {
+    @if type-of($properties) == "map" {
+      @each $property in map-keys($properties) {
+        @include _maybe-rem($to-rem, $property, map-get($properties, $property));
+      }
+    } @else {
+      @each $property in $properties {
+        #{$property}: $values;
+      }
+    }
+  } @else {
+    @include rem($properties, $values...);
+  }
+}
+
+@function _maybe-rem($to-rem, $values) {
+  @if ($to-rem == false) {
+    @return $values;
+  } @else {
+    @return rem($values...);
+  }
+}
+
+@function _get-property-prefix($property-name, $dimension) {
+  $physical: (top, right, bottom, left);
+  @if $property-name == inset and index($physical, $dimension) {
+    @return "";
+  }
+  @return "#{$property-name}-";
+}
+
+@function _property-name($parts, $dimension) {
+  @if (length($parts) == 0 or $parts == "") {
+    @return $dimension;
+  }
+
+  @if (length($parts) == 1) {
+    @return "#{_get-property-prefix($parts, $dimension)}#{$dimension}";
+  }
+
+  @return "#{_get-property-prefix(nth($parts, 1), $dimension)}#{$dimension}-#{nth($parts, 2)}";
+}
+
+@mixin logical-property($property-name, $dimension, $arguments, $to-rem: true) {
+
+  @if length($property-name) > 2 {
+    @include _error("Expected at most two property name parts");
+  } @else if $dimension == inline {
+
+    @if type-of($arguments) == "list" and length($arguments) > 1 {
+
+      @include _expect_at_most($arguments, 2, "More than two arguments supplied with 'inline' dimension") {
+
+        $firstArgument: nth($arguments, 1);
+        $secondArgument: nth($arguments, 2);
+
+        @if $firstArgument == $secondArgument {
+
+          @include _maybe-rem($to-rem, (
+            #{_property-name($property-name, left)}: $firstArgument,
+            #{_property-name($property-name, right)}: $firstArgument,
+          ));
+          #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument);
+
+        } @else {
+
+          @include when-left-to-right() {
+            @include _maybe-rem($to-rem, _property-name($property-name, left), $firstArgument);
+            @include _maybe-rem($to-rem, _property-name($property-name, right), $secondArgument);
+          }
+
+          @include when-right-to-left() {
+            @include _maybe-rem($to-rem, _property-name($property-name, right), $firstArgument);
+            @include _maybe-rem($to-rem, _property-name($property-name, left), $secondArgument);
+          }
+
+          @include when-logical() {
+
+            @if $property-name == inset {
+              #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $firstArgument $secondArgument);
+            } @else {
+              #{_property-name($property-name, inline-start)}: _maybe-rem($to-rem, $firstArgument);
+              #{_property-name($property-name, inline-end)}: _maybe-rem($to-rem, $secondArgument);
+            }
+
+          }
+
+        }
+
+      }
+
+    } @else {
+
+      @include _maybe-rem($to-rem, (
+        #{_property-name($property-name, left)}: $arguments,
+        #{_property-name($property-name, right)}: $arguments,
+      ));
+      #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $arguments);
+
+    }
+
+  } @else if $dimension == inline-start {
+
+    @include when-left-to-right() {
+      @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
+    }
+
+    @include when-right-to-left() {
+      @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
+    }
+
+    @include when-logical() {
+      #{_property-name($property-name, inline-start)}: _maybe-rem($to-rem, $arguments);
+    }
+
+  } @else if $dimension == inline-end {
+
+    @include when-left-to-right() {
+      @include _maybe-rem($to-rem, _property-name($property-name, right), $arguments);
+    }
+
+    @include when-right-to-left() {
+      @include _maybe-rem($to-rem, _property-name($property-name, left), $arguments);
+    }
+
+    @include when-logical() {
+      #{_property-name($property-name, inline-end)}: _maybe-rem($to-rem, $arguments);
+    }
+
+  } @else if $dimension == inline-size {
+
+    @include _maybe-rem($to-rem, _property-name($property-name, width), $arguments);
+    #{_property-name($property-name, inline-size)}: _maybe-rem($to-rem, $arguments);
+
+  } @else if $dimension == block {
+
+    @if type-of($arguments) == "list" and length($arguments) > 1 {
+
+      @include _expect_at_most($arguments, 2, "More than two arguments supplied with 'block' dimension") {
+
+        $firstArgument: nth($arguments, 1);
+        $secondArgument: nth($arguments, 2);
+
+        @if $firstArgument == $secondArgument {
+
+          @include _maybe-rem($to-rem, (
+            #{_property-name($property-name, top)}: $firstArgument,
+            #{_property-name($property-name, bottom)}: $firstArgument,
+          ));
+          #{_property-name($property-name, block)}: _maybe-rem($to-rem, $firstArgument);
+
+        } @else {
+
+          @include _maybe-rem($to-rem, (
+            #{_property-name($property-name, top)}: $firstArgument,
+            #{_property-name($property-name, bottom)}: $secondArgument,
+          ));
+
+          @if $property-name == inset {
+            #{_property-name($property-name, block)}: _maybe-rem($to-rem, $firstArgument $secondArgument);
+          } @else {
+            #{_property-name($property-name, block-start)}: _maybe-rem($to-rem, $firstArgument);
+            #{_property-name($property-name, block-end)}: _maybe-rem($to-rem, $secondArgument);
+          }
+
+        }
+
+      }
+
+    } @else {
+
+      @include _maybe-rem($to-rem, (
+        #{_property-name($property-name, top)}: $arguments,
+        #{_property-name($property-name, bottom)}: $arguments,
+      ));
+      #{_property-name($property-name, block)}: _maybe-rem($to-rem, $arguments);
+
+    }
+
+  } @else if $dimension == block-start {
+
+    @include _maybe-rem($to-rem, _property-name($property-name, top), $arguments);
+    #{_property-name($property-name, block-start)}: _maybe-rem($to-rem, $arguments);
+
+  } @else if $dimension == block-end {
+
+    @include _maybe-rem($to-rem, _property-name($property-name, bottom), $arguments);
+    #{_property-name($property-name, block-end)}: _maybe-rem($to-rem, $arguments);
+
+  } @else if $dimension == block-size {
+
+    @include _maybe-rem($to-rem, _property-name($property-name, height), $arguments);
+    #{_property-name($property-name, block-size)}: _maybe-rem($to-rem, $arguments);
+
+  } @else if $dimension == all {
+
+    @if length($property-name) > 1 {
+      @include _error("Expected a single property name");
+    } @else if not index(inset margin padding, $property-name) {
+      @include _error("Can't combine block and inline for '#{$property-name}'");
+    } @else {
+
+      @include _expect_at_most($arguments, 4, "More than four arguments supplied") {
+        $blockStart: nth($arguments, 1);
+        $blockEnd: if(length($arguments) >= 3, nth($arguments, 3), $blockStart);
+        $inlineEnd: if(length($arguments) >= 2, nth($arguments, 2), $blockEnd);
+        $inlineStart: if(length($arguments) == 4, nth($arguments, 4), $inlineEnd);
+
+        @if $blockStart == $blockEnd and $blockStart == $inlineStart and $blockStart == $inlineEnd {
+
+          @if $property-name == inset {
+            @include _maybe-rem($to-rem, (top: $blockStart, right: $blockStart, bottom: $blockStart, left: $blockStart));
+            inset: _maybe-rem($to-rem, $blockStart);
+          } @else {
+            @include _maybe-rem($to-rem, $property-name, $blockStart);
+          }
+
+        } @else if $blockStart == $blockEnd and $inlineStart == $inlineEnd {
+
+          @if $property-name == inset {
+            @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockStart, left: $inlineStart));
+            inset: _maybe-rem($to-rem, $blockStart $inlineStart);
+          } @else {
+            @include _maybe-rem($to-rem, $property-name, $blockStart $inlineStart);
+          }
+
+        } @else if $inlineStart == $inlineEnd {
+
+          @if $property-name == inset {
+            @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockEnd, left: $inlineStart));
+            inset: _maybe-rem($to-rem, $blockStart $inlineStart $blockEnd);
+          } @else {
+            @include _maybe-rem($to-rem, $property-name, $blockStart $inlineEnd $blockEnd);
+          }
+
+        } @else {
+
+          @include when-left-to-right() {
+            @if $property-name == inset {
+              @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineEnd, bottom: $blockEnd, left: $inlineStart));
+            } @else {
+              @include _maybe-rem($to-rem, $property-name, $blockStart $inlineEnd $blockEnd $inlineStart);
+            }
+          }
+
+          @include when-right-to-left() {
+            @if $property-name == inset {
+              @include _maybe-rem($to-rem, (top: $blockStart, right: $inlineStart, bottom: $blockEnd, left: $inlineEnd));
+            } @else {
+              @include _maybe-rem($to-rem, $property-name, $blockStart $inlineStart $blockEnd $inlineEnd);
+            }
+          }
+
+          @include when-logical() {
+
+            @if $blockStart != $blockEnd {
+
+              @if $property-name == inset {
+                #{_property-name($property-name, block)}: _maybe-rem($to-rem, $blockStart $blockEnd);
+              } @else {
+                #{_property-name($property-name, block-start)}: _maybe-rem($to-rem, $blockStart);
+                #{_property-name($property-name, block-end)}: _maybe-rem($to-rem, $blockEnd);
+              }
+
+            }
+
+            @if $property-name == inset {
+              #{_property-name($property-name, inline)}: _maybe-rem($to-rem, $inlineStart $inlineEnd);
+            } @else {
+              #{_property-name($property-name, inline-start)}: _maybe-rem($to-rem, $inlineStart);
+              #{_property-name($property-name, inline-end)}: _maybe-rem($to-rem, $inlineEnd);
+            }
+
+          }
+
+        }
+      }
+
+    }
+
+  } @else if index((top, bottom, left, right, width, height), $dimension) {
+    @include _error("'#{$dimension}' is a physical dimension, use its logical equivilant");
+  } @else {
+    @include _error("Unknown dimension '#{$dimension}'");
+  }
+
+}

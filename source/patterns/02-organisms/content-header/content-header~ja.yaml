@@ -1,0 +1,30 @@
+attributes:
+  lang: ja
+contentTitle:
+  text: コンテンツのタイトル
+download:
+  link:
+    href: '#'
+  alt: この記事のPDFをダウンロードする
+authors:
+  attributes:
+    aria-label: この記事の著者
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: 著者1
+    - content:
+        text: 著者2
+    - content:
+        attributes:
+          href: '#'
+        text: 著者3
+affiliations:
+  attributes:
+    aria-label: 著者所属
+  items:
+    - content:
+        text: 所属1
+    - content:
+        text: 所属2

@@ -1,0 +1,231 @@
+@import "../mixins/decorations";
+@import "../mixins/spacing";
+@import "../mixins/typography";
+@import "../settings/color";
+@import "../settings/grid";
+@import "../vendor/normalize.css/normalize";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: ($font-size / 16px) * 100%;
+}
+
+html,
+body {
+  @include min-block-size(100%);
+}
+
+body {
+  background-color: $color-background;
+  color: $color-text-normal;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  @include body-typography();
+}
+
+h1 {
+  @include h1-typography();
+  @include h1-spacing();
+}
+
+h2 {
+  @include h2-typography();
+  @include h2-spacing();
+}
+
+h3 {
+  @include h3-typography();
+  @include h3-spacing();
+}
+
+h4 {
+  @include h4-typography();
+  @include h4-spacing();
+}
+
+h5 {
+  @include h5-typography();
+  @include h5-spacing();
+}
+
+h6 {
+  @include h6-typography();
+  @include h6-spacing();
+}
+
+address,
+article,
+aside,
+blockquote,
+caption,
+details,
+dl,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+ol,
+p,
+pre,
+section,
+table,
+ul {
+  @include block-spacing();
+}
+
+b,
+code,
+kbd,
+strong {
+  line-height: 1;
+}
+
+hr {
+  border: 0;
+  @include border(block-end);
+  @include block-spacing($end: $baselinegrid-space-small - $grid-divider_size);
+}
+
+figure {
+  @include margin(0, inline);
+}
+
+dl,
+ol,
+ul {
+  dd > &,
+  li > & {
+    @include block-spacing($end: 0);
+  }
+}
+
+a {
+  color: $color-primary-normal;
+  text-decoration: none;
+}
+
+dt {
+  font-weight: bold;
+
+  dd + & {
+    @include block-spacing($baselinegrid-space-small, 0);
+  }
+}
+
+dd {
+  @include margin(0, inline-start);
+}
+
+address {
+  @include set-font-size-and-line-height(scale(-3));
+}
+
+small {
+  @include rem(font-size, scale(-3));
+}
+
+sub {
+  @include font-variant-position(sub);
+}
+
+sup {
+  @include font-variant-position(super);
+}
+
+img {
+  @include max-inline-size(100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  img {
+    @include inline-image();
+  }
+}
+
+:lang(ja) {
+  @at-root {
+    em#{&} {
+      font-style: normal;
+      text-emphasis-style: open sesame;
+      text‑emphasis‑position: over right;
+    }
+
+    strong#{&} {
+      font-style: normal;
+      text-emphasis-style: filled sesame;
+      text‑emphasis‑position: over right;
+    }
+
+    u#{&} {
+      text-underline-position: right;
+    }
+  }
+}
+
+:lang(ko) {
+  @at-root {
+    em#{&} {
+      font-style: normal;
+      text-decoration: underline;
+      text-underline-position: under right;
+    }
+
+    strong#{&} {
+      font-style: normal;
+      text-emphasis-style: filled dot;
+      text‑emphasis‑position: over right;
+    }
+  }
+}
+
+:lang(zh) {
+  @at-root {
+    em#{&} {
+      font-style: normal;
+      text-emphasis-style: open dot;
+      text‑emphasis‑position: under right;
+    }
+
+    strong#{&} {
+      font-style: normal;
+      text-emphasis-style: filled dot;
+      text‑emphasis‑position: under right;
+    }
+
+    cite#{&} {
+      font-style: normal;
+      text-decoration: underline;
+      text-underline-style: wavy;
+    }
+  }
+}
+
+:lang(zh-Hant) {
+  @at-root {
+    em#{&} {
+      text‑emphasis‑position: over right;
+    }
+
+    strong#{&} {
+      text‑emphasis‑position: over right;
+    }
+  }
+}

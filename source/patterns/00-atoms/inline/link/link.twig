@@ -1,0 +1,13 @@
+{%- import 'atoms-html' as html -%}
+
+{% spaceless %}
+
+  {%- if attributes|default({}).href|default(false) -%}
+    <a {{- html.attributes(attributes) }}>{{- html.content(text) -}}</a>
+  {%- elseif attributes|default({})|length -%}
+    <span {{- html.attributes(attributes) }}>{{- html.content(text) -}}</span>
+  {%- else -%}
+    {{- html.content(text) -}}
+  {%- endif -%}
+
+{% endspaceless %}

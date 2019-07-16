@@ -1,0 +1,15 @@
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+
+.teaser__heading {
+  @include block-spacing($end: 0);
+  @include h4-typography();
+}
+
+.teaser__header {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
+}
+
+.teaser__details {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
+}

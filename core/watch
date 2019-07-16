@@ -29,7 +29,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
         };
 
         $watcher = new ResourceWatcher($tracker);
-        $watcher->track('source', __DIR__ . '/../source');
+        $watcher->track('source', __DIR__ . '/../build/source');
 
         $process = new Process(['core/console', '--generate']);
         $process->setWorkingDirectory(__DIR__ . '/..');

@@ -1,4 +1,4 @@
-FROM node:10.12.0-slim AS node
+FROM node:10.15.3-slim AS node
 
 #
 # Stage: NPM install
@@ -22,23 +22,32 @@ FROM node AS gulp
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install --yes --no-install-recommends \
+        python3-pip \
+    && pip3 --no-cache-dir install \
+        brotli \
+        fonttools \
+    && rm -rf /var/lib/apt/lists/*
 COPY .babelrc \
+    .browserslistrc \
+    .eslintrc.js \
     .stylelintrc \
     gulpfile.babel.js \
+    jest.config.js \
+    webpack.config.babel.js \
     ./
-COPY libero-config/ libero-config/
 COPY --from=npm /app/node_modules/ node_modules/
 COPY test/ test/
 COPY source/ source/
 
-RUN npx gulp assemble
+RUN npx gulp build
 
 
 
 #
 # Stage: Composer install
 #
-FROM composer:1.7.3 as composer
+FROM composer:1.7.3 AS composer
 
 COPY core/ core/
 COPY config/ config/
@@ -46,8 +55,7 @@ COPY composer.json \
     composer.lock \
     ./
 
-RUN mkdir public source && \
-    composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-suggest --prefer-dist
+RUN composer --no-interaction install --ignore-platform-reqs --classmap-authoritative --no-suggest --prefer-dist
 
 
 
@@ -66,9 +74,8 @@ WORKDIR /app
 
 COPY core/ core/
 COPY config/ config/
-COPY --from=composer /app/public/ public/
 COPY --from=composer /app/vendor/ vendor/
-COPY --from=gulp /app/source/ source/
+COPY --from=gulp /app/build/source/ build/source/
 
 RUN core/console --generate
 
@@ -79,5 +86,7 @@ RUN core/console --generate
 #
 FROM nginx:1.15.7-alpine AS ui
 
-COPY --from=build /app/public/ /usr/share/nginx/html/
+COPY --from=build /app/build/public/ /usr/share/nginx/html/
 HEALTHCHECK --interval=5s CMD nc -z localhost 80
+ARG revision
+LABEL org.opencontainers.image.revision=${revision}

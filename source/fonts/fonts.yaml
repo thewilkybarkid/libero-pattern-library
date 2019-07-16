@@ -1,0 +1,48 @@
+- &NotoFont
+  name: Noto Sans
+  base: https://github.com/googlefonts/noto-fonts/raw/v2017-10-24-phase3-second-cleanup/unhinted/
+  license: ../LICENSE
+  subsets:
+    generic:
+      - U+2000-206F # General Punctuation
+    latin:
+      - U+0000-007F # Basic Latin
+      - U+0080-00FF # Latin-1 Supplement
+    cyrillic:
+      - U+0400-04FF # Cyrillic
+      - U+0500-052F # Cyrillic Supplement
+  files:
+    - path: NotoSans-Regular.ttf
+    - path: NotoSans-Italic.ttf
+      style: italic
+    - path: NotoSans-SemiBold.ttf
+      weight: 600
+    - path: NotoSans-SemiBoldItalic.ttf
+      weight: 600
+      style: italic
+- &NotoArabic
+  <<: *NotoFont
+  subsets:
+    arabic:
+      - U+0600-06FF # Arabic
+  files:
+    - path: NotoSansArabic-Regular.ttf
+    - path: NotoSansArabic-SemiBold.ttf
+      weight: 600
+- <<: *NotoFont
+  name: Noto Serif
+  files:
+    - path: NotoSerif-Regular.ttf
+    - path: NotoSerif-Italic.ttf
+      style: italic
+    - path: NotoSerif-SemiBold.ttf
+      weight: 600
+    - path: NotoSerif-SemiBoldItalic.ttf
+      weight: 600
+      style: italic
+- <<: *NotoArabic
+  name: Noto Serif
+  files:
+    - path: NotoNaskhArabic-Regular.ttf
+    - path: NotoNaskhArabic-Bold.ttf # No semi-bold available
+      weight: 600

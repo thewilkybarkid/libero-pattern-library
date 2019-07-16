@@ -1,0 +1,20 @@
+@import "spacing";
+@import "types";
+@import "../functions/grid";
+@import "../settings/grid";
+
+@mixin base-grid($max-inline-size) {
+  @include max-inline-size($max-inline-size);
+  @include block-spacing($end: 0);
+  @include margin(auto, inline);
+  @include padding($grid-column_gap, inline);
+  box-sizing: content-box;
+
+  @supports (display: grid) and (--custom: property) {
+    display: grid;
+    @include max-inline-size(unset);
+    @include margin(unset, inline);
+    @include padding(unset, inline);
+    box-sizing: border-box;
+  }
+}

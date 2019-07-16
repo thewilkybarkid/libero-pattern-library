@@ -1,0 +1,25 @@
+@import "../../mixins/lists";
+@import "../../mixins/typography";
+
+.inline-list {
+  @include list-style-none();
+  overflow-y: hidden;
+}
+
+.inline-list--small {
+  @include set-font-size-and-line-height(scale(-1));
+}
+
+.inline-list__item {
+  display: inline;
+  @include list-separator();
+
+  .inline-list--alternative-separators & {
+    @include list-separator(alternative);
+  }
+
+}
+
+.inline-list__link {
+  @include covert-link();
+}

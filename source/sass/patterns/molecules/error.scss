@@ -1,0 +1,42 @@
+@import "../../mixins/media-query";
+@import "../../mixins/sizes";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
+
+.error {
+  text-align: center;
+  @include max-inline-size($grid-max-width);
+  @include margin(auto, inline);
+  @include padding($grid-column_gap, inline);
+
+  @include block-spacing($start: $baselinegrid-space-large, $end: $baselinegrid-space-large);
+  @include mq($from: medium) {
+    @include block-spacing($start: $baselinegrid-space-extra_large, $end: $baselinegrid-space-extra_large);
+  }
+
+  @supports (display: flex) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > :last-child {
+    @include margin(0, block-end);
+  }
+}
+
+.error__image {
+  @include block-spacing();
+
+  @supports (display: flex) {
+    display: block;
+  }
+}
+
+.error__heading {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
+  @include h2-typography();
+}

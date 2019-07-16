@@ -5,18 +5,21 @@ services:
     build:
       context: .
       target: gulp
-    command: bash -c "npx gulp assemble --environment=development --sass-lint=${LINT_SASS} && npx gulp watch --environment=development --sass-lint=${LINT_SASS}"
+    command: bash -c "npx gulp build --environment=development --lint=${LINT} && npx gulp watch --environment=development --lint=${LINT}"
+    restart: on-failure
     volumes:
-      - ./libero-config:/app/libero-config
+      - ./build:/app/build
       - ./source:/app/source
+      - ./test:/app/test
   watch-build:
     build:
       context: .
       target: build
     command: core/watch
+    restart: on-failure
     volumes:
-      - public:/app/public
-      - ./source:/app/source:ro
+      - ./build/public:/app/build/public
+      - ./build/source:/app/build/source:ro
     depends_on:
       - watch-gulp
   ui:
@@ -28,9 +31,6 @@ services:
       - 8889:80
       - 3000:3000
     volumes:
-      - public:/app/public:ro
+      - ./build/public:/app/build/public:ro
     depends_on:
       - watch-build
-
-volumes:
-  public:

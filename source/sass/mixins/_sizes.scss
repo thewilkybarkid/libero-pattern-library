@@ -1,0 +1,57 @@
+@import "logical-properties";
+@import "types";
+@import "validation";
+
+@mixin block-size($size) {
+  @include _expect_single_value($size) {
+    @include logical-property("", block-size, ($size));
+  }
+}
+
+@mixin inline-size($size, $to-rem: true) {
+  @include _expect_single_value($size) {
+    @include logical-property("", inline-size, ($size), $to-rem);
+  }
+}
+
+@mixin _constrain-block-size($size, $extreme) {
+  @include logical-property($extreme, block-size, ($size));
+}
+
+@mixin _constrain-inline-size($size, $extreme) {
+  @include logical-property($extreme, inline-size, ($size));
+}
+
+@mixin max-block-size($size) {
+  @include _expect_single_value($size) {
+    @include _constrain-block-size($size, max);
+  }
+}
+
+@mixin min-block-size($size) {
+  @include _expect_single_value($size) {
+    @include _constrain-block-size($size, min);
+  }
+}
+
+@mixin max-inline-size($size) {
+  @include _expect_single_value($size) {
+    @include _constrain-inline-size($size, max);
+  }
+}
+
+@mixin min-inline-size($size) {
+  @include _expect_single_value($size) {
+    @include _constrain-inline-size($size, min);
+  }
+}
+
+@mixin truncate-with-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:lang(zh-Hant-HK) {
+    text-overflow: "⋯";
+  }
+}

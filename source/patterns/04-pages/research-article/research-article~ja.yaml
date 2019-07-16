@@ -1,0 +1,342 @@
+lang: ja
+
+siteHeader:
+  logo:
+    href: '#'
+    image:
+      alt: 'Liberoのロゴ'
+  menu:
+    - attributes:
+        href: '#'
+      text: トップ
+    - attributes:
+        href: '#'
+      text: 号
+    - attributes:
+        href: '#'
+      text: について
+
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 追加の
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: 興味深い情報
+    - text: があります。
+
+contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: この記事のPDFをダウンロードする
+  contentTitle:
+    text: 中国のジュラ紀からの予期せぬ非虫歯の蔓延した花
+  categories:
+    attributes:
+      aria-label: この記事を含むカテゴリの一覧
+    items:
+      - content:
+          text: 進化生物学
+      - content:
+          text: 植物生物学
+  meta:
+    attributes:
+      aria-label: 出版物の詳細
+    items:
+      - attributes:
+          aria-label: 記事の種類
+        content:
+          attributes:
+            href: '#'
+          text: 研究論文
+      - attributes:
+          aria-label: 発行日
+        content:
+          text:
+            - template: atoms-time
+              arguments:
+                attributes:
+                  datetime: '2018-12-18'
+                text: 2018年12月18日
+  authors:
+    attributes:
+      aria-label: この記事の著者
+    items:
+      - content:
+          text: 清水輝
+      - content:
+          text: 木村菜々子
+      - content:
+          text: 山田誠
+      - content:
+          text: 岡田翔太
+      - content:
+          text: 中島心愛
+      - content:
+          text: 山崎優斗
+      - content:
+          text: 伊藤昭三
+      - content:
+          text: 前田真由
+      - content:
+          text: 松本優奈
+      - content:
+          text: 加藤蓮
+      - content:
+          text: 井上貴大
+  affiliations:
+    attributes:
+      aria-label: 著者所属
+    items:
+      - content:
+          text: 中国科学院、中国
+      - content:
+          text: スペイン、ビーゴ大学
+      - content:
+          text: ブリスベン植物園、オーストラリア
+      - content:
+          text: 福建省農林大学、中国
+      - content:
+          text: 中国地質調査、中国
+      - content:
+          text: 南京師範大学、中国
+
+body:
+  - template: molecules-section
+    arguments:
+      heading:
+        text: 抄録
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              被子植物の起源は、長年にわたる植物学的な議論です。白亜紀初期の被子植物の多様性が大きいことから、ジュラ紀は被子植物の起源
+              を予測するための有望な時期となっています。ここでは、中国の南Xiangshan層（初期ジュラ紀）から、様々な状態と向きで34枚のス
+              ラブに保存された198個の個々の花の264個の標本の観察に基づいて、化石の花、Nanjinganthus dendrostyla genについて説明し
+              ます。 et sp。多数の標本と様々な保存は、証拠に基づいた花の再構成を可能にします。陥入した容器と卵巣の屋根の組み合わせの証
+              拠から、我々は南京の種子が完全に囲まれていたと推論します。樹状様式、カップ型容器、および被子植物を伴う放線花の証拠は、
+              Jurassicからの本物の被子植物であるNanjinganthusと一致している。これは、被子植物の起源への研究を再活性化させることを願
+              っている。
+  - template: molecules-section
+    arguments:
+      heading:
+        text: eLife撮要
+      content:
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              オレンジからりんごまで、開花植物は私達がスーパーマーケットで展示されているのを見ることができる果物と野菜の大部分を生産し
+              ます。ケシ畑や私たちの周りの梅の花にはほとんど気付かないかもしれませんが、花がどのようになったかは激しく議論されてきた謎
+              です。
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              主に以前に利用可能な化石に基づいている現在の理解は、花が白亜紀に約1億2500万年前に出現したということであり、その間に蜂な
+              どの多くの昆虫も出現した。しかし、これが事実であることに誰もが同意するわけではありません。例えば、遺伝子解析は、開花植物
+              ははるかに古くからあることを示唆しています。もう1つの興味深い要素は、花が白亜紀の「どこからともなく」の間に発生したようだ
+              ということです。
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              化石は議論を解決するのを助けるのに不可欠ですが、何百万年もの間岩の中に保存された花のようにもろいものを見つけるのに勤勉と
+              運が必要です。さらに、花のように見えるものを掘り下げるだけでは不十分です。植物の胚珠（受精すると種となる細胞）が受粉前に
+              卵巣の内側に完全に閉じ込められている場合にのみ、研究者らは間違いなく「真の」花を発見したと言うことができます。
+        - template: atoms-paragraph
+          arguments:
+            text: >
+              今、Fu等。この特徴を示す200個以上の新しい化石の花の標本、そして花びらやpのような他の独特の特徴 - 花のつぼみを保護する葉
+              のような部分 - について説明します。 Nanjinganthusと呼ばれるこの植物は、1億7,400万年以上前にさかのぼり、約5千万年の歴
+              史を持つ「本物の」花の最も古い記録となっています。主流の信念に反して、これは花盛りの植物の出現を恐竜が惑星を支配するのを
+              見た時代初期のジュラ紀に置くでしょう。この発見は、花の進化についての私たちの現在の理解を再構築するかもしれません。
+        - template: molecules-figure
+          arguments:
+            content:
+              template: atoms-image
+              arguments:
+                image:
+                  src: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg
+                  alt: ''
+                sources:
+                  - type: image/webp
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.webp 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.webp 1x
+                  - type: image/jpeg
+                    srcset: https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/1234,/0/default.jpg 2x, https://iiif.elifesciences.org/lax/38827%2Felife-38827-fig1-v2.tif/full/617,/0/default.jpg 1x
+            caption:
+              heading:
+                text: Nanjinganthusを担持するシルト岩スラブ。
+                level: 3
+              content:
+                - template: atoms-paragraph
+                  arguments:
+                    text:
+                      - すべてのバーは1センチの長さです。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ａ
+                      - ）同じスラブ上の6つの花（1〜6）、および平行した連通を伴う関連する三角のリーフレット。PB22227。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｂ
+                      - ）同じスラブ上にいくつかの花があります。 図１〜３は図２ｆおよび６ｄに詳細に示されている。PB22226。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｃ
+                      - ）同じスラブ上のいくつかの花（1〜8）とそれに関連するNilssonia parabrevis（上）。PB22220。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｄ
+                      - ）同じスラブ上のいくつかの花（1〜6）。1〜3の詳細は、図2hおよび3a〜cに示されています。PB22224。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｅ
+                      - >-
+                        ）同じスラブにたくさんの花があります。 番号が付けられたもののいくつかは後の図で詳細に示されています。
+                        PB22222a。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｆ
+                      - ）たくさんの花が咲く板。PB22221。（
+                      - template: atoms-bold
+                        arguments:
+                          text: Ｇ
+                      - ）スラブはほとんど花で覆われていました。PB22228。
+  - template: molecules-section
+    arguments:
+      heading:
+        text: 出典
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: エドワードアーバー
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ジョンパーキン
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' 38、29–80'
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: リチャードベイトマン
+                    - content:
+                        text: ジェイソンヒルトン
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ポーラルダル
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of Experimental Botany
+                    - ' 57、3471–3503'
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: この本の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: チャヤビスワス
+                    - content:
+                        text: ブリジモハンジョリ
+                details:
+                  text: 'ベルリン: Springer-Verlag.'
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: この記事の著者
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ノーマンボケ
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: American Journal of Botany
+                    - ' 51、598–610'
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
+
+tags:
+  groups:
+    - title:
+        text: カテゴリーとタグ
+      list:
+        items:
+          - content:
+              attributes:
+                href: '#'
+              text: 研究論文
+          - content:
+              text: 進化生物学
+          - content:
+              text: 植物生物学
+          - content:
+              attributes:
+                href: '#'
+                lang: la
+              text: Nanjinganthus
+          - content:
+              attributes:
+                href: '#'
+              text: 化石
+          - content:
+              text: ジュラ紀
+          - content:
+              text: 中国
+          - content:
+              text: 被子植物
+          - content:
+              text: 花

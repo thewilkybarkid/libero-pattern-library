@@ -1,0 +1,4 @@
+type: success
+image:
+  src: ../../images/info-bar/success.svg
+content: Operation completed successfully.

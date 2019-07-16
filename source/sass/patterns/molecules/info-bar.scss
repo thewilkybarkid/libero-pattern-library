@@ -1,0 +1,54 @@
+@import "../../mixins/positioning";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/color";
+@import "../../settings/font";
+
+$info-bar-gutter: 8px !default;
+$info-bar-image-offset: $font-size !default;
+
+.info-bar {
+  color: $color-text-reverse;
+  font-family: $font-secondary;
+  font-weight: 600;
+  @include set-font-size-and-line-height(scale(-1));
+  @include padding($baselinegrid-space-extra_small $info-bar-gutter);
+  text-align: center;
+
+  @supports (display: flex) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    @include subtle-link();
+  }
+}
+
+.info-bar--attention {
+  background-color: $color-attention;
+}
+
+.info-bar--info {
+  background-color: $color-information;
+}
+
+.info-bar--success {
+  background-color: $color-success;
+}
+
+.info-bar--warning {
+  background-color: $color-warning;
+}
+
+.info-bar__image {
+  @include block-size($baselinegrid-space-small);
+  @include margin(0 $info-bar-image-offset, inline);
+  vertical-align: top;
+
+  @supports (display: flex) {
+    @include block-size(auto);
+    @include max-block-size($baselinegrid-space-medium);
+  }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="175px" height="160px" viewBox="0 0 175 160">
+
+    <title xml:lang="en">Service unavailable</title>
+
+    <defs>
+        <style>
+
+            .bond {
+                fill: none;
+                stroke: #212121;
+                stroke-linecap: round;
+                stroke-miterlimit: 10;
+                stroke-width: 4;
+            }
+
+            .atom {
+                fill: none;
+                stroke: #212121;
+                stroke-miterlimit: 10;
+                stroke-width: 4;
+            }
+
+            .atom--alternative {
+                stroke: #cf0c4e;
+            }
+
+        </style>
+    </defs>
+
+    <g class="bond">
+        <line x1="163" y1="47" x2="145" y2="17"/>
+        <line x1="31" y1="71" x2="26" y2="63"/>
+        <line x1="73" y1="139" x2="68" y2="131"/>
+        <line x1="82" y1="96" x2="70" y2="76"/>
+        <polyline points="91,101 121,101 136,76 "/>
+        <polyline points="121,41 85,41 70,66 "/>
+        <polyline points="37,131 67,131 82,106 "/>
+        <polyline points="61,71 31,71 13,101 28,126 "/>
+    </g>
+
+    <g class="atom">
+        <circle cx="67" cy="71" r="5"/>
+        <circle cx="31" cy="131" r="5"/>
+        <circle cx="138" cy="71" r="5"/>
+        <g class="atom--alternative">
+            <circle cx="85" cy="101" r="5"/>
+            <circle cx="76" cy="143" r="5"/>
+            <circle cx="23" cy="59" r="5"/>
+            <circle cx="117" cy="17" r="5"/>
+        </g>
+    </g>
+
+</svg>

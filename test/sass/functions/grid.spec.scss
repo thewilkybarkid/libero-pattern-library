@@ -1,0 +1,15 @@
+@import "../test";
+@import "../../../source/sass/functions/grid";
+
+@include describe("@function column-width") {
+
+  @include it("returns the calculation for working out a column width") {
+
+    @include assert-equal(
+      get-overall-width(12),
+      calc((12 * var(--GRID-COLUMN-WIDTH)) + (11 * var(--GRID-COLUMN-GAP)))
+    );
+
+  }
+
+}

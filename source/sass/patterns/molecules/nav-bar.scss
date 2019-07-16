@@ -1,0 +1,48 @@
+@import "../../mixins/lists";
+@import "../../mixins/media-query";
+@import "../../mixins/scale";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../mixins/utilities";
+@import "../../settings/font";
+
+$nav-bar-font-family: $font-secondary !default;
+$nav-bar-font-weight: bold !default;
+$nav-bar-item-spacing-default: 15px !default;
+$nav-bar-item-spacing-medium: 2 * $nav-bar-item-spacing-default !default;
+$nav-bar-letterspacing: 0.5px !default;
+$nav-bar-scale: -1 !default;
+$nav-bar-uppercase: true !default;
+
+.nav-bar {
+  @include block-spacing($end: 0);
+  font-family: $nav-bar-font-family;
+  font-weight: $nav-bar-font-weight;
+  @include set-font-size-and-line-height(scale($nav-bar-scale));
+  letter-spacing: $nav-bar-letterspacing;
+  @if $nav-bar-uppercase {
+    text-transform: uppercase;
+  }
+}
+
+.nav-bar__list {
+  @include block-spacing($end: 0);
+  @include list-style-none();
+}
+
+.nav-bar__item {
+  display: inline;
+  @include margin($nav-bar-item-spacing-default, inline-end);
+
+  @include mq($from: medium) {
+    @include margin($nav-bar-item-spacing-medium, inline-end);
+  }
+}
+
+.nav-bar__link {
+  @include inherit-all($ensure: color text-decoration) {
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+  }
+}

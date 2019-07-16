@@ -1,0 +1,61 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['figure']) }) -%}
+
+<figure {{- html.attributes(attributes|default({})) }}>
+
+  {%- with content.arguments|merge({_template: content.template}) only -%}
+    {%- block content -%}
+
+      {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['figure__asset']) }) -%}
+
+      {%- include _template -%}
+
+    {%- endblock content -%}
+  {%- endwith -%}
+
+  {%- if caption is defined -%}
+
+    {%- with caption|merge({html: html}) only -%}
+      {%- block caption -%}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['figure__caption']) }) -%}
+
+        <figcaption {{- html.attributes(attributes|default({})) }}>
+
+          {%- with heading|default({}) only -%}
+            {%- block captionHeading -%}
+
+              {%- if text is defined -%}
+
+                {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['figure__heading']) }) -%}
+
+                {%- set level = level|default(2) -%}
+
+                {%- include 'atoms-heading' -%}
+
+              {%- endif -%}
+
+            {%- endblock captionHeading -%}
+          {%- endwith -%}
+
+          {%- with {content: content|default([]), html: html} only -%}
+            {%- block captionContent -%}
+
+              {%- if content|length -%}
+
+                {{- html.content(content) -}}
+
+              {%- endif -%}
+
+            {%- endblock captionContent -%}
+          {%- endwith -%}
+
+        </figcaption>
+
+      {%- endblock caption -%}
+    {%- endwith -%}
+
+  {%- endif -%}
+
+</figure>

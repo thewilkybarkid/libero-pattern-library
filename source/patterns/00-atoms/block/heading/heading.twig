@@ -1,0 +1,23 @@
+{%- import 'atoms-html' as html -%}
+
+{%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['heading']) }) -%}
+
+<h{{ level|default(1) }} {{- html.attributes(attributes) }}>
+
+  {%- if text.text is not defined -%}
+    {%- set text = {text: text} -%}
+  {%- endif -%}
+
+  {%- with text only -%}
+    {%- block text -%}
+
+      {%- if attributes.href|default(false) -%}
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['heading__link']) }) -%}
+      {%- endif -%}
+
+      {%- include 'atoms-link' -%}
+
+    {%- endblock -%}
+  {%- endwith -%}
+
+</h{{ level|default(1) }}>

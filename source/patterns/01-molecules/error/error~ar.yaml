@@ -1,0 +1,9 @@
+attributes:
+  dir: rtl
+  lang: ar
+image:
+  src: ../../images/error/5xx.svg
+heading:
+  text: خطأ
+details:
+  text: لقد حدث خطأ ما بشكل خطير. لقد سجلنا المشكلة وسوف ننظر فيها.

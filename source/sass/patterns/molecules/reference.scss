@@ -1,0 +1,31 @@
+@import "../../mixins/scale";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/font";
+
+.reference {
+  font-family: $font-secondary;
+}
+
+.reference__heading {
+  @include block-spacing($end: 0);
+  @include h6-typography();
+}
+
+.reference__authors_list {
+  @include block-spacing($end: 0);
+}
+
+.reference__details {
+  @include block-spacing($end: 0);
+  @include set-font-size-and-line-height(scale(-1));
+  font-family: $font-primary;
+}
+
+.reference__doi {
+  @include covert-link() {
+    display: block;
+    @include block-spacing($end: 0);
+    @include set-font-size-and-line-height(scale(-3));
+  }
+}

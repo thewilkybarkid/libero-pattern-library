@@ -1,0 +1,21 @@
+attributes:
+  lang: ja
+heading:
+  text: 参照タイトル
+authors:
+  attributes:
+    aria-label: この記事の著者
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: 著者1
+    - content:
+        text: 著者2
+    - content:
+        attributes:
+          href: '#'
+        text: 著者3
+details:
+  text: デモンストレーションのための国際ジャーナル。
+doi: 10.7554/eLife.12151

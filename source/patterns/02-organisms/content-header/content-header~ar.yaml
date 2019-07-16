@@ -1,0 +1,31 @@
+attributes:
+  dir: rtl
+  lang: ar
+contentTitle:
+  text: عنوان المحتوى
+download:
+  link:
+    href: '#'
+  alt: قم بتنزيل ملف PDF لهذا المقال
+authors:
+  attributes:
+    aria-label: مؤلفو هذا المقال
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 1
+    - content:
+        text: المؤلف 2
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 3
+affiliations:
+  attributes:
+    aria-label: الكاتب الانتماءات
+  items:
+    - content:
+        text: الانتماء 1
+    - content:
+        text: الانتماء 2

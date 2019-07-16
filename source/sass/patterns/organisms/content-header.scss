@@ -1,0 +1,172 @@
+@import "../../functions/types";
+@import "../../mixins/scale";
+@import "../../mixins/decorations";
+@import "../../mixins/media-query";
+@import "../../mixins/positioning";
+@import "../../mixins/spacing";
+@import "../../settings/baselinegrid";
+@import "../../settings/grid";
+
+$contentHeader-downloadIcon-inline_size__default: 20px !default;
+$contentHeader-downloadIcon-inline_size__medium: 44px !default;
+
+.content-header {
+  font-family: $font-secondary;
+  text-align: center;
+  @include padding($baselinegrid-space-medium, block-start);
+  @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
+  @include border(block-end);
+  position: relative;
+}
+
+.content-header--has-header {
+  @include padding($baselinegrid-space-large, block-start);
+}
+
+.content-header__title {
+  @include block-spacing($end: $baselinegrid-space-small);
+
+  &:last-child {
+    @include block-spacing($end: $baselinegrid-space-medium);
+  }
+}
+
+.content-header__title--xx-short {
+  @include rem(font-size, scale(9));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--x-short {
+  @include rem(font-size, scale(8));
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(9));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--short {
+  @include rem(font-size, scale(6));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(8));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(9));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--medium {
+  @include rem(font-size, scale(4));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(6));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(8));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(10));
+  }
+}
+
+.content-header__title--long {
+  @include rem(font-size, scale(2));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(7));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(8));
+  }
+
+}
+
+.content-header__title--x-long {
+  @include rem(font-size, scale(2));
+
+  @include mq($from: medium) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(4));
+  }
+
+  @include mq($from: x-wide) {
+    @include rem(font-size, scale(6));
+  }
+}
+
+.content-header__title--xx-long {
+  @include rem(font-size, scale(1));
+
+  @include mq($from: small) {
+    @include rem(font-size, scale(2));
+  }
+
+  @include mq($from: wide) {
+    @include rem(font-size, scale(4));
+  }
+}
+
+.content-header__categories {
+  position: absolute;
+  @include inset($baselinegrid-space-small, block-start);
+  @include inset(1.5 * $contentHeader-downloadIcon-inline_size__default, inline);
+
+  @include mq($from: medium) {
+    @include inset(1.5 * $contentHeader-downloadIcon-inline_size__medium, inline);
+  }
+}
+
+.content-header__download {
+  position: absolute;
+  @include inset(0, block-start);
+  @include inset(0, inline-end);
+  @include block-spacing($start: $baselinegrid-space-small, $end: 0);
+
+  @supports (display: flex) {
+    display: flex;
+    @include block-size($baselinegrid-space-small * 3);
+    @include block-spacing($end: 0);
+  }
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-header__download_icon {
+  display: block;
+  @include inline-size($contentHeader-downloadIcon-inline_size__default);
+
+  @include mq($from: medium) {
+    @include inline-size($contentHeader-downloadIcon-inline_size__medium);
+  }
+}

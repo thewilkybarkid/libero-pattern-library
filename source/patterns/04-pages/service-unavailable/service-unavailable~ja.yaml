@@ -1,0 +1,7 @@
+lang: ja
+
+error:
+  heading:
+    text: すぐにもどる
+  details:
+    text: このページで計画的なメンテナンスを行っています。

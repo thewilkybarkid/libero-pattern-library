@@ -1,0 +1,17 @@
+attributes:
+  dir: rtl
+  lang: ar
+list:
+  items:
+    - content:
+        href: '#'
+        heading:
+          text: دعابة العنوان 1
+    - content:
+        href: '#'
+        heading:
+          text: دعابة العنوان 2
+    - content:
+        href: '#'
+        heading:
+          text: دعابة العنوان 3

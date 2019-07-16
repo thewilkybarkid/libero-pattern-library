@@ -1,0 +1,129 @@
+@import "logical-properties";
+@import "media-query";
+@import "sizes";
+@import "types";
+@import "validation";
+@import "../settings/baselinegrid";
+
+// Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
+//  - document level: always specified, via the HTML element
+//  - block level: specified on every element within a block describing a direction switch.
+//
+// For example:
+// <html lang="..." dir="ltr">
+// ...
+// <div>
+//   Doesn't need a dir attribute. Most cases will be like this.
+// </div>
+//
+//<div class="test" dir="rtl">
+//
+//  This block changes the text direction. Every descendant element must have its own dir attribute....
+//
+//  <div class="test" dir="rtl">... even if the direction doesn't change.</div>
+//
+//  <div class="test" dir="ltr">But obviously also when it does.</div>
+//
+//</div>
+@mixin _spacing($sizes, $space-type, $dimension: "") {
+
+  @if $dimension == "" {
+
+    @include _expect_at_most($sizes, 4, "More than four sizes supplied when no dimension") {
+      @include logical-property($space-type, all, $sizes);
+    }
+
+  } @else if $dimension == inline {
+
+    @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'inline' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if $dimension == inline-start {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'inline-start' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if $dimension == inline-end {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'inline-end' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if $dimension == block {
+
+    @include _expect_at_most($sizes, 2, "More than two sizes supplied with 'block' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if $dimension == block-start {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'block-start' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if $dimension == block-end {
+
+    @include _expect_single_value($sizes, "More than one size supplied with 'block-end' dimension") {
+      @include logical-property($space-type, $dimension, $sizes);
+    }
+
+  } @else if index((top, bottom, left, right), $dimension) {
+    @include _error("'#{$dimension}' is a physical dimension, use its logical equivilant");
+  } @else {
+    @include _error("Unknown dimension '#{$dimension}'");
+  }
+
+}
+
+@mixin padding($sizes, $dimension: "") {
+  @include _spacing($sizes, padding, $dimension);
+}
+
+@mixin margin($sizes, $dimension: "") {
+  @include _spacing($sizes, margin, $dimension);
+}
+
+@mixin nospace($dimension: "") {
+  @include margin(0, $dimension);
+  @include padding(0, $dimension);
+}
+
+@mixin block-spacing($start: 0, $end: $baselinegrid-space-small) {
+  @include margin($start $end, block);
+}
+
+@function _calculate-spacing($block-size, $unit-size: $baselinegrid-space-small) {
+  $remaining: $unit-size - $block-size;
+
+  @if ($remaining > 0) {
+    @return $remaining;
+  }
+
+  @return $unit-size;
+}
+
+@mixin h1-spacing() {
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-medium));
+}
+
+@mixin h2-spacing() {
+  @include block-spacing($end: _calculate-spacing(($baselinegrid-space-small + $baselinegrid-space-smallish) / 2, $baselinegrid-space-medium));
+}
+
+@mixin h3-spacing() {
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
+}
+
+@mixin h4-spacing() {
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
+}
+
+@mixin h5-spacing() {
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
+}
+
+@mixin h6-spacing() {
+  @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
+}

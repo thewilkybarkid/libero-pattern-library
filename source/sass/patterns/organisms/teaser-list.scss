@@ -1,0 +1,26 @@
+@import "../../mixins/decorations";
+@import "../../mixins/lists";
+@import "../../mixins/spacing";
+@import "../../mixins/typography";
+@import "../../settings/color";
+
+.teaser-list__title {
+  @include block-spacing();
+  @include label-content-typography($color-text-normal);
+  @include set-font-size-and-line-height(scale(-1));
+  font-weight: bold;
+}
+
+.teaser-list__list {
+  @include list-style-none();
+  @include padding(0, inline-start);
+}
+
+.teaser-list__item {
+  @include block-spacing($end: $baselinegrid-space-small);
+
+  &:not(:last-child) {
+    @include block-spacing($end: $baselinegrid-space-small - $grid-divider_size);
+    @include border(block-end);
+  }
+}

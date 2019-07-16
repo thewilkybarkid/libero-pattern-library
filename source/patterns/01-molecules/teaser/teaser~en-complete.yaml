@@ -1,0 +1,42 @@
+href: '#'
+heading:
+  text: >-
+    Retrograde fibroblast growth factor 22 (FGF22) signaling regulates insulin-like growth factor 2 (IGF2) expression
+    for activity-dependent synapse stabilization in the mammalian brain
+details:
+  attributes:
+    aria-label: Authors of this article
+  text: Author 1 et al.
+categories:
+  attributes:
+    aria-label: Category listings that include this article
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Cell Biology
+    - content:
+        text: Epidemiology and Global Health
+meta:
+  attributes:
+    aria-label: Publication details
+  items:
+    - attributes:
+        aria-label: Type of article
+      content:
+        attributes:
+          href: '#'
+        text: Research Article
+    - attributes:
+        aria-label: Publication date
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: April 5, 2019
+    - attributes:
+        aria-label: Issue number
+      content:
+        text: Issue 1
