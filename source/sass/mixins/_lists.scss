@@ -1,5 +1,5 @@
 @import "spacing";
-@import "../locales";
+@import "../functions/locales";
 
 @mixin list-style-none() {
   @include padding(0, inline-start);
@@ -11,7 +11,7 @@
 
   @if $separator == default {
 
-    @each $locale, $separator in $inline-list-separators {
+    @each $locale, $separator in get-locale-data(inline-list-separator) {
 
       @if $locale == "und" {
 
@@ -39,8 +39,10 @@
       content: ";\a0";
     }
 
-    &:lang(ar):after {
-      content: "\61b\a0";
+    @if is-supported-locale(ar) {
+      &:lang(ar):after {
+        content: "\61b\a0";
+      }
     }
 
     &:last-child:after {

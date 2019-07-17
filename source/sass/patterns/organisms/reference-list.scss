@@ -18,18 +18,22 @@ $_ordinal-inline-size--large: 3rem;
   --ordinal-inline-size: #{$_ordinal-inline-size};
 
   @supports (content: counter(reference-count, cjk-decimal)) {
-    &:lang(ja) {
-      --ordinal-inline-size: #{$_ordinal-inline-size--large};
+    @if is-supported-locale(ja) {
+      &:lang(ja) {
+        --ordinal-inline-size: #{$_ordinal-inline-size--large};
 
-      &:before {
-        content: counter(reference-count, cjk-decimal);
+        &:before {
+          content: counter(reference-count, cjk-decimal);
+        }
       }
     }
   }
 
-  &:lang(ar) {
-    &:before {
-      content: counter(reference-count, arabic-indic);
+  @if is-supported-locale(ar) {
+    &:lang(ar) {
+      &:before {
+        content: counter(reference-count, arabic-indic);
+      }
     }
   }
 

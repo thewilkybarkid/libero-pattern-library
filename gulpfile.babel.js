@@ -20,7 +20,6 @@ import os from 'os';
 import path from 'path';
 import pngToIco from 'png-to-ico';
 import postcss from 'gulp-postcss';
-import {promisify} from 'util';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import replaceStream from 'replacestream';
@@ -227,57 +226,55 @@ export const buildFonts = gulp.series(cleanFonts, compileFonts);
 
 const cleanSassLocaleData = () => del([config.files.src.sassLocales]);
 
-const generateSassLocaleData = () => {
-  const locales = cldr.localeIds.filter(locale => locale !== 'root')
-    .concat(Object.keys(cldr.extractLanguageSupplementalMetadata()))
+const generateSassLocaleData = done => {
+  const supplementalMetadata = cldr.extractLanguageSupplementalMetadata();
+  const localeParents = cldr.localeIds.filter(locale => locale !== 'root')
+    .concat(Object.keys(supplementalMetadata).filter(locale => {
+      return 0 === ['deprecated', 'legacy'].indexOf(supplementalMetadata[locale].reason);
+    }))
     .map(locale => locale.replace(/_/g, '-').toLowerCase())
     .filter(locale => tags.check(locale))
     .reduce((localeParents, locale) => {
-      while (true) {
-        const parent = locale.replace(/-[^-]+$/, '');
+      const parent = (cldr.resolveParentLocaleId(locale) || 'root').replace(/_/g, '-').toLowerCase();
 
-        if (parent === locale) {
-          localeParents[locale] = 'und';
-          return localeParents;
-        }
-
-        localeParents[locale] = parent;
-        locale = parent;
-      }
+      localeParents[locale] = 'root' === parent ? 'und' : parent;
+      return localeParents;
     }, {});
 
-  const aliases = cldr.extractLanguageSupplementalMetadata();
-  const listSeparators = ['und'].concat(Object.keys(locales))
-    .reduce((carry, locale) =>
-      Object.assign(carry,
-        {[locale]: cldr.extractListPatterns(aliases[locale] ? aliases[locale]['replacement'] : locale).default.middle.replace(/{[0|1]}/g, '')},
-      ), {});
+  const locales = ['und'].concat(Object.keys(localeParents)).reduce((carry, locale) => {
+    const localeData = {};
 
-  const queue = Object.keys(listSeparators).sort().reverse();
-  while (queue.length > 0) {
-    const locale = queue.shift();
-
-    if (Object.values(locales).indexOf(locale) !== -1) {
-      queue.push(locale);
-      continue;
+    if (locale in localeParents) {
+      const parent = locale.replace(/-[^-]+$/, '');
+      localeData['parent'] = parent === locale ? 'und' : parent;
+      localeData['real-parent'] = localeParents[locale];
     }
 
-    const parent = locales[locale];
+    localeData['inline-list-separator'] = cldr.extractListPatterns(supplementalMetadata[locale] ? supplementalMetadata[locale]['replacement'] : locale).default.middle.replace(/{[0|1]}/g, '');
 
-    if (listSeparators[locale] === listSeparators[parent]) {
-      delete listSeparators[locale];
-    }
+    carry[locale] = localeData;
 
-    delete locales[locale];
-  }
+    return carry;
+  }, {});
 
-  let sass = '';
+  const output = fs.createWriteStream(config.files.src.sassLocales);
 
-  sass += '$inline-list-separators: (\n';
-  Object.entries(listSeparators).forEach(entry => sass += `  "${entry[0]}": "${entry[1]}",\n`);
-  sass += ');\n';
+  output.write('$locale-data: (\n');
 
-  return fs.promises.writeFile(config.files.src.sassLocales, sass);
+  Object.keys(locales)
+    .forEach(locale => {
+      output.write(`  "${locale}": (\n`);
+      Object.keys(locales[locale]).forEach(property => {
+        output.write(`    "${property}": "${locales[locale][property]}",\n`);
+      });
+      output.write('  ),\n');
+    });
+
+  output.write(');\n');
+
+  output.close();
+
+  done();
 };
 
 export const assembleSassLocaleData = gulp.series(cleanSassLocaleData, generateSassLocaleData);

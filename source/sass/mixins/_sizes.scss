@@ -1,6 +1,7 @@
 @import "logical-properties";
 @import "types";
 @import "validation";
+@import "../functions/locales";
 
 @mixin block-size($size) {
   @include _expect_single_value($size) {
@@ -51,7 +52,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  &:lang(zh-Hant-HK) {
-    text-overflow: "⋯";
+  @if is-supported-locale(zh-Hant-HK) {
+    &:lang(zh-Hant-HK) {
+      text-overflow: "⋯";
+    }
   }
 }

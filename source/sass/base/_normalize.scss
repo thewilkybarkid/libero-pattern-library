@@ -1,3 +1,4 @@
+@import "../functions/locales";
 @import "../mixins/decorations";
 @import "../mixins/spacing";
 @import "../mixins/typography";
@@ -160,72 +161,80 @@ p {
   }
 }
 
-:lang(ja) {
-  @at-root {
-    em#{&} {
-      font-style: normal;
-      text-emphasis-style: open sesame;
-      text‑emphasis‑position: over right;
-    }
+@if is-supported-locale(ja) {
+  :lang(ja) {
+    @at-root {
+      em#{&} {
+        font-style: normal;
+        text-emphasis-style: open sesame;
+        text‑emphasis‑position: over right;
+      }
 
-    strong#{&} {
-      font-style: normal;
-      text-emphasis-style: filled sesame;
-      text‑emphasis‑position: over right;
-    }
+      strong#{&} {
+        font-style: normal;
+        text-emphasis-style: filled sesame;
+        text‑emphasis‑position: over right;
+      }
 
-    u#{&} {
-      text-underline-position: right;
-    }
-  }
-}
-
-:lang(ko) {
-  @at-root {
-    em#{&} {
-      font-style: normal;
-      text-decoration: underline;
-      text-underline-position: under right;
-    }
-
-    strong#{&} {
-      font-style: normal;
-      text-emphasis-style: filled dot;
-      text‑emphasis‑position: over right;
+      u#{&} {
+        text-underline-position: right;
+      }
     }
   }
 }
 
-:lang(zh) {
-  @at-root {
-    em#{&} {
-      font-style: normal;
-      text-emphasis-style: open dot;
-      text‑emphasis‑position: under right;
-    }
+@if is-supported-locale(ko) {
+  :lang(ko) {
+    @at-root {
+      em#{&} {
+        font-style: normal;
+        text-decoration: underline;
+        text-underline-position: under right;
+      }
 
-    strong#{&} {
-      font-style: normal;
-      text-emphasis-style: filled dot;
-      text‑emphasis‑position: under right;
-    }
-
-    cite#{&} {
-      font-style: normal;
-      text-decoration: underline;
-      text-underline-style: wavy;
+      strong#{&} {
+        font-style: normal;
+        text-emphasis-style: filled dot;
+        text‑emphasis‑position: over right;
+      }
     }
   }
 }
 
-:lang(zh-Hant) {
-  @at-root {
-    em#{&} {
-      text‑emphasis‑position: over right;
-    }
+@if is-supported-locale(zh) {
+  :lang(zh) {
+    @at-root {
+      em#{&} {
+        font-style: normal;
+        text-emphasis-style: open dot;
+        text‑emphasis‑position: under right;
+      }
 
-    strong#{&} {
-      text‑emphasis‑position: over right;
+      strong#{&} {
+        font-style: normal;
+        text-emphasis-style: filled dot;
+        text‑emphasis‑position: under right;
+      }
+
+      cite#{&} {
+        font-style: normal;
+        text-decoration: underline;
+        text-underline-style: wavy;
+      }
+    }
+  }
+}
+
+@if is-supported-locale(zh-Hant) {
+  :lang(zh-Hant) {
+    @at-root {
+      em#{&} {
+        text‑emphasis‑position: over right;
+      }
+
+      strong#{&} {
+        text‑emphasis‑position: over right;
+      }
     }
   }
 }

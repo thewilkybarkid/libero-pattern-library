@@ -1,0 +1,44 @@
+@import "utilities";
+@import "../locales";
+@import "../settings/locales";
+
+@function is-supported-locale($locale) {
+  $locale: to-lower-case($locale);
+
+  @if "und" == $locale {
+    @return true;
+  }
+
+  @each $supportedLocale in $locales {
+    $supportedLocale: to-lower-case($supportedLocale);
+
+    @if $supportedLocale == $locale or string-starts-with($locale, "#{$supportedLocale}-") {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+
+@function get-locale-data($property) {
+  $result: ();
+
+  @each $locale, $data in $locale-data {
+    @if is-supported-locale($locale) and map-has-key($data, $property) {
+      $value: map-get($data, $property);
+
+      @if "parent" != $property and map-has-key($data, "parent") {
+        $parentLocale: map-get($data, "parent");
+        $parentData: map-get($locale-data, $parentLocale);
+
+        @if map-get($parentData, $property) != $value or not is-supported-locale($parentLocale) {
+          $result: map-merge($result, ($locale: $value));
+        }
+      } @else {
+        $result: map-merge($result, ($locale: $value));
+      }
+    }
+  }
+
+  @return $result;
+}

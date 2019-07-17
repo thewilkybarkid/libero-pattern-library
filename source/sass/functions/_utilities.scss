@@ -1,0 +1,15 @@
+@function string-starts-with($string, $test) {
+  @return str-index($string, $test) == 1;
+}
+
+@function str-last-index($string, $substr) {
+  $index: null;
+  $length: str-length($string);
+  @for $n from $length through 1 {
+    $index: str-index(str-slice($string, $n, $length), $substr);
+    @if $index {
+      @return $index + $n - 1;
+    }
+  }
+  @return $index;
+}
