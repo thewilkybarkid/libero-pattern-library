@@ -18,12 +18,20 @@
 .tag-list__title {
   @include label-content-typography();
   @include block-spacing($end: 0);
+
+  .tag-list--reverse & {
+    color: inherit;
+  }
 }
 
 .tag-list__list {
   @include list-style-none();
   @include label-tag-typography();
   @include block-spacing($end: 0);
+
+  .tag-list--reverse & {
+    color: inherit;
+  }
 }
 
 .tag-list__list--single-line {
@@ -32,7 +40,6 @@
 
 .tag-list__item {
   display: inline-block;
-  @include label-tag-typography();
   @include list-separator();
 
   .tag-list__list--single-line & {
@@ -42,4 +49,10 @@
 
 .tag-list__link {
   @include covert-link();
+
+  .tag-list--reverse & {
+    &:hover {
+      color: inherit;
+    }
+  }
 }

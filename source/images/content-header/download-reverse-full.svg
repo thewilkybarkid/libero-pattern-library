@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="44px" height="44px" viewBox="0 0 44 44">
+
+    <title xml:lang="en">Download</title>
+
+    <defs>
+
+        <style>
+
+            .black {
+                color: #212121;
+            }
+
+            .white {
+                color: #ffffff;
+            }
+
+            .arrow {
+                fill: currentColor;
+                stroke: none;
+            }
+
+            .circle {
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2;
+            }
+
+        </style>
+
+    </defs>
+
+    <g id="icon" class="white">
+        <path class="arrow" d="M29,19 L25,19 L25,13 L19,13 L19,19 L15,19 L22,26 L29,19 L29,19 Z M15,28 L15,30 L29,30
+            L29,28 L15,28 L15,28 Z"/>
+        <circle class="circle" cx="22" cy="22" r="21"/>
+    </g>
+
+</svg>

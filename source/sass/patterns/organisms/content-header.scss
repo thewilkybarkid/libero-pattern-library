@@ -1,26 +1,96 @@
 @import "../../functions/types";
-@import "../../mixins/scale";
 @import "../../mixins/decorations";
+@import "../../mixins/logical-properties";
 @import "../../mixins/media-query";
 @import "../../mixins/positioning";
+@import "../../mixins/scale";
+@import "../../mixins/sizes";
 @import "../../mixins/spacing";
 @import "../../settings/baselinegrid";
+@import "../../settings/color";
+@import "../../settings/font";
 @import "../../settings/grid";
 
 $contentHeader-downloadIcon-inline_size__default: 20px !default;
 $contentHeader-downloadIcon-inline_size__medium: 44px !default;
+
+$contentHeader-image-block-size__default: 264px !default;
+$contentHeader-image-block-size__medium: 288px !default;
+$contentHeader-image-block-size__wide: 336px !default;
+
+$contentHeader-image-block-padding: 12px !default;
+$contentHeader-image-inline-padding: $contentHeader-image-block-padding !default;
 
 .content-header {
   font-family: $font-secondary;
   text-align: center;
   @include padding($baselinegrid-space-medium, block-start);
   @include block-spacing($end: $baselinegrid-space-medium - $grid-divider_size);
+  @include inline-size(100%);
+  @include max-inline-size($grid-max_width);
+  @include margin(auto, inline);
   @include border(block-end);
   position: relative;
+  @supports (display: flex) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.content-header--image {
+  border: 0;
+  color: $color-text-reverse;
+  @include block-size($contentHeader-image-block-size__default);
+  @include padding($contentHeader-image-block-padding $contentHeader-image-inline-padding);
+  overflow: hidden;
+
+  @include mq($from: medium) {
+    @include block-size($contentHeader-image-block-size__medium);
+  }
+
+  @include mq($from: wide) {
+    @include block-size($contentHeader-image-block-size__wide);
+  }
+
+  &:after {
+    background-color: $color-text-normal;
+    content: "";
+    position: absolute;
+    @include inset(0, block);
+    @include inset(0, inline);
+    z-index: -10;
+  }
 }
 
 .content-header--has-header {
   @include padding($baselinegrid-space-large, block-start);
+}
+
+.content-header--has-footer {
+  @include padding($baselinegrid-space-medium, block-end);
+
+  &.content-header--image {
+    @include padding($baselinegrid-space-large, block-end);
+  }
+}
+
+.content-header__body {
+  .content-header--image & {
+    @include max-block-size(100%);
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    position: relative;
+    top: 50%; // stylelint-disable-line csstools/use-logical
+    transform: perspective(1px) translateY(-50%);
+    vertical-align: top;
+    @supports (display: flex) {
+      position: static;
+      transform: none;
+    }
+  }
 }
 
 .content-header__title {
@@ -28,6 +98,10 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
 
   &:last-child {
     @include block-spacing($end: $baselinegrid-space-medium);
+  }
+
+  .content-header--image & {
+    @include block-spacing($end: 0);
   }
 }
 
@@ -141,8 +215,15 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
   @include inset($baselinegrid-space-small, block-start);
   @include inset(1.5 * $contentHeader-downloadIcon-inline_size__default, inline);
 
+  .content-header--image & {
+    @include inset(1.5 * $contentHeader-downloadIcon-inline_size__default + $contentHeader-image-inline-padding, inline);
+  }
+
   @include mq($from: medium) {
     @include inset(1.5 * $contentHeader-downloadIcon-inline_size__medium, inline);
+    .content-header--image & {
+      @include inset(1.5 * $contentHeader-downloadIcon-inline_size__medium + $contentHeader-image-inline-padding, inline);
+    }
   }
 }
 
@@ -151,6 +232,10 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
   @include inset(0, block-start);
   @include inset(0, inline-end);
   @include block-spacing($start: $baselinegrid-space-small, $end: 0);
+
+  .content-header--image & {
+    @include inset($contentHeader-image-inline-padding, inline-end);
+  }
 
   @supports (display: flex) {
     display: flex;
@@ -169,4 +254,37 @@ $contentHeader-downloadIcon-inline_size__medium: 44px !default;
   @include mq($from: medium) {
     @include inline-size($contentHeader-downloadIcon-inline_size__medium);
   }
+}
+
+.content-header__picture {
+  &:after {
+    content: "";
+    position: absolute;
+    @include inset(0, block);
+    @include inset(0, inline);
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.content-header__image {
+  position: absolute;
+  @include inset(50%, block-start);
+  @include inset(50%, inline-start);
+  @include min-block-size(100%);
+  @include max-block-size(none);
+  @include min-inline-size(100%);
+  @include max-inline-size(none);
+  transform: translate(-50%, -50%);
+  z-index: -2;
+
+  @include when-right-to-left {
+    transform: translate(50%, -50%);
+  }
+}
+
+.content-header__meta {
+  position: absolute;
+  @include inset(0, block-end);
+  @include inset(0, inline);
 }
