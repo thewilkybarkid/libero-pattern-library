@@ -66,22 +66,31 @@ $contentHeader-image-inline-padding: $contentHeader-image-block-padding !default
 
 .content-header--has-header {
   @include padding($baselinegrid-space-large, block-start);
+
+  &.content-header--image {
+    @include padding($baselinegrid-space-medium + $contentHeader-image-block-padding, block-start);
+
+    @include mq($from: medium) {
+      @include padding($baselinegrid-space-large, block-start);
+    }
+  }
 }
 
 .content-header--has-footer {
   @include padding($baselinegrid-space-medium, block-end);
 
   &.content-header--image {
-    @include padding($baselinegrid-space-large, block-end);
+    @include padding($baselinegrid-space-medium + $contentHeader-image-block-padding, block-end);
+
+    @include mq($from: medium) {
+      @include padding($baselinegrid-space-large, block-end);
+    }
   }
 }
 
 .content-header__body {
   .content-header--image & {
     @include max-block-size(100%);
-    overflow-y: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-
     position: relative;
     top: 50%; // stylelint-disable-line csstools/use-logical
     transform: perspective(1px) translateY(-50%);
