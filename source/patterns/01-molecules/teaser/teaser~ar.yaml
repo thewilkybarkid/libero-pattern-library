@@ -4,3 +4,40 @@ attributes:
 href: '#'
 heading:
   text: العنوان التشويقي
+details:
+  attributes:
+    aria-label: مؤلفو هذا المقال
+  text: المؤلف ١ وآخرون
+categories:
+  attributes:
+    aria-label: قوائم الفئات التي تتضمن هذه المقالة
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: بيولوجيا الخلية
+    - content:
+        text: علم الأوبئة والصحة العالمية
+meta:
+  attributes:
+    aria-label: تفاصيل المنشور
+  items:
+    - attributes:
+        aria-label: نوع المقالة
+      content:
+        attributes:
+          href: '#'
+        text: مقاله بحثيه
+    - attributes:
+        aria-label: تاريخ النشر
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: ٠٥/٠٤/٢٠١٠
+    - attributes:
+        aria-label: رقم الإصدار
+      content:
+        text: العدد ١

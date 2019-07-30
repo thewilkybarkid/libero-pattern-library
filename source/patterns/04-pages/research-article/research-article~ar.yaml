@@ -6,8 +6,35 @@ siteHeader:
     href: '#'
     image:
       alt: 'شعار مجاني'
+  menu:
+    - attributes:
+        href: '#'
+      text: رئيسية
+    - attributes:
+        href: '#'
+      text: أعداد
+    - attributes:
+        href: '#'
+      text: عن
+
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 'هناك '
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: معلومات إضافية مثيرة للاهتمام
+    - text: ' المتاحة.'
 
 contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: قم بتنزيل ملف PDF لهذا المقال
   contentTitle:
     text: زهرة غير منتجة غير منتجة من العصر الجوراسي في الصين
   categories:
@@ -37,6 +64,49 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: ١٨/١٢/٢٠١٨
+
+  authors:
+    attributes:
+      aria-label: مؤلفو هذا المقال
+    items:
+      - content:
+          text: جابر عادل
+      - content:
+          text: مؤمن ياسر
+      - content:
+          text: هشام عادل
+      - content:
+          text: مروة عبدالمنعم
+      - content:
+          text: مي حسين
+      - content:
+          text: نهي محمود
+      - content:
+          text: مروة عبدالمنعم
+      - content:
+          text: عبير الروقي
+      - content:
+          text: وليد النفيسة
+      - content:
+          text: سلطان الكاف
+      - content:
+          text: رنا الروقي
+  affiliations:
+    attributes:
+      aria-label: الكاتب الانتماءات
+    items:
+      - content:
+          text: الأكاديمية الصينية للعلوم ، الصين
+      - content:
+          text: جامعة فيجو ، اسبانيا
+      - content:
+          text: حدائق بريسبان النباتية ، أستراليا
+      - content:
+          text: جامعة فوجيان للزراعة والغابات ، الصين
+      - content:
+          text: المسح الجيولوجي الصيني ، الصين
+      - content:
+          text: جامعة نانجينغ العادية ، الصين
 
 body:
   - template: molecules-section
@@ -155,6 +225,116 @@ body:
                             dir: ltr
                           text: G
                       - ) لوح مغطى بالكامل بالورود. PB22228.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: مراجع
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                    dir: ltr
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: مؤلفو هذا المقال
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: إدوارد آربر
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: جون باركين
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                          dir: ltr
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' 38، 29–80.'
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                    dir: ltr
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: مؤلفو هذا المقال
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: ريتشارد باتمان
+                    - content:
+                        text: جيسون هيلتون
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: بولا رودال
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                          dir: ltr
+                        text: Journal of Experimental Botany
+                    - ' 57، 3471–3503.'
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                    dir: ltr
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: مؤلفو هذا الكتاب
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: تشايا بيسواس
+                    - content:
+                        text: بريج موهان جوهري
+                details:
+                  text: 'برلين: Springer-Verlag.'
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                    dir: ltr
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: مؤلفو هذا المقال
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: نورمان بوك
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                          dir: ltr
+                        text: American Journal of Botany
+                    - ' 51، 598–610.'
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
 
 tags:
   groups:

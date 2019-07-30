@@ -1,0 +1,6 @@
+image:
+  src: ../../images/error/5xx.svg
+heading:
+  text: Error
+details:
+  text: Something has gone seriously wrong. We’ve logged the problem and will look into it.

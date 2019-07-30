@@ -2,7 +2,6 @@ import browserSync from 'browser-sync';
 import color from 'ansi-colors';
 import copy from 'recursive-copy';
 import del from 'del';
-import distributeConfig from './libero-config/bin/distributeConfig';
 import download from 'download';
 import eslint from 'gulp-eslint';
 import flatten from 'gulp-flatten';
@@ -123,7 +122,7 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.files.src.js = `${config.dir.src.js}/**/*.js`;
   config.files.src.jsEntryPoint = `${config.dir.src.js}/${invocationOptions.jsEntryPoint}`;
   config.files.src.images = `${config.dir.src.images}/**/*`;
-  config.files.src.favicon = `${config.dir.src.images}/libero-logo.svg`;
+  config.files.src.favicon = `${config.dir.src.images}/libero-logo-small.svg`;
   config.files.src.fontsDefinition = `${config.dir.src.fonts}/fonts.yaml`;
   config.files.src.fonts = [
     `${config.dir.src.fonts}/**/*`,
@@ -132,10 +131,6 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
   config.files.src.meta = `${config.dir.src.meta}/**/*`;
   config.files.src.patterns = `${config.dir.src.patterns}/**/*`;
   config.files.src.templates = `${config.dir.src.patterns}/!(04-pages)/**/*.twig`;
-  config.files.src.derivedConfigs = [
-    `${config.dir.src.sass}/variables/**/*`,
-    `${config.dir.src.js}/derivedConfig.json`,
-  ];
 
   config.files.test.js = `${config.dir.test.js}/**/*.spec.js`;
   config.files.test.sass = `${config.dir.test.sass}/**/*.spec.scss`;
@@ -143,7 +138,6 @@ const buildConfig = (invocationArgs, sourceRoot, testRoot, buildRoot) => {
 
   config.files.build.favicon = `${config.dir.build.src}/favicon.ico`;
   config.files.build.imagesExportable = [`${config.dir.build.images}/**/*`, `!${config.dir.build.images}/local`, `!${config.dir.build.images}/local/**/*`];
-
 
   config.webpack = webpackConfigFactory(config.environment, path.resolve(config.files.src.jsEntryPoint), path.resolve(config.dir.build.js));
 
@@ -158,12 +152,6 @@ const httpCache = new Keyv({
     filename: `${config.dir.build.cache}/http.json`,
   }),
 });
-
-// Shared config tasks
-
-const cleanSharedConfig = () => del(config.files.src.derivedConfigs);
-
-export const distributeSharedConfig = gulp.series(cleanSharedConfig, distributeConfig);
 
 // Font tasks
 
@@ -323,7 +311,16 @@ const cleanImages = () => del(config.dir.build.images);
 
 const compileImages = () =>
   gulp.src(config.files.src.images)
-    .pipe(imagemin())
+    .pipe(imagemin(
+      imagemin.svgo({
+        plugins: [
+          {cleanupIDs: false},
+          {removeStyleElement: true},
+          {removeTitle: false},
+          {sortAttrs: true},
+        ],
+      }),
+    ))
     .pipe(gulp.dest(config.dir.build.images));
 
 const generateImages = gulp.series(cleanImages, compileImages);
@@ -367,8 +364,6 @@ export const buildPatternLab = gulp.series(cleanPatternLab, generatePatternLab);
 // Combined tasks
 
 export const build = gulp.series(gulp.parallel(gulp.series(buildFonts, buildCss), buildImages, buildJs), buildPatternLab);
-
-export const assemble = gulp.series(distributeSharedConfig, build);
 
 export const test = gulp.parallel(validateJs, validateSass);
 
@@ -430,7 +425,7 @@ export const exportPatterns = gulp.series(
 
 // Default
 
-export default gulp.series(assemble, exportPatterns);
+export default gulp.series(build, exportPatterns);
 
 // Watchers
 
@@ -444,9 +439,7 @@ const watchPatternLab = () => gulp.watch([config.dir.src.meta, config.dir.src.pa
 
 const watchSass = () => gulp.watch(config.files.src.sass.concat([config.files.test.sass, `!${config.dir.src.sassFonts}`]), buildCss);
 
-const watchSharedConfig = () => gulp.watch('libero-config/**/*', distributeSharedConfig);
-
-export const watch = gulp.parallel(watchFonts, watchImages, watchJs, watchPatternLab, watchSass, watchSharedConfig);
+export const watch = gulp.parallel(watchFonts, watchImages, watchJs, watchPatternLab, watchSass);
 
 // Server
 

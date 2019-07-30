@@ -1,0 +1,8 @@
+lang: ar
+dir: rtl
+
+error:
+  heading:
+    text: عائد قريبا
+  details:
+    text: نحن ننفذ الصيانة المخططة في هذه الصفحة.

@@ -1,0 +1,22 @@
+attributes:
+  dir: rtl
+  lang: ar
+heading:
+  text: العنوان المرجعي
+authors:
+  attributes:
+    aria-label: مؤلفو هذا المقال
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 1
+    - content:
+        text: المؤلف 2
+    - content:
+        attributes:
+          href: '#'
+        text: المؤلف 3
+details:
+  text: المجلة الدولية للمظاهرة.
+doi: 10.7554/eLife.12151

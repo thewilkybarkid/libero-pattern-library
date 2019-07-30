@@ -5,8 +5,35 @@ siteHeader:
     href: '#'
     image:
       alt: 'Либеро логотип'
+  menu:
+    - attributes:
+        href: '#'
+      text: Главная
+    - attributes:
+        href: '#'
+      text: Номера
+    - attributes:
+        href: '#'
+      text: О нас
+
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 'Доступна дополнительная '
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: интересная информация
+    - text: .
 
 contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: Скачать PDF для этой статьи
   contentTitle:
     text: Неожиданный некарпеллитный эпигиновый цветок из китайской юры
   categories:
@@ -36,6 +63,48 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: 18 дек. 2018 г.
+  authors:
+    attributes:
+      aria-label: Авторы этой статьи
+    items:
+      - content:
+          text: Влад Яшин
+      - content:
+          text: Полина Исаевa
+      - content:
+          text: Константин Ульянов
+      - content:
+          text: Галина Уваровa
+      - content:
+          text: Кира Тарасовa
+      - content:
+          text: Ксения Седых
+      - content:
+          text: Василий Цветков
+      - content:
+          text: Кирилл Фадеев
+      - content:
+          text: Альбина Евдокимовa
+      - content:
+          text: Лев Семёнов
+      - content:
+          text: Татьяна Ильинa
+  affiliations:
+    attributes:
+      aria-label: Авторская принадлежность
+    items:
+      - content:
+          text: Китайская академия наук, Китай
+      - content:
+          text: Университет Виго, Испания
+      - content:
+          text: Брисбенский ботанический сад, Австралия
+      - content:
+          text: Фуцзянский университет сельского и лесного хозяйства, Китай
+      - content:
+          text: Китайская геологическая служба, Китай
+      - content:
+          text: Нанкинский педагогический университет, Китай
 
 body:
   - template: molecules-section
@@ -154,6 +223,121 @@ body:
                         arguments:
                           text: G
                       - ) Плита почти полностью покрыта цветами. PB22228.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: Источники
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: Авторы этой статьи
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Ньюэлл Арбер Э. А.
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Паркин Дж.
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 38
+                    - :29–80.
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: Авторы этой статьи
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Бейтман Р. М.
+                    - content:
+                        text: Хилтон Дж.
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Рудалл П. Дж.
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: Journal of Experimental Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 57
+                    - :3471–3503.
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: Авторы этой книги
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Бисвас Ч.
+                    - content:
+                        text: Джохри Б. М.
+                details:
+                  text: 'Берлин: Springer-Verlag.'
+            - content:
+                heading:
+                  attributes:
+                    lang: en
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: Авторы этой статьи
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: Боке Н. Х.
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        attributes:
+                          lang: en
+                        text: American Journal of Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 51
+                    - :598–610.
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
 
 tags:
   groups:

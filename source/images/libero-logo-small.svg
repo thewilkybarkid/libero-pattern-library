@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="42px" height="48px" viewBox="0 0 42 48">
+
+    <title xml:lang="en">Libero Logo</title>
+
+    <defs>
+        <style>
+
+            .black {
+                fill: #212121;
+            }
+
+            .grey {
+                fill: #666666;
+            }
+
+            .light-red {
+                fill: #cf0c4e;
+            }
+
+            .dark-red {
+                fill: #732060;
+            }
+
+            .light-green {
+                fill: #629f43;
+            }
+
+            .dark-green {
+                fill: #046535;
+            }
+
+            .light-blue {
+                fill: #0a9dd9;
+            }
+
+            .dark-blue {
+                fill: #0961ab;
+            }
+
+        </style>
+    </defs>
+
+    <g id="logo" class="black">
+        <polygon class="dark-red" points="41 12.69 32 17.89 32 41.4 41 36.07 41 12.69"/>
+        <polygon class="light-red" points="22.25 12.26 32 17.89 41 12.69 31.37 6.99 22.25 12.26"/>
+        <polygon class="light-green" points="1 25.68 1 36.07 21.25 47.77 21.25 37.37 1 25.68"/>
+        <polygon class="dark-green" points="31 31.75 21.25 37.37 21.25 47.77 31 41.99 31 31.75"/>
+        <polygon class="dark-blue" points="1 12.69 1 23.95 10 29.15 10 17.89 1 12.69"/>
+        <polygon class="light-blue" points="1 12.69 10 17.89 30.14 6.26 21.25 1 1 12.69"/>
+    </g>
+
+</svg>

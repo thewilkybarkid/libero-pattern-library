@@ -1,7 +1,7 @@
 @import "../mixins/types";
-@import "../variables/baselinegrid";
-@import "../variables/color";
-@import "../variables/font";
+@import "../settings/baselinegrid";
+@import "../settings/color";
+@import "../settings/font";
 @import "spacing";
 @import "utilities";
 @import "scale";
@@ -107,8 +107,20 @@
     display: inline;
   }
 
+  & {
+    @content;
+  }
+
   &:hover {
     color: $hover-color;
+  }
+}
+
+@mixin subtle-link() {
+  @include inherit-all($ensure: color) {
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
   }
 }
 
@@ -120,5 +132,45 @@
 @mixin list-style-none() {
   @include padding(0, inline-start);
   // Overflow auto is so the bullet will be still read from a screen reader and will push the bullet off screen
-  overflow: auto;
+  overflow-x: auto;
+}
+
+@mixin list-separator($separator: default) {
+
+  @if $separator == default {
+
+    &:after {
+      content: ",\a0";
+    }
+
+    &:lang(ar):after {
+      content: "،\a0";
+    }
+
+    &:lang(ja):after {
+      content: "、";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+
+  } @else if $separator == alternative {
+
+    &:after {
+      content: ";\a0";
+    }
+
+    &:lang(ar):after {
+      content: "\61b\a0";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+
+  } @else {
+    @include _error("Unknown list separator '#{$separator}'");
+  }
+
 }

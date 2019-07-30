@@ -1,0 +1,15 @@
+attributes:
+  aria-label: Authors of this article
+items:
+  - attributes:
+      data-specimen-extra-attribute: 'something extra'
+    content:
+      attributes:
+        href: '#'
+      text: Author 1
+  - content:
+      text: Author 2
+  - content:
+      attributes:
+        href: '#'
+      text: Author 3

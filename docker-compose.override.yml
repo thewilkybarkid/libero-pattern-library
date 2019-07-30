@@ -5,11 +5,10 @@ services:
     build:
       context: .
       target: gulp
-    command: bash -c "npx gulp assemble --environment=development --lint=${LINT} && npx gulp watch --environment=development --lint=${LINT}"
+    command: bash -c "npx gulp build --environment=development --lint=${LINT} && npx gulp watch --environment=development --lint=${LINT}"
     restart: on-failure
     volumes:
       - ./build:/app/build
-      - ./libero-config:/app/libero-config
       - ./source:/app/source
       - ./test:/app/test
   watch-build:

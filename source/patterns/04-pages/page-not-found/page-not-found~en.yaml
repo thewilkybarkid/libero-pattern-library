@@ -1,0 +1,19 @@
+siteHeader:
+  logo:
+    href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Home
+    - attributes:
+        href: '#'
+      text: Issues
+    - attributes:
+        href: '#'
+      text: About
+
+error:
+  heading:
+    text: Oops!
+  details:
+    text: The page you were looking for is not found.

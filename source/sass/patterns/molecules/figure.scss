@@ -1,8 +1,8 @@
 @import "../../mixins/spacing";
 @import "../../mixins/typography";
-@import "../../variables/baselinegrid";
-@import "../../variables/breakpoint";
-@import "../../variables/image";
+@import "../../patterns/atoms/image";
+@import "../../settings/baselinegrid";
+@import "../../settings/breakpoint";
 
 .figure {
   @include block-spacing($start: $baselinegrid-space-medium, $end: $baselinegrid-space-medium);
@@ -16,10 +16,12 @@
 .figure__caption {
   @include caption-typography();
   @include margin($image-inline-spacing, inline);
-}
 
-.figure__caption {
   @include mq($from: medium) {
     @include margin(0, inline);
   }
+}
+
+.figure__asset {
+  @include block-spacing($end: $baselinegrid-space-extra_small);
 }

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20px" height="20px" viewBox="0 0 20 20">
+
+    <title xml:lang="en">Download</title>
+
+    <defs>
+
+        <style>
+
+            .black {
+                color: #212121;
+            }
+
+            .white {
+                color: #ffffff;
+            }
+
+            .arrow {
+                fill: currentColor;
+                stroke: none;
+            }
+
+        </style>
+
+    </defs>
+
+    <g id="icon" class="black">
+        <path class="arrow" d="M17 8h-4V2H7v6H3l7 7 7-7zM3 17v2h14v-2H3z"/>
+    </g>
+
+</svg>

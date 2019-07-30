@@ -3,7 +3,7 @@
 @import "sizes";
 @import "types";
 @import "validation";
-@import "../variables/baselinegrid";
+@import "../settings/baselinegrid";
 
 // Fallbacks for CSS logical properties contained within this mixin require the following treatment of HTML dir attributes:
 //  - document level: always specified, via the HTML element
@@ -126,9 +126,4 @@
 
 @mixin h6-spacing() {
   @include block-spacing($end: _calculate-spacing($baselinegrid-space-small, $baselinegrid-space-medium));
-}
-
-@mixin list-style-none() {
-  list-style: none;
-  @include padding(0, inline-start);
 }

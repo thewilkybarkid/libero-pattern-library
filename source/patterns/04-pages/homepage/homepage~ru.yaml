@@ -5,6 +5,16 @@ siteHeader:
     href: '#'
     image:
       alt: 'Либеро логотип'
+  menu:
+    - attributes:
+        href: '#'
+      text: Главная
+    - attributes:
+        href: '#'
+      text: Номера
+    - attributes:
+        href: '#'
+      text: О нас
 
 contentHeader:
   contentTitle:
@@ -21,41 +31,361 @@ body:
               href: '#'
               heading:
                 text: Консервативный морфогенетический механизм эпидермальной оболочки ноцицептивных сенсорных нейритов
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Роза Голановa и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Неврология
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 11 мар. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Пространственно-временное образование плотных бактериальных колоний, растущих на твердом агаре
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Григорий Моисеенко и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Вычислительная и системная биология
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 11 мар. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Валентное кодирование в латеральной габенуле происходит из энтопедункулярной области
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Татьяна Юшковa и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Неврология
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 11 мар. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Importin-9 оборачивается вокруг ядра H2A-H2B, чтобы действовать как ядерный импортер и гистоновый шаперон
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Геннадий Савин и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Структурная биология и молекулярная биофизика
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 11 мар. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Мембранное соединение с помощью Munc13-1 имеет решающее значение для высвобождения нейромедиатора
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Николай Рогачёв и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Неврология
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Структурная биология и молекулярная биофизика
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-28'
+                            text: 28 фев. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Структура Ctf19c/CCAN из почкующихся дрожжей
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Любомира Бондаренко, Юрий Владимиров
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Структурная биология и молекулярная биофизика
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-14'
+                            text: 14 фев. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Гиперактивность PUMILIO способствует преждевременному старению мышей с дефицитом норада
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Ігор Гриценко и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Хромосомы и экспрессия генов
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Генетика и геномика
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-08'
+                            text: 8 фев. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Механическая нестабильность и межфазная энергия приводят в движение морфогенез биопленки
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Валентин Уткин и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Физика живых систем
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-08'
+                            text: 8 мар. 2019 г.
           - content:
               href: '#'
               heading:
                 text: Два различных механизма нацеливают связанный с аутофагией комплекс E3 на пре-аутофагосомную структуру
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Юлия Лебедевa и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Клеточная биология
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-27'
+                            text: 27 фев. 2019 г.
           - content:
               href: '#'
               heading:
-                text: >-
-                  Протеотоксичность из-за аберрантного биогенеза рибосом нарушает стабилизацию синапса в мозге млекопитающих,
-                  зависящую от пригодности клетки
+                text: Протеотоксичность от аберрантного биогенеза рибосом ставит под угрозу пригодность клеток
+              details:
+                attributes:
+                  aria-label: Авторы этой статьи
+                text: Владислав Шаповалов и др.
+              categories:
+                attributes:
+                  aria-label: Списки категорий, которые включают эту статью
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Биохимия и химическая биология
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Клеточная биология
+              meta:
+                attributes:
+                  aria-label: Подробности публикации
+                items:
+                  - attributes:
+                      aria-label: Тип статьи
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Научная статья
+                  - attributes:
+                      aria-label: Дата публикации
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-07'
+                            text: 7 мар. 2019 г.

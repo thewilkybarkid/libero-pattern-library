@@ -1,7 +1,7 @@
 @import "../../functions/grid";
 @import "../../mixins/grid";
 @import "../../mixins/media-query";
-@import "../../variables/grid";
+@import "../../settings/grid";
 
 .content-grid {
   --primary-column-width: #{get-overall-width($grid-main_column_count)};

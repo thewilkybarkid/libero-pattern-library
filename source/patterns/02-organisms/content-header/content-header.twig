@@ -2,61 +2,160 @@
 
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header']) }) -%}
 
+{%- if image is defined -%}
+  {%- set attributes = attributes|merge({class: attributes.class|merge(['content-header--image']) }) -%}
+{%- endif -%}
+
+{%- if hasHeader|default(categories.items|default([])|length or download.link.href is defined) -%}
+  {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header--has-header']) }) -%}
+{%- endif -%}
+
+{%- if hasFooter|default(meta.items|default([])|length) -%}
+  {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header--has-footer']) }) -%}
+{%- endif -%}
+
 <header {{- html.attributes(attributes) }}>
 
-  {%- block body -%}
+  {%- with image|default({})|merge({html: html}) only -%}
+    {%- block image -%}
 
-    {%- with categories|default({}) only -%}
-      {%- block categories -%}
+      {%- if image.src is defined -%}
 
-        {%- if items|default([])|length -%}
-          {%- include 'molecules-tag-list' with {list: _context|merge({singleLine: true})} only -%}
-        {%- endif -%}
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__picture']) }) -%}
 
-      {%- endblock categories -%}
-    {%- endwith -%}
+        <picture {{- html.attributes(attributes|default({})) }}>
 
-    {%- with contentTitle only -%}
+          {%- for source in sources|default([]) -%}
+            <source {{- html.attributes(source) }}>
+          {%- endfor -%}
 
-      {%- block title -%}
+          {%- set image = image|merge({class: image.class|default([])|merge(['content-header__image']) }) -%}
 
-        {% set length = include('atoms-heading')|striptags|trim|length %}
+          <img {{- html.attributes(image) }}>
 
-        {% if length < 20 %}
-          {% set lengthClass = 'xx-short' %}
-        {% elseif length < 36 %}
-          {% set lengthClass = 'x-short' %}
-        {% elseif length < 46 %}
-          {% set lengthClass = 'short' %}
-        {% elseif length < 57 %}
-          {% set lengthClass = 'medium' %}
-        {% elseif length < 80 %}
-          {% set lengthClass = 'long' %}
-        {% elseif length < 120 %}
-          {% set lengthClass = 'x-long' %}
-        {% else %}
-          {% set lengthClass = 'xx-long' %}
-        {% endif %}
+        </picture>
 
-        {% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__title', 'content-header__title--' ~ lengthClass]) }) %}
-        {% set level = 1 %}
+      {%- endif -%}
 
-        {% include 'atoms-heading' %}
+    {%- endblock -%}
+  {%- endwith -%}
 
-      {%- endblock -%}
+  {%- with {categories: categories|default({}), hasImage: image is defined, html: html} only -%}
+    {%- block categories -%}
 
-    {%- endwith -%}
+      {%- if categories.items|default([])|length -%}
 
-    {%- with meta|default({}) only -%}
-      {%- block meta -%}
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__categories']) }) -%}
 
-        {%- if items|default([])|length -%}
-          {%- include 'molecules-content-meta' -%}
-        {%- endif -%}
+        <div {{ html.attributes(attributes) }}>
+          {%- include 'molecules-tag-list' with {list: categories|merge({singleLine: true}), reverse: hasImage} only -%}
+        </div>
 
-      {%- endblock meta -%}
-    {%- endwith -%}
+      {%- endif -%}
 
-  {%- endblock -%}
+    {%- endblock categories -%}
+  {%- endwith -%}
+
+  {%- with download|default({})|merge({hasImage: image is defined, html: html}) only -%}
+    {%- block download -%}
+
+      {%- if link.href is defined -%}
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__download']) }) -%}
+
+        <div {{ html.attributes(attributes) }}>
+          <a {{ html.attributes(link) }}>
+            <picture>
+              {%- set image = hasImage ? 'download-reverse' : 'download' -%}
+              <source srcset="{{ asset('images/content-header/' ~ image ~ '-full.svg') }}" type="image/svg+xml"
+                      media="(min-width: 45.625em)">
+              <img src="{{ asset('images/content-header/' ~ image ~ '.svg') }}" class="content-header__download_icon"
+                   alt="{{ alt|default('') }}">
+            </picture>
+          </a>
+        </div>
+
+      {%- endif -%}
+
+    {%- endblock download -%}
+  {%- endwith -%}
+
+  {%- with {attributes: {}} -%}
+    {%- block body -%}
+
+      {%- set attributes = attributes|merge({class: attributes.class|default([])|merge(['content-header__body']) }) -%}
+
+      <div {{ html.attributes(attributes) }}>
+
+        {%- with contentTitle only -%}
+
+          {%- block title -%}
+
+            {% set length = include('atoms-heading')|striptags|trim|length %}
+
+            {% if length < 20 %}
+              {% set lengthClass = 'xx-short' %}
+            {% elseif length < 36 %}
+              {% set lengthClass = 'x-short' %}
+            {% elseif length < 46 %}
+              {% set lengthClass = 'short' %}
+            {% elseif length < 57 %}
+              {% set lengthClass = 'medium' %}
+            {% elseif length < 80 %}
+              {% set lengthClass = 'long' %}
+            {% elseif length < 120 %}
+              {% set lengthClass = 'x-long' %}
+            {% else %}
+              {% set lengthClass = 'xx-long' %}
+            {% endif %}
+
+            {% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__title', 'content-header__title--' ~ lengthClass]) }) %}
+            {% set level = 1 %}
+
+            {% include 'atoms-heading' %}
+
+          {%- endblock -%}
+
+        {%- endwith -%}
+
+        {%- with authors|default({}) only -%}
+          {%- block authors -%}
+
+            {%- if items|default([])|length -%}
+              {%- include 'molecules-inline-list' with {small: false, alternativeSeparators: false} -%}
+            {%- endif -%}
+
+          {%- endblock authors -%}
+        {%- endwith -%}
+
+        {%- with affiliations|default({}) only -%}
+          {%- block affiliations -%}
+
+            {%- if items|default([])|length -%}
+              {%- include 'molecules-inline-list' with {small: true, alternativeSeparators: true} -%}
+            {%- endif -%}
+
+          {%- endblock affiliations -%}
+        {%- endwith -%}
+
+      </div>
+
+    {%- endblock body -%}
+  {%- endwith -%}
+
+  {%- with {meta: meta|default({}), hasImage: image is defined, html: html} only -%}
+    {%- block meta -%}
+
+      {%- if meta.items|default([])|length -%}
+
+        {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__meta']) }) -%}
+
+        <div {{ html.attributes(attributes) }}>
+          {%- include 'molecules-content-meta' with meta|merge({reverse: hasImage}) only -%}
+        </div>
+
+      {%- endif -%}
+
+    {%- endblock meta -%}
+  {%- endwith -%}
 
 </header>

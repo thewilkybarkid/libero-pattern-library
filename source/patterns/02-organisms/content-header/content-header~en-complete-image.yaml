@@ -1,0 +1,51 @@
+contentTitle:
+  text: A title in an image-backed content header like this should never be this long. Ridiculous! However if it is, at least we can scale appropriately and prevent things from breaking in a really horrible fashion
+download:
+  link:
+    href: '#'
+  alt: Download the PDF for this article
+categories:
+  attributes:
+    aria-label: Category listings that include this article
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: Cell Biology
+    - content:
+        text: Epidemiology and Global Health
+meta:
+  attributes:
+    aria-label: Publication details
+  items:
+    - attributes:
+        aria-label: Type of article
+      content:
+        attributes:
+          href: '#'
+        text: Research Article
+    - attributes:
+        aria-label: Publication date
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: April 5, 2019
+    - attributes:
+        aria-label: Issue number
+      content:
+        text: Issue 1
+image:
+  image:
+    src: https://picsum.photos/1114/336
+  sources:
+    - media: '(max-width: 450px)'
+      srcset: https://picsum.photos/450/336
+    - media: '(max-width: 729px)'
+      srcset: https://picsum.photos/729/336
+    - media: '(max-width: 899px)'
+      srcset: https://picsum.photos/899/336
+    - media: '(max-width: 1023px)'
+      srcset: https://picsum.photos/1023/336

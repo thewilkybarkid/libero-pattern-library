@@ -1,0 +1,10 @@
+type: warning
+content:
+  - text: 'Watch out for '
+  - link:
+      template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: this thing
+  - text: .

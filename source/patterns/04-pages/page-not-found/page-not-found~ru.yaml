@@ -1,0 +1,21 @@
+lang: ru
+
+siteHeader:
+  logo:
+    href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Главная
+    - attributes:
+        href: '#'
+      text: Номера
+    - attributes:
+        href: '#'
+      text: О нас
+
+error:
+  heading:
+    text: Оп!
+  details:
+    text: Страница, которую вы искали, не найдена.

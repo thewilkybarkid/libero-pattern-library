@@ -1,8 +1,35 @@
 siteHeader:
   logo:
     href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Home
+    - attributes:
+        href: '#'
+      text: Issues
+    - attributes:
+        href: '#'
+      text: About
+
+infoBar:
+  type: info
+  image:
+    src: ../../images/info-bar/info.svg
+  content:
+    - text: 'There is additional '
+    - template: atoms-link
+      arguments:
+        attributes:
+          href: '#'
+        text: interesting infomation
+    - text: ' available.'
 
 contentHeader:
+  download:
+    link:
+      href: '#'
+    alt: Download the PDF for this article
   contentTitle:
     text: An unexpected noncarpellate epigynous flower from the Jurassic of China
   categories:
@@ -32,6 +59,48 @@ contentHeader:
                 attributes:
                   datetime: '2018-12-18'
                 text: Dec 18, 2018
+  authors:
+    attributes:
+      aria-label: Authors of this article
+    items:
+      - content:
+          text: Andrea Campbell
+      - content:
+          text: Raymond Clark
+      - content:
+          text: Harry Stanley
+      - content:
+          text: Rebecca Hicks
+      - content:
+          text: Rose Silva
+      - content:
+          text: Ashley Moreno
+      - content:
+          text: Diana Ramos
+      - content:
+          text: Kathleen Jacobs
+      - content:
+          text: Judy Willis
+      - content:
+          text: Helen Walters
+      - content:
+          text: Lisa Lawson
+  affiliations:
+    attributes:
+      aria-label: Author affiliations
+    items:
+      - content:
+          text: Chinese Academy of Sciences, China
+      - content:
+          text: Universidad de Vigo, Spain
+      - content:
+          text: Brisbane Botanical Gardens Mt Coot-tha, Australia
+      - content:
+          text: Fujian Agriculture and Forestry University, China
+      - content:
+          text: China Geological Survey, China
+      - content:
+          text: Nanjing Normal University, China
 
 body:
   - template: molecules-section
@@ -186,6 +255,107 @@ body:
                         arguments:
                           text: G
                       - ) A slab almost fully covered with flowers. PB22228.
+  - template: molecules-section
+    arguments:
+      heading:
+        text: References
+      content:
+        template: organisms-reference-list
+        arguments:
+          items:
+            - content:
+                heading:
+                  text: On the Origin of Angiosperms
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: EAN Arber
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: J Parkin
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: Journal of the Linnean Society of London, Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 38
+                    - :29–80.
+                doi: 10.1111/j.1095-8339.1907.tb01074.x
+            - content:
+                heading:
+                  text: >-
+                    Morphological and molecular phylogenetic context of the angiosperms: contrasting the 'top-down' and
+                    'bottom-up' approaches used to infer the likely characteristics of the first flowers
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: RM Bateman
+                    - content:
+                        text: J Hilton
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: PJ Rudall
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: Journal of Experimental Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 57
+                    - :3471–3503.
+                doi: 10.1093/jxb/erl128
+            - content:
+                heading:
+                  text: The Gymnosperms
+                authors:
+                  attributes:
+                    aria-label: Authors of this book
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: C Biswas
+                    - content:
+                        text: M Johri
+                details:
+                  text: 'Berlin: Springer-Verlag.'
+            - content:
+                heading:
+                  text: 'The Cactus gynoecium: A new interpretation'
+                authors:
+                  attributes:
+                    aria-label: Authors of this article
+                  items:
+                    - content:
+                        attributes:
+                          href: '#'
+                        text: NH Boke
+                details:
+                  text:
+                    - template: atoms-italic
+                      arguments:
+                        text: American Journal of Botany
+                    - ' '
+                    - template: atoms-bold
+                      arguments:
+                        text: 51
+                    - :598–610.
+                doi: 10.1002/j.1537-2197.1964.tb06677.x
 
 tags:
   groups:

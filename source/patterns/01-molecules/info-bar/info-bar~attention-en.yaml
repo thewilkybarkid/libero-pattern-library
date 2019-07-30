@@ -1,0 +1,4 @@
+type: attention
+image:
+  src: ../../images/info-bar/attention.svg
+content: Please complete the outstanding tasks.

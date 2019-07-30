@@ -1,8 +1,8 @@
 @import "../mixins/decorations";
 @import "../mixins/spacing";
 @import "../mixins/typography";
-@import "../variables/color";
-@import "../variables/grid";
+@import "../settings/color";
+@import "../settings/grid";
 @import "../vendor/normalize.css/normalize";
 
 *,
@@ -24,6 +24,9 @@ body {
   background-color: $color-background;
   color: $color-text-normal;
   text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
   @include body-typography();
 }
 

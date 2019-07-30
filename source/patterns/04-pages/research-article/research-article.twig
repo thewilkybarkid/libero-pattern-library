@@ -9,7 +9,7 @@
             {
               template: 'organisms-site-header',
               arguments: siteHeader,
-            }
+            },
           ],
         },
       ],
@@ -19,6 +19,14 @@
     template: 'templates-content-grid',
     arguments: {
       content: [
+        {
+          template: 'molecules-info-bar',
+          arguments: infoBar|merge({
+            attributes: infoBar.attributes|default({})|merge({
+              class: infoBar.attributes.class|default([])|merge(['content-grid__item--full']),
+            }),
+          }),
+        },
         {
           template: 'organisms-content-header',
           arguments: contentHeader,

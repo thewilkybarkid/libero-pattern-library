@@ -3,3 +3,40 @@ attributes:
 href: '#'
 heading:
   text: ティーザーのタイトル
+details:
+  attributes:
+    aria-label: この記事の著者
+  text: 著者1他
+categories:
+  attributes:
+    aria-label: この記事を含むカテゴリの一覧
+  items:
+    - content:
+        attributes:
+          href: '#'
+        text: 細胞生物学
+    - content:
+        text: 疫学とグローバルヘルス
+meta:
+  attributes:
+    aria-label: 出版物の詳細
+  items:
+    - attributes:
+        aria-label: 記事の種類
+      content:
+        attributes:
+          href: '#'
+        text: 研究論文
+    - attributes:
+        aria-label: 発行日
+      content:
+        text:
+          - template: atoms-time
+            arguments:
+              attributes:
+                datetime: '2010-04-05'
+              text: 2019年4月5日
+    - attributes:
+        aria-label: 発行番号
+      content:
+        text: 問題1

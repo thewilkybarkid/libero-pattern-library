@@ -1,6 +1,16 @@
 siteHeader:
   logo:
     href: '#'
+  menu:
+    - attributes:
+        href: '#'
+      text: Home
+    - attributes:
+        href: '#'
+      text: Issues
+    - attributes:
+        href: '#'
+      text: About
 
 contentHeader:
   contentTitle:
@@ -17,26 +27,216 @@ body:
               href: '#'
               heading:
                 text: A conserved morphogenetic mechanism for epidermal ensheathment of nociceptive sensory neurites
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Betty Santos et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Neuroscience
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: March 11, 2019
           - content:
               href: '#'
               heading:
                 text: Spatiotemporal establishment of dense bacterial colonies growing on hard agar
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Amber Wallace et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Computational and Systems Biology
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: March 11, 2019
           - content:
               href: '#'
               heading:
                 text: Valence-encoding in the lateral habenula arises from the entopeduncular region
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Vera Bergman et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Neuroscience
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: March 11, 2019
           - content:
               href: '#'
               heading:
                 text: Importin-9 wraps around the H2A-H2B core to act as nuclear importer and histone chaperone
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Zöhrə Əbdülzadə et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Structural Biology and Molecular Biophysics
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: March 11, 2019
           - content:
               href: '#'
               heading:
                 text: Membrane bridging by Munc13-1 is crucial for neurotransmitter release
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Mitică Vădineanu et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Neuroscience
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Structural Biology and Molecular Biophysics
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-28'
+                            text: February 28, 2019
           - content:
               href: '#'
               heading:
                 text: The structure of the Ctf19c/CCAN from budding yeast
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Mildred Gonzales, Victoria Snyder
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Structural Biology and Molecular Biophysics
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-14'
+                            text: February 14, 2019
           - content:
               href: '#'
               heading:
@@ -46,17 +246,147 @@ body:
                     arguments:
                       text: Norad
                   - -deficient mice
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Hồ Viễn et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Chromosomes and Gene Expression
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Genetics and Genomics
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-08'
+                            text: February 8, 2019
           - content:
               href: '#'
               heading:
                 text: Mechanical instability and interfacial energy drive biofilm morphogenesis
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Leon Kelly et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Physics of Living Systems
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-08'
+                            text: March 8, 2019
           - content:
               href: '#'
               heading:
                 text: Two distinct mechanisms target the autophagy-related E3 complex to the pre-autophagosomal structure
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Hajrudin Marjanović et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Cell Biology
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-27'
+                            text: February 27, 2019
           - content:
               href: '#'
               heading:
-                text: >-
-                  Proteotoxicity from aberrant ribosome biogenesis compromises cell fitnesspendent synapse stabilization in the
-                  mammalian brain
+                text: Proteotoxicity from aberrant ribosome biogenesis compromises cell fitness
+              details:
+                attributes:
+                  aria-label: Authors of this article
+                text: Asep Hidayat et al.
+              categories:
+                attributes:
+                  aria-label: Category listings that include this article
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Biochemistry and Chemical Biology
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: Cell Biology
+              meta:
+                attributes:
+                  aria-label: Publication details
+                items:
+                  - attributes:
+                      aria-label: Type of article
+                    content:
+                      attributes:
+                        href: '#'
+                      text: Research Article
+                  - attributes:
+                      aria-label: Publication date
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-07'
+                            text: March 7, 2019

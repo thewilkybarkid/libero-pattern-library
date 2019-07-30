@@ -5,6 +5,16 @@ siteHeader:
     href: '#'
     image:
       alt: 'Liberoのロゴ'
+  menu:
+    - attributes:
+        href: '#'
+      text: トップ
+    - attributes:
+        href: '#'
+      text: 号
+    - attributes:
+        href: '#'
+      text: について
 
 contentHeader:
   contentTitle:
@@ -21,39 +31,361 @@ body:
               href: '#'
               heading:
                 text: 侵害受容感覚神経突起の表皮鞘形成のための保存された形態形成メカニズム
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 中島和也ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 神経科学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 2019年3月11日
           - content:
               href: '#'
               heading:
                 text: 硬質寒天上で増殖する密集細菌コロニーの時空間的確立
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 三浦亮太ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 計算システム生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 2019年3月11日
           - content:
               href: '#'
               heading:
                 text: 側方手綱における原子価コード化は内虫嚢領域から生じる
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 林菜々子ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 神経科学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 2019年3月11日
           - content:
               href: '#'
               heading:
                 text: Importin-9はH2A-H2Bコアを包み込み、核インポーターおよびヒストンシャペロンとして作用
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 中村健ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 構造生物学と分子生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-11'
+                            text: 2019年3月11日
           - content:
               href: '#'
               heading:
                 text: Munc13-1による膜架橋は神経伝達物質放出に重要である
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 井上健太ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 神経科学
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 構造生物学と分子生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-28'
+                            text: 2019年2月28日
           - content:
               href: '#'
               heading:
                 text: 出芽酵母からのCtf19c/CCANの構造
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 森亜美、藤井拓也
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 構造生物学と分子生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-14'
+                            text: 2019年2月14日
           - content:
               href: '#'
               heading:
                 text: PUMILIOの活動亢進はNorad欠損マウスの早期老化を促進する
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 清水愛莉ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 染色体と遺伝子発現
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 遺伝学とゲノミクス
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-08'
+                            text: 2019年2月8日
           - content:
               href: '#'
               heading:
                 text: 機械的不安定性と界面エネルギーはバイオフィルム形態形成を促進する
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 小林颯ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 生命システムの物理
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-08'
+                            text: 2019年3月8日
           - content:
               href: '#'
               heading:
                 text: 2つの異なる機構がオートファジー関連E 3複合体をプレオートファゴソーム構造に標的化する
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 阿部麻衣ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 細胞生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-02-27'
+                            text: 2019年2月27日
           - content:
               href: '#'
               heading:
-                text: 異常なリボソーム生合成からの蛋白質毒性はほ乳類脳における細胞適合性シナプス安定化を危うく
+                text: 異常なリボソーム生合成からの蛋白質毒性は細胞の適応性を危うくする
+              details:
+                attributes:
+                  aria-label: この記事の著者
+                text: 斉藤彩夏ら
+              categories:
+                attributes:
+                  aria-label: この記事を含むカテゴリの一覧
+                items:
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 生化学および化学生物学
+                  - content:
+                      attributes:
+                        href: '#'
+                      text: 細胞生物学
+              meta:
+                attributes:
+                  aria-label: 出版物の詳細
+                items:
+                  - attributes:
+                      aria-label: 記事の種類
+                    content:
+                      attributes:
+                        href: '#'
+                      text: 研究論文
+                  - attributes:
+                      aria-label: 発行日
+                    content:
+                      text:
+                        - template: atoms-time
+                          arguments:
+                            attributes:
+                              datetime: '2019-03-07'
+                            text: 2019年3月7日

@@ -10,6 +10,10 @@
   display: inline-block;
   @include label-content-typography();
 
+  .content-meta--reverse & {
+    color: inherit;
+  }
+
   &:after {
     content: "\a0\2022\a0";
   }
@@ -21,4 +25,10 @@
 
 .content-meta__link {
   @include covert-link();
+
+  .content-meta--reverse & {
+    &:hover {
+      color: inherit;
+    }
+  }
 }

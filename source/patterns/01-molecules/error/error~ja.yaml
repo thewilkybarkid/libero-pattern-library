@@ -1,0 +1,9 @@
+attributes:
+  dir: rtl
+  lang: ar
+image:
+  src: ../../images/error/5xx.svg
+heading:
+  text: エラー
+details:
+  text: 何かが深刻に間違っています。 問題を記録して調査します。

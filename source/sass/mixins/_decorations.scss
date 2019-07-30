@@ -1,6 +1,6 @@
 @import "../mixins/logical-properties";
-@import "../variables/color";
-@import "../variables/grid";
+@import "../settings/color";
+@import "../settings/grid";
 
 @mixin border($dimension: null) {
 
