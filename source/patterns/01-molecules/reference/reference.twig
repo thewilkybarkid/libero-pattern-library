@@ -2,8 +2,12 @@
 
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['reference']) }) -%}
 
+{%- if doi is defined -%}
+  {%- set doi = 'https://doi.org/' ~ doi -%}
+{%- endif -%}
+
 {%- if href is not defined and doi is defined -%}
-  {%- set href = 'https://doi.org/'~doi -%}
+  {%- set href = doi -%}
 {%- endif -%}
 
 <article {{- html.attributes(attributes) }}>
@@ -50,7 +54,7 @@
           {%- block doi -%}
 
             {%- if doi -%}
-              {%- include 'atoms-link' with {attributes: {class: 'reference__doi', href: 'https://doi.org/'~doi}, text: 'https://doi.org/'~doi} only -%}
+              {%- include 'atoms-link' with {attributes: {class: 'reference__doi', href: doi}, text: doi} only -%}
             {%- endif -%}
 
           {%- endblock doi -%}

@@ -2,12 +2,11 @@
 
 {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['listing-grid']) }) -%}
 
-{%- set hasSecondary = false -%}
 {%- for area in content if area.area|default('full') == 'secondary' and area.content|default([])|length -%}
-  {%- set hasSecondary = true -%}
+  {%- set has_secondary = true -%} {# twigcs use-var has_secondary #}
 {%- endfor -%}
 
-{%- if hasSecondary -%}
+{%- if has_secondary|default(false) -%}
   {%- set attributes = attributes|merge({class: attributes.class|merge(['listing-grid--has-secondary']) }) -%}
 {%- endif -%}
 

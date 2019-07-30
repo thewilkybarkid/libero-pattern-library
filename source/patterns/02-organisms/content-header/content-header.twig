@@ -93,25 +93,24 @@
             {% set length = include('atoms-heading')|striptags|trim|length %}
 
             {% if length < 20 %}
-              {% set lengthClass = 'xx-short' %}
+              {% set length_class = 'xx-short' %}
             {% elseif length < 36 %}
-              {% set lengthClass = 'x-short' %}
+              {% set length_class = 'x-short' %}
             {% elseif length < 46 %}
-              {% set lengthClass = 'short' %}
+              {% set length_class = 'short' %}
             {% elseif length < 57 %}
-              {% set lengthClass = 'medium' %}
+              {% set length_class = 'medium' %}
             {% elseif length < 80 %}
-              {% set lengthClass = 'long' %}
+              {% set length_class = 'long' %}
             {% elseif length < 120 %}
-              {% set lengthClass = 'x-long' %}
+              {% set length_class = 'x-long' %}
             {% else %}
-              {% set lengthClass = 'xx-long' %}
+              {% set length_class = 'xx-long' %}
             {% endif %}
 
-            {% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__title', 'content-header__title--' ~ lengthClass]) }) %}
-            {% set level = 1 %}
+            {% set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['content-header__title', 'content-header__title--' ~ length_class]) }) %}
 
-            {% include 'atoms-heading' %}
+            {% include 'atoms-heading' with {level: 1} %}
 
           {%- endblock -%}
 

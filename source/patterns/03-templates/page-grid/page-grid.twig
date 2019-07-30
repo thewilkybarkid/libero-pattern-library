@@ -28,9 +28,8 @@
       {%- with arguments|merge({_template: template}) only -%}
 
         {%- set attributes = attributes|default({})|merge({class: attributes.class|default([])|merge(['page-grid__item', 'page-grid__main']), role: 'main'}) -%}
-        {%- set element = "main" -%}
 
-        {%- include _template -%}
+        {%- include _template with {element: 'main'} -%}
 
       {%- endwith -%}
 
