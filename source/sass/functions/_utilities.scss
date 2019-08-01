@@ -13,3 +13,11 @@
   }
   @return $index;
 }
+
+@function character-to-keyword($character) {
+  @if $character == "…" {
+    @return ellipsis;
+  }
+
+  @return $character;
+}

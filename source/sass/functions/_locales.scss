@@ -32,10 +32,10 @@
         $parentData: map-get($locale-data, $parentLocale);
 
         @if map-get($parentData, $property) != $value or not is-supported-locale($parentLocale) {
-          $result: map-merge($result, ($locale: $value));
+          $result: map-merge($result, ($locale: character-to-keyword($value)));
         }
       } @else {
-        $result: map-merge($result, ($locale: $value));
+        $result: map-merge($result, ($locale: character-to-keyword($value)));
       }
     }
   }

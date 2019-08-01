@@ -49,12 +49,21 @@
 
 @mixin truncate-with-ellipsis() {
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 
-  @if is-supported-locale(zh-Hant-HK) {
-    &:lang(zh-Hant-HK) {
-      text-overflow: "⋯";
+  @each $locale, $ellipsis in get-locale-data(ellipsis-final) {
+
+    @if $locale == "und" {
+
+      text-overflow: $ellipsis;
+
+    } @else {
+
+      &:lang(#{$locale}) {
+        text-overflow: $ellipsis;
+      }
+
     }
+
   }
 }

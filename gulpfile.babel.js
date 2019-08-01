@@ -243,6 +243,7 @@ const generateSassLocaleData = done => {
 
   const locales = ['und'].concat(Object.keys(localeParents)).reduce((carry, locale) => {
     const localeData = {};
+    const dataLocale = supplementalMetadata[locale] ? supplementalMetadata[locale]['replacement'] : locale;
 
     if (locale in localeParents) {
       const parent = locale.replace(/-[^-]+$/, '');
@@ -250,7 +251,8 @@ const generateSassLocaleData = done => {
       localeData['real-parent'] = localeParents[locale];
     }
 
-    localeData['inline-list-separator'] = cldr.extractListPatterns(supplementalMetadata[locale] ? supplementalMetadata[locale]['replacement'] : locale).default.middle.replace(/{[0|1]}/g, '');
+    localeData['inline-list-separator'] = cldr.extractListPatterns(dataLocale).default.middle.replace(/{[0|1]}/g, '');
+    localeData['ellipsis-final'] = cldr.extractCharacters(dataLocale).ellipsis.final.replace(/{[0|1]}/g, '');
 
     carry[locale] = localeData;
 
