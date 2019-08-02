@@ -15,9 +15,40 @@
 }
 
 @function character-to-keyword($character) {
-  @if $character == "…" {
-    @return ellipsis;
+  $map: (
+    "…": ellipsis,
+  );
+
+  @if index($map, $character) {
+    @return map-get($map, $character);
   }
 
   @return $character;
+}
+
+@function numbering-system-to-keyword($system) {
+  $unsupported: (
+    "cakm",
+  );
+
+  $map: (
+    "arab": arabic-indic,
+    "arabext": persian,
+    "armn": armenian,
+    "beng": bengali,
+    "deva": devanagari,
+    "latn": decimal,
+    "mymr": myanmar,
+    "tibt": tibetan,
+  );
+
+  @if map-has-key($map, $system) {
+    @return map-get($map, $system);
+  }
+
+  @if index($unsupported, $system) {
+    @return map-get($map, "latn");
+  }
+
+  @error "Unknown numbering system '#{$system}'";
 }

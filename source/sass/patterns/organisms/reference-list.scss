@@ -1,3 +1,4 @@
+@import "../../functions/locales";
 @import "../../mixins/lists";
 @import "../../mixins/positioning";
 @import "../../mixins/spacing";
@@ -17,28 +18,27 @@ $_ordinal-inline-size--large: 3rem;
 
   --ordinal-inline-size: #{$_ordinal-inline-size};
 
-  @supports (content: counter(reference-count, cjk-decimal)) {
-    @if is-supported-locale(ja) {
-      &:lang(ja) {
-        --ordinal-inline-size: #{$_ordinal-inline-size--large};
+  @each $locale, $numbering-system in get-locale-data(numbering-system) {
 
-        &:before {
-          content: counter(reference-count, cjk-decimal);
-        }
-      }
-    }
-  }
+    $numbering-system: numbering-system-to-keyword($numbering-system);
 
-  @if is-supported-locale(ar) {
-    &:lang(ar) {
+    @if $locale == "und" {
+
       &:before {
-        content: counter(reference-count, arabic-indic);
+        content: counter(reference-count, $numbering-system);
       }
+
+    } @else {
+
+      &:lang(#{$locale}):before {
+        content: counter(reference-count, $numbering-system);
+      }
+
     }
+
   }
 
   &:before {
-    content: counter(reference-count, decimal);
     font-weight: 600;
     font-family: $font-secondary;
     display: inline-block;

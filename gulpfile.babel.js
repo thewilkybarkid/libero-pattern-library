@@ -253,6 +253,7 @@ const generateSassLocaleData = done => {
 
     localeData['inline-list-separator'] = cldr.extractListPatterns(dataLocale).default.middle.replace(/{[0|1]}/g, '');
     localeData['ellipsis-final'] = cldr.extractCharacters(dataLocale).ellipsis.final.replace(/{[0|1]}/g, '');
+    localeData['numbering-system'] = cldr.extractDefaultNumberSystemId(dataLocale);
 
     carry[locale] = localeData;
 
